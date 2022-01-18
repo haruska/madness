@@ -11,6 +11,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div>
+        <%= link_to("Sign Out", sign_out_path) if current_user.present? %>
+    </div>
+    <div>
+      <%= yield %>
+    </div>
   </body>
 </html>
