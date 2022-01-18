@@ -15,5 +15,5 @@ if Rails.env.development? || Rails.env.test?
     task.requires << 'rubocop-rails'
   end
 
-  task(:default).clear.enhance(%w[rubocop])
+  task(:default).clear.enhance(%w[rubocop spec])
 end
