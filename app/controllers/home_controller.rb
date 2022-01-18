@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HomeController < ApplicationController
   def index
     current_user ? redirect_to(users_path) : redirect_to(auth.sign_in_path)

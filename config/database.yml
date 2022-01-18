@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: madness_production
-  username: madness
-  password: <%= ENV["MADNESS_DATABASE_PASSWORD"] %>
+#  username: madness
+#  password: <%= ENV["MADNESS_DATABASE_PASSWORD"] %>

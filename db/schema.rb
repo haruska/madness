@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2022_01_18_023701) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["admin"], name: "index_users_on_admin"
-    t.index ["email"], name: "index_users_on_email"
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name"
   end
 

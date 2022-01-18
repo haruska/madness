@@ -1,0 +1,11 @@
+require:
+  - rubocop-rails
+AllCops:
+  SuggestExtensions: false
+
+Style/Documentation:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Layout/LineLength:
+  Enabled: false

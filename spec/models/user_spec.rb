@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -9,6 +11,6 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
   it { is_expected.to_not be_admin }
 
-  it { is_expected.to allow_value("foo@bar.com").for(:email) }
-  it { is_expected.to_not allow_value("foobar.bz").for(:email) }
+  it { is_expected.to allow_value('foo@bar.com').for(:email) }
+  it { is_expected.to_not allow_value('foobar.bz').for(:email) }
 end
