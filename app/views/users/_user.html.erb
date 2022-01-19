@@ -4,9 +4,11 @@
     <%= user.name %>
   </p>
 
+  <% if policy(user).show_email? %>
   <p>
     <strong>Email:</strong>
     <%= user.email %>
   </p>
+  <% end %>
 
 </div>

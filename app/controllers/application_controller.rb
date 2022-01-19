@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include Pundit
   include Passwordless::ControllerHelpers
 
   helper_method :current_user
