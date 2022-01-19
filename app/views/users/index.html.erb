@@ -2,16 +2,16 @@
 
 <h1>Users</h1>
 
-<div id="users">
+<ul>
   <% @users.each do |user| %>
-    <%= render user %>
-    <% if policy(user).show? %>
-        <p>
-          <%= link_to "Details", user %>
-        </p>
-    <% end %>
+    <li>
+      <%= link_to_if(policy(user).show?, user.name, user) %>
+      <% if policy(user).show_email? %>
+        <<%= user.email %>>
+      <% end %>
+    </li>
   <% end %>
-</div>
+</ul>
 
 <% if policy(@users).new? %>
     <%= link_to "New user", new_user_path %>
