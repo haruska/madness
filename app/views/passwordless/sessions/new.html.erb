@@ -1,0 +1,7 @@
+<h1>Sign In</h1>
+
+<%= form_with model: @session, url: send(Passwordless.mounted_as).sign_in_path, data: { turbo: false } do |f| %>
+  <% email_field_name = :"passwordless[#{@email_field}]" %>
+  <%= email_field_tag email_field_name, params.fetch(email_field_name, nil), placeholder: "Email Address" %>
+  <%= f.submit "Send Link" %>
+<% end %>
