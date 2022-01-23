@@ -1,5 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
+<div class="heading">
+  <h1>User details</h1>
+  <div class="actions">
+    <%= link_to "Edit", edit_user_path(@user), class: "button" %>
+    <%= button_to "Destroy", @user, method: :delete, class: "danger" %>
+  </div>
+</div>
 <div id="<%= dom_id @user %>">
   <p>
     <strong>Name:</strong>
@@ -12,13 +19,9 @@
       <%= @user.email %>
     </p>
   <% end %>
-
 </div>
 
 
 <div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
   <%= link_to "Back to users", users_path %>
-
-  <%= button_to "Destroy this user", @user, method: :delete %>
 </div>

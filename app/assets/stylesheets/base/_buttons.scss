@@ -1,4 +1,5 @@
 button,
+.button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
@@ -24,6 +25,7 @@ button,
 
   &:hover {
     background-color: $action-color--alt;
+    color: $action-color--contrast;
   }
 
   &:focus {
@@ -34,5 +36,9 @@ button,
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;
+  }
+
+  &.danger {
+    background-color: $red;
   }
 }

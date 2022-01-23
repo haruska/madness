@@ -1,18 +1,20 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Users</h1>
+<div class="heading">
+  <h1>Users</h1>
+  <div class="actions">
+  <% if policy(@users).new? %>
+    <%= link_to "New user", new_user_path, class: "button" %>
+  <% end %>
+  </div>
+</div>
 
-<ul>
+<ul class="user-list">
   <% @users.each do |user| %>
     <li>
       <%= link_to_if(policy(user).show?, user.name, user) %>
-      <% if policy(user).show_email? %>
-        <<%= user.email %>>
-      <% end %>
     </li>
   <% end %>
 </ul>
 
-<% if policy(@users).new? %>
-    <%= link_to "New user", new_user_path %>
-<% end %>
+

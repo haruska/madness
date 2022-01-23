@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = policy_scope(User)
+    @users = policy_scope(User).order(:name)
   end
 
   # GET /users/1

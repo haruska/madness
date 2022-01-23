@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 9fb6cdf8fafea8d23fae06586f0f3248f873d53c
+  revision: 9062d705ad9055c0f3ec73505150e0e94fff5925
   branch: main
   specs:
     actioncable (7.1.0.alpha)
@@ -98,7 +98,7 @@ GEM
     bindex (0.8.1)
     bitters (2.0.4)
       thor (~> 1.0)
-    bootsnap (1.10.1)
+    bootsnap (1.10.2)
       msgpack (~> 1.2)
     bourbon (7.0.0)
       thor (~> 1.0)
@@ -139,7 +139,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
-    msgpack (1.4.2)
+    msgpack (1.4.4)
     net-imap (0.2.3)
       digest
       net-protocol
@@ -164,7 +164,7 @@ GEM
     passwordless (0.10.0)
       bcrypt (~> 3.1.11)
       rails (>= 5.1.4)
-    pg (1.2.3)
+    pg (1.3.0)
     puma (5.5.2)
       nio4r (~> 2.0)
     pundit (2.1.1)
@@ -202,9 +202,9 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.3)
-    rubocop (1.24.1)
+    rubocop (1.25.0)
       parallel (~> 1.10)
-      parser (>= 3.0.0.0)
+      parser (>= 3.1.0.0)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml
