@@ -13,6 +13,9 @@ $action-color--contrast: $white;
 // Background Colors
 $viewport-background-color: $white;
 
+// Spacing
+$gutter: 25px;
+
 :root {
   // Typography
   --font-family: system-ui, sans-serif;
@@ -49,4 +52,20 @@ $viewport-background-color: $white;
   // Animations
   --duration: 150ms;
   --timing: ease;
+}
+
+// media breakpoints
+$medium-screen: 768px;
+$large-screen: 1024px;
+
+@mixin medium-screen {
+  @media (min-width: #{$medium-screen}) {
+    @content;
+  }
+}
+
+@mixin large-screen {
+  @media (min-width: #{$large-screen}) {
+    @content;
+  }
 }

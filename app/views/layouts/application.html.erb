@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Madness</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Madness</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-  </head>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+</head>
 
-  <body>
-    <div style="text-align: right;">
-        <%= link_to("Sign Out", sign_out_path) if current_user.present? %>
-    </div>
-    <div>
+<body id="application-layout" class="<%= controller_name %>-controller <%= action_name %>-action">
+  <%= render "layouts/header" %>
+
+  <section id="content" class="container">
+    <div class="wrapper">
       <%= yield %>
     </div>
-  </body>
+  </section>
+</body>
 </html>

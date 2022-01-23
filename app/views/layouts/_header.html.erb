@@ -1,0 +1,14 @@
+<header>
+  <div class="title-wrapper">
+    <div class="title">
+      <% if content_for?(:title) %>
+        <%= yield :title %>
+      <% else %>
+        Pool Madness
+      <% end %>
+    </div>
+  </div>
+  <div class="navigation">
+    <%= link_to("Sign Out", sign_out_path) if current_user.present? %>
+  </div>
+</header>
