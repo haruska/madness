@@ -20,5 +20,11 @@
         margin: 10px 0;
       }
     }
+
+    .legend {
+      padding-top: $gutter;
+      color: $light-gray;
+      font-size: small;
+    }
   }
 }

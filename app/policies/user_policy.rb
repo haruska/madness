@@ -5,8 +5,12 @@ class UserPolicy < ApplicationPolicy
     user.present?
   end
 
+  def destroy?
+    super && user != record # can't destroy yourself
+  end
+
   def show?
-    super || user == record
+    super || user == record || record.admin? # can see yourself and admins
   end
 
   def show_email?

@@ -3,8 +3,12 @@
 <div class="heading">
   <h1>User details</h1>
   <div class="actions">
-    <%= link_to "Edit", edit_user_path(@user), class: "button" %>
-    <%= button_to "Destroy", @user, method: :delete, class: "danger" %>
+    <% if policy(@user).edit? %>
+      <%= link_to "Edit", edit_user_path(@user), class: "button" %>
+    <% end %>
+    <% if policy(@user).destroy? %>
+      <%= button_to "Destroy", @user, method: :delete, class: "danger" %>
+    <% end %>
   </div>
 </div>
 <div id="<%= dom_id @user %>">
