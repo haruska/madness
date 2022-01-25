@@ -7,7 +7,7 @@
       <%= link_to "Edit", edit_user_path(@user), class: "button" %>
     <% end %>
     <% if policy(@user).destroy? %>
-      <%= button_to "Destroy", @user, method: :delete, class: "danger" %>
+      <%= button_to "Destroy", @user, method: :delete, class: "danger", form: { data: { turbo_confirm: "Are you sure?" } } %>
     <% end %>
   </div>
 </div>
