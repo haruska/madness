@@ -60,4 +60,26 @@ RSpec.describe 'User management', type: :system do
       expect(page).to have_text('Sign In')
     end
   end
+
+  describe 'destroying a user' do
+    let!(:user) { create(:user) }
+
+    before do
+      passwordless_sign_in(create(:user, admin: true))
+    end
+
+    it 'confirms before destroying' do
+      visit user_path(user)
+
+      expect(page).to have_button('Destroy')
+
+      dismiss_confirm { click_button 'Destroy' }
+      expect(user.reload).to be_present
+
+      accept_confirm { click_button 'Destroy' }
+      expect { user.reload }.to raise_error(ActiveRecord::RecordNotFound)
+      expect(page).to have_current_path(users_path)
+      expect(page).to have_text('User was successfully destroyed.')
+    end
+  end
 end
