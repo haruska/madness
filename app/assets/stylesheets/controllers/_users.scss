@@ -1,0 +1,30 @@
+.users-controller {
+  .heading {
+    display: flex;
+    justify-content: space-between;
+
+    .actions {
+      display: flex;
+
+      button, .button, a {
+        margin: 0 5px;
+      }
+    }
+  }
+
+  &.index-action {
+    .user-list {
+      padding-top: $gutter / 2;
+
+      li {
+        margin: 10px 0;
+      }
+    }
+
+    .legend {
+      padding-top: $gutter;
+      color: $light-gray;
+      font-size: small;
+    }
+  }
+}
