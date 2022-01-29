@@ -81,6 +81,7 @@ group :development do
 end
 
 group :test do
-  gem 'capybara' # needed for passwordless
+  gem 'capybara'
+  gem 'cuprite'
   gem 'shoulda-matchers'
 end
