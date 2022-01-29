@@ -10,16 +10,10 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    super || user == record || record.admin? # can see yourself and admins
+    super || user == record || (user.present? && record.admin?) # can see yourself and admins
   end
 
   def show_email?
     show? # admins and current user
-  end
-
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
   end
 end

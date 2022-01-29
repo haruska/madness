@@ -56,7 +56,7 @@ gem 'bootsnap', require: false
 gem 'bitters'
 gem 'bourbon'
 
-gem 'passwordless'
+gem 'passwordless', github: 'mikker/passwordless'
 gem 'pundit'
 
 group :development, :test do
@@ -81,5 +81,6 @@ group :development do
 end
 
 group :test do
+  gem 'capybara' # needed for passwordless
   gem 'shoulda-matchers'
 end

@@ -43,7 +43,7 @@ class ApplicationPolicy
     end
 
     def resolve
-      scope.all
+      user ? scope.all : []
     end
 
     private

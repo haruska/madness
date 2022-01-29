@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/mikker/passwordless.git
+  revision: 652de97a5cdbcf262a9432e619ab1239cf753d15
+  specs:
+    passwordless (0.11.0)
+      bcrypt (~> 3.1.11)
+      rails (>= 5.1.4)
+
+GIT
   remote: https://github.com/rails/rails.git
   revision: 9062d705ad9055c0f3ec73505150e0e94fff5925
   branch: main
@@ -93,6 +101,8 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
     bcrypt (3.1.16)
     bindex (0.8.1)
@@ -103,6 +113,15 @@ GEM
     bourbon (7.0.0)
       thor (~> 1.0)
     builder (3.2.4)
+    capybara (3.36.0)
+      addressable
+      matrix
+      mini_mime (>= 0.1.3)
+      nokogiri (~> 1.8)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      regexp_parser (>= 1.5, < 3.0)
+      xpath (~> 3.2)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     cssbundling-rails (1.0.0)
@@ -136,6 +155,7 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.2)
+    matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
@@ -161,10 +181,8 @@ GEM
     parallel (1.21.0)
     parser (3.1.0.0)
       ast (~> 2.4.1)
-    passwordless (0.10.0)
-      bcrypt (~> 3.1.11)
-      rails (>= 5.1.4)
     pg (1.3.0)
+    public_suffix (4.0.6)
     puma (5.5.2)
       nio4r (~> 2.0)
     pundit (2.1.1)
@@ -246,6 +264,8 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    xpath (3.2.0)
+      nokogiri (~> 1.8)
     zeitwerk (2.5.3)
 
 PLATFORMS
@@ -255,12 +275,13 @@ DEPENDENCIES
   bitters
   bootsnap
   bourbon
+  capybara
   cssbundling-rails
   debug
   factory_bot_rails
   faker
   jsbundling-rails
-  passwordless
+  passwordless!
   pg (~> 1.1)
   puma (~> 5.0)
   pundit
