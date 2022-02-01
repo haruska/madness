@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_18_023701) do
+ActiveRecord::Schema.define(version: 2022_01_30_215359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,25 @@ ActiveRecord::Schema.define(version: 2022_01_18_023701) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["authenticatable_type", "authenticatable_id"], name: "authenticatable"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "score_team_id"
+    t.integer "starting_slot", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_teams_on_name", unique: true
+    t.index ["score_team_id"], name: "index_teams_on_score_team_id", unique: true
+    t.index ["starting_slot"], name: "index_teams_on_starting_slot", unique: true
+  end
+
+  create_table "tournaments", force: :cascade do |t|
+    t.datetime "tip_off", precision: 6
+    t.decimal "game_decisions", precision: 20, default: "0", null: false
+    t.decimal "game_mask", precision: 20, default: "0", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
