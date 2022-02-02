@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Tournament, type: :model do
-  before(:all) { @tournament = create(:tournament, :with_teams) }
+  before(:all) { @tournament = create(:tournament) }
   subject { @tournament }
 
   describe '#championship' do

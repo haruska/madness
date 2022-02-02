@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Game, type: :model do
-  before(:all) { create(:tournament, :with_teams, :completed) }
+  before(:all) { create(:tournament, :completed) }
   let(:tournament) { Tournament.field64 }
   let(:tournament_tree) { tournament.tree }
 

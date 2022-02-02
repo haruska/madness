@@ -1,8 +1,72 @@
 # frozen_string_literal: true
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+
+if Team.count.zero?
+  [
+    'Villanova',
+    'Duke',
+    'Baylor',
+    'Florida',
+    'Virginia',
+    'SMU',
+    'S Carolina',
+    'Wisconsin',
+    'Va Tech',
+    'Marquette',
+    'PlayIn E11',
+    'UNC-Wilm',
+    'ETSU',
+    'New Mex St',
+    'Troy',
+    'PlayIn E16',
+    'Gonzaga',
+    'Arizona',
+    'Florida St',
+    'W Virginia',
+    'Notre Dame',
+    'Maryland',
+    "St Mary's",
+    'NWestern',
+    'Vanderbilt',
+    'VCU',
+    'Xavier',
+    'Princeton',
+    'Bucknell',
+    'FGCU',
+    'N Dakota',
+    'S Dak St',
+    'Kansas',
+    'Louisville',
+    'Oregon',
+    'Purdue',
+    'Iowa St',
+    'Creighton',
+    'Michigan',
+    'Miami',
+    'Michigan St',
+    'Oklahoma St',
+    'Rhode Island',
+    'Nevada',
+    'Vermont',
+    'Iona',
+    'Jax St',
+    'PlayIn MW16',
+    'N Carolina',
+    'Kentucky',
+    'UCLA',
+    'Butler',
+    'Minnesota',
+    'Cincinnati',
+    'Dayton',
+    'Arkansas',
+    'Seton Hall',
+    'Wichita St',
+    'PlayIn S11',
+    'Middle Tenn',
+    'Winthrop',
+    'Kent St',
+    'N Kentucky',
+    'Texas So'
+  ].each_with_index do |team_name, i|
+    Team.create!(name: team_name, starting_slot: 64 + i)
+  end
+end

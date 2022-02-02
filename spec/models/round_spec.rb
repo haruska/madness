@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Round do
-  before(:all) { create(:tournament, :with_teams) }
+  before(:all) { create(:tournament) }
   let(:tournament) { Tournament.field64 }
 
   subject { Round.all.first }

@@ -4,14 +4,6 @@ FactoryBot.define do
   factory :tournament do
     tip_off { 1.week.ago }
 
-    trait(:with_teams) do
-      after(:create) do |_tournament|
-        64.times do |i|
-          Team.create_with(name: Faker::Name.unique).find_or_create_by(starting_slot: 64 + i)
-        end
-      end
-    end
-
     trait :with_first_two_rounds_completed do
       tip_off { 1.week.ago }
 
