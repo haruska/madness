@@ -3,8 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Game, type: :model do
-  before(:all) { create(:tournament, :completed) }
-  let(:tournament) { Tournament.field64 }
+  let(:tournament) { tournament_completed }
   let(:tournament_tree) { tournament.tree }
 
   describe 'aliased methods' do

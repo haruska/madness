@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+tip_off = DateTime.now + 2.weeks
+
+tournament = Tournament.field64 || Tournament.create!(tip_off:)
+tournament.update!(tip_off:)
+
 if Team.count.zero?
   [
     'Villanova',

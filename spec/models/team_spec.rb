@@ -3,8 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Team, type: :model do
-  before(:all) { create(:tournament) }
-
   let(:tournament) { Tournament.field64 }
 
   context do
@@ -77,7 +75,7 @@ RSpec.describe Team, type: :model do
       end
 
       context 'won the championship' do
-        let(:tournament) { create(:tournament, :completed) }
+        let(:tournament) { tournament_completed }
         subject { tournament.championship.team.reload }
 
         it 'is true' do

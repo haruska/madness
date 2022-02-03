@@ -3,8 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Tournament, type: :model do
-  before(:all) { @tournament = create(:tournament) }
-  subject { @tournament }
+  subject { Tournament.field64 }
 
   describe '#championship' do
     let(:expected_game) { subject.tree.at(1) }
