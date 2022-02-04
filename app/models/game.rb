@@ -1,14 +1,61 @@
 # frozen_string_literal: true
 
-class Game < BinaryDecisionTree::Node
-  alias game_one left
-  alias game_two right
-  alias next_game parent
+class Game
+  LEFT = 0
+  RIGHT = 1
 
-  attr_accessor :bracket
+  attr_accessor :decision # nil, LEFT, or RIGHT
+  attr_reader :tree, :slot # tree and bit position
+
+  def initialize(tree, slot)
+    @tree = tree
+    @slot = slot
+    @decision = nil
+  end
+
+  def value
+    case decision
+    when LEFT
+      left.nil? ? left_position : left.value
+    when RIGHT
+      right.nil? ? right_position : right.value
+    end
+  end
+
+  def leaf?
+    left.nil? && right.nil?
+  end
+
+  def current_depth
+    Math.log2(slot).floor + 1
+  end
+
+  def parent_position
+    (slot.even? ? slot + 1 : slot) / 2
+  end
+
+  def left_position
+    slot * 2
+  end
+
+  def right_position
+    left_position + 1
+  end
+
+  def parent
+    tree.at(parent_position)
+  end
+
+  def left
+    tree.at(left_position)
+  end
+
+  def right
+    tree.at(right_position)
+  end
 
   def round_number
-    rounds = (1..tournament_tree.depth).to_a.reverse
+    rounds = (1..Round::COUNT).to_a.reverse
     rounds[current_depth - 1]
   end
 
@@ -71,29 +118,32 @@ class Game < BinaryDecisionTree::Node
     ([first_team, second_team] - [winner]).first
   end
 
-  def points(possible_game = nil)
-    working_game = possible_game || tournament_game
-
-    if value.present? && working_game.value == value
-      BracketPoint::POINTS_PER_ROUND[round_number] + team_seed
-    else
-      0
-    end
-  end
-
-  def possible_points
-    if tournament_game.value.blank? && team.try(:still_playing?)
-      BracketPoint::POINTS_PER_ROUND[round_number] + team_seed
-    else
-      points
-    end
-  end
+  # def points(possible_game = nil)
+  #   working_game = possible_game || tournament_game
+  #
+  #   if value.present? && working_game.value == value
+  #     BracketPoint::POINTS_PER_ROUND[round_number] + team_seed
+  #   else
+  #     0
+  #   end
+  # end
+  #
+  # def possible_points
+  #   if tournament_game.value.blank? && team.try(:still_playing?)
+  #     BracketPoint::POINTS_PER_ROUND[round_number] + team_seed
+  #   else
+  #     points
+  #   end
+  # end
 
   def ==(other)
     other.class == self.class && other.state == state
   end
 
   alias eql? ==
+  alias game_one left
+  alias game_two right
+  alias next_game parent
 
   delegate :hash, to: :state
 
@@ -106,7 +156,7 @@ class Game < BinaryDecisionTree::Node
   private
 
   def team_seed
-    tournament.team_seed(value)
+    Team.seed(value)
   end
 
   def team_by_slot(in_slot)

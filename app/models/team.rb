@@ -10,13 +10,21 @@ class Team < ApplicationRecord
             uniqueness: true,
             presence: true
 
-  def region
+  def self.region(starting_slot)
     REGIONS[(starting_slot - 64) / 16]
   end
 
-  def seed
+  def region
+    self.class.region(starting_slot)
+  end
+
+  def self.seed(starting_slot)
     seeds = [1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15]
     seeds[(starting_slot - 64) % 16]
+  end
+
+  def seed
+    self.class.seed(starting_slot)
   end
 
   def first_game

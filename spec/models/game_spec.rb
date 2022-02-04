@@ -7,13 +7,8 @@ RSpec.describe Game, type: :model do
   let(:tournament_tree) { tournament.tree }
 
   describe 'aliased methods' do
-    let(:slot) { rand((tournament_tree.size / 2) - 1) + 1 }
+    let(:slot) { rand((TournamentTree::SIZE / 2) - 1) + 1 }
     subject { tournament_tree.at(slot) }
-
-    it 'is a BDT node' do
-      expect(subject).to be_a(Game)
-      expect(subject).to be_a(BinaryDecisionTree::Node)
-    end
 
     it 'has a game_one, game_two, and next_game' do
       expect(subject.game_one).to be_present

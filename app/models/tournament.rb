@@ -69,8 +69,8 @@ class Tournament < ApplicationRecord
     working_tree.update_game(position, choice)
 
     marshalled_tree = working_tree.marshal
-    self.game_decisions = marshalled_tree.decisions
-    self.game_mask = marshalled_tree.mask
+    self.game_decisions = marshalled_tree[0]
+    self.game_mask = marshalled_tree[1]
   end
 
   def update_game!(position, choice)
