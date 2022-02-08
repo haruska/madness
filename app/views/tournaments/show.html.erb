@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="heading">
+  <h1>Tournament</h1>
+  <div class="actions">
+    <% if policy(@tournament).edit? %>
+      <%= link_to "Edit", edit_tournament_path, class: "button" %>
+    <% end %>
+  </div>
+</div>
+
+<%= render @tournament %>

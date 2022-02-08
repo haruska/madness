@@ -1,0 +1,14 @@
+.tournaments-controller {
+  .heading {
+    display: flex;
+    justify-content: space-between;
+
+    .actions {
+      display: flex;
+
+      button, .button, a {
+        margin: 0 5px;
+      }
+    }
+  }
+}
