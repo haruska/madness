@@ -1,0 +1,17 @@
+<% mirrored_rounds = tournament.rounds + tournament.rounds.reverse[1..] %>
+<table class="rounds-banner">
+  <tbody>
+  <tr>
+    <% mirrored_rounds.each do |round| %>
+      <th class="header"><%= round.name %></th>
+    <% end %>
+  </tr>
+  <tr>
+    <% mirrored_rounds.each do |round| %>
+      <td class="date-range">
+        <%= date_range_string(round.start_date, round.end_date) %>
+      </td>
+    <% end %>
+  </tr>
+  </tbody>
+</table>

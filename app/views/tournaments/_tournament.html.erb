@@ -1,2 +1,11 @@
-<div id="<%= dom_id tournament %>">
+<div class="tournament-component">
+  <div class="field-64">
+    <div class="tournament-heading">
+      <%= render "rounds_banner" %>
+    </div>
+    <div class="tournament-body">
+      <%= render partial: "round", collection: tournament.rounds %>
+      <%= render "championship" %>
+    </div>
+  </div>
 </div>

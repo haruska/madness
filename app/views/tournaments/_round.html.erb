@@ -1,0 +1,26 @@
+<div class="round round<%= round.number %>">
+  <% if round.regions %>
+    <%
+      all_games = tournament.tree.round_for(round.number)
+      game_slices = all_games.each_slice(all_games.size / round.regions.size).to_a
+    %>
+    <% round.regions.each_with_index do |region, i| %>
+      <div class="region-component">
+        <% if round.number == 1 %>
+          <div class="region-label region<%= i + 1 %>"><%= region %></div>
+        <% end %>
+        <% game_slices[i].each_with_index do |game, j| %>
+          <div class="match m<%= j + 1 %> round<%= round.number %> region<%= i + 1 %>">
+            <%= render "game", game: game %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <% tournament.tree.round_for(round.number).each_with_index do |game, i| %>
+      <div class="match m<%= i + 1 %> round<%= round.number %>">
+        <%= render "game", game: game %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

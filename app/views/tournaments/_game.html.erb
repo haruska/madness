@@ -1,0 +1,10 @@
+<p class="slot slot1">
+  <% if game.first_team %>
+    <span class="seed"><%= game.first_team.seed %></span> <%= game.first_team.name %>
+  <% end %>
+</p>
+<p class="slot slot2">
+  <% if game.second_team %>
+    <span class="seed"><%= game.second_team.seed %></span> <%= game.second_team.name %>
+  <% end %>
+</p>
