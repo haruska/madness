@@ -42,7 +42,7 @@ header {
     justify-content: space-between;
     a {
       display: block;
-      padding: 0 $gutter/3;
+      padding: 0 calc($gutter / 3);
     }
   }
 }

@@ -14,7 +14,7 @@
 
   &.index-action {
     .user-list {
-      padding-top: $gutter / 2;
+      padding-top: calc($gutter / 2);
 
       li {
         margin: 10px 0;
