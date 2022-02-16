@@ -1,10 +1,26 @@
-<p class="slot slot1">
-  <% if game.first_team %>
-    <span class="seed"><%= game.first_team.seed %></span> <%= game.first_team.name %>
+<% if current_page?(action: :edit) && game.first_team %>
+  <%= link_to tournament_path(position: game.slot, choice: 0), data: { turbo_method: :patch } do %>
+
+    <p class="slot slot1">
+      <%= render "team", team: game.first_team %>
+    </p>
   <% end %>
-</p>
-<p class="slot slot2">
-  <% if game.second_team %>
-    <span class="seed"><%= game.second_team.seed %></span> <%= game.second_team.name %>
+
+<% else %>
+  <p class="slot slot1">
+    <%= render "team", team: game.first_team %>
+  </p>
+<% end %>
+<% if current_page?(action: :edit) && game.second_team %>
+  <%= link_to tournament_path(position: game.slot, choice: 1), data: { turbo_method: :patch } do %>
+
+    <p class="slot slot2">
+      <%= render "team", team: game.second_team %>
+    </p>
   <% end %>
-</p>
+
+<% else %>
+  <p class="slot slot2">
+    <%= render "team", team: game.second_team %>
+  </p>
+<% end %>

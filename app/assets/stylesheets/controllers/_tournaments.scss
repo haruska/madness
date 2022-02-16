@@ -12,6 +12,21 @@
     }
   }
 
+  &.edit-action {
+    .tournament-component {
+      a {
+        text-decoration: none;
+        color: $font-color--base;
+      }
+
+      a:hover, a:active {
+        p {
+          background-color: $light-blue;
+        }
+      }
+    }
+  }
+
   .tournament-component {
     .tournament-body {
       margin-top: 15px;

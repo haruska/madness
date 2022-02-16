@@ -12,22 +12,14 @@ class TournamentsController < ApplicationController
 
   # PATCH/PUT /tournament
   def update
-    if @tournament.update(tournament_params)
-      redirect_to @tournament, notice: 'Tournament was successfully updated.'
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    @tournament.update_game!(params[:position].to_i, params[:choice].to_i)
+    redirect_to edit_tournament_path
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_tournament
-    @tournament = Tournament.field64
-  end
-
-  # Only allow a list of trusted parameters through.
-  def tournament_params
-    params.fetch(:tournament, {})
+    @tournament = authorize Tournament.field64
   end
 end

@@ -1,9 +1,8 @@
-<h1>Editing tournament</h1>
-
-<%= render "form", tournament: @tournament %>
-
-<br>
-
-<div>
-  <%= link_to "Back to tournament", tournament_path %>
+<div class="heading">
+  <h1>Editing Tournament</h1>
+  <div class="actions">
+    <%= link_to "Done", tournament_path, class: "button" %>
+  </div>
 </div>
+
+<%= render @tournament %>
