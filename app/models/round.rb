@@ -2,6 +2,7 @@
 
 class Round
   include ActiveAttr::Model
+  include GlobalID::Identification
 
   NAMES = ['Field 64', 'Field 32', 'Sweet 16', 'Elite Eight', 'Final Four', 'Champion'].freeze
 
@@ -38,6 +39,10 @@ class Round
 
   def regions
     Team::REGIONS if ['Final Four', 'Champion'].exclude?(name)
+  end
+
+  def graph_type
+    'Types::RoundType'.constantize
   end
 
   private

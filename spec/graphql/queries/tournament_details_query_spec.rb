@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Types::TournamentType do
@@ -15,6 +17,7 @@ RSpec.describe Types::TournamentType do
             gamesRemaining
             tipOff
             rounds {
+              id
               name
               number
               regions
@@ -34,18 +37,21 @@ RSpec.describe Types::TournamentType do
   end
 
   let(:user) { create(:user) }
-  let(:tip_off) { 2.days.ago.change(usec: 0) }
-  let(:tournament) { create(:tournament, :completed, tip_off:) }
+  let(:tournament) { tournament_completed }
 
   let(:schema) { MadnessSchema }
   let(:context) { { current_user: user } }
   let(:result_exe) { schema.execute(query, context:) }
   let(:result) { result_exe.dig('data', 'viewer', 'tournament64')&.with_indifferent_access }
 
+  before do
+    expect(Tournament).to receive(:field_64).and_return(tournament)
+  end
+
   describe 'tip_off' do
     it 'is the string representation of the tip_off Time (iso8601)' do
-      expect(result[:tipOff]).to eq(tip_off.iso8601)
-      expect(Time.iso8601(result[:tipOff])).to eq(tip_off)
+      expect(result[:tipOff]).to eq(tournament.tip_off.iso8601)
+      expect(Time.iso8601(result[:tipOff])).to eq(tournament.tip_off)
     end
   end
 

@@ -27,14 +27,6 @@ RSpec.describe Types::ViewerType do
   let(:exe_result) { schema.execute(query, context:) }
   let(:result) { exe_result.dig('data', 'viewer')&.with_indifferent_access }
 
-  context 'fields' do
-    let(:fields) { %w[id currentUser] }
-
-    it 'has the proper fields' do
-      expect(subject.fields.keys).to match_array(fields)
-    end
-  end
-
   it 'has current user fields' do
     expect(result[:currentUser][:name]).to eq(user.name)
     expect(result[:currentUser][:email]).to eq(user.email)

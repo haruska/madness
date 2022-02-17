@@ -111,6 +111,37 @@ class Tournament < ApplicationRecord
     end
   end
 
+  # for testing
+  def mock_unstarted
+    self.game_mask = 0
+    save
+  end
+
+  def mock_first_two_rounds_completed
+    self.game_mask = 0
+    (1..2).each do |round|
+      round_for(round).each do |game|
+        update_game(game.slot, [0, 1].sample)
+      end
+    end
+    save
+  end
+
+  def mock_in_final_four
+    self.game_mask = 0
+    (1..4).each do |round|
+      round_for(round).each do |game|
+        update_game(game.slot, [0, 1].sample)
+      end
+    end
+    save
+  end
+
+  def mock_completed
+    num_games.times { |i| update_game(i + 1, [0, 1].sample) }
+    save
+  end
+
   private
 
   def team_hash(team)

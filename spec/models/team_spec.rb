@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Team, type: :model do
-  let(:tournament) { create(:tournament) }
+  let(:tournament) { tournament_unstarted }
 
   context do
     subject { tournament.teams.order(:starting_slot).first }
@@ -75,7 +75,7 @@ RSpec.describe Team, type: :model do
       end
 
       context 'won the championship' do
-        let(:tournament) { create(:tournament, :completed) }
+        let(:tournament) { tournament_completed }
         subject { tournament.championship.team.reload }
 
         it 'is true' do

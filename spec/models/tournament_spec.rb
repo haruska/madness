@@ -3,8 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Tournament, type: :model do
-  before(:all) { @tournament = create(:tournament) }
-  subject { @tournament }
+  subject { tournament_unstarted }
 
   it { is_expected.to have_many(:teams) }
 
