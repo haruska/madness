@@ -16,7 +16,7 @@ RSpec.describe Round do
     it { is_expected.to validate_presence_of(:number) }
   end
 
-  describe 'graph ids' do
+  describe 'graphql ids' do
     it 'incorporates the tournament id and round number' do
       expect(subject.id).to eq("#{subject.tournament.id}~#{subject.number}")
     end

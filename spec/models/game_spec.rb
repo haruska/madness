@@ -29,7 +29,7 @@ RSpec.describe Game, type: :model do
     context 'in a tournament' do
       subject { tournament_tree.at(slot) }
 
-      it 'is a global id for the graph' do
+      it 'is a global id for the graphql' do
         expect(subject.id).to eq("Tournament~#{tournament.id}~#{slot}")
       end
     end
@@ -38,7 +38,7 @@ RSpec.describe Game, type: :model do
       let(:bracket) { create(:bracket, pool: create(:pool, tournament:)) }
       subject { bracket.tree.at(slot) }
 
-      it 'is a global id for the graph' do
+      it 'is a global id for the graphql' do
         expect(subject.id).to eq("Bracket~#{bracket.id}~#{slot}")
       end
     end

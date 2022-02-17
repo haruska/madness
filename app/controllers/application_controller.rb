@@ -17,4 +17,12 @@ class ApplicationController < ActionController::Base
 
     redirect_to root_path
   end
+
+  def ensure_user
+    current_user || handle_bad_authentication
+  end
+
+  def handle_bad_authentication
+    render json: { message: 'Please Login.' }, status: :unauthorized
+  end
 end

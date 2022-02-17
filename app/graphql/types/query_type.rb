@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 module Types
   class QueryType < Types::BaseObject
-    # Add `node(id: ID!) and `nodes(ids: [ID!]!)`
-    include GraphQL::Types::Relay::HasNodeField
-    include GraphQL::Types::Relay::HasNodesField
+    field :viewer, Types::ViewerType, null: false
 
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
+    field :node, GraphQL::Types::Relay::Node, null: true do
+      argument :id, ID, required: true
+    end
 
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    def node(id:)
+      context.schema.object_from_id(id, context)
+    end
+
+    def viewer
+      Viewer.new
     end
   end
 end
