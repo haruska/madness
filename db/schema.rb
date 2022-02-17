@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_18_023701) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_02_17_005137) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,12 +28,38 @@ ActiveRecord::Schema.define(version: 2022_01_18_023701) do
     t.index ["authenticatable_type", "authenticatable_id"], name: "authenticatable"
   end
 
+  create_table "teams", force: :cascade do |t|
+    t.bigint "tournament_id"
+    t.string "name", null: false
+    t.integer "seed", null: false
+    t.string "score_team_id"
+    t.string "region", null: false
+    t.integer "starting_slot"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["region"], name: "index_teams_on_region"
+    t.index ["score_team_id"], name: "index_teams_on_score_team_id"
+    t.index ["seed", "tournament_id", "region"], name: "index_teams_on_seed_and_tournament_id_and_region", unique: true
+    t.index ["starting_slot"], name: "index_teams_on_starting_slot"
+    t.index ["tournament_id"], name: "index_teams_on_tournament_id"
+  end
+
+  create_table "tournaments", force: :cascade do |t|
+    t.datetime "tip_off"
+    t.integer "num_rounds", default: 6, null: false
+    t.decimal "game_decisions", precision: 20, default: "0", null: false
+    t.decimal "game_mask", precision: 20, default: "0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["num_rounds"], name: "index_tournaments_on_num_rounds"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.boolean "admin", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["admin"], name: "index_users_on_admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name"
