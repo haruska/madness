@@ -5,6 +5,10 @@ class Tournament < ApplicationRecord
 
   accepts_nested_attributes_for :teams
 
+  def self.field_64
+    Tournament.find_by(num_rounds: 6)
+  end
+
   def started?
     DateTime.current > tip_off
   end

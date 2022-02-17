@@ -4,7 +4,7 @@ module Types
   class QueryType < Types::BaseObject
     field :viewer, Types::ViewerType, null: false
 
-    field :node, GraphQL::Types::Relay::Node, null: true do
+    field :node, Types::NodeType, null: true do
       argument :id, ID, required: true
     end
 

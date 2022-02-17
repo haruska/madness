@@ -21,7 +21,7 @@ class MadnessSchema < GraphQL::Schema
   # Relay-style Object Identification:
 
   # Return a string UUID for `object`
-  def self.id_from_object(object, type_definition, _query_ctx)
+  def self.id_from_object(object, _type_definition = nil, _query_ctx = nil)
     # For example, use Rails' GlobalID library (https://github.com/rails/globalid):
     object_id = object.to_global_id.to_s
     # Remove this redundant prefix to make IDs shorter:
@@ -30,7 +30,7 @@ class MadnessSchema < GraphQL::Schema
     # Remove the "=" padding
     encoded_id = encoded_id.sub(/=+/, '')
     # Add a type hint
-    type_hint = type_definition.class.graphql_name.first
+    type_hint = object.graph_type.graphql_name.first
     "#{type_hint}_#{encoded_id}"
   end
 
