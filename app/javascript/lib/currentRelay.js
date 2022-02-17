@@ -4,19 +4,18 @@ import { EventEmitter } from 'events'
 export const ENV_RESET_EVENT = 'environment_reset'
 
 function fetchQuery(operation, variables) {
-  const headers = {
-    'Content-Type': 'application/json',
-  }
+  // const headers = {
+  //   'Content-Type': 'application/json',
+  // }
+  //
+  // const jwt = localStorage.getItem('id_token')
+  //
+  // if (jwt) {
+  //   headers['Authorization'] = `Bearer ${jwt}`
+  // }
 
-  const jwt = localStorage.getItem('id_token')
-
-  if (jwt) {
-    headers['Authorization'] = `Bearer ${jwt}`
-  }
-
-  return fetch(process.env.REACT_APP_API_URL, {
+  return fetch("/graphql", {
     method: 'POST',
-    headers,
     body: JSON.stringify({
       query: operation.text,
       variables,

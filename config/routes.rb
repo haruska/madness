@@ -14,4 +14,7 @@ Rails.application.routes.draw do
 
   # mount passwordless engine
   passwordless_for :users, at: '/', as: :auth
+
+  # send all other routes to react
+  get '*pages', to: 'home#index'
 end
