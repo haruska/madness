@@ -2,7 +2,9 @@
 
 class HomeController < ApplicationController
   def index
-    current_user ? redirect_to(users_path) : redirect_to(auth.sign_in_path)
+    redirect_to(auth.sign_in_path) && return unless current_user
+
+    render layout: 'main'
   end
 
   def sign_out

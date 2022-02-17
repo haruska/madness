@@ -10,12 +10,7 @@
 </head>
 
 <body id="application-layout" class="<%= controller_name %>-controller <%= action_name %>-action">
-  <%= render "layouts/header" %>
-
-  <section id="content" class="container">
-    <div class="wrapper">
-      <%= yield %>
-    </div>
-  </section>
+  <%= yield %>
+  <%= javascript_include_tag "application" %>
 </body>
 </html>
