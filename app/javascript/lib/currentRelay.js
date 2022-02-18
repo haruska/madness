@@ -4,9 +4,14 @@ import { EventEmitter } from 'events'
 export const ENV_RESET_EVENT = 'environment_reset'
 
 function fetchQuery(operation, variables) {
-  // const headers = {
-  //   'Content-Type': 'application/json',
-  // }
+  const token = document.getElementsByName(
+      "csrf-token"
+  )[0].content;
+
+  const headers = {
+    'Content-Type': 'application/json',
+    'X-CSRF-Token': token
+  }
   //
   // const jwt = localStorage.getItem('id_token')
   //
@@ -16,6 +21,7 @@ function fetchQuery(operation, variables) {
 
   return fetch("/graphql", {
     method: 'POST',
+    headers,
     body: JSON.stringify({
       query: operation.text,
       variables,

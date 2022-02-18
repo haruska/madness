@@ -20,7 +20,6 @@ class Tournament extends Component {
   }
 
   updateData = () => {
-    // @ts-ignore
     const { lastUpdate } = this.state
     if (lastUpdate) {
       if (
@@ -37,7 +36,6 @@ class Tournament extends Component {
   }
 
   render() {
-    // @ts-ignore
     const { tournament, bracket, onSlotClick, editing, highlightEmpty } = this.props
     const { rounds } = tournament
     const fieldClass = rounds.length >= 6 ? 'field-64' : 'sweet-16'

@@ -25,16 +25,16 @@
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules",
     "check-types": "tsc --project tsconfig.json --noEmit --preserveWatchOutput",
-    "start": "node esbuild-dev.config.js",
+    "start": "node esbuild.config.js",
     "relay": "relay-compiler"
   },
   "devDependencies": {
-    "babel-plugin-relay": "^13.1.1",
-    "esbuild-plugin-babel": "^0.2.3",
+    "esbuild-plugin-relay": "^0.1.0",
     "relay-compiler": "^13.1.1"
   },
   "relay": {
     "src": "./app/javascript",
+    "artifactDirectory": "./app/javascript/__generated__",
     "schema": "./schema.graphql"
   }
 }

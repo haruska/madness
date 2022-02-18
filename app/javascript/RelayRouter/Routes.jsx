@@ -29,9 +29,7 @@ import Games from '../containers/Games'
 const GamesQuery = graphql`
   query Routes_Games_Query {
       viewer {
-          tournament64 {
-              ...Games_tournament
-          }
+        ...Games_viewer
       }
   }
 `

@@ -1,9 +1,6 @@
-#!/usr/bin/env node
-
-// from https://www.colby.so/posts/live-reloading-with-esbuild-and-rails
-
 const path = require('path')
 const http = require('http')
+const relay = require('esbuild-plugin-relay')
 
 const watch = process.argv.includes('--watch')
 const clients = []
@@ -20,10 +17,13 @@ const watchOptions = {
     }
 }
 
-require("esbuild").build({
+require('esbuild').build({
     entryPoints: ["./application.tsx"],
     bundle: true,
     outdir: path.join(process.cwd(), "app/assets/builds"),
+    plugins: [relay({
+        "artifactDirectory": "./app/javascript/__generated__"
+    })],
     absWorkingDir: path.join(process.cwd(), "app/javascript"),
     watch: watch && watchOptions,
     banner: {
