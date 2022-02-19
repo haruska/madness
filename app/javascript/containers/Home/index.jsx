@@ -8,6 +8,7 @@ export default class Home extends Component {
   componentWillMount() {
     const { router } = this.context
     // authService.loggedIn() ? router.replace('/pools') : router.replace('/login')
+    router.replace('/games')
   }
 
   render() {
