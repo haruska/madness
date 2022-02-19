@@ -1,0 +1,91 @@
+"""
+Represents non-fractional signed whole numeric values. Since the value may
+exceed the size of a 32-bit integer, it's encoded as a string.
+"""
+scalar BigInt
+
+type CurrentUser {
+  admin: Boolean!
+  email: String!
+  name: String!
+}
+
+"""
+An ISO 8601-encoded date
+"""
+scalar ISO8601Date
+
+"""
+An ISO 8601-encoded datetime
+"""
+scalar ISO8601DateTime
+
+type Mutation {
+  """
+  An example field added by the generator
+  """
+  testField: String!
+}
+
+"""
+An object with an ID.
+"""
+interface Node {
+  """
+  ID of the object.
+  """
+  id: ID!
+}
+
+type Query {
+  node(id: ID!): Node
+  viewer: Viewer!
+}
+
+type Round implements Node {
+  endDate: ISO8601Date!
+
+  """
+  ID of the object.
+  """
+  id: ID!
+  name: String!
+  number: Int!
+  regions: [String!]
+  startDate: ISO8601Date!
+}
+
+type Team implements Node {
+  """
+  ID of the object.
+  """
+  id: ID!
+  name: String!
+  seed: Int!
+  startingSlot: Int!
+}
+
+type Tournament implements Node {
+  gameDecisions: BigInt!
+  gameMask: BigInt!
+  gamesRemaining: Int!
+
+  """
+  ID of the object.
+  """
+  id: ID!
+  rounds: [Round!]!
+  started: Boolean!
+  teams: [Team!]!
+  tipOff: ISO8601DateTime!
+}
+
+type Viewer implements Node {
+  currentUser: CurrentUser!
+
+  """
+  ID of the object.
+  """
+  id: ID!
+  tournament64: Tournament!
+}

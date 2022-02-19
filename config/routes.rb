@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql' if Rails.env.development?
+  post '/graphql', to: 'graphql#execute'
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -12,4 +14,7 @@ Rails.application.routes.draw do
 
   # mount passwordless engine
   passwordless_for :users, at: '/', as: :auth
+
+  # send all other routes to react
+  get '*pages', to: 'home#index'
 end

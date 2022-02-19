@@ -2,13 +2,55 @@
   "name": "app",
   "private": "true",
   "dependencies": {
-    "@hotwired/stimulus": "^3.0.1",
-    "@hotwired/turbo-rails": "^7.1.1",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "classnames": "^2.3.1",
     "esbuild": "^0.14.11",
-    "sass": "^1.48.0"
+    "events": "^3.3.0",
+    "farce": "^0.4.5",
+    "found": "^1.1.1",
+    "found-relay": "^0.9.1",
+    "graphql": "^16.3.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "prop-types": "^15.8.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-relay": "^13.1.1",
+    "relay-runtime": "^13.1.1",
+    "sass": "^1.48.0",
+    "typescript": "^4.5.5"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
-    "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "check-types": "tsc --project tsconfig.json --noEmit --preserveWatchOutput",
+    "start": "node esbuild.config.js",
+    "relay": "relay-compiler",
+    "prettier": "prettier 'app/javascript/**/*.*' 'app/assets/stylesheets/**/*.scss'",
+    "prettier:fix": "prettier --write 'app/javascript/**/*.*' 'app/assets/stylesheets/**/*.scss'"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.178",
+    "esbuild-plugin-relay": "^0.1.0",
+    "prettier": "^2.5.1",
+    "relay-compiler": "^13.1.1"
+  },
+  "relay": {
+    "src": "./app/javascript",
+    "artifactDirectory": "./app/javascript/RelayArtifacts",
+    "schema": "./schema.graphql",
+    "language": "typescript",
+    "eagerEsModules": true,
+    "customScalars": {
+      "BigInt": "string"
+    }
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 100
   }
 }
