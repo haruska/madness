@@ -6,6 +6,7 @@ module Types
 
     field :games_remaining, Int, null: false, method: :num_games_remaining
     field :tip_off, GraphQL::Types::ISO8601DateTime, null: false
+    field :started, Boolean, null: false, method: :started?
     field :rounds, [Types::RoundType], null: false
     field :teams, [Types::TeamType], null: false
     field :game_decisions, GraphQL::Types::BigInt, null: false

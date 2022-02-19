@@ -75,6 +75,7 @@ type Tournament implements Node {
   """
   id: ID!
   rounds: [Round!]!
+  started: Boolean!
   teams: [Team!]!
   tipOff: ISO8601DateTime!
 }

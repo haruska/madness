@@ -16,6 +16,7 @@ RSpec.describe Types::TournamentType do
             gameMask
             gamesRemaining
             tipOff
+            started
             rounds {
               id
               name

@@ -5,3 +5,8 @@
 @import "layout";
 @import "controllers/sessions";
 @import "controllers/users";
+
+@import "components/tournament";
+@import "components/main_layout";
+
+@import "containers/games";

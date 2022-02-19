@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0f88d3a51da6e279a1419f49cb38eeae>>
+ * @generated SignedSource<<7dc8e3b3c5ed38e4a06e3c373eb2c7ec>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -26,14 +26,14 @@ var v0 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "id",
+  "name": "name",
   "storageKey": null
 },
 v1 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "name",
+  "name": "id",
   "storageKey": null
 };
 return {
@@ -85,7 +85,6 @@ return {
             "name": "tournament64",
             "plural": false,
             "selections": [
-              (v0/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -94,7 +93,7 @@ return {
                 "name": "rounds",
                 "plural": true,
                 "selections": [
-                  (v1/*: any*/),
+                  (v0/*: any*/),
                   {
                     "alias": null,
                     "args": null,
@@ -123,7 +122,7 @@ return {
                     "name": "regions",
                     "storageKey": null
                   },
-                  (v0/*: any*/)
+                  (v1/*: any*/)
                 ],
                 "storageKey": null
               },
@@ -170,27 +169,28 @@ return {
                     "name": "seed",
                     "storageKey": null
                   },
-                  (v1/*: any*/),
-                  (v0/*: any*/)
+                  (v0/*: any*/),
+                  (v1/*: any*/)
                 ],
                 "storageKey": null
-              }
+              },
+              (v1/*: any*/)
             ],
             "storageKey": null
           },
-          (v0/*: any*/)
+          (v1/*: any*/)
         ],
         "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "aeea4de26bba430ca302e9b96f5fa220",
+    "cacheID": "17984815b90b4b4ab27ace0360234448",
     "id": null,
     "metadata": {},
     "name": "Routes_Games_Query",
     "operationKind": "query",
-    "text": "query Routes_Games_Query {\n  viewer {\n    ...Games_viewer\n    id\n  }\n}\n\nfragment Games_viewer on Viewer {\n  tournament64 {\n    id\n    ...Tournament_tournament\n  }\n}\n\nfragment Tournament_tournament on Tournament {\n  rounds {\n    name\n    number\n    startDate\n    endDate\n    regions\n    id\n  }\n  tipOff\n  gameDecisions\n  gameMask\n  teams {\n    startingSlot\n    seed\n    name\n    id\n  }\n}\n"
+    "text": "query Routes_Games_Query {\n  viewer {\n    ...Games_viewer\n    id\n  }\n}\n\nfragment Games_viewer on Viewer {\n  tournament64 {\n    ...Tournament_tournament\n    id\n  }\n}\n\nfragment Tournament_tournament on Tournament {\n  rounds {\n    name\n    number\n    startDate\n    endDate\n    regions\n    id\n  }\n  tipOff\n  gameDecisions\n  gameMask\n  teams {\n    startingSlot\n    seed\n    name\n    id\n  }\n}\n"
   }
 };
 })();

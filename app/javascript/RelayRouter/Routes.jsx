@@ -1,7 +1,7 @@
 import {makeRouteConfig, Route} from 'found'
 import React from 'react'
 import { graphql } from 'react-relay'
-// import MainLayout from '../components/layouts/MainLayout'
+import MainLayout from '../components/layouts/MainLayout'
 // import PoolLayout from '../components/layouts/PoolLayout'
 // import BracketLayout from '../components/layouts/BracketLayout'
 //
@@ -26,6 +26,14 @@ import Games from '../containers/Games'
 // import Payments from '../containers/Payments'
 // import AdminBrackets from '../containers/AdminBrackets'
 
+const MainLayoutQuery = graphql`
+    query Routes_MainLayout_Query {
+        viewer {
+            ...MainLayout_viewer
+        }
+    }
+`
+
 const GamesQuery = graphql`
   query Routes_Games_Query {
       viewer {
@@ -39,7 +47,7 @@ export default makeRouteConfig(
     <Route Component={Home} />
     {/*<Route path="login" Component={Login} />*/}
     {/*<Route Component={AuthGate}>*/}
-    {/*  <Route Component={MainLayout}>*/}
+      <Route Component={MainLayout} query={MainLayoutQuery}>
     {/*    <Route path="pools" Component={PoolList} query={PoolListQuery} />*/}
     {/*    <Route path="user" Component={Profile} query={ProfileQuery} />*/}
     {/*    <Route path="user/edit" Component={EditProfile} query={EditProfileQuery} />*/}
@@ -61,6 +69,6 @@ export default makeRouteConfig(
     {/*    <Route Component={Bracket} query={BracketQuery} />*/}
     {/*    <Route path="edit" Component={EditBracket} query={EditBracketQuery} />*/}
     {/*  </Route>*/}
-    {/*</Route>*/}
+    </Route>
   </Route>
 )

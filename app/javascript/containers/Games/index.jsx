@@ -7,7 +7,7 @@ class Games extends Component {
       const tournament = this.props.viewer.tournament64
     return (
       <div className="games-container">
-        <h2>{tournament.id}</h2>
+        <h2>Game Results</h2>
         <Tournament tournament={tournament} />
       </div>
     )
@@ -18,8 +18,6 @@ export default createFragmentContainer(Games, {
   viewer: graphql`
     fragment Games_viewer on Viewer {
         tournament64 {
-                id
-
             ...Tournament_tournament
         }
     }

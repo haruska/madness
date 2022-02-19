@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e53b4491bec2f3aa350de95be338ed9b>>
+ * @generated SignedSource<<94dff16a291d17e32961426d3d3ec8c8>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,7 +12,6 @@ import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type Games_viewer$data = {
   readonly tournament64: {
-    readonly id: string;
     readonly " $fragmentSpreads": FragmentRefs<"Tournament_tournament">;
   };
   readonly " $fragmentType": "Games_viewer";
@@ -37,13 +36,6 @@ const node: ReaderFragment = {
       "plural": false,
       "selections": [
         {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "id",
-          "storageKey": null
-        },
-        {
           "args": null,
           "kind": "FragmentSpread",
           "name": "Tournament_tournament"
@@ -56,6 +48,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "4df2954b24bf1df109ff0072aba0a481";
+(node as any).hash = "1a4d5966c82d46c21f8f21744b7f48a6";
 
 export default node;
