@@ -1,11 +1,19 @@
+import TournamentTree from "./TournamentTree";
+
+type NullableSlot = number | null
+
 export default class GameNode {
-  constructor(tree, slot, decision) {
+  tree: TournamentTree
+  slot: number
+  decision: number
+
+  constructor(tree: TournamentTree, slot: number, decision: number) {
     this.tree = tree
-    this.slot = parseInt(slot, 10)
+    this.slot = slot
     this.decision = decision
   }
 
-  firstTeamStartingSlot = () => {
+  firstTeamStartingSlot = (): NullableSlot => {
     if (this.isRoundOne()) {
       return this.leftPosition()
     } else {
@@ -14,7 +22,7 @@ export default class GameNode {
     }
   }
 
-  secondTeamStartingSlot = () => {
+  secondTeamStartingSlot = (): NullableSlot => {
     if (this.isRoundOne()) {
       return this.rightPosition()
     } else {
@@ -23,7 +31,7 @@ export default class GameNode {
     }
   }
 
-  winningTeamStartingSlot = () => {
+  winningTeamStartingSlot = (): NullableSlot => {
     if (this.decision === 0) {
       if (this.leftGame()) {
         return this.leftGame().winningTeamStartingSlot()
@@ -41,31 +49,31 @@ export default class GameNode {
     }
   }
 
-  leftPosition = () => {
+  leftPosition = (): number => {
     return this.slot * 2
   }
 
-  rightPosition = () => {
+  rightPosition = (): number => {
     return this.leftPosition() + 1
   }
 
-  parentPosition = () => {
+  parentPosition = (): number => {
     return (this.slot % 2 === 0 ? this.slot : this.slot - 1) / 2
   }
 
-  leftGame = () => {
+  leftGame = (): GameNode => {
     return this.tree.gameNodes[this.leftPosition()]
   }
 
-  rightGame = () => {
+  rightGame = (): GameNode => {
     return this.tree.gameNodes[this.rightPosition()]
   }
 
-  parentGame = () => {
+  parentGame = (): GameNode => {
     return this.tree.gameNodes[this.parentPosition()]
   }
 
-  isRoundOne = () => {
+  isRoundOne = (): boolean => {
     return !this.leftGame() && !this.rightGame()
   }
 }

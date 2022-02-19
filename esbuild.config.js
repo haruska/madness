@@ -22,7 +22,7 @@ require('esbuild').build({
     bundle: true,
     outdir: path.join(process.cwd(), "app/assets/builds"),
     plugins: [relay({
-        "artifactDirectory": "./app/javascript/__generated__"
+        "artifactDirectory": "./app/javascript/RelayArtifacts"
     })],
     absWorkingDir: path.join(process.cwd(), "app/javascript"),
     watch: watch && watchOptions,

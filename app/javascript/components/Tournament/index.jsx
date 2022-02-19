@@ -41,6 +41,12 @@ class Tournament extends Component {
     const fieldClass = rounds.length >= 6 ? 'field-64' : 'sweet-16'
     const tieBreaker = bracket ? bracket.tieBreaker : null
 
+    const cleanTournament = {
+      ...tournament,
+      gameDecisions: BigInt(tournament.gameDecisions),
+      gameMask: BigInt(tournament.gameMask)
+    }
+
     return (
       <div className="tournament-component">
         <div className={fieldClass}>
@@ -52,14 +58,14 @@ class Tournament extends Component {
               <Round
                 key={r.number}
                 round={r}
-                tournament={tournament}
+                tournament={cleanTournament}
                 bracket={bracket}
                 onSlotClick={onSlotClick}
                 highlightEmpty={highlightEmpty}
               />
             ))}
             <Championship
-              tournament={tournament}
+              tournament={cleanTournament}
               bracket={bracket}
               editing={editing}
               highlightEmpty={highlightEmpty}
