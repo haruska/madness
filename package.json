@@ -27,8 +27,8 @@
     "check-types": "tsc --project tsconfig.json --noEmit --preserveWatchOutput",
     "start": "node esbuild.config.js",
     "relay": "relay-compiler",
-    "prettier": "prettier 'app/javascript/**/*.*'",
-    "prettier:fix": "prettier --write 'app/javascript/**/*.*'"
+    "prettier": "prettier 'app/javascript/**/*.*' 'app/assets/stylesheets/**/*.scss'",
+    "prettier:fix": "prettier --write 'app/javascript/**/*.*' 'app/assets/stylesheets/**/*.scss'"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.178",

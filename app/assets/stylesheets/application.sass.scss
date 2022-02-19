@@ -1,12 +1,12 @@
 // Entry point for your Sass build
-@import "normalize";
-@import "bourbon";
-@import "base/base";
-@import "layout";
-@import "controllers/sessions";
-@import "controllers/users";
+@import 'normalize';
+@import 'bourbon';
+@import 'base/base';
+@import 'layout';
+@import 'controllers/sessions';
+@import 'controllers/users';
 
-@import "components/tournament";
-@import "components/main_layout";
+@import 'components/tournament';
+@import 'components/main_layout';
 
-@import "containers/games";
+@import 'containers/games';
