@@ -1,4 +1,4 @@
-import TournamentTree from "./TournamentTree";
+import TournamentTree from './TournamentTree'
 
 type NullableSlot = number | null
 

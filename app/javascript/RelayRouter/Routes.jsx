@@ -1,4 +1,4 @@
-import {makeRouteConfig, Route} from 'found'
+import { makeRouteConfig, Route } from 'found'
 import React from 'react'
 import { graphql } from 'react-relay'
 import MainLayout from '../components/layouts/MainLayout'
@@ -27,18 +27,18 @@ import Games from '../containers/Games'
 // import AdminBrackets from '../containers/AdminBrackets'
 
 const MainLayoutQuery = graphql`
-    query Routes_MainLayout_Query {
-        viewer {
-            ...MainLayout_viewer
-        }
+  query Routes_MainLayout_Query {
+    viewer {
+      ...MainLayout_viewer
     }
+  }
 `
 
 const GamesQuery = graphql`
   query Routes_Games_Query {
-      viewer {
-        ...Games_viewer
-      }
+    viewer {
+      ...Games_viewer
+    }
   }
 `
 
@@ -47,28 +47,28 @@ export default makeRouteConfig(
     <Route Component={Home} />
     {/*<Route path="login" Component={Login} />*/}
     {/*<Route Component={AuthGate}>*/}
-      <Route Component={MainLayout} query={MainLayoutQuery}>
-    {/*    <Route path="pools" Component={PoolList} query={PoolListQuery} />*/}
-    {/*    <Route path="user" Component={Profile} query={ProfileQuery} />*/}
-    {/*    <Route path="user/edit" Component={EditProfile} query={EditProfileQuery} />*/}
-    {/*  </Route>*/}
-    {/*  <Route path="pools/:poolId" Component={PoolLayout} query={PoolLayoutQuery}>*/}
-    {/*    <Route Component={Pool} query={PoolQuery} />*/}
-    {/*    <Route path="possibilities" Component={Possibilities} query={PossibilitiesQuery} />*/}
-    {/*    <Route path="brackets" Component={BracketList} query={BracketListQuery} />*/}
-    {/*    <Route path="my_brackets" Component={UserBracketList} query={UserBracketListQuery} />*/}
-    {/*    <Route path="new_bracket" Component={NewBracket} query={NewBracketQuery} />*/}
-        <Route path="games" Component={Games} query={GamesQuery} />
-    {/*    <Route path="rules" Component={RulesAndScoring} query={RulesAndScoringQuery} />*/}
-    {/*    <Route path="payments" Component={Payments} query={PaymentsQuery} />*/}
-    {/*    <Route path="admin" Component={PoolAdminGate} query={PoolAdminGateQuery}>*/}
-    {/*      <Route path="brackets" Component={AdminBrackets} query={AdminBracketsQuery} />*/}
-    {/*    </Route>*/}
-    {/*  </Route>*/}
-    {/*  <Route path="brackets/:bracketId" Component={BracketLayout} query={BracketLayoutQuery}>*/}
-    {/*    <Route Component={Bracket} query={BracketQuery} />*/}
-    {/*    <Route path="edit" Component={EditBracket} query={EditBracketQuery} />*/}
-    {/*  </Route>*/}
+    <Route Component={MainLayout} query={MainLayoutQuery}>
+      {/*    <Route path="pools" Component={PoolList} query={PoolListQuery} />*/}
+      {/*    <Route path="user" Component={Profile} query={ProfileQuery} />*/}
+      {/*    <Route path="user/edit" Component={EditProfile} query={EditProfileQuery} />*/}
+      {/*  </Route>*/}
+      {/*  <Route path="pools/:poolId" Component={PoolLayout} query={PoolLayoutQuery}>*/}
+      {/*    <Route Component={Pool} query={PoolQuery} />*/}
+      {/*    <Route path="possibilities" Component={Possibilities} query={PossibilitiesQuery} />*/}
+      {/*    <Route path="brackets" Component={BracketList} query={BracketListQuery} />*/}
+      {/*    <Route path="my_brackets" Component={UserBracketList} query={UserBracketListQuery} />*/}
+      {/*    <Route path="new_bracket" Component={NewBracket} query={NewBracketQuery} />*/}
+      <Route path="games" Component={Games} query={GamesQuery} />
+      {/*    <Route path="rules" Component={RulesAndScoring} query={RulesAndScoringQuery} />*/}
+      {/*    <Route path="payments" Component={Payments} query={PaymentsQuery} />*/}
+      {/*    <Route path="admin" Component={PoolAdminGate} query={PoolAdminGateQuery}>*/}
+      {/*      <Route path="brackets" Component={AdminBrackets} query={AdminBracketsQuery} />*/}
+      {/*    </Route>*/}
+      {/*  </Route>*/}
+      {/*  <Route path="brackets/:bracketId" Component={BracketLayout} query={BracketLayoutQuery}>*/}
+      {/*    <Route Component={Bracket} query={BracketQuery} />*/}
+      {/*    <Route path="edit" Component={EditBracket} query={EditBracketQuery} />*/}
+      {/*  </Route>*/}
     </Route>
   </Route>
 )

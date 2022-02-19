@@ -26,11 +26,14 @@
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules",
     "check-types": "tsc --project tsconfig.json --noEmit --preserveWatchOutput",
     "start": "node esbuild.config.js",
-    "relay": "relay-compiler"
+    "relay": "relay-compiler",
+    "prettier": "prettier 'app/javascript/**/*.*'",
+    "prettier:fix": "prettier --write 'app/javascript/**/*.*'"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.178",
     "esbuild-plugin-relay": "^0.1.0",
+    "prettier": "^2.5.1",
     "relay-compiler": "^13.1.1"
   },
   "relay": {
@@ -42,5 +45,12 @@
     "customScalars": {
       "BigInt": "string"
     }
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 100
   }
 }

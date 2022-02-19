@@ -4,13 +4,11 @@ import { EventEmitter } from 'events'
 export const ENV_RESET_EVENT = 'environment_reset'
 
 function fetchQuery(operation, variables) {
-  const token = document.getElementsByName(
-      "csrf-token"
-  )[0].content;
+  const token = document.getElementsByName('csrf-token')[0].content
 
   const headers = {
     'Content-Type': 'application/json',
-    'X-CSRF-Token': token
+    'X-CSRF-Token': token,
   }
   //
   // const jwt = localStorage.getItem('id_token')
@@ -19,14 +17,14 @@ function fetchQuery(operation, variables) {
   //   headers['Authorization'] = `Bearer ${jwt}`
   // }
 
-  return fetch("/graphql", {
+  return fetch('/graphql', {
     method: 'POST',
     headers,
     body: JSON.stringify({
       query: operation.text,
       variables,
     }),
-  }).then(response => {
+  }).then((response) => {
     return response.json()
   })
 }

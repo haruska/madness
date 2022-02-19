@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Link } from 'found'
 // import { find } from 'lodash'
 import { AppContext } from '../../AppContext'
-import {createFragmentContainer, graphql} from "react-relay";
+import { createFragmentContainer, graphql } from 'react-relay'
 
 class Menu extends Component {
   static contextType = AppContext
@@ -43,63 +43,63 @@ class Menu extends Component {
     const { viewer } = this.props
     const { tournament64, currentUser } = viewer
     let links = []
-  //
-  //   if (tournament.started) {
-  //     links.push(
-  //       <Link to={`/pools/${pool.id}/brackets`} onClick={this.handleToggleMenuClick}>
-  //         Brackets
-  //       </Link>
-  //     )
-  //
-  //     if (pool.tournament.gamesRemaining > 0 && pool.tournament.gamesRemaining < 4) {
-  //       links.push(
-  //         <Link to={`/pools/${pool.id}/possibilities`} onClick={this.handleToggleMenuClick}>
-  //           Possible Outcomes
-  //         </Link>
-  //       )
-  //     }
-      links.push(
-        <Link to={`/games`} onClick={this.handleToggleMenuClick}>
-          Game Results
-        </Link>
-      )
-  // } else {
-  //     links.push(
-  //       <Link to={`/pools/${pool.id}/my_brackets`} onClick={this.handleToggleMenuClick}>
-  //         My Brackets
-  //       </Link>
-  //     )
-  //     links.push(
-  //       <Link to={`/pools/${pool.id}/payments`} onClick={this.handleToggleMenuClick}>
-  //         Types of Payment
-  //       </Link>
-  //     )
-  //   }
-  //
-  //   links.push(
-  //     <Link to={`/pools/${pool.id}/rules`} onClick={this.handleToggleMenuClick}>
-  //       Rules and Scoring
-  //     </Link>
-  //   )
-  //
-  //   if (currentUser.admin || this.currentUserIsPoolAdmin()) {
-  //     links.push(
-  //       <Link to={`/pools/${pool.id}/admin/brackets`} onClick={this.handleToggleMenuClick}>
-  //         Pool Admin
-  //       </Link>
-  //     )
-  //   }
-  //
-  //   links.push(
-  //     <Link to="/pools" onClick={this.handleToggleMenuClick}>
-  //       Other Pools
-  //     </Link>
-  //   )
-  //
+    //
+    //   if (tournament.started) {
+    //     links.push(
+    //       <Link to={`/pools/${pool.id}/brackets`} onClick={this.handleToggleMenuClick}>
+    //         Brackets
+    //       </Link>
+    //     )
+    //
+    //     if (pool.tournament.gamesRemaining > 0 && pool.tournament.gamesRemaining < 4) {
+    //       links.push(
+    //         <Link to={`/pools/${pool.id}/possibilities`} onClick={this.handleToggleMenuClick}>
+    //           Possible Outcomes
+    //         </Link>
+    //       )
+    //     }
+    links.push(
+      <Link to={`/games`} onClick={this.handleToggleMenuClick}>
+        Game Results
+      </Link>
+    )
+    // } else {
+    //     links.push(
+    //       <Link to={`/pools/${pool.id}/my_brackets`} onClick={this.handleToggleMenuClick}>
+    //         My Brackets
+    //       </Link>
+    //     )
+    //     links.push(
+    //       <Link to={`/pools/${pool.id}/payments`} onClick={this.handleToggleMenuClick}>
+    //         Types of Payment
+    //       </Link>
+    //     )
+    //   }
+    //
+    //   links.push(
+    //     <Link to={`/pools/${pool.id}/rules`} onClick={this.handleToggleMenuClick}>
+    //       Rules and Scoring
+    //     </Link>
+    //   )
+    //
+    //   if (currentUser.admin || this.currentUserIsPoolAdmin()) {
+    //     links.push(
+    //       <Link to={`/pools/${pool.id}/admin/brackets`} onClick={this.handleToggleMenuClick}>
+    //         Pool Admin
+    //       </Link>
+    //     )
+    //   }
+    //
+    //   links.push(
+    //     <Link to="/pools" onClick={this.handleToggleMenuClick}>
+    //       Other Pools
+    //     </Link>
+    //   )
+    //
     return links
   }
 
-  signedInLinks = contentClass => {
+  signedInLinks = (contentClass) => {
     return (
       <div>
         <a className="sliding-panel-button" onClick={this.handleToggleMenuClick}>

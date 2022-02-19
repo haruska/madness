@@ -22,11 +22,7 @@ class Tournament extends Component {
   updateData = () => {
     const { lastUpdate } = this.state
     if (lastUpdate) {
-      if (
-        moment()
-          .subtract(10, 'seconds')
-          .isAfter(lastUpdate)
-      ) {
+      if (moment().subtract(10, 'seconds').isAfter(lastUpdate)) {
         // this.props.relay.forceFetch()
         this.setState({ lastUpdate: moment() })
       }
@@ -44,7 +40,7 @@ class Tournament extends Component {
     const cleanTournament = {
       ...tournament,
       gameDecisions: BigInt(tournament.gameDecisions),
-      gameMask: BigInt(tournament.gameMask)
+      gameMask: BigInt(tournament.gameMask),
     }
 
     return (
@@ -54,7 +50,7 @@ class Tournament extends Component {
             <RoundsBanner rounds={rounds} />
           </div>
           <div className="tournament-body">
-            {rounds.map(r => (
+            {rounds.map((r) => (
               <Round
                 key={r.number}
                 round={r}

@@ -29,7 +29,7 @@ export default class Championship extends Component {
     return bracketTree ? bracketTree.gameNodes[1] : null
   }
 
-  teamByStartingSlot = slot => {
+  teamByStartingSlot = (slot) => {
     if (slot) {
       return new Team(this.props.tournament, this.tournamentTree(), slot)
     }

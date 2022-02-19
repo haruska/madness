@@ -47,7 +47,7 @@ export default class Game extends Component {
     }
   }
 
-  teamByStartingSlot = slot => {
+  teamByStartingSlot = (slot) => {
     if (slot) {
       return new Team(this.props.tournament, this.tournamentTree(), slot)
     }
