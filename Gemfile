@@ -59,7 +59,7 @@ gem 'bourbon'
 
 gem 'graphql'
 
-gem 'passwordless', github: 'mikker/passwordless'
+gem 'devise'
 gem 'pundit'
 
 group :development, :test do
@@ -83,6 +83,8 @@ group :development do
   # gem "spring"
 
   gem 'graphiql-rails'
+
+  gem 'letter_opener'
 end
 
 group :test do

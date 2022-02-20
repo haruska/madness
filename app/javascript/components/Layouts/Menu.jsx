@@ -34,10 +34,16 @@ class Menu extends Component {
     this.setState({ isVisible: !this.state.isVisible })
   }
 
-  // handleLogout = () => {
-  //   this.handleToggleMenuClick()
-  //   this.context.router.push('/login')
-  // }
+  handleLogout = () => {
+    this.handleToggleMenuClick()
+    fetch('/users/sign_out', {
+      method: 'DELETE',
+      headers: {
+        'X-CSRF-Token': document.getElementsByName('csrf-token')[0].content,
+      },
+      credentials: 'same-origin',
+    }).then(() => (window.location = '/'))
+  }
 
   buildLinks = () => {
     const { viewer } = this.props
@@ -97,9 +103,7 @@ class Menu extends Component {
     //   )
     //
 
-    links.push(
-        <a href="/sign_out">Sign Out</a>
-    )
+    links.push(<a onClick={this.handleLogout}>Sign Out</a>)
     return links
   }
 

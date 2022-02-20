@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe UserPolicy, type: :policy do
-  let(:admin) { create(:user, admin: true) }
+  let(:admin) { User.find_by(admin: true) }
   let(:users) { create_list(:user, 3) }
   let!(:all_users) { [admin] + users }
 

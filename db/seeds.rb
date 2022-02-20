@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-puts 'Running seeds.rb...'
+Rails.logger.debug 'Running seeds.rb...'
 
 # ensure admin user
 admin_name = Rails.application.credentials.admin_name!

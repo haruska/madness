@@ -1,0 +1,9 @@
+<%= form_tag('/sign_in_with_token') do %>
+  <div class="field">
+    <%= hidden_field_tag :login_token, @login_token %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Finish Login" %>
+  </div>
+<% end %>

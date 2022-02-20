@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# This migration comes from passwordless (originally 20171104221735)
+# This migration comes from users (originally 20171104221735)
 class CreatePasswordlessSessions < ActiveRecord::Migration[5.1]
   def change
     create_table :passwordless_sessions do |t|
