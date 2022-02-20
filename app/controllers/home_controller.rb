@@ -2,13 +2,11 @@
 
 class HomeController < ApplicationController
   def index
-    redirect_to(auth.sign_in_path) && return unless current_user
-
-    render layout: 'main'
+    redirect_to auth.sign_in_path unless current_user
   end
 
   def sign_out
     reset_session
-    redirect_to root_path
+    redirect_to auth.sign_in_path
   end
 end

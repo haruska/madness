@@ -1,0 +1,10 @@
+<% content_for :html_head do %>
+  <%= stylesheet_link_tag "fa-icons" %>
+<% end %>
+
+<% content_for :content do %>
+  <%= yield %>
+  <%= javascript_include_tag "application" %>
+<% end %>
+
+<%= render template: "layouts/application" %>

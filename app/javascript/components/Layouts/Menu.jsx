@@ -96,6 +96,10 @@ class Menu extends Component {
     //     </Link>
     //   )
     //
+
+    links.push(
+        <a href="/sign_out">Sign Out</a>
+    )
     return links
   }
 
@@ -110,11 +114,6 @@ class Menu extends Component {
             {this.buildLinks().map((link, i) => (
               <li key={`link-${i}`}>{link}</li>
             ))}
-          </ul>
-          <ul>
-            {/*<li>*/}
-            {/*  <a onClick={this.handleLogout}>Logout</a>*/}
-            {/*</li>*/}
           </ul>
         </nav>
       </div>

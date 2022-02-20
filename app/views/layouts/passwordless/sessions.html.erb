@@ -1,0 +1,20 @@
+<% content_for :content do %>
+  <div class="login-container">
+    <div class="wood-background"></div>
+    <div class="box">
+      <h1 class="title">Pool Madness</h1>
+      <h1>NCAA March Madness</h1>
+      <h3>
+        Private pool. Login Now
+      </h3>
+
+      <div class="auth-content">
+        <%= yield %>
+      </div>
+
+      <div class="copyright">© 2014-2018 Pool Madness</div>
+    </div>
+  </div>
+<% end %>
+
+<%= render template: "layouts/application" %>

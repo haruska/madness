@@ -7,15 +7,10 @@
   <%= csp_meta_tag %>
 
   <%= stylesheet_link_tag "application" %>
+  <%= content_for :html_head %>
 </head>
 
 <body id="application-layout" class="<%= controller_name %>-controller <%= action_name %>-action">
-  <%= render "layouts/header" %>
-
-  <section id="content" class="container">
-    <div class="wrapper">
-      <%= yield %>
-    </div>
-  </section>
+  <%= content_for?(:content) ? yield(:content) : yield %>
 </body>
 </html>
