@@ -1,5 +1,12 @@
 # frozen_string_literal: true
 
+puts 'Running seeds.rb...'
+
+# ensure admin user
+admin_name = Rails.application.credentials.admin_name!
+admin_email = Rails.application.credentials.admin_email!
+User.find_or_create_by!(name: admin_name, email: admin_email, admin: true)
+
 tournament = Tournament.field_64 || Tournament.create!(
   num_rounds: 6,
   tip_off: Time.parse("March 21, #{Time.current.year} 16:00 UTC").utc
