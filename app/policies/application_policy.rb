@@ -50,4 +50,8 @@ class ApplicationPolicy
 
     attr_reader :user, :scope
   end
+
+  def graph_type
+    Types::NodePolicyType
+  end
 end

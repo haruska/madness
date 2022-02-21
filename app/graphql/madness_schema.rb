@@ -11,6 +11,10 @@ class MadnessSchema < GraphQL::Schema
     error.record.errors.each_with_object({}) { |(attr, msg), obj| obj[attr.to_s] = Array(msg).uniq }.to_json
   end
 
+  rescue_from(Pundit::NotAuthorizedError) do |error|
+    raise GraphQL::ExecutionError, "Not authorized: #{error}"
+  end
+
   # GraphQL-Ruby calls this when something goes wrong while running a query:
 
   # Union and Interface Resolution

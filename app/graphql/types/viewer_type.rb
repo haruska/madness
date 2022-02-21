@@ -4,6 +4,7 @@ module Types
   class ViewerType < Types::BaseObject
     implements Types::NodeType
 
+    field :policy, Types::ViewerPolicyType, null: false
     field :current_user, Types::UserType, null: false
     field :tournament_64, Types::TournamentType, null: false
     field :brackets, [Types::BracketType], null: false do
