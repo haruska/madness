@@ -7,9 +7,9 @@ module Types
     field :email, String, null: true
     field :name, String, null: false
     field :admin, Boolean, null: false
-  end
 
-  def email
-    UserPolicy.new(context[:current_user], object).show_email? ? object.email : nil
+    def email
+      Pundit.policy(context[:current_user], object).show_email? ? object.email : nil
+    end
   end
 end

@@ -4,6 +4,19 @@ exceed the size of a 32-bit integer, it's encoded as a string.
 """
 scalar BigInt
 
+type Bracket implements Node {
+  gameDecisions: BigInt!
+
+  """
+  ID of the object.
+  """
+  id: ID!
+  name: String!
+  paid: Boolean!
+  tieBreaker: Int!
+  user: User!
+}
+
 """
 An ISO 8601-encoded date
 """
@@ -86,6 +99,7 @@ type User implements Node {
 }
 
 type Viewer implements Node {
+  brackets(onlyUser: Boolean = false): [Bracket!]!
   currentUser: User!
 
   """

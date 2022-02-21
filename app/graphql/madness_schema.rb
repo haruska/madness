@@ -35,7 +35,7 @@ class MadnessSchema < GraphQL::Schema
   end
 
   # Given a string UUID, find the object
-  def self.object_from_id(encoded_id_with_hint, _query_ctx)
+  def self.object_from_id(encoded_id_with_hint, _query_ctx = nil)
     # For example, use Rails' GlobalID library (https://github.com/rails/globalid):
     # Split off the type hint
     _type_hint, encoded_id = encoded_id_with_hint.split('_', 2)

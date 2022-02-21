@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_21_144145) do
   create_table "brackets", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name", null: false
-    t.decimal "tree_decisions", precision: 20, default: "0", null: false
+    t.decimal "game_decisions", precision: 20, default: "0", null: false
     t.integer "tie_breaker", default: 0, null: false
     t.boolean "paid", default: false, null: false
     t.datetime "created_at", null: false
