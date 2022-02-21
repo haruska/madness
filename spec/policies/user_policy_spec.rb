@@ -29,7 +29,18 @@ RSpec.describe UserPolicy, type: :policy do
     end
   end
 
-  permissions :show?, :show_email? do
+  permissions :show? do
+    it 'denies access to guest' do
+      expect(subject).not_to permit(nil, admin)
+    end
+
+    it 'grants access to everyone else' do
+      expect(subject).to permit(users.first, users.second)
+      expect(subject).to permit(admin, users.last)
+    end
+  end
+
+  permissions :show_email? do
     it 'denies access to guest' do
       expect(subject).not_to permit(nil, admin)
     end

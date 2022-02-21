@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 module Types
-  class UserType < Types::BaseObject
-    implements Types::NodeType
-
+  class UserType < Types::BaseNodeObject
     field :email, String, null: true
     field :name, String, null: false
     field :admin, Boolean, null: false

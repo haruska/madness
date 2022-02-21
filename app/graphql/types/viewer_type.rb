@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 module Types
-  class ViewerType < Types::BaseObject
-    implements Types::NodeType
-
+  class ViewerType < Types::BaseNodeObject
     field :policy, Types::ViewerPolicyType, null: false
     field :current_user, Types::UserType, null: false
     field :tournament_64, Types::TournamentType, null: false

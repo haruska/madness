@@ -10,10 +10,12 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    super || user == record || (user.present? && record.admin?) # can see yourself and admins
+    user.present?
   end
 
   def show_email?
-    show? # admins and current user
+    return false if user.blank?
+
+    user.admin? || user == record || (user.present? && record.admin?) # can see yourself and admins
   end
 end

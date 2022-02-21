@@ -5,7 +5,5 @@ module Types
     include Types::BaseInterface
     # Add the `id` field
     include GraphQL::Types::Relay::NodeBehaviors
-    # Add pundit policies
-    include Types::HasPolicy
   end
 end

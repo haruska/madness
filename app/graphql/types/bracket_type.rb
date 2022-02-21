@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 module Types
-  class BracketType < Types::BaseObject
-    implements Types::NodeType
-
+  class BracketType < Types::BaseNodeObject
     field :user, Types::UserType, null: false
     field :name, String, null: false
     field :game_decisions, GraphQL::Types::BigInt, null: false
