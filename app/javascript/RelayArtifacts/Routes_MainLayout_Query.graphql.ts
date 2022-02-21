@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<852095606e4ae52591d3db0865046df2>>
+ * @generated SignedSource<<3db1cdfc46423cd01a7941e922f4c8b1>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -73,7 +73,7 @@ return {
           {
             "alias": null,
             "args": null,
-            "concreteType": "CurrentUser",
+            "concreteType": "User",
             "kind": "LinkedField",
             "name": "currentUser",
             "plural": false,
@@ -84,7 +84,8 @@ return {
                 "kind": "ScalarField",
                 "name": "admin",
                 "storageKey": null
-              }
+              },
+              (v0/*: any*/)
             ],
             "storageKey": null
           },
@@ -114,12 +115,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "3ad67c2a97f3c23c610ac1cb6f7f66d3",
+    "cacheID": "e0d40a2ad0feeb73e3000a714e6f9847",
     "id": null,
     "metadata": {},
     "name": "Routes_MainLayout_Query",
     "operationKind": "query",
-    "text": "query Routes_MainLayout_Query {\n  viewer {\n    ...MainLayout_viewer\n    id\n  }\n}\n\nfragment Header_viewer on Viewer {\n  ...Menu_viewer\n}\n\nfragment MainLayout_viewer on Viewer {\n  ...Header_viewer\n}\n\nfragment Menu_viewer on Viewer {\n  currentUser {\n    admin\n  }\n  tournament64 {\n    started\n    id\n  }\n}\n"
+    "text": "query Routes_MainLayout_Query {\n  viewer {\n    ...MainLayout_viewer\n    id\n  }\n}\n\nfragment Header_viewer on Viewer {\n  ...Menu_viewer\n}\n\nfragment MainLayout_viewer on Viewer {\n  ...Header_viewer\n}\n\nfragment Menu_viewer on Viewer {\n  currentUser {\n    admin\n    id\n  }\n  tournament64 {\n    started\n    id\n  }\n}\n"
   }
 };
 })();

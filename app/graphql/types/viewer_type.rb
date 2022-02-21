@@ -4,7 +4,7 @@ module Types
   class ViewerType < Types::BaseObject
     implements Types::NodeType
 
-    field :current_user, Types::CurrentUserType, null: false
+    field :current_user, Types::UserType, null: false
     field :tournament_64, Types::TournamentType, null: false
 
     def current_user

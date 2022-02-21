@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a19dd910d317badadde5f9dadcc98df6>>
+ * @generated SignedSource<<0df722944710ba095011d87422f1e848>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -33,7 +33,7 @@ const node: ReaderFragment = {
     {
       "alias": null,
       "args": null,
-      "concreteType": "CurrentUser",
+      "concreteType": "User",
       "kind": "LinkedField",
       "name": "currentUser",
       "plural": false,

@@ -4,12 +4,6 @@ exceed the size of a 32-bit integer, it's encoded as a string.
 """
 scalar BigInt
 
-type CurrentUser {
-  admin: Boolean!
-  email: String!
-  name: String!
-}
-
 """
 An ISO 8601-encoded date
 """
@@ -80,8 +74,19 @@ type Tournament implements Node {
   tipOff: ISO8601DateTime!
 }
 
+type User implements Node {
+  admin: Boolean!
+  email: String
+
+  """
+  ID of the object.
+  """
+  id: ID!
+  name: String!
+}
+
 type Viewer implements Node {
-  currentUser: CurrentUser!
+  currentUser: User!
 
   """
   ID of the object.
