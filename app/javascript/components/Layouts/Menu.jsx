@@ -49,6 +49,10 @@ class Menu extends Component {
     const { viewer } = this.props
     const { tournament64, currentUser } = viewer
     let links = []
+
+    if (currentUser.admin) {
+      links.push(<a href="/admin">Admin Dashboard</a>)
+    }
     //
     //   if (tournament.started) {
     //     links.push(
@@ -123,14 +127,6 @@ class Menu extends Component {
       </div>
     )
   }
-
-  // currentUserIsPoolAdmin = () => {
-  //   const { pool, viewer } = this.props
-  //   const { currentUser } = viewer
-  //   const adminIds = pool.admins.map(admin => admin.id)
-  //
-  //   return !!find(adminIds, id => id === currentUser.userId)
-  // }
 
   render() {
     const isVisibleStyle = this.state.isVisible ? 'is-visible' : null

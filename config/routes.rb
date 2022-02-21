@@ -10,6 +10,14 @@ Rails.application.routes.draw do
     post 'sign_in_with_token', to: 'users/sessions#sign_in_with_token'
   end
 
+  namespace :admin do
+    resources :users
+    resources :teams
+    resources :tournaments
+
+    root to: 'users#index'
+  end
+
   mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql' if Rails.env.development?
   post '/graphql', to: 'graphql#execute'
 
