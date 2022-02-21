@@ -46,7 +46,7 @@ class ApplicationPolicy
       user ? scope.all : []
     end
 
-    private
+    protected
 
     attr_reader :user, :scope
   end
