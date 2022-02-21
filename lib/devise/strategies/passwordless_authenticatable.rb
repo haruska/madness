@@ -14,7 +14,7 @@ module Devise
                         login_token_valid_until: 60.minutes.from_now)
           url = Rails.application.routes.url_helpers.email_confirmation_url(login_token: user.login_token)
 
-          UserMailer.validate_email(User.first, url).deliver_now
+          UserMailer.validate_email(user, url).deliver_now
 
           fail!('An email was sent to you with a magic link.')
         end
