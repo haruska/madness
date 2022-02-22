@@ -13,43 +13,29 @@ RSpec.describe BracketPolicy, type: :policy do
   permissions '.scope' do
     let(:scope) { subject::Scope.new(user, resource_type) }
 
-    context 'without a user' do
-      let(:user) { nil }
+    context 'tournament has not started' do
+      before do
+        expect(Tournament.field_64).to_not be_started
+      end
 
-      it 'is an empty list' do
-        expect(scope.resolve).to be_empty
+      it 'is the user resources' do
+        expect(scope.resolve).to match_array(user.brackets)
       end
     end
 
-    context 'with a user' do
-      context 'and tournament has not started' do
-        before do
-          expect(Tournament.field_64).to_not be_started
-        end
-
-        it 'is the user resources' do
-          expect(scope.resolve).to match_array(user.brackets)
-        end
+    context 'and tournament has started' do
+      before do
+        tournament = tournament_started
+        expect(Tournament).to receive(:field_64).and_return(tournament)
       end
 
-      context 'and tournament has started' do
-        before do
-          tournament = tournament_started
-          expect(Tournament).to receive(:field_64).and_return(tournament)
-        end
-
-        it 'is all resources' do
-          expect(scope.resolve).to match_array(resources)
-        end
+      it 'is all resources' do
+        expect(scope.resolve).to match_array(resources)
       end
     end
   end
 
   permissions :show? do
-    it 'denies access to guest' do
-      expect(subject).not_to permit(nil, resources.sample)
-    end
-
     context 'tournament has started' do
       before do
         tournament = tournament_started
@@ -85,10 +71,6 @@ RSpec.describe BracketPolicy, type: :policy do
   end
 
   permissions :create? do
-    it 'denies access to guest' do
-      expect(subject).not_to permit(nil, resources.sample)
-    end
-
     context 'tournament has started' do
       before do
         tournament = tournament_started
@@ -113,11 +95,7 @@ RSpec.describe BracketPolicy, type: :policy do
     end
   end
 
-  permissions :update?, :destroy? do
-    it 'denies access to guest' do
-      expect(subject).not_to permit(nil, resources.sample)
-    end
-
+  permissions :update? do
     it 'grants access to admin' do
       resources.each { |r| expect(subject).to permit(admin, r) }
     end
@@ -142,7 +120,7 @@ RSpec.describe BracketPolicy, type: :policy do
         expect(subject).to permit(user, user.brackets.first)
       end
 
-      it 'does not allow non-admins to destroy others brackets' do
+      it "does not allow non-admins to update other's brackets" do
         expect(subject).to_not permit(user, resources.find { |r| r.user != user })
       end
     end
@@ -159,6 +137,31 @@ RSpec.describe BracketPolicy, type: :policy do
       expect(subject).to permit(user, bracket)
       bracket.update!(paid: true)
       expect(subject).to_not permit(user, bracket)
+    end
+
+    context 'tournament has started' do
+      before do
+        tournament = tournament_started
+        allow(Tournament).to receive(:field_64).and_return(tournament)
+      end
+
+      it 'allows all regular users on their unpaid brackets' do
+        resources.each { |r| expect(subject).to permit(r.user, r) }
+      end
+    end
+
+    context 'tournament has not started' do
+      before do
+        expect(Tournament.field_64).to_not be_started
+      end
+
+      it 'allows users own bracket' do
+        expect(subject).to permit(user, user.brackets.first)
+      end
+
+      it 'does not allow non-admins to destroy others brackets' do
+        expect(subject).to_not permit(user, resources.find { |r| r.user != user })
+      end
     end
   end
 end

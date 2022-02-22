@@ -11,40 +11,21 @@ RSpec.describe UserPolicy, type: :policy do
 
   permissions '.scope' do
     let(:scope) { subject::Scope.new(user, User) }
+    let(:user) { users.first }
 
-    context 'without a user' do
-      let(:user) { nil }
-
-      it 'is an empty list' do
-        expect(scope.resolve).to be_empty
-      end
-    end
-
-    context 'with a user' do
-      let(:user) { users.first }
-
-      it 'is all users' do
-        expect(scope.resolve).to match_array(all_users)
-      end
+    it 'is all users' do
+      expect(scope.resolve).to match_array(all_users)
     end
   end
 
   permissions :show? do
-    it 'denies access to guest' do
-      expect(subject).not_to permit(nil, admin)
-    end
-
-    it 'grants access to everyone else' do
+    it 'grants access to everyone' do
       expect(subject).to permit(users.first, users.second)
       expect(subject).to permit(admin, users.last)
     end
   end
 
   permissions :show_email? do
-    it 'denies access to guest' do
-      expect(subject).not_to permit(nil, admin)
-    end
-
     it 'denies access if not an admin and not viewing yourself' do
       expect(subject).not_to permit(users.first, users.second)
     end

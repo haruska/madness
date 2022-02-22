@@ -13,36 +13,18 @@ RSpec.describe TournamentPolicy, type: :policy do
   permissions '.scope' do
     let(:scope) { subject::Scope.new(user, resource_type) }
 
-    context 'without a user' do
-      let(:user) { nil }
-
-      it 'is an empty list' do
-        expect(scope.resolve).to be_empty
-      end
-    end
-
-    context 'with a user' do
-      it 'is all resources' do
-        expect(scope.resolve).to match_array(resources)
-      end
+    it 'is all resources' do
+      expect(scope.resolve).to match_array(resources)
     end
   end
 
   permissions :show? do
-    it 'denies access to guest' do
-      expect(subject).not_to permit(nil, resources.sample)
-    end
-
     it 'grants access to all users' do
       expect(subject).to permit(user, resources.sample)
     end
   end
 
   permissions :index? do
-    it 'denies access to guest' do
-      expect(subject).not_to permit(nil, resource_type)
-    end
-
     it 'grants access to all users' do
       expect(subject).to permit(user, resource_type)
     end
