@@ -10,7 +10,7 @@ module Mutations
       if Pundit.policy(context[:current_user], bracket).destroy?
         true
       else
-        [false, { errors: [{ messages: ['Cannot delete bracket'] }] }]
+        [false, { errors: [{ message: 'Cannot delete bracket' }] }]
       end
     end
 

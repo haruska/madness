@@ -209,7 +209,7 @@ type UserError {
   """
   A description of the error
   """
-  messages: [String!]!
+  message: String!
 
   """
   Which input value this error came from

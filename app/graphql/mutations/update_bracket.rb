@@ -14,7 +14,7 @@ module Mutations
       if Pundit.policy(context[:current_user], bracket).update?
         true
       else
-        [false, { errors: [{ messages: ['Cannot update bracket'] }] }]
+        [false, { errors: [{ message: 'Cannot update bracket' }] }]
       end
     end
 

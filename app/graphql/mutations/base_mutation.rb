@@ -13,7 +13,8 @@ module Mutations
     def user_errors(object)
       object.errors.messages.map do |attribute, messages|
         path = ['attributes', attribute.to_s.camelize(:lower)]
-        { path:, messages: }
+        message = messages.join('/')
+        { path:, message: }
       end
     end
   end

@@ -13,7 +13,7 @@ module Mutations
       if Pundit.policy(context[:current_user], Bracket).create?
         true
       else
-        [false, { errors: [{ messages: ['Cannot create a bracket'] }] }]
+        [false, { errors: [{ message: 'Cannot create a bracket' }] }]
       end
     end
 
