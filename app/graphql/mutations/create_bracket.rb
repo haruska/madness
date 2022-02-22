@@ -9,16 +9,21 @@ module Mutations
     argument :game_decisions, GraphQL::Types::BigInt, required: true
     argument :tie_breaker, Int, required: true
 
-    def resolve(**kwargs)
-      user = context[:current_user]
-      Pundit.authorize(user, Bracket, :create?)
+    def ready?(**_kwargs)
+      if Pundit.policy(context[:current_user], Bracket).create?
+        true
+      else
+        [false, { errors: [{ messages: ['Cannot create a bracket'] }] }]
+      end
+    end
 
-      bracket = user.brackets.build(kwargs)
+    def resolve(**kwargs)
+      bracket = context[:current_user].brackets.build(kwargs)
 
       if bracket.save
         { bracket:, errors: [] }
       else
-        { bracket: nil, errors: user_errors(bracket) }
+        { errors: user_errors(bracket) }
       end
     end
   end

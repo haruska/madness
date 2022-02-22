@@ -6,10 +6,15 @@ module Mutations
 
     argument :bracket_id, ID, required: true, loads: Types::BracketType
 
-    def resolve(bracket:)
-      user = context[:current_user]
-      Pundit.authorize(user, bracket, :destroy?)
+    def authorized?(bracket:)
+      if Pundit.policy(context[:current_user], bracket).destroy?
+        true
+      else
+        [false, { errors: [{ messages: ['Cannot delete bracket'] }] }]
+      end
+    end
 
+    def resolve(bracket:)
       if bracket.destroy
         { errors: [] }
       else

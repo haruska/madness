@@ -10,14 +10,19 @@ module Mutations
     argument :game_decisions, GraphQL::Types::BigInt, required: false
     argument :tie_breaker, Int, required: false
 
-    def resolve(bracket:, **kwargs)
-      user = context[:current_user]
-      Pundit.authorize(user, bracket, :update?)
+    def authorized?(bracket:, **_kwargs)
+      if Pundit.policy(context[:current_user], bracket).update?
+        true
+      else
+        [false, { errors: [{ messages: ['Cannot update bracket'] }] }]
+      end
+    end
 
+    def resolve(bracket:, **kwargs)
       if bracket.update(**kwargs)
         { bracket:, errors: [] }
       else
-        { bracket: nil, errors: user_errors(bracket) }
+        { errors: user_errors(bracket) }
       end
     end
   end
