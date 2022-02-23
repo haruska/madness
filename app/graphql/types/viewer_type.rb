@@ -5,9 +5,7 @@ module Types
     field :policy, Types::ViewerPolicyType, null: false
     field :current_user, Types::UserType, null: false
     field :tournament_64, Types::TournamentType, null: false
-    field :brackets, [Types::BracketType], null: false do
-      argument :only_user, Boolean, required: false, default_value: false
-    end
+    field :brackets, Types::BracketType.connection_type, null: false, max_page_size: nil
 
     def current_user
       context[:current_user]
@@ -17,8 +15,8 @@ module Types
       Tournament.field_64
     end
 
-    def brackets(only_user: false)
-      only_user ? context[:current_user].brackets : Pundit.policy_scope(context[:current_user], Bracket)
+    def brackets
+      Pundit.policy_scope(context[:current_user], Bracket)
     end
   end
 end
