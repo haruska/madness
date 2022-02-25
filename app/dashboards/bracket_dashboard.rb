@@ -13,7 +13,7 @@ class BracketDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
     id: Field::Number,
     name: Field::String,
-    tree_decisions: Field::String.with_options(searchable: false),
+    game_decisions: Field::String.with_options(searchable: false),
     tie_breaker: Field::Number,
     paid: Field::Boolean,
     created_at: Field::DateTime,
@@ -38,7 +38,7 @@ class BracketDashboard < Administrate::BaseDashboard
     user
     id
     name
-    tree_decisions
+    game_decisions
     tie_breaker
     paid
     created_at
@@ -51,7 +51,7 @@ class BracketDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     user
     name
-    tree_decisions
+    game_decisions
     tie_breaker
     paid
   ].freeze
