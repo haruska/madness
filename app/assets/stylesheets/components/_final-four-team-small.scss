@@ -1,0 +1,21 @@
+.final-four-team-small-component {
+  display: inline-block;
+  font-size: 0.9em;
+  white-space: nowrap;
+  margin-right: 4px;
+
+  &:empty {
+    display: none;
+  }
+
+  &:after {
+    content: ',';
+  }
+
+  &:last-of-type {
+    margin-right: 0px;
+    &:after {
+      display: none;
+    }
+  }
+}

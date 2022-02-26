@@ -1,0 +1,128 @@
+$badge-font-size: 0.75em !default;
+$medium-gray: #999 !default;
+$alert-color: #fff6bf !default;
+$error-color: #fbe3e4 !default;
+$notice-color: #e5edf8 !default;
+$success-color: #e6efc2 !default;
+
+@mixin badge($color: $medium-gray) {
+  background-color: $color;
+  border-radius: $badge-font-size * 5;
+  color: darken($color, 60%);
+  display: inline-block;
+  font-size: $badge-font-size;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.4em 1.2em;
+}
+
+.user-bracket-list-container {
+  padding-top: $gutter * 2;
+  min-width: 220px;
+
+  .table-minimal {
+    font-size: 0.9em;
+    table-layout: auto;
+  }
+
+  .no-brackets {
+    padding-top: $gutter;
+    text-align: center;
+  }
+
+  .small-screen {
+    display: block;
+
+    @include large-screen {
+      display: none;
+    }
+  }
+
+  .large-screen {
+    display: none;
+
+    @include large-screen {
+      display: block;
+    }
+  }
+
+  .actions {
+    padding: $gutter 0;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .payment-button {
+    margin-bottom: $gutter / 2;
+  }
+
+  .badge {
+    @include badge;
+  }
+
+  .badge-alert {
+    @include badge($alert-color);
+  }
+
+  .badge-error {
+    @include badge($error-color);
+  }
+
+  .badge-notice {
+    @include badge($notice-color);
+  }
+
+  .badge-success {
+    @include badge($success-color);
+  }
+
+  .user-small-bracket {
+    .bracket-link {
+      display: block;
+      color: $font-color--base;
+      border-top: 1px solid $medium-gray;
+      &:last-child {
+        border-bottom: 1px solid $medium-gray;
+        margin-bottom: $gutter;
+      }
+      padding: $gutter/2 0;
+    }
+
+    .position {
+      display: inline-block;
+      margin: 0 $gutter/2;
+      vertical-align: top;
+    }
+
+    .bracket-details {
+      display: inline-block;
+      width: calc(100% - 65px);
+    }
+
+    .final-four-teams {
+      display: block;
+    }
+
+    .tie-breaker {
+      font-size: 0.9em;
+      &:before {
+        content: 'Tie Breaker: ';
+      }
+
+      &:empty {
+        display: none;
+      }
+    }
+
+    .name-wrapper {
+      width: 100%;
+      .status {
+        float: right;
+      }
+
+      div {
+        display: inline-block;
+      }
+    }
+  }
+}
