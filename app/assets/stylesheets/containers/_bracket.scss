@@ -1,0 +1,16 @@
+.bracket-container {
+  padding-top: $gutter * 2;
+
+  .edit {
+    display: inline-block;
+    width: auto;
+  }
+
+  @media print {
+    padding-top: 0;
+
+    .bracket-actions {
+      display: none;
+    }
+  }
+}
