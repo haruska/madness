@@ -53,7 +53,7 @@ $success-color: #e6efc2 !default;
   }
 
   .payment-button {
-    margin-bottom: $gutter / 2;
+    margin-bottom: calc($gutter / 2);
   }
 
   .badge {
@@ -85,7 +85,7 @@ $success-color: #e6efc2 !default;
         border-bottom: 1px solid $medium-gray;
         margin-bottom: $gutter;
       }
-      padding: $gutter/2 0;
+      padding: calc($gutter / 2) 0;
     }
 
     .position {
