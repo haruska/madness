@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<94e0a17dbd005505492a426221e55865>>
+ * @generated SignedSource<<a25732ddcb203a6cfb1c9c98f01867b4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,6 +11,23 @@
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type MainLayout_viewer$data = {
+  readonly tournament64: {
+    readonly rounds: ReadonlyArray<{
+      readonly name: string;
+      readonly number: number;
+      readonly startDate: any;
+      readonly endDate: any;
+      readonly regions: ReadonlyArray<string> | null;
+    }>;
+    readonly tipOff: any;
+    readonly gameDecisions: string;
+    readonly gameMask: string;
+    readonly teams: ReadonlyArray<{
+      readonly startingSlot: number;
+      readonly seed: number;
+      readonly name: string;
+    }>;
+  };
   readonly " $fragmentSpreads": FragmentRefs<"Header_viewer">;
   readonly " $fragmentType": "MainLayout_viewer";
 };
@@ -19,12 +36,118 @@ export type MainLayout_viewer$key = {
   readonly " $fragmentSpreads": FragmentRefs<"MainLayout_viewer">;
 };
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "name",
+  "storageKey": null
+};
+return {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
   "name": "MainLayout_viewer",
   "selections": [
+    {
+      "alias": null,
+      "args": null,
+      "concreteType": "Tournament",
+      "kind": "LinkedField",
+      "name": "tournament64",
+      "plural": false,
+      "selections": [
+        {
+          "alias": null,
+          "args": null,
+          "concreteType": "Round",
+          "kind": "LinkedField",
+          "name": "rounds",
+          "plural": true,
+          "selections": [
+            (v0/*: any*/),
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "number",
+              "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "startDate",
+              "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "endDate",
+              "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "regions",
+              "storageKey": null
+            }
+          ],
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "tipOff",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "gameDecisions",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "gameMask",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "concreteType": "Team",
+          "kind": "LinkedField",
+          "name": "teams",
+          "plural": true,
+          "selections": [
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "startingSlot",
+              "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "seed",
+              "storageKey": null
+            },
+            (v0/*: any*/)
+          ],
+          "storageKey": null
+        }
+      ],
+      "storageKey": null
+    },
     {
       "args": null,
       "kind": "FragmentSpread",
@@ -34,7 +157,8 @@ const node: ReaderFragment = {
   "type": "Viewer",
   "abstractKey": null
 };
+})();
 
-(node as any).hash = "b27f9cacda12ba530705402043acb59a";
+(node as any).hash = "2eb374dabdda0a32855a31b98ea69ead";
 
 export default node;

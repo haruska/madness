@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-import { graphql, createFragmentContainer } from 'react-relay'
 import moment from 'moment'
 
 import Round from './Round'
 import Championship from './Championship'
 import RoundsBanner from './RoundsBanner'
 import TieBreaker from './TieBreaker'
+import { AppContext } from 'AppContext'
 
-class Tournament extends Component {
+export default class Tournament extends Component {
+  static contextType = AppContext
+
   constructor(props) {
     super(props)
     this.state = {
@@ -32,16 +34,11 @@ class Tournament extends Component {
   }
 
   render() {
-    const { tournament, bracket, onSlotClick, editing, highlightEmpty } = this.props
+    const { bracket, onSlotClick, editing, highlightEmpty } = this.props
+    const { tournament } = this.context
     const { rounds } = tournament
     const fieldClass = rounds.length >= 6 ? 'field-64' : 'sweet-16'
     const tieBreaker = bracket ? bracket.tieBreaker : null
-
-    const cleanTournament = {
-      ...tournament,
-      gameDecisions: BigInt(tournament.gameDecisions),
-      gameMask: BigInt(tournament.gameMask),
-    }
 
     return (
       <div className="tournament-component">
@@ -54,14 +51,14 @@ class Tournament extends Component {
               <Round
                 key={r.number}
                 round={r}
-                tournament={cleanTournament}
+                tournament={tournament}
                 bracket={bracket}
                 onSlotClick={onSlotClick}
                 highlightEmpty={highlightEmpty}
               />
             ))}
             <Championship
-              tournament={cleanTournament}
+              tournament={tournament}
               bracket={bracket}
               editing={editing}
               highlightEmpty={highlightEmpty}
@@ -73,25 +70,3 @@ class Tournament extends Component {
     )
   }
 }
-
-export default createFragmentContainer(Tournament, {
-  tournament: graphql`
-    fragment Tournament_tournament on Tournament {
-      rounds {
-        name
-        number
-        startDate
-        endDate
-        regions
-      }
-      tipOff
-      gameDecisions
-      gameMask
-      teams {
-        startingSlot
-        seed
-        name
-      }
-    }
-  `,
-})

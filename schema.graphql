@@ -16,7 +16,6 @@ type Bracket implements HasPolicy & Node {
   paid: Boolean!
   policy: NodePolicy!
   tieBreaker: Int!
-  tournament: Tournament!
   user: User!
 }
 

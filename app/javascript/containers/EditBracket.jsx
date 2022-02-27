@@ -26,7 +26,7 @@ class EditBracket extends Component {
 
   bracket = () => {
     const { name, tieBreaker, gameDecisions } = this.state
-    const { id, tournament } = this.props.bracket
+    const { id } = this.props.bracket
     const gameMask = COMPLETED_MASK
 
     return {
@@ -35,7 +35,6 @@ class EditBracket extends Component {
       tieBreaker,
       gameDecisions,
       gameMask,
-      tournament,
     }
   }
 
@@ -123,7 +122,6 @@ class EditBracket extends Component {
   render() {
     const { errors } = this.state
     const bracket = this.bracket()
-    const tournament = bracket.tournament
     const policy = this.props.bracket.policy
 
     return (
@@ -136,12 +134,7 @@ class EditBracket extends Component {
           onCancel={this.handleCancelDeletion}
         />
         <h2>Editing Bracket</h2>
-        <Tournament
-          tournament={tournament}
-          bracket={bracket}
-          onSlotClick={this.handleSlotClick}
-          editing={true}
-        />
+        <Tournament bracket={bracket} onSlotClick={this.handleSlotClick} editing={true} />
         <form className="edit-bracket-form" onSubmit={this.handleDone}>
           <ErrorFlash errors={errors} objectType={'Bracket'} />
           <Label attr="name" text="Bracket Name" errors={errors} />
@@ -189,10 +182,6 @@ export default createFragmentContainer(EditBracket, {
       }
       user {
         name
-      }
-
-      tournament {
-        ...Tournament_tournament
       }
     }
   `,

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { graphql, createFragmentContainer } from 'react-relay'
 import { AppContext } from 'AppContext'
 import Dialog from 'components/Dialog'
 import ErrorFlash from 'components/forms/ErrorFlash'
@@ -9,7 +8,7 @@ import Tournament from 'components/Tournament'
 import { CreateBracketMutation } from 'mutations/CreateBracketMutation'
 import { COMPLETED_MASK } from './Bracket'
 
-class NewBracket extends Component {
+export default class NewBracket extends Component {
   static contextType = AppContext
 
   constructor(props) {
@@ -71,7 +70,7 @@ class NewBracket extends Component {
   }
 
   commitMutation = () => {
-    const { name, tieBreaker, gameDecisions, gameMask } = this.state
+    const { name, tieBreaker, gameDecisions } = this.state
 
     CreateBracketMutation.commit({ name, tieBreaker, gameDecisions }, this.handleCreateCompleted)
   }
@@ -109,7 +108,6 @@ class NewBracket extends Component {
 
   render() {
     const { name, gameDecisions, gameMask, tieBreaker, errors } = this.state
-    const { tournament } = this.props.viewer
 
     const bracket = {
       name,
@@ -130,7 +128,6 @@ class NewBracket extends Component {
         <h2>New Bracket Entry</h2>
         <ErrorFlash errors={errors} objectType={'Bracket'} />
         <Tournament
-          tournament={tournament}
           bracket={bracket}
           onSlotClick={this.handleSlotClick}
           highlightEmpty={!!this.state.errors}
@@ -167,16 +164,3 @@ class NewBracket extends Component {
     )
   }
 }
-
-export default createFragmentContainer(NewBracket, {
-  viewer: graphql`
-    fragment NewBracket_viewer on Viewer {
-      tournament: tournament64 {
-        ...Tournament_tournament
-      }
-      currentUser {
-        name
-      }
-    }
-  `,
-})

@@ -13,11 +13,20 @@ class MainLayout extends Component {
 
   render() {
     const { router, viewer } = this.props
+    const { tournament64 } = viewer
+
+    const tournament = {
+      ...tournament64,
+      gameDecisions: BigInt(tournament64.gameDecisions),
+      gameMask: BigInt(tournament64.gameMask),
+    }
+
     return (
       <div className="main-layout-component">
         <Provider
           value={{
             router,
+            tournament,
             setPageTitle: this.setPageTitle,
           }}
         >
@@ -35,6 +44,23 @@ class MainLayout extends Component {
 export default createFragmentContainer(MainLayout, {
   viewer: graphql`
     fragment MainLayout_viewer on Viewer {
+      tournament64 {
+        rounds {
+          name
+          number
+          startDate
+          endDate
+          regions
+        }
+        tipOff
+        gameDecisions
+        gameMask
+        teams {
+          startingSlot
+          seed
+          name
+        }
+      }
       ...Header_viewer
     }
   `,

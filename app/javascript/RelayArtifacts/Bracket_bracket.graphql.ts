@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<4967b99abbc0617e5fa9278839f6e179>>
+ * @generated SignedSource<<fea9c22231c49870c41617afd6ff8bb4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -17,9 +17,6 @@ export type Bracket_bracket$data = {
   readonly gameDecisions: string;
   readonly user: {
     readonly name: string;
-  };
-  readonly tournament: {
-    readonly " $fragmentSpreads": FragmentRefs<"Tournament_tournament">;
   };
   readonly " $fragmentSpreads": FragmentRefs<"BracketActions_bracket">;
   readonly " $fragmentType": "Bracket_bracket";
@@ -78,22 +75,6 @@ return {
       "storageKey": null
     },
     {
-      "alias": null,
-      "args": null,
-      "concreteType": "Tournament",
-      "kind": "LinkedField",
-      "name": "tournament",
-      "plural": false,
-      "selections": [
-        {
-          "args": null,
-          "kind": "FragmentSpread",
-          "name": "Tournament_tournament"
-        }
-      ],
-      "storageKey": null
-    },
-    {
       "args": null,
       "kind": "FragmentSpread",
       "name": "BracketActions_bracket"
@@ -104,6 +85,6 @@ return {
 };
 })();
 
-(node as any).hash = "b6a8a27d7458f5b52270cc5493a870d1";
+(node as any).hash = "f37f2f35dc9cc724df5a69edf9caa11d";
 
 export default node;

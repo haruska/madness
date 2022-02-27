@@ -15,7 +15,6 @@ class Bracket extends Component {
 
   render() {
     const { bracket } = this.props
-    const tournament = bracket.tournament
 
     const cleanBracket = {
       ...bracket,
@@ -27,7 +26,7 @@ class Bracket extends Component {
       <div className="bracket-container">
         <h2>{this.title()}</h2>
         <BracketActions bracket={bracket} />
-        <Tournament tournament={tournament} bracket={cleanBracket} />
+        <Tournament bracket={cleanBracket} />
       </div>
     )
   }
@@ -43,10 +42,6 @@ export default createFragmentContainer(Bracket, {
       user {
         name
       }
-      tournament {
-        ...Tournament_tournament
-      }
-
       ...BracketActions_bracket
     }
   `,

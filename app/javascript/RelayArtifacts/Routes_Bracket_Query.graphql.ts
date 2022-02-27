@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<af86cb59d1b44551807025295c0b71ae>>
+ * @generated SignedSource<<2b0102da5265b4643d3e5e461597895b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -50,13 +50,6 @@ v3 = {
   "args": null,
   "kind": "ScalarField",
   "name": "name",
-  "storageKey": null
-},
-v4 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "gameDecisions",
   "storageKey": null
 };
 return {
@@ -119,7 +112,13 @@ return {
                 "name": "tieBreaker",
                 "storageKey": null
               },
-              (v4/*: any*/),
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "gameDecisions",
+                "storageKey": null
+              },
               {
                 "alias": null,
                 "args": null,
@@ -129,101 +128,6 @@ return {
                 "plural": false,
                 "selections": [
                   (v3/*: any*/),
-                  (v2/*: any*/)
-                ],
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "concreteType": "Tournament",
-                "kind": "LinkedField",
-                "name": "tournament",
-                "plural": false,
-                "selections": [
-                  {
-                    "alias": null,
-                    "args": null,
-                    "concreteType": "Round",
-                    "kind": "LinkedField",
-                    "name": "rounds",
-                    "plural": true,
-                    "selections": [
-                      (v3/*: any*/),
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "number",
-                        "storageKey": null
-                      },
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "startDate",
-                        "storageKey": null
-                      },
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "endDate",
-                        "storageKey": null
-                      },
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "regions",
-                        "storageKey": null
-                      },
-                      (v2/*: any*/)
-                    ],
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "tipOff",
-                    "storageKey": null
-                  },
-                  (v4/*: any*/),
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "gameMask",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "concreteType": "Team",
-                    "kind": "LinkedField",
-                    "name": "teams",
-                    "plural": true,
-                    "selections": [
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "startingSlot",
-                        "storageKey": null
-                      },
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "seed",
-                        "storageKey": null
-                      },
-                      (v3/*: any*/),
-                      (v2/*: any*/)
-                    ],
-                    "storageKey": null
-                  },
                   (v2/*: any*/)
                 ],
                 "storageKey": null
@@ -256,12 +160,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "012dbf5242a331681dce4f38d80aee3f",
+    "cacheID": "cd8bb2f470705a888ac4d3dd7687fa9f",
     "id": null,
     "metadata": {},
     "name": "Routes_Bracket_Query",
     "operationKind": "query",
-    "text": "query Routes_Bracket_Query(\n  $bracketId: ID!\n) {\n  bracket: node(id: $bracketId) {\n    __typename\n    ...Bracket_bracket\n    id\n  }\n}\n\nfragment BracketActions_bracket on Bracket {\n  id\n  policy {\n    update\n  }\n}\n\nfragment Bracket_bracket on Bracket {\n  id\n  name\n  tieBreaker\n  gameDecisions\n  user {\n    name\n    id\n  }\n  tournament {\n    ...Tournament_tournament\n    id\n  }\n  ...BracketActions_bracket\n}\n\nfragment Tournament_tournament on Tournament {\n  rounds {\n    name\n    number\n    startDate\n    endDate\n    regions\n    id\n  }\n  tipOff\n  gameDecisions\n  gameMask\n  teams {\n    startingSlot\n    seed\n    name\n    id\n  }\n}\n"
+    "text": "query Routes_Bracket_Query(\n  $bracketId: ID!\n) {\n  bracket: node(id: $bracketId) {\n    __typename\n    ...Bracket_bracket\n    id\n  }\n}\n\nfragment BracketActions_bracket on Bracket {\n  id\n  policy {\n    update\n  }\n}\n\nfragment Bracket_bracket on Bracket {\n  id\n  name\n  tieBreaker\n  gameDecisions\n  user {\n    name\n    id\n  }\n  ...BracketActions_bracket\n}\n"
   }
 };
 })();

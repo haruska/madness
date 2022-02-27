@@ -1,6 +1,8 @@
-import { Tournament_tournament$data as Tournament } from 'RelayArtifacts/Tournament_tournament.graphql'
+import { MainLayout_viewer$data as Viewer } from 'RelayArtifacts/MainLayout_viewer.graphql'
 import TournamentTree from './TournamentTree'
 import GameNode from './GameNode'
+
+type Tournament = Viewer['tournament64']
 
 export default class Team {
   tournament: Tournament

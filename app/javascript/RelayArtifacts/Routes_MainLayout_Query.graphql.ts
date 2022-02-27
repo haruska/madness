@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3db1cdfc46423cd01a7941e922f4c8b1>>
+ * @generated SignedSource<<5ae6c8febb0aca75fd005ad0f4b0ddcc>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -23,6 +23,13 @@ export type Routes_MainLayout_Query = {
 
 const node: ConcreteRequest = (function(){
 var v0 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "name",
+  "storageKey": null
+},
+v1 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
@@ -73,6 +80,114 @@ return {
           {
             "alias": null,
             "args": null,
+            "concreteType": "Tournament",
+            "kind": "LinkedField",
+            "name": "tournament64",
+            "plural": false,
+            "selections": [
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "Round",
+                "kind": "LinkedField",
+                "name": "rounds",
+                "plural": true,
+                "selections": [
+                  (v0/*: any*/),
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "number",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "startDate",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "endDate",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "regions",
+                    "storageKey": null
+                  },
+                  (v1/*: any*/)
+                ],
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "tipOff",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "gameDecisions",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "gameMask",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "Team",
+                "kind": "LinkedField",
+                "name": "teams",
+                "plural": true,
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "startingSlot",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "seed",
+                    "storageKey": null
+                  },
+                  (v0/*: any*/),
+                  (v1/*: any*/)
+                ],
+                "storageKey": null
+              },
+              (v1/*: any*/),
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "started",
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
             "concreteType": "User",
             "kind": "LinkedField",
             "name": "currentUser",
@@ -85,42 +200,23 @@ return {
                 "name": "admin",
                 "storageKey": null
               },
-              (v0/*: any*/)
+              (v1/*: any*/)
             ],
             "storageKey": null
           },
-          {
-            "alias": null,
-            "args": null,
-            "concreteType": "Tournament",
-            "kind": "LinkedField",
-            "name": "tournament64",
-            "plural": false,
-            "selections": [
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "started",
-                "storageKey": null
-              },
-              (v0/*: any*/)
-            ],
-            "storageKey": null
-          },
-          (v0/*: any*/)
+          (v1/*: any*/)
         ],
         "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "e0d40a2ad0feeb73e3000a714e6f9847",
+    "cacheID": "82ec93a4a122988b694e8a33698a4fd0",
     "id": null,
     "metadata": {},
     "name": "Routes_MainLayout_Query",
     "operationKind": "query",
-    "text": "query Routes_MainLayout_Query {\n  viewer {\n    ...MainLayout_viewer\n    id\n  }\n}\n\nfragment Header_viewer on Viewer {\n  ...Menu_viewer\n}\n\nfragment MainLayout_viewer on Viewer {\n  ...Header_viewer\n}\n\nfragment Menu_viewer on Viewer {\n  currentUser {\n    admin\n    id\n  }\n  tournament64 {\n    started\n    id\n  }\n}\n"
+    "text": "query Routes_MainLayout_Query {\n  viewer {\n    ...MainLayout_viewer\n    id\n  }\n}\n\nfragment Header_viewer on Viewer {\n  ...Menu_viewer\n}\n\nfragment MainLayout_viewer on Viewer {\n  tournament64 {\n    rounds {\n      name\n      number\n      startDate\n      endDate\n      regions\n      id\n    }\n    tipOff\n    gameDecisions\n    gameMask\n    teams {\n      startingSlot\n      seed\n      name\n      id\n    }\n    id\n  }\n  ...Header_viewer\n}\n\nfragment Menu_viewer on Viewer {\n  currentUser {\n    admin\n    id\n  }\n  tournament64 {\n    started\n    id\n  }\n}\n"
   }
 };
 })();

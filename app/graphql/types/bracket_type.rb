@@ -8,11 +8,6 @@ module Types
     field :tie_breaker, Int, null: false
     field :paid, Boolean, null: false
     field :final_four, [Types::TeamType], null: false
-    field :tournament, Types::TournamentType, null: false
-
-    def tournament
-      Tournament.field_64
-    end
 
     def final_four
       sorted_slots = object.sorted_four
