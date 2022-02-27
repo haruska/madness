@@ -1,11 +1,12 @@
 .bracket-container {
   padding-top: $gutter * 2;
+  width: $bracket-width;
+  margin: 0 auto;
 
   .bracket-heading {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 950px;
 
     h2 {
       margin: 0;

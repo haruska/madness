@@ -32,7 +32,7 @@ class MainLayout extends Component {
         >
           <Header title={this.state.title} viewer={viewer} />
           <section className="container" id="content">
-            {this.props.children}
+            <div className="wrapper">{this.props.children}</div>
           </section>
           <footer />
         </Provider>

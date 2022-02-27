@@ -1,5 +1,7 @@
 .new-bracket-container {
   padding-top: $gutter * 2;
+  width: $bracket-width;
+  margin: 0 auto;
 
   .new-bracket-form {
     margin: 0 auto;
