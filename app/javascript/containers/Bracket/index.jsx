@@ -24,8 +24,12 @@ class Bracket extends Component {
 
     return (
       <div className="bracket-container">
-        <h2>{this.title()}</h2>
-        <BracketActions bracket={bracket} />
+        <div className="bracket-heading">
+          <h2>{this.title()}</h2>
+          <div>
+            <BracketActions bracket={bracket} />
+          </div>
+        </div>
         <Tournament bracket={cleanBracket} />
       </div>
     )

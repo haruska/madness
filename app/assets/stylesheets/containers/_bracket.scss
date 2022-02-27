@@ -1,6 +1,17 @@
 .bracket-container {
   padding-top: $gutter * 2;
 
+  .bracket-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 950px;
+
+    h2 {
+      margin: 0;
+    }
+  }
+
   .edit {
     display: inline-block;
     width: auto;
