@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 
-import TournamentTree from '../../objects/TournamentTree'
-import Team from '../../objects/Team'
+import TournamentTree from 'objects/TournamentTree'
+import Team from 'objects/Team'
 
 export default class Championship extends Component {
   tournamentTree = () => {

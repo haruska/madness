@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
-import { AppContext } from '../AppContext'
-import Dialog from '../components/Dialog'
-import ErrorFlash from '../components/forms/ErrorFlash'
-import Label from '../components/forms/Label'
-import Tournament from '../components/Tournament'
+import { AppContext } from 'AppContext'
+import Dialog from 'components/Dialog'
+import ErrorFlash from 'components/forms/ErrorFlash'
+import Label from 'components/forms/Label'
+import Tournament from 'components/Tournament'
 
-import { CreateBracketMutation } from '../mutations/CreateBracketMutation'
+import { CreateBracketMutation } from 'mutations/CreateBracketMutation'
 import { COMPLETED_MASK } from './Bracket'
 
 class NewBracket extends Component {

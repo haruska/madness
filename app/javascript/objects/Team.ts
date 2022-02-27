@@ -1,4 +1,4 @@
-import { Tournament_tournament$data as Tournament } from '../RelayArtifacts/Tournament_tournament.graphql'
+import { Tournament_tournament$data as Tournament } from 'RelayArtifacts/Tournament_tournament.graphql'
 import TournamentTree from './TournamentTree'
 import GameNode from './GameNode'
 

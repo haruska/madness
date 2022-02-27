@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Header from './Header'
-import { Provider } from '../../AppContext'
+import { Provider } from 'AppContext'
 import { createFragmentContainer, graphql } from 'react-relay'
 
 class MainLayout extends Component {

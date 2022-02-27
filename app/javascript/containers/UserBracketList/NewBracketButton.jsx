@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { createFragmentContainer, graphql } from 'react-relay'
-import { AppContext } from '../../AppContext'
+import { AppContext } from 'AppContext'
 
 export default class NewBracketButton extends Component {
   static contextType = AppContext

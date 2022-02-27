@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
-import Tournament from '../components/Tournament'
+import Tournament from 'components/Tournament'
 
 class Games extends Component {
   render() {

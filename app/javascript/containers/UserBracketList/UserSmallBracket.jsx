@@ -4,7 +4,7 @@ import { createFragmentContainer, graphql } from 'react-relay'
 import { Link } from 'found'
 
 import BracketStatus from './BracketStatus'
-import FinalFourTeamSmall from '../../components/FinalFourTeamSmall'
+import FinalFourTeamSmall from 'components/FinalFourTeamSmall'
 
 export class UserSmallBracket extends Component {
   render() {

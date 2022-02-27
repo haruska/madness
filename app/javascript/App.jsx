@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Provider } from './AppContext'
+import { Provider } from 'AppContext'
 
 class App extends Component {
   render() {

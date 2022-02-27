@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
 import { AppContext } from '../AppContext'
-import Dialog from '../components/Dialog'
-import ErrorFlash from '../components/forms/ErrorFlash'
-import Label from '../components/forms/Label'
-import Tournament from '../components/Tournament'
+import Dialog from 'components/Dialog'
+import ErrorFlash from 'components/forms/ErrorFlash'
+import Label from 'components/forms/Label'
+import Tournament from 'components/Tournament'
 
-import { UpdateBracketMutation } from '../mutations/UpdateBracketMutation'
-import { DeleteBracketMutation } from '../mutations/DeleteBracketMutation'
+import { UpdateBracketMutation } from 'mutations/UpdateBracketMutation'
+import { DeleteBracketMutation } from 'mutations/DeleteBracketMutation'
 import { COMPLETED_MASK } from './Bracket'
 
 class EditBracket extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'found'
-import { AppContext } from '../../AppContext'
+import { AppContext } from 'AppContext'
 import { createFragmentContainer, graphql } from 'react-relay'
 
 class Menu extends Component {

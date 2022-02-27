@@ -1,5 +1,5 @@
 import { graphql, commitMutation } from 'react-relay'
-import currentRelay from '../lib/currentRelay'
+import currentRelay from 'lib/currentRelay'
 
 const mutation = graphql`
   mutation DeleteBracketMutation($input: DeleteBracketInput!) {
