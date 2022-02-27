@@ -2,6 +2,7 @@
 
 module Mutations
   class DeleteBracket < BaseMutation
+    field :deleted_bracket_id, ID, null: true
     field :errors, [Types::UserErrorType], null: false
 
     argument :bracket_id, ID, required: true, loads: Types::BracketType
@@ -15,8 +16,10 @@ module Mutations
     end
 
     def resolve(bracket:)
+      deleted_bracket_id = context.schema.id_from_object(bracket)
+
       if bracket.destroy
-        { errors: [] }
+        { deleted_bracket_id:, errors: [] }
       else
         { errors: user_errors(bracket) }
       end

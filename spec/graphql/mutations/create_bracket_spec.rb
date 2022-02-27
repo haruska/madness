@@ -63,7 +63,7 @@ RSpec.describe Mutations::CreateBracket do
 
     it 'has the validation errors' do
       expect(errors).to_not be_empty
-      expect(errors.first[:path]).to eq(%w[attributes name])
+      expect(errors.first[:path]).to eq(%w[name])
       expect(errors.first[:message]).to eq('has already been taken')
     end
 

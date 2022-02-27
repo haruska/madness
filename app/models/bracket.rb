@@ -7,7 +7,7 @@ class Bracket < ApplicationRecord
   validates :tie_breaker, presence: true
 
   def sorted_four
-    Array(decision_team_slots[1..7]).reverse.uniq
+    Array(decision_team_slots[1..7]).uniq.reverse
   end
 
   private

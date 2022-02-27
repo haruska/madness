@@ -19,7 +19,7 @@ import Home from '../containers/Home'
 // import BracketList from '../containers/BracketList'
 import UserBracketList from '../containers/UserBracketList'
 import Bracket from '../containers/Bracket'
-// import EditBracket from '../containers/EditBracket'
+import EditBracket from '../containers/EditBracket'
 // import NewBracket from '../containers/NewBracket'
 import Games from '../containers/Games'
 // import RulesAndScoring from '../containers/RulesAndScoring'
@@ -58,6 +58,14 @@ const BracketQuery = graphql`
   }
 `
 
+const EditBracketQuery = graphql`
+  query Routes_EditBracket_Query($bracketId: ID!) {
+    bracket: node(id: $bracketId) {
+      ...EditBracket_bracket
+    }
+  }
+`
+
 export default makeRouteConfig(
   <Route path="/" Component={App}>
     <Route Component={Home} />
@@ -81,10 +89,10 @@ export default makeRouteConfig(
       {/*      <Route path="brackets" Component={AdminBrackets} query={AdminBracketsQuery} />*/}
       {/*    </Route>*/}
       {/*  </Route>*/}
-      <Route path="brackets/:bracketId" Component={Bracket} query={BracketQuery} />
-      {/*    <Route Component={Bracket} query={BracketQuery} />*/}
-      {/*    <Route path="edit" Component={EditBracket} query={EditBracketQuery} />*/}
-      {/*  </Route>*/}
+      <Route path="brackets/:bracketId">
+        <Route Component={Bracket} query={BracketQuery} />
+        <Route path="edit" Component={EditBracket} query={EditBracketQuery} />
+      </Route>
     </Route>
   </Route>
 )

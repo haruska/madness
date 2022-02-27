@@ -3,6 +3,8 @@ import { createFragmentContainer, graphql } from 'react-relay'
 import Tournament from '../../components/Tournament'
 import BracketActions from './BracketActions'
 
+export const COMPLETED_MASK = 18446744073709551614n
+
 class Bracket extends Component {
   title = () => {
     const { bracket } = this.props
@@ -18,7 +20,7 @@ class Bracket extends Component {
     const cleanBracket = {
       ...bracket,
       gameDecisions: BigInt(bracket.gameDecisions),
-      gameMask: 18446744073709551614n,
+      gameMask: COMPLETED_MASK,
     }
 
     return (
