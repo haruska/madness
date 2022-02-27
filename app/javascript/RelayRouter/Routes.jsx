@@ -20,7 +20,7 @@ import Home from '../containers/Home'
 import UserBracketList from '../containers/UserBracketList'
 import Bracket from '../containers/Bracket'
 import EditBracket from '../containers/EditBracket'
-// import NewBracket from '../containers/NewBracket'
+import NewBracket from '../containers/NewBracket'
 import Games from '../containers/Games'
 // import RulesAndScoring from '../containers/RulesAndScoring'
 // import Payments from '../containers/Payments'
@@ -66,6 +66,14 @@ const EditBracketQuery = graphql`
   }
 `
 
+const NewBracketQuery = graphql`
+  query Routes_NewBracket_Query {
+    viewer {
+      ...NewBracket_viewer
+    }
+  }
+`
+
 export default makeRouteConfig(
   <Route path="/" Component={App}>
     <Route Component={Home} />
@@ -81,7 +89,7 @@ export default makeRouteConfig(
       {/*    <Route path="possibilities" Component={Possibilities} query={PossibilitiesQuery} />*/}
       {/*    <Route path="brackets" Component={BracketList} query={BracketListQuery} />*/}
       <Route path="my_brackets" Component={UserBracketList} query={UserBracketListQuery} />
-      {/*    <Route path="new_bracket" Component={NewBracket} query={NewBracketQuery} />*/}
+      <Route path="new_bracket" Component={NewBracket} query={NewBracketQuery} />
       <Route path="games" Component={Games} query={GamesQuery} />
       {/*    <Route path="rules" Component={RulesAndScoring} query={RulesAndScoringQuery} />*/}
       {/*    <Route path="payments" Component={Payments} query={PaymentsQuery} />*/}

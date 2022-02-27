@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
-import { cloneDeep } from 'lodash'
 import { AppContext } from '../AppContext'
 import Dialog from '../components/Dialog'
 import ErrorFlash from '../components/forms/ErrorFlash'
