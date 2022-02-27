@@ -2,10 +2,10 @@
 
 class TournamentPolicy < ApplicationPolicy
   def index?
-    user.present?
+    true
   end
 
   def show?
-    user.present?
+    true
   end
 end

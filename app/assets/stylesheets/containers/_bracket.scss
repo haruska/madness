@@ -1,0 +1,28 @@
+.bracket-container {
+  padding-top: $gutter * 2;
+  width: $bracket-width;
+  margin: 0 auto;
+
+  .bracket-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  .edit {
+    display: inline-block;
+    width: auto;
+  }
+
+  @media print {
+    padding-top: 0;
+
+    .bracket-actions {
+      display: none;
+    }
+  }
+}

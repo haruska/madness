@@ -5,6 +5,8 @@ require 'rails_helper'
 RSpec.describe Types::ViewerType do
   subject { described_class }
 
+  it_behaves_like 'a BaseNodeObject', :viewer
+
   let(:query) do
     <<~GRAPHQL
       query {

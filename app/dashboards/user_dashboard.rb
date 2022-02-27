@@ -14,6 +14,7 @@ class UserDashboard < Administrate::BaseDashboard
     name: Field::String,
     email: Field::String,
     admin: Field::Boolean,
+    brackets: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
@@ -27,6 +28,7 @@ class UserDashboard < Administrate::BaseDashboard
     id
     name
     email
+    brackets
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -38,6 +40,7 @@ class UserDashboard < Administrate::BaseDashboard
     admin
     created_at
     updated_at
+    brackets
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -64,7 +67,7 @@ class UserDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how users are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(user)
-  #   "User ##{user.id}"
-  # end
+  def display_resource(user)
+    user.name
+  end
 end

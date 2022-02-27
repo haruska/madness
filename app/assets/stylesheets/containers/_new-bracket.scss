@@ -1,0 +1,39 @@
+.new-bracket-container {
+  padding-top: $gutter * 2;
+  width: $bracket-width;
+  margin: 0 auto;
+
+  .new-bracket-form {
+    margin: 0 auto;
+    width: 300px;
+    padding-bottom: $gutter;
+  }
+
+  .button {
+    display: inline-block;
+    width: 48% !important;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .left-button {
+    margin-right: 10px;
+  }
+
+  .slot {
+    cursor: pointer;
+
+    &:hover {
+      background-color: $light-blue;
+    }
+
+    z-index: 100;
+  }
+
+  @media print {
+    padding-top: 0;
+    .new-bracket-form {
+      display: none;
+    }
+  }
+}

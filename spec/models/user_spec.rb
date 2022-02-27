@@ -13,4 +13,6 @@ RSpec.describe User, type: :model do
 
   it { is_expected.to allow_value('foo@bar.com').for(:email) }
   it { is_expected.to_not allow_value('foobar.bz').for(:email) }
+
+  it { is_expected.to have_many(:brackets) }
 end

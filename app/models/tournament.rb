@@ -114,11 +114,13 @@ class Tournament < ApplicationRecord
   # for testing
   def mock_unstarted
     self.game_mask = 0
+    self.tip_off = 2.weeks.from_now
     save
   end
 
   def mock_first_two_rounds_completed
     self.game_mask = 0
+    self.tip_off = 1.week.ago
     (1..2).each do |round|
       round_for(round).each do |game|
         update_game(game.slot, [0, 1].sample)
@@ -129,6 +131,7 @@ class Tournament < ApplicationRecord
 
   def mock_in_final_four
     self.game_mask = 0
+    self.tip_off = 2.weeks.ago
     (1..4).each do |round|
       round_for(round).each do |game|
         update_game(game.slot, [0, 1].sample)
@@ -138,6 +141,7 @@ class Tournament < ApplicationRecord
   end
 
   def mock_completed
+    self.tip_off = 3.weeks.ago
     num_games.times { |i| update_game(i + 1, [0, 1].sample) }
     save
   end

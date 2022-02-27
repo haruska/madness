@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AppContext } from '../../AppContext'
+import { AppContext } from 'AppContext'
 
 export default class Home extends Component {
   static contextType = AppContext
@@ -8,7 +8,7 @@ export default class Home extends Component {
   componentWillMount() {
     const { router } = this.context
     // authService.loggedIn() ? router.replace('/pools') : router.replace('/login')
-    router.replace('/games')
+    router.replace('/my_brackets')
   }
 
   render() {
