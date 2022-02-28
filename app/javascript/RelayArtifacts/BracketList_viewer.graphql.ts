@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c9a15a85e139a3f09c5b042d776dd390>>
+ * @generated SignedSource<<ea4b07a43b359cdb8aeede486c1adfb0>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,6 +14,8 @@ export type BracketList_viewer$data = {
   readonly brackets: {
     readonly nodes: ReadonlyArray<{
       readonly id: string;
+      readonly points: number;
+      readonly possiblePoints: number;
       readonly " $fragmentSpreads": FragmentRefs<"BracketRow_bracket" | "SmallBracket_bracket">;
     }>;
     readonly totalCount: number;
@@ -56,6 +58,20 @@ const node: ReaderFragment = {
               "storageKey": null
             },
             {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "points",
+              "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "possiblePoints",
+              "storageKey": null
+            },
+            {
               "args": null,
               "kind": "FragmentSpread",
               "name": "BracketRow_bracket"
@@ -93,6 +109,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "624274bf32568c7be5b3a20997345e38";
+(node as any).hash = "485afc248a2a2c65e0c8f97db3cff07b";
 
 export default node;

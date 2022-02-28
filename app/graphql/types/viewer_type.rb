@@ -16,7 +16,8 @@ module Types
     end
 
     def brackets
-      Pundit.policy_scope(context[:current_user], Bracket)
+      brackets = Pundit.policy_scope(context[:current_user], Bracket)
+      tournament_64.started? ? brackets.to_a.sort_by { |b| [b.points * -1, b.possible_points * -1] } : brackets
     end
   end
 end

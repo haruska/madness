@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<381d7d771d4bdb7e1d2dc87e8634197f>>
+ * @generated SignedSource<<848c1d4d48284cbd27a5208ed6cf4a6a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -97,7 +97,6 @@ return {
                 "plural": true,
                 "selections": [
                   (v0/*: any*/),
-                  (v1/*: any*/),
                   {
                     "alias": null,
                     "args": null,
@@ -112,6 +111,7 @@ return {
                     "name": "possiblePoints",
                     "storageKey": null
                   },
+                  (v1/*: any*/),
                   {
                     "alias": null,
                     "args": null,
@@ -179,12 +179,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "770022897e3999722f0c7950100a3ff8",
+    "cacheID": "c7d5d9fd153df88d07102efe29f0f17c",
     "id": null,
     "metadata": {},
     "name": "Routes_BracketList_Query",
     "operationKind": "query",
-    "text": "query Routes_BracketList_Query {\n  viewer {\n    ...BracketList_viewer\n    id\n  }\n}\n\nfragment BestPossibleSmall_bracket on Bracket {\n  bestPossibleFinish\n  eliminated\n}\n\nfragment BestPossible_bracket on Bracket {\n  bestPossibleFinish\n}\n\nfragment BracketList_viewer on Viewer {\n  brackets {\n    nodes {\n      id\n      ...BracketRow_bracket\n      ...SmallBracket_bracket\n    }\n    totalCount\n  }\n  ...BracketRow_viewer\n  ...SmallBracket_viewer\n}\n\nfragment BracketRow_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  finalFour {\n    ...FinalFourTeam_team\n    id\n  }\n  ...BestPossible_bracket\n}\n\nfragment BracketRow_viewer on Viewer {\n  currentUser {\n    id\n  }\n}\n\nfragment FinalFourTeamSmall_team on Team {\n  id\n  name\n}\n\nfragment FinalFourTeam_team on Team {\n  id\n  name\n}\n\nfragment SmallBracket_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  finalFour {\n    ...FinalFourTeamSmall_team\n    id\n  }\n  ...BestPossibleSmall_bracket\n}\n\nfragment SmallBracket_viewer on Viewer {\n  currentUser {\n    id\n  }\n}\n"
+    "text": "query Routes_BracketList_Query {\n  viewer {\n    ...BracketList_viewer\n    id\n  }\n}\n\nfragment BestPossibleSmall_bracket on Bracket {\n  bestPossibleFinish\n  eliminated\n}\n\nfragment BestPossible_bracket on Bracket {\n  bestPossibleFinish\n}\n\nfragment BracketList_viewer on Viewer {\n  brackets {\n    nodes {\n      id\n      points\n      possiblePoints\n      ...BracketRow_bracket\n      ...SmallBracket_bracket\n    }\n    totalCount\n  }\n  ...BracketRow_viewer\n  ...SmallBracket_viewer\n}\n\nfragment BracketRow_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  finalFour {\n    ...FinalFourTeam_team\n    id\n  }\n  ...BestPossible_bracket\n}\n\nfragment BracketRow_viewer on Viewer {\n  currentUser {\n    id\n  }\n}\n\nfragment FinalFourTeamSmall_team on Team {\n  id\n  name\n}\n\nfragment FinalFourTeam_team on Team {\n  id\n  name\n}\n\nfragment SmallBracket_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  finalFour {\n    ...FinalFourTeamSmall_team\n    id\n  }\n  ...BestPossibleSmall_bracket\n}\n\nfragment SmallBracket_viewer on Viewer {\n  currentUser {\n    id\n  }\n}\n"
   }
 };
 })();

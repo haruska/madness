@@ -142,6 +142,8 @@ export default createFragmentContainer(BracketList, {
       brackets {
         nodes {
           id
+          points
+          possiblePoints
           ...BracketRow_bracket
           ...SmallBracket_bracket
         }

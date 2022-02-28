@@ -111,6 +111,25 @@ class Tournament < ApplicationRecord
     end
   end
 
+  def decision_team_slots
+    @decision_team_slots ||= begin
+      decisions = game_decisions
+      result = Array.new(64)
+
+      (1..63).to_a.reverse.each do |i|
+        current_position = 1 << i
+        next unless (current_position & game_mask) != 0
+
+        decision = (decisions & current_position).zero? ? 0 : 1
+        position = (i * 2) + decision
+
+        result[i] = i >= 32 ? position : result[position]
+      end
+
+      result
+    end
+  end
+
   # for testing
   def mock_unstarted
     self.game_mask = 0
