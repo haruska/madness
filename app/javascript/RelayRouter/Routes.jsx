@@ -5,7 +5,7 @@ import MainLayout from 'components/layouts/MainLayout'
 import App from 'App'
 import Home from 'containers/Home'
 // import Possibilities from '../containers/Possibilities'
-// import BracketList from '../containers/BracketList'
+import BracketList from '../containers/BracketList'
 import UserBracketList from 'containers/UserBracketList'
 import Bracket from 'containers/Bracket'
 import EditBracket from 'containers/EditBracket'
@@ -45,12 +45,20 @@ const EditBracketQuery = graphql`
   }
 `
 
+const BracketListQuery = graphql`
+  query Routes_BracketList_Query {
+    viewer {
+      ...BracketList_viewer
+    }
+  }
+`
+
 export default makeRouteConfig(
   <Route path="/" Component={App}>
     <Route Component={Home} />
     <Route Component={MainLayout} query={MainLayoutQuery}>
       {/*    <Route path="possibilities" Component={Possibilities} query={PossibilitiesQuery} />*/}
-      {/*    <Route path="brackets" Component={BracketList} query={BracketListQuery} />*/}
+      <Route path="brackets" Component={BracketList} query={BracketListQuery} />
       <Route path="my_brackets" Component={UserBracketList} query={UserBracketListQuery} />
       <Route path="new_bracket" Component={NewBracket} />
       <Route path="games" Component={Games} />

@@ -5,6 +5,8 @@ exceed the size of a 32-bit integer, it's encoded as a string.
 scalar BigInt
 
 type Bracket implements HasPolicy & Node {
+  bestPossibleFinish: Int
+  eliminated: Boolean!
   finalFour: [Team!]!
   gameDecisions: BigInt!
 
@@ -14,7 +16,9 @@ type Bracket implements HasPolicy & Node {
   id: ID!
   name: String!
   paid: Boolean!
+  points: Int!
   policy: NodePolicy!
+  possiblePoints: Int!
   tieBreaker: Int!
   user: User!
 }

@@ -33,11 +33,11 @@ class Menu extends Component {
     }
     //
     if (tournament64.started) {
-      //     links.push(
-      //       <Link to={`/pools/${pool.id}/brackets`} onClick={this.handleToggleMenuClick}>
-      //         Brackets
-      //       </Link>
-      //     )
+      links.push(
+        <Link to={`/brackets`} onClick={this.handleToggleMenuClick}>
+          Brackets
+        </Link>
+      )
       //
       //     if (pool.tournament.gamesRemaining > 0 && pool.tournament.gamesRemaining < 4) {
       //       links.push(

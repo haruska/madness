@@ -1,0 +1,15 @@
+.bracket-row {
+  margin: calc($gutter/2) 0;
+
+  .current-user-bracket {
+    background-color: $light-blue;
+  }
+
+  .position-column {
+    width: 70px;
+  }
+
+  .name-column {
+    width: 210px;
+  }
+}

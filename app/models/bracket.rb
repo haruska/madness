@@ -10,6 +10,22 @@ class Bracket < ApplicationRecord
     Array(decision_team_slots[1..7]).uniq.reverse
   end
 
+  def points
+    1
+  end
+
+  def possible_points
+    2
+  end
+
+  def eliminated
+    false
+  end
+
+  def best_possible_finish
+    1
+  end
+
   private
 
   def decision_team_slots
