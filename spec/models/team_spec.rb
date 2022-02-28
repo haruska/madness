@@ -6,17 +6,8 @@ RSpec.describe Team, type: :model do
   let(:tournament) { tournament_unstarted }
 
   context do
-    subject { tournament.teams.order(:starting_slot).first }
-
+    subject { tournament.teams.first }
     it { is_expected.to validate_length_of(:name).is_at_most(15) }
-    it { is_expected.to validate_inclusion_of(:region).in_array(Team::REGIONS) }
-    it { is_expected.to validate_uniqueness_of(:seed).scoped_to(%i[tournament_id region]) }
-    it do
-      is_expected.to validate_numericality_of(:seed)
-        .only_integer
-        .is_greater_than_or_equal_to(1)
-        .is_less_than_or_equal_to(16)
-    end
   end
 
   describe '#first_game' do

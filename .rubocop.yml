@@ -18,4 +18,6 @@ Metrics/AbcSize:
   Enabled: false
 Naming/VariableNumber:
   Enabled: false
+Rails/BulkChangeTable:
+  Enabled: false
 
