@@ -1,6 +1,6 @@
 const path = require('path')
 const http = require('http')
-const relay = require('esbuild-plugin-relay')
+const relay = require('./createRelayPlugin')
 
 const watch = process.argv.includes('--watch')
 const clients = []
