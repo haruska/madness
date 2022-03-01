@@ -3,14 +3,14 @@ import classNames from 'classnames'
 
 import TournamentTree from 'objects/TournamentTree'
 import Team from 'objects/Team'
-import { BracketData } from 'containers/Bracket'
+import { BasicBracket } from 'containers/Bracket'
 import { AppContext } from 'AppContext'
 
 export const Championship = ({
   bracket,
   highlightEmpty,
 }: {
-  bracket?: BracketData
+  bracket?: BasicBracket
   highlightEmpty: boolean
 }) => {
   const { tournament, teams } = useContext(AppContext)

@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import TournamentTree from 'objects/TournamentTree'
 import Team from 'objects/Team'
 import { AppContext } from '../../AppContext'
-import { BracketData, COMPLETED_MASK } from '../../containers/Bracket'
+import { BasicBracket } from 'containers/Bracket'
 
 const GameSlot = ({
   gameSlot,
@@ -52,7 +52,7 @@ export const Game = ({
   highlightEmpty,
   onSlotClick,
 }: {
-  bracket: BracketData
+  bracket: BasicBracket
   index: number
   slot: number
   regionIndex?: number
@@ -70,8 +70,8 @@ export const Game = ({
   const bracketTree = () => {
     if (bracket) {
       const { rounds } = tournament
-      const { gameDecisions } = bracket
-      return new TournamentTree(rounds.length, gameDecisions, COMPLETED_MASK)
+      const { gameDecisions, gameMask } = bracket
+      return new TournamentTree(rounds.length, gameDecisions, gameMask)
     } else {
       return null
     }

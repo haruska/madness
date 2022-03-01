@@ -4,7 +4,7 @@ import { Championship } from './Championship'
 import RoundsBanner from './RoundsBanner'
 import TieBreaker from './TieBreaker'
 import { AppContext } from 'AppContext'
-import { BracketData } from 'containers/Bracket'
+import { BasicBracket } from 'containers/Bracket'
 
 export const Tournament = ({
   bracket,
@@ -12,7 +12,7 @@ export const Tournament = ({
   editing,
   highlightEmpty,
 }: {
-  bracket?: BracketData
+  bracket?: BasicBracket
   onSlotClick?: () => void
   editing?: boolean
   highlightEmpty?: boolean

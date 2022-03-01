@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 
 import { Game } from './Game'
-import { BracketData } from 'containers/Bracket'
+import { BasicBracket } from 'containers/Bracket'
 
 export const Region = ({
   gameSlots,
@@ -17,7 +17,7 @@ export const Region = ({
   index: number
   region: string
   roundNumber: number
-  bracket?: BracketData
+  bracket?: BasicBracket
   onSlotClick?: (gameSlot: number, decision: number) => void
   highlightEmpty?: boolean
 }) => {

@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { Region } from './Region'
 import { Game } from './Game'
 import { AppContext, Tournament } from 'AppContext'
-import { BracketData } from 'containers/Bracket'
+import { BasicBracket } from 'containers/Bracket'
 
 export const Round = ({
   round,
@@ -14,7 +14,7 @@ export const Round = ({
   highlightEmpty,
 }: {
   round: Tournament['rounds'][0]
-  bracket?: BracketData
+  bracket?: BasicBracket
   onSlotClick?: () => void
   highlightEmpty?: boolean
 }) => {

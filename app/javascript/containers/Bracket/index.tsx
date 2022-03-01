@@ -6,12 +6,15 @@ import { Bracket_bracket$data } from 'RelayArtifacts/Bracket_bracket.graphql'
 
 export const COMPLETED_MASK = 18446744073709551614n
 
-export interface BracketData {
-  id: string
+export interface BasicBracket {
   name: string
   tieBreaker: number
   gameDecisions: bigint
   gameMask: bigint
+}
+
+export interface BracketData extends BasicBracket {
+  id: string
   user: Bracket_bracket$data['user']
 }
 
