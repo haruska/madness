@@ -4,7 +4,7 @@ import { AppContext } from '../AppContext'
 import Dialog from 'components/Dialog'
 import ErrorFlash from 'components/forms/ErrorFlash'
 import Label from 'components/forms/Label'
-import Tournament from 'components/Tournament'
+import { Tournament } from 'components/Tournament'
 
 import { UpdateBracketMutation } from 'mutations/UpdateBracketMutation'
 import { DeleteBracketMutation } from 'mutations/DeleteBracketMutation'

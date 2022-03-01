@@ -1,25 +1,21 @@
-import { MainLayout_viewer$data as Viewer } from 'RelayArtifacts/MainLayout_viewer.graphql'
 import TournamentTree from './TournamentTree'
 import GameNode from './GameNode'
-
-type Tournament = Viewer['tournament64']
+import { Team as ContextTeam } from 'AppContext'
 
 export default class Team {
-  tournament: Tournament
   tree: TournamentTree
   startingSlot: number
-  graphTeam: Tournament['teams'][0]
+  graphTeam: ContextTeam
   seed: number
   name: string
   firstGame: GameNode
 
-  constructor(tournament: Tournament, tree: TournamentTree, startingSlot: number) {
-    this.tournament = tournament
+  constructor(tree: TournamentTree, team: ContextTeam) {
     this.tree = tree
-    this.startingSlot = startingSlot
-    this.graphTeam = tournament.teams.find((t) => t.startingSlot === startingSlot)
-    this.seed = this.graphTeam.seed
-    this.name = this.graphTeam.name
+    this.graphTeam = team
+    this.startingSlot = team.startingSlot
+    this.seed = team.seed
+    this.name = team.name
 
     let gameIndex = (this.startingSlot % 2 === 0 ? this.startingSlot : this.startingSlot - 1) / 2
     this.firstGame = tree.gameNodes[gameIndex]

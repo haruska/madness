@@ -3,13 +3,20 @@ import { graphql, createFragmentContainer } from 'react-relay'
 import { Link } from 'found'
 
 import BestPossible from './BestPossibleSmall'
-import FinalFourTeam from 'components/FinalFourTeamSmall'
+import { FinalFourTeamSmall } from 'components/FinalFourTeamSmall'
+import { AppContext } from 'AppContext'
 
 export class SmallBracket extends Component {
+  static contextType = AppContext
+
   render() {
     const { bracket, showEliminated, index, viewer, tied } = this.props
+    const { tournament } = this.context
     const { currentUser } = viewer
-    const finalFourTeams = bracket.finalFour
+
+    const finalFourTeams = bracket.sortedFour.map((slot) =>
+      tournament.teams.find((team) => team.starting_slot === slot)
+    )
     const bracketName = showEliminated && bracket.eliminated ? `* ${bracket.name}` : bracket.name
     const bracketPath = `/brackets/${bracket.id}`
 
@@ -61,9 +68,7 @@ export default createFragmentContainer(SmallBracket, {
       user {
         id
       }
-      finalFour {
-        ...FinalFourTeamSmall_team
-      }
+      sortedFour
       ...BestPossibleSmall_bracket
     }
   `,

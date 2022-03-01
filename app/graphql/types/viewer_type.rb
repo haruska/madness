@@ -5,6 +5,7 @@ module Types
     field :policy, Types::ViewerPolicyType, null: false
     field :current_user, Types::UserType, null: false
     field :tournament_64, Types::TournamentType, null: false
+    field :teams, [Types::TeamType], null: false
     field :brackets, Types::BracketType.connection_type, null: false, max_page_size: nil
 
     def current_user
@@ -13,6 +14,10 @@ module Types
 
     def tournament_64
       Tournament.field_64
+    end
+
+    def teams
+      Team.order(:starting_slot).all
     end
 
     def brackets

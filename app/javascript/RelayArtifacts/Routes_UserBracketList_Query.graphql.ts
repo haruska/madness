@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<10dcd858cf55eacb95beb04f0d052be7>>
+ * @generated SignedSource<<b7ec8493aa09f5fbb87735a2aa2d4b82>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -27,13 +27,6 @@ var v0 = {
   "args": null,
   "kind": "ScalarField",
   "name": "id",
-  "storageKey": null
-},
-v1 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "name",
   "storageKey": null
 };
 return {
@@ -133,7 +126,13 @@ return {
                     ],
                     "storageKey": null
                   },
-                  (v1/*: any*/),
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "name",
+                    "storageKey": null
+                  },
                   {
                     "alias": null,
                     "args": null,
@@ -144,14 +143,8 @@ return {
                   {
                     "alias": null,
                     "args": null,
-                    "concreteType": "Team",
-                    "kind": "LinkedField",
-                    "name": "finalFour",
-                    "plural": true,
-                    "selections": [
-                      (v0/*: any*/),
-                      (v1/*: any*/)
-                    ],
+                    "kind": "ScalarField",
+                    "name": "sortedFour",
                     "storageKey": null
                   }
                 ],
@@ -166,12 +159,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "1dc41701d99fb26d6a4b803314380443",
+    "cacheID": "2b76f55c13ef08d91ad2d304d6d0b950",
     "id": null,
     "metadata": {},
     "name": "Routes_UserBracketList_Query",
     "operationKind": "query",
-    "text": "query Routes_UserBracketList_Query {\n  viewer {\n    ...UserBracketList_viewer\n    id\n  }\n}\n\nfragment FinalFourTeamSmall_team on Team {\n  id\n  name\n}\n\nfragment FinalFourTeam_team on Team {\n  id\n  name\n}\n\nfragment UserBracketList_viewer on Viewer {\n  id\n  tournament64 {\n    started\n    id\n  }\n  brackets {\n    nodes {\n      id\n      paid\n      user {\n        id\n      }\n      ...UserSmallBracket_bracket\n      ...UserBracketRow_bracket\n    }\n  }\n}\n\nfragment UserBracketRow_bracket on Bracket {\n  id\n  name\n  tieBreaker\n  paid\n  finalFour {\n    ...FinalFourTeam_team\n    id\n  }\n}\n\nfragment UserSmallBracket_bracket on Bracket {\n  id\n  name\n  tieBreaker\n  paid\n  finalFour {\n    ...FinalFourTeamSmall_team\n    id\n  }\n}\n"
+    "text": "query Routes_UserBracketList_Query {\n  viewer {\n    ...UserBracketList_viewer\n    id\n  }\n}\n\nfragment UserBracketList_viewer on Viewer {\n  id\n  tournament64 {\n    started\n    id\n  }\n  brackets {\n    nodes {\n      id\n      paid\n      user {\n        id\n      }\n      ...UserSmallBracket_bracket\n      ...UserBracketRow_bracket\n    }\n  }\n}\n\nfragment UserBracketRow_bracket on Bracket {\n  id\n  name\n  tieBreaker\n  paid\n  sortedFour\n}\n\nfragment UserSmallBracket_bracket on Bracket {\n  id\n  name\n  tieBreaker\n  paid\n  sortedFour\n}\n"
   }
 };
 })();

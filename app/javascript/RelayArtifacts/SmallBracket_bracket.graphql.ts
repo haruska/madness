@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<cf8d292b6d5f688d636ea1925bcca408>>
+ * @generated SignedSource<<5db1ec1c3e83b97dff5c03fb4a643b11>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -19,9 +19,7 @@ export type SmallBracket_bracket$data = {
   readonly user: {
     readonly id: string;
   };
-  readonly finalFour: ReadonlyArray<{
-    readonly " $fragmentSpreads": FragmentRefs<"FinalFourTeamSmall_team">;
-  }>;
+  readonly sortedFour: ReadonlyArray<number>;
   readonly " $fragmentSpreads": FragmentRefs<"BestPossibleSmall_bracket">;
   readonly " $fragmentType": "SmallBracket_bracket";
 };
@@ -88,17 +86,8 @@ return {
     {
       "alias": null,
       "args": null,
-      "concreteType": "Team",
-      "kind": "LinkedField",
-      "name": "finalFour",
-      "plural": true,
-      "selections": [
-        {
-          "args": null,
-          "kind": "FragmentSpread",
-          "name": "FinalFourTeamSmall_team"
-        }
-      ],
+      "kind": "ScalarField",
+      "name": "sortedFour",
       "storageKey": null
     },
     {
@@ -112,6 +101,6 @@ return {
 };
 })();
 
-(node as any).hash = "85b83f26ac12c4e8526a772f28ac019e";
+(node as any).hash = "3696cf485ab9531bd9f2f9663083ed58";
 
 export default node;

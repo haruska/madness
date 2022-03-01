@@ -81,6 +81,6 @@ if Team.count.zero?
   ]
 
   team_names.each_with_index do |name, i|
-    Team.create name:, starting_slot: i + 63
+    Team.create name:, starting_slot: i + 64
   end
 end

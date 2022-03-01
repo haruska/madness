@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Tournament from 'components/Tournament'
+import { Tournament } from 'components/Tournament'
 
 export default class Games extends Component {
   render() {

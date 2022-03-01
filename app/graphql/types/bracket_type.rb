@@ -7,17 +7,10 @@ module Types
     field :game_decisions, GraphQL::Types::BigInt, null: false
     field :tie_breaker, Int, null: false
     field :paid, Boolean, null: false
-    field :final_four, [Types::TeamType], null: false
+    field :sorted_four, [Int], null: false
     field :points, Int, null: false
     field :possible_points, Int, null: false
     field :eliminated, Boolean, null: false
     field :best_possible_finish, Int, null: true
-
-    def final_four
-      sorted_slots = object.sorted_four
-      teams = Team.where(starting_slot: object.sorted_four).to_a
-
-      sorted_slots.map { |slot| teams.find { |team| team.starting_slot == slot } }
-    end
   end
 end

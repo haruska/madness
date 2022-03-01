@@ -65,6 +65,11 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
+"@types/relay-runtime@^13.0.2":
+  version "13.0.2"
+  resolved "https://registry.yarnpkg.com/@types/relay-runtime/-/relay-runtime-13.0.2.tgz#2b672d60ccf7cdb065fbf79724f6b34dfa79d016"
+  integrity sha512-3K0ONsoDb4xfGhOUfXpFQKM4xziP/YZzpbWEb0LfEC4S7n5zAn/IfQq+PISfVaU6wvSalz56lv/q/JBELzJ0RQ==
+
 "@types/scheduler@*":
   version "0.16.2"
   resolved "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.2.tgz"

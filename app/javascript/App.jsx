@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import { Provider } from 'AppContext'
+import { AppContext } from 'AppContext'
 
 class App extends Component {
   render() {
     const { router, children } = this.props
     return (
       <div className="app-container">
-        <Provider value={{ router, setPageTitle: (title) => title }}>
+        <AppContext.Provider value={{ router, setPageTitle: (_title) => {} }}>
           <div className="app-content">{children}</div>
-        </Provider>
+        </AppContext.Provider>
       </div>
     )
   }

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a25732ddcb203a6cfb1c9c98f01867b4>>
+ * @generated SignedSource<<4df8f2eb1b2d80959a7ac4139423266a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -22,12 +22,13 @@ export type MainLayout_viewer$data = {
     readonly tipOff: any;
     readonly gameDecisions: string;
     readonly gameMask: string;
-    readonly teams: ReadonlyArray<{
-      readonly startingSlot: number;
-      readonly seed: number;
-      readonly name: string;
-    }>;
   };
+  readonly teams: ReadonlyArray<{
+    readonly id: string;
+    readonly startingSlot: number;
+    readonly seed: number;
+    readonly name: string;
+  }>;
   readonly " $fragmentSpreads": FragmentRefs<"Header_viewer">;
   readonly " $fragmentType": "MainLayout_viewer";
 };
@@ -118,33 +119,40 @@ return {
           "kind": "ScalarField",
           "name": "gameMask",
           "storageKey": null
+        }
+      ],
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "concreteType": "Team",
+      "kind": "LinkedField",
+      "name": "teams",
+      "plural": true,
+      "selections": [
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "id",
+          "storageKey": null
         },
         {
           "alias": null,
           "args": null,
-          "concreteType": "Team",
-          "kind": "LinkedField",
-          "name": "teams",
-          "plural": true,
-          "selections": [
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "startingSlot",
-              "storageKey": null
-            },
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "seed",
-              "storageKey": null
-            },
-            (v0/*: any*/)
-          ],
+          "kind": "ScalarField",
+          "name": "startingSlot",
           "storageKey": null
-        }
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "seed",
+          "storageKey": null
+        },
+        (v0/*: any*/)
       ],
       "storageKey": null
     },
@@ -159,6 +167,6 @@ return {
 };
 })();
 
-(node as any).hash = "2eb374dabdda0a32855a31b98ea69ead";
+(node as any).hash = "40f36f7ec1bad9dc76beba6cf4b0dd1a";
 
 export default node;

@@ -7,7 +7,6 @@ scalar BigInt
 type Bracket implements HasPolicy & Node {
   bestPossibleFinish: Int
   eliminated: Boolean!
-  finalFour: [Team!]!
   gameDecisions: BigInt!
 
   """
@@ -19,6 +18,7 @@ type Bracket implements HasPolicy & Node {
   points: Int!
   policy: NodePolicy!
   possiblePoints: Int!
+  sortedFour: [Int!]!
   tieBreaker: Int!
   user: User!
 }
@@ -313,6 +313,7 @@ type Viewer implements HasPolicy & Node {
   """
   id: ID!
   policy: ViewerPolicy!
+  teams: [Team!]!
   tournament64: Tournament!
 }
 

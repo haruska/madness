@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8d245063e9921810a74329aa75278514>>
+ * @generated SignedSource<<5217e98f2fe3470300f786314e694f0b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,9 +15,7 @@ export type UserSmallBracket_bracket$data = {
   readonly name: string;
   readonly tieBreaker: number;
   readonly paid: boolean;
-  readonly finalFour: ReadonlyArray<{
-    readonly " $fragmentSpreads": FragmentRefs<"FinalFourTeamSmall_team">;
-  }>;
+  readonly sortedFour: ReadonlyArray<number>;
   readonly " $fragmentType": "UserSmallBracket_bracket";
 };
 export type UserSmallBracket_bracket$key = {
@@ -62,17 +60,8 @@ const node: ReaderFragment = {
     {
       "alias": null,
       "args": null,
-      "concreteType": "Team",
-      "kind": "LinkedField",
-      "name": "finalFour",
-      "plural": true,
-      "selections": [
-        {
-          "args": null,
-          "kind": "FragmentSpread",
-          "name": "FinalFourTeamSmall_team"
-        }
-      ],
+      "kind": "ScalarField",
+      "name": "sortedFour",
       "storageKey": null
     }
   ],
@@ -80,6 +69,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "91140f6f457acba7b21a71f14e5235db";
+(node as any).hash = "b752bb3a49a2c28a315aa3c576661d16";
 
 export default node;

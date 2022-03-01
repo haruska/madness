@@ -4,8 +4,11 @@ import { Link } from 'found'
 
 import BestPossible from './BestPossible'
 import FinalFourTeam from 'components/FinalFourTeam'
+import { AppContext } from 'AppContext'
 
 export class BracketRow extends Component {
+  static contextType = AppContext
+
   truncatedBracketName = (maxSize) => {
     maxSize = maxSize || 25
     const bracketName = this.props.bracket.name
@@ -24,8 +27,12 @@ export class BracketRow extends Component {
 
   render() {
     const { bracket, index, showEliminated, viewer, tied } = this.props
+    const { tournament } = this.context
     const { currentUser } = viewer
-    const finalFourTeams = bracket.finalFour
+
+    const finalFourTeams = bracket.sortedFour.map((slot) =>
+      tournament.teams.find((team) => team.starting_slot === slot)
+    )
     const bracketPath = `/brackets/${bracket.id}`
 
     let place = `${index}.`
@@ -69,9 +76,7 @@ export default createFragmentContainer(BracketRow, {
       user {
         id
       }
-      finalFour {
-        ...FinalFourTeam_team
-      }
+      sortedFour
       ...BestPossible_bracket
     }
   `,

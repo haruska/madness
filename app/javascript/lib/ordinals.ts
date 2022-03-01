@@ -1,6 +1,6 @@
 // http://stackoverflow.com/questions/15998005/ordinals-in-words-javascript
-export function ordinalInWord(cardinal) {
-  let ordinals = [
+export function ordinalInWord(cardinal: number): string {
+  const ordinals = [
     'Zeroth',
     'First',
     'Second',

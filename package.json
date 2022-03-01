@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.178",
+    "@types/relay-runtime": "^13.0.2",
     "esbuild-plugin-relay": "^0.1.0",
     "prettier": "^2.5.1",
     "relay-compiler": "^13.1.1"
@@ -41,7 +42,6 @@
     "artifactDirectory": "./app/javascript/RelayArtifacts",
     "schema": "./schema.graphql",
     "language": "typescript",
-    "eagerEsModules": true,
     "customScalars": {
       "BigInt": "string"
     }

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<5ae6c8febb0aca75fd005ad0f4b0ddcc>>
+ * @generated SignedSource<<e8ee1455481622a058360a6bbc05db83>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -147,33 +147,6 @@ return {
                 "name": "gameMask",
                 "storageKey": null
               },
-              {
-                "alias": null,
-                "args": null,
-                "concreteType": "Team",
-                "kind": "LinkedField",
-                "name": "teams",
-                "plural": true,
-                "selections": [
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "startingSlot",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "seed",
-                    "storageKey": null
-                  },
-                  (v0/*: any*/),
-                  (v1/*: any*/)
-                ],
-                "storageKey": null
-              },
               (v1/*: any*/),
               {
                 "alias": null,
@@ -182,6 +155,33 @@ return {
                 "name": "started",
                 "storageKey": null
               }
+            ],
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "Team",
+            "kind": "LinkedField",
+            "name": "teams",
+            "plural": true,
+            "selections": [
+              (v1/*: any*/),
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "startingSlot",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "seed",
+                "storageKey": null
+              },
+              (v0/*: any*/)
             ],
             "storageKey": null
           },
@@ -211,12 +211,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "82ec93a4a122988b694e8a33698a4fd0",
+    "cacheID": "66f552d64557e6a991e415d8ab7e95bb",
     "id": null,
     "metadata": {},
     "name": "Routes_MainLayout_Query",
     "operationKind": "query",
-    "text": "query Routes_MainLayout_Query {\n  viewer {\n    ...MainLayout_viewer\n    id\n  }\n}\n\nfragment Header_viewer on Viewer {\n  ...Menu_viewer\n}\n\nfragment MainLayout_viewer on Viewer {\n  tournament64 {\n    rounds {\n      name\n      number\n      startDate\n      endDate\n      regions\n      id\n    }\n    tipOff\n    gameDecisions\n    gameMask\n    teams {\n      startingSlot\n      seed\n      name\n      id\n    }\n    id\n  }\n  ...Header_viewer\n}\n\nfragment Menu_viewer on Viewer {\n  currentUser {\n    admin\n    id\n  }\n  tournament64 {\n    started\n    id\n  }\n}\n"
+    "text": "query Routes_MainLayout_Query {\n  viewer {\n    ...MainLayout_viewer\n    id\n  }\n}\n\nfragment Header_viewer on Viewer {\n  ...Menu_viewer\n}\n\nfragment MainLayout_viewer on Viewer {\n  tournament64 {\n    rounds {\n      name\n      number\n      startDate\n      endDate\n      regions\n      id\n    }\n    tipOff\n    gameDecisions\n    gameMask\n    id\n  }\n  teams {\n    id\n    startingSlot\n    seed\n    name\n  }\n  ...Header_viewer\n}\n\nfragment Menu_viewer on Viewer {\n  currentUser {\n    admin\n    id\n  }\n  tournament64 {\n    started\n    id\n  }\n}\n"
   }
 };
 })();
