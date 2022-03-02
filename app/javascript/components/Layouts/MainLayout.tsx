@@ -1,10 +1,10 @@
 import React, { PropsWithChildren, useState } from 'react'
-import Header from './Header'
+import { Header } from './Header'
 import { AppContext } from 'AppContext'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { Router } from 'found'
 import { MainLayout_viewer$data } from 'RelayArtifacts/MainLayout_viewer.graphql'
-import TournamentTree from '../../objects/TournamentTree'
+import TournamentTree from 'objects/TournamentTree'
 
 export const DEFAULT_TITLE = 'Pool Madness'
 
@@ -17,7 +17,7 @@ const MainLayoutComponent = ({
   viewer: MainLayout_viewer$data
 }>) => {
   const [title, setTitle] = useState(DEFAULT_TITLE)
-  const { tournament64, teams } = viewer
+  const { tournament64, teams, currentUser } = viewer
 
   const tournament = {
     ...tournament64,
@@ -37,10 +37,11 @@ const MainLayoutComponent = ({
           tournament,
           tournamentTree,
           teams,
+          currentUser,
           setPageTitle: setPageTitle,
         }}
       >
-        <Header title={title} viewer={viewer} />
+        <Header title={title} />
         <section className="container" id="content">
           <div className="wrapper">{children}</div>
         </section>
@@ -72,7 +73,12 @@ export const MainLayout = createFragmentContainer(MainLayoutComponent, {
         seed
         name
       }
-      ...Header_viewer
+      currentUser {
+        id
+        name
+        email
+        admin
+      }
     }
   `,
 })

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<dae6bd4e1be8086dd2c4b0c946f73095>>
+ * @generated SignedSource<<245d41ca52201d0b1f17fa4b532fb0d4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -193,14 +193,22 @@ return {
             "name": "currentUser",
             "plural": false,
             "selections": [
+              (v1/*: any*/),
+              (v0/*: any*/),
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "email",
+                "storageKey": null
+              },
               {
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
                 "name": "admin",
                 "storageKey": null
-              },
-              (v1/*: any*/)
+              }
             ],
             "storageKey": null
           },
@@ -211,12 +219,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "aa47b43cdc9c17eed199314dc3a255db",
+    "cacheID": "f5ca659b9edd6f955f642ce3ae0292d2",
     "id": null,
     "metadata": {},
     "name": "Routes_MainLayout_Query",
     "operationKind": "query",
-    "text": "query Routes_MainLayout_Query {\n  viewer {\n    ...MainLayout_viewer\n    id\n  }\n}\n\nfragment Header_viewer on Viewer {\n  ...Menu_viewer\n}\n\nfragment MainLayout_viewer on Viewer {\n  tournament64 {\n    rounds {\n      name\n      number\n      startDate\n      endDate\n      regions\n      id\n    }\n    tipOff\n    gameDecisions\n    gameMask\n    started\n    id\n  }\n  teams {\n    id\n    startingSlot\n    seed\n    name\n  }\n  ...Header_viewer\n}\n\nfragment Menu_viewer on Viewer {\n  currentUser {\n    admin\n    id\n  }\n  tournament64 {\n    started\n    id\n  }\n}\n"
+    "text": "query Routes_MainLayout_Query {\n  viewer {\n    ...MainLayout_viewer\n    id\n  }\n}\n\nfragment MainLayout_viewer on Viewer {\n  tournament64 {\n    rounds {\n      name\n      number\n      startDate\n      endDate\n      regions\n      id\n    }\n    tipOff\n    gameDecisions\n    gameMask\n    started\n    id\n  }\n  teams {\n    id\n    startingSlot\n    seed\n    name\n  }\n  currentUser {\n    id\n    name\n    email\n    admin\n  }\n}\n"
   }
 };
 })();

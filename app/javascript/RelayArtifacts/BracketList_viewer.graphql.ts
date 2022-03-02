@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ea4b07a43b359cdb8aeede486c1adfb0>>
+ * @generated SignedSource<<d751f6f17a484186a51e69879c266f77>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -20,7 +20,6 @@ export type BracketList_viewer$data = {
     }>;
     readonly totalCount: number;
   };
-  readonly " $fragmentSpreads": FragmentRefs<"BracketRow_viewer" | "SmallBracket_viewer">;
   readonly " $fragmentType": "BracketList_viewer";
 };
 export type BracketList_viewer$key = {
@@ -93,22 +92,12 @@ const node: ReaderFragment = {
         }
       ],
       "storageKey": null
-    },
-    {
-      "args": null,
-      "kind": "FragmentSpread",
-      "name": "BracketRow_viewer"
-    },
-    {
-      "args": null,
-      "kind": "FragmentSpread",
-      "name": "SmallBracket_viewer"
     }
   ],
   "type": "Viewer",
   "abstractKey": null
 };
 
-(node as any).hash = "485afc248a2a2c65e0c8f97db3cff07b";
+(node as any).hash = "320193ed659e0c5ad50a40e1d79b01eb";
 
 export default node;

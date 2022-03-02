@@ -20,11 +20,13 @@ export const AppContext: Context<{
   tournament: Tournament
   tournamentTree: TournamentTree
   teams: Teams
+  currentUser: MainLayout_viewer$data['currentUser']
   setPageTitle: (title: string) => void
 }> = React.createContext({
   router: null,
   tournament: null,
   tournamentTree: null,
   teams: [],
+  currentUser: null,
   setPageTitle: (title: string) => title,
 })

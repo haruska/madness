@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<55be62efe6bc0f603758b73e52a4b7b8>>
+ * @generated SignedSource<<6956f783eecdef3c34cc86efdac4dcb7>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -28,10 +28,7 @@ var v0 = {
   "kind": "ScalarField",
   "name": "id",
   "storageKey": null
-},
-v1 = [
-  (v0/*: any*/)
-];
+};
 return {
   "fragment": {
     "argumentDefinitions": [],
@@ -125,7 +122,9 @@ return {
                     "kind": "LinkedField",
                     "name": "user",
                     "plural": false,
-                    "selections": (v1/*: any*/),
+                    "selections": [
+                      (v0/*: any*/)
+                    ],
                     "storageKey": null
                   },
                   {
@@ -155,16 +154,6 @@ return {
             ],
             "storageKey": null
           },
-          {
-            "alias": null,
-            "args": null,
-            "concreteType": "User",
-            "kind": "LinkedField",
-            "name": "currentUser",
-            "plural": false,
-            "selections": (v1/*: any*/),
-            "storageKey": null
-          },
           (v0/*: any*/)
         ],
         "storageKey": null
@@ -172,12 +161,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "eb8bc51818e0f3268b984fac5a4f8774",
+    "cacheID": "a62a2c0e56f714a5947e88fa20725a8b",
     "id": null,
     "metadata": {},
     "name": "Routes_BracketList_Query",
     "operationKind": "query",
-    "text": "query Routes_BracketList_Query {\n  viewer {\n    ...BracketList_viewer\n    id\n  }\n}\n\nfragment BestPossibleSmall_bracket on Bracket {\n  bestPossibleFinish\n  eliminated\n}\n\nfragment BestPossible_bracket on Bracket {\n  bestPossibleFinish\n}\n\nfragment BracketList_viewer on Viewer {\n  brackets {\n    nodes {\n      id\n      points\n      possiblePoints\n      ...BracketRow_bracket\n      ...SmallBracket_bracket\n    }\n    totalCount\n  }\n  ...BracketRow_viewer\n  ...SmallBracket_viewer\n}\n\nfragment BracketRow_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  sortedFour\n  ...BestPossible_bracket\n}\n\nfragment BracketRow_viewer on Viewer {\n  currentUser {\n    id\n  }\n}\n\nfragment SmallBracket_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  sortedFour\n  ...BestPossibleSmall_bracket\n}\n\nfragment SmallBracket_viewer on Viewer {\n  currentUser {\n    id\n  }\n}\n"
+    "text": "query Routes_BracketList_Query {\n  viewer {\n    ...BracketList_viewer\n    id\n  }\n}\n\nfragment BestPossibleSmall_bracket on Bracket {\n  bestPossibleFinish\n  eliminated\n}\n\nfragment BestPossible_bracket on Bracket {\n  bestPossibleFinish\n}\n\nfragment BracketList_viewer on Viewer {\n  brackets {\n    nodes {\n      id\n      points\n      possiblePoints\n      ...BracketRow_bracket\n      ...SmallBracket_bracket\n    }\n    totalCount\n  }\n}\n\nfragment BracketRow_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  sortedFour\n  ...BestPossible_bracket\n}\n\nfragment SmallBracket_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  sortedFour\n  ...BestPossibleSmall_bracket\n}\n"
   }
 };
 })();

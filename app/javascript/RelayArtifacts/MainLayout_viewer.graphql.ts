@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c82e0ae7f38cdb3a3b69f07e25d723de>>
+ * @generated SignedSource<<f7936debff75930a6f9f00a2684a6b33>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -30,7 +30,12 @@ export type MainLayout_viewer$data = {
     readonly seed: number;
     readonly name: string;
   }>;
-  readonly " $fragmentSpreads": FragmentRefs<"Header_viewer">;
+  readonly currentUser: {
+    readonly id: string;
+    readonly name: string;
+    readonly email: string | null;
+    readonly admin: boolean;
+  };
   readonly " $fragmentType": "MainLayout_viewer";
 };
 export type MainLayout_viewer$key = {
@@ -44,6 +49,13 @@ var v0 = {
   "args": null,
   "kind": "ScalarField",
   "name": "name",
+  "storageKey": null
+},
+v1 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
   "storageKey": null
 };
 return {
@@ -139,13 +151,7 @@ return {
       "name": "teams",
       "plural": true,
       "selections": [
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "id",
-          "storageKey": null
-        },
+        (v1/*: any*/),
         {
           "alias": null,
           "args": null,
@@ -165,9 +171,31 @@ return {
       "storageKey": null
     },
     {
+      "alias": null,
       "args": null,
-      "kind": "FragmentSpread",
-      "name": "Header_viewer"
+      "concreteType": "User",
+      "kind": "LinkedField",
+      "name": "currentUser",
+      "plural": false,
+      "selections": [
+        (v1/*: any*/),
+        (v0/*: any*/),
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "email",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "admin",
+          "storageKey": null
+        }
+      ],
+      "storageKey": null
     }
   ],
   "type": "Viewer",
@@ -175,6 +203,6 @@ return {
 };
 })();
 
-(node as any).hash = "c06130792fde9dd24392bb2935eedfa5";
+(node as any).hash = "d1e8a4402cada4bf07366f9f30868c06";
 
 export default node;
