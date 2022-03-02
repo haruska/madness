@@ -24,6 +24,7 @@ const Component = ({ bracket }: { bracket: EditBracket_bracket$data }) => {
   const [showDeletionDialog, setShowDeletionDialog] = useState(false)
 
   const policy = bracket.policy
+  const coercedTiebreaker = tieBreaker === '' ? 0 : tieBreaker
 
   useEffect(() => {
     setPageTitle('Editing Bracket')
@@ -74,9 +75,14 @@ const Component = ({ bracket }: { bracket: EditBracket_bracket$data }) => {
 
   const handleDone = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const bracketId = bracket.id
+
     UpdateBracketMutation.commit(
-      { bracketId, name, tieBreaker, gameDecisions },
+      {
+        bracketId: bracket.id,
+        name,
+        tieBreaker: coercedTiebreaker,
+        gameDecisions: gameDecisions.toString(),
+      },
       handleUpdateCompleted
     )
   }

@@ -21,6 +21,16 @@ export const NewBracket = () => {
   const [errors, setErrors] = useState<MutationErrors>(null)
   const [showDiscardDialog, setShowDiscardDialog] = useState(false)
 
+  const [gameDecisions, gameMask] = gameDecisionsMask
+  const coercedTiebreaker = tieBreaker === '' ? 0 : tieBreaker
+
+  const bracket: BasicBracket = {
+    name,
+    tieBreaker: coercedTiebreaker,
+    gameDecisions,
+    gameMask,
+  }
+
   useEffect(() => {
     setPageTitle('New Bracket')
     return () => {
@@ -66,12 +76,12 @@ export const NewBracket = () => {
 
   const commitMutation = () => {
     CreateBracketMutation.commit(
-      { name, tieBreaker, gameDecisions: gameDecisionsMask[0] },
+      { name, tieBreaker: coercedTiebreaker, gameDecisions: gameDecisions.toString() },
       handleCreateCompleted
     )
   }
 
-  const isFilledIn = () => gameDecisionsMask[1] === COMPLETED_MASK
+  const isFilledIn = () => gameMask === COMPLETED_MASK
 
   const highlightMissingPicks = () => {
     //seems this is automatic?
@@ -100,16 +110,6 @@ export const NewBracket = () => {
   const handleConfirmDiscard = () => {
     setShowDiscardDialog(false)
     router.push(`/`)
-  }
-
-  const [gameDecisions, gameMask] = gameDecisionsMask
-  const coercedTiebreaker = tieBreaker === '' ? 0 : tieBreaker
-
-  const bracket: BasicBracket = {
-    name,
-    tieBreaker: coercedTiebreaker,
-    gameDecisions,
-    gameMask,
   }
 
   return (

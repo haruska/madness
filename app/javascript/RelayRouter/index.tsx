@@ -6,7 +6,7 @@ import { Resolver } from 'found-relay'
 import Routes from './Routes'
 import { currentRelay } from 'lib/currentRelay'
 
-import NotFound from 'containers/NotFound'
+import { NotFound } from 'containers/NotFound'
 
 const FarceRouter = createFarceRouter({
   historyProtocol: new BrowserProtocol(),

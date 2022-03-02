@@ -4,14 +4,12 @@ import { graphql } from 'react-relay'
 import { MainLayout } from 'components/Layouts/MainLayout'
 import { App } from 'App'
 import { Home } from 'containers/Home'
-// import Possibilities from '../containers/Possibilities'
 import { BracketList } from 'containers/BracketList'
 import { UserBracketList } from 'containers/UserBracketList'
-import Bracket from 'containers/Bracket'
+import { Bracket } from 'containers/Bracket'
 import { EditBracket } from 'containers/EditBracket'
 import { NewBracket } from 'containers/NewBracket'
-import Games from 'containers/Games'
-// import RulesAndScoring from '../containers/RulesAndScoring'
+import { Games } from 'containers/Games'
 
 const MainLayoutQuery = graphql`
   query Routes_MainLayout_Query {

@@ -1,5 +1,11 @@
 import { graphql, commitMutation } from 'react-relay'
 import { currentRelay } from 'lib/currentRelay'
+import {
+  UpdateBracketInput,
+  UpdateBracketMutation as UpdateBracketMutationType,
+  UpdateBracketMutation$data,
+} from 'RelayArtifacts/UpdateBracketMutation.graphql'
+import { PayloadError } from 'relay-runtime'
 
 const mutation = graphql`
   mutation UpdateBracketMutation($input: UpdateBracketInput!) {
@@ -18,8 +24,11 @@ const mutation = graphql`
   }
 `
 
-function commit({ name, tieBreaker, gameDecisions, bracketId }, onCompleted) {
-  return commitMutation(currentRelay, {
+function commit(
+  { name, tieBreaker, gameDecisions, bracketId }: UpdateBracketInput,
+  onCompleted: (response: UpdateBracketMutation$data, errors: readonly PayloadError[]) => void
+) {
+  return commitMutation<UpdateBracketMutationType>(currentRelay, {
     mutation,
     onCompleted,
     variables: { input: { name, tieBreaker, gameDecisions: gameDecisions.toString(), bracketId } },
@@ -29,7 +38,7 @@ function commit({ name, tieBreaker, gameDecisions, bracketId }, onCompleted) {
           id: bracketId,
           name,
           tieBreaker,
-          gameDecisions: gameDecisions.toString(),
+          gameDecisions,
         },
         errors: [],
       },
@@ -38,4 +47,3 @@ function commit({ name, tieBreaker, gameDecisions, bracketId }, onCompleted) {
 }
 
 export const UpdateBracketMutation = { commit }
-export default { commit }
