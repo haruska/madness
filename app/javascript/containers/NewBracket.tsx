@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { AppContext } from 'AppContext'
-import Dialog from 'components/Dialog'
+import { Dialog } from 'components/Dialog'
 import { ErrorFlash } from 'components/forms/ErrorFlash'
 import { Label } from 'components/forms/Label'
 import { Tournament } from 'components/Tournament'
@@ -115,7 +115,6 @@ export const NewBracket = () => {
   return (
     <div className="new-bracket-container">
       <Dialog
-        className="deletion"
         isOpen={showDiscardDialog}
         message="You will lose your changes. Are you sure you want to proceed?"
         onConfirm={handleConfirmDiscard}

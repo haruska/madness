@@ -3,12 +3,12 @@ import { MutationErrors } from 'containers/NewBracket'
 
 export const ErrorFlash = ({
   errors,
-  message,
-  objectType,
+  message = 'There was an issue. See below.',
+  objectType = 'Below',
 }: {
   errors?: MutationErrors
   message?: string
-  objectType: string
+  objectType?: string
 }) => {
   const [visible, setVisible] = useState(true)
 

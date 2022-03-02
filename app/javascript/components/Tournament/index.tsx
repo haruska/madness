@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { Round } from './Round'
 import { Championship } from './Championship'
-import RoundsBanner from './RoundsBanner'
-import TieBreaker from './TieBreaker'
+import { RoundsBanner } from './RoundsBanner'
+import { TieBreaker } from './TieBreaker'
 import { AppContext } from 'AppContext'
 import { BasicBracket } from 'containers/Bracket'
 
@@ -26,7 +26,7 @@ export const Tournament = ({
     <div className="tournament-component">
       <div className="field-64">
         <div className="tournament-heading">
-          <RoundsBanner rounds={rounds} />
+          <RoundsBanner />
         </div>
         <div className="tournament-body">
           {rounds.map((r) => (

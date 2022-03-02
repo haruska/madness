@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
 import { AppContext } from 'AppContext'
-import UserTableHeader from './UserTableHeader'
+import { UserTableHeader } from './UserTableHeader'
 import { UserBracketRow } from './UserBracketRow'
 import { UserSmallBracket } from './UserSmallBracket'
 import { NewBracketButton } from './NewBracketButton'

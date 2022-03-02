@@ -1,7 +1,7 @@
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { Tournament } from 'components/Tournament'
-import BracketActions from './BracketActions'
+import { BracketActions } from './BracketActions'
 import { Bracket_bracket$data } from 'RelayArtifacts/Bracket_bracket.graphql'
 
 export const COMPLETED_MASK = 18446744073709551614n

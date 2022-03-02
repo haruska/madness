@@ -3,7 +3,7 @@ import { createFragmentContainer, graphql } from 'react-relay'
 
 import { Link } from 'found'
 
-import BracketStatus from './BracketStatus'
+import { BracketStatus } from './BracketStatus'
 import { FinalFourTeamSmall } from 'components/FinalFourTeamSmall'
 import { AppContext } from 'AppContext'
 import { UserSmallBracket_bracket$data } from 'RelayArtifacts/UserSmallBracket_bracket.graphql'

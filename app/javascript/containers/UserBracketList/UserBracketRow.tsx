@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { Link } from 'found'
 
-import BracketStatus from './BracketStatus'
-import FinalFourTeam from 'components/FinalFourTeam'
+import { BracketStatus } from './BracketStatus'
+import { FinalFourTeam } from 'components/FinalFourTeam'
 import { AppContext } from 'AppContext'
 import { UserBracketRow_bracket$data } from 'RelayArtifacts/UserBracketRow_bracket.graphql'
 
@@ -21,7 +21,7 @@ const Component = ({ bracket }: { bracket: UserBracketRow_bracket$data }) => {
         <Link to={bracketPath}>{bracket.name}</Link>
       </td>
       {finalFourTeams.map((team, i) => (
-        <FinalFourTeam key={i} team={team} place={i} />
+        <FinalFourTeam key={i} team={team} />
       ))}
       <td>{bracket.tieBreaker}</td>
       <td>

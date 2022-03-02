@@ -3,7 +3,7 @@ import { graphql, createFragmentContainer } from 'react-relay'
 import { Link } from 'found'
 
 import BestPossible from './BestPossible'
-import FinalFourTeam from 'components/FinalFourTeam'
+import { FinalFourTeam } from 'components/FinalFourTeam'
 import { AppContext } from 'AppContext'
 import { BracketRow_bracket$data } from 'RelayArtifacts/BracketRow_bracket.graphql'
 

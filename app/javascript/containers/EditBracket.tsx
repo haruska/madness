@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent, useContext, useEffect, useState } from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
 import { AppContext } from 'AppContext'
-import Dialog from 'components/Dialog'
+import { Dialog } from 'components/Dialog'
 import { ErrorFlash } from 'components/forms/ErrorFlash'
 import { Label } from 'components/forms/Label'
 import { Tournament } from 'components/Tournament'
@@ -84,7 +84,6 @@ const Component = ({ bracket }: { bracket: EditBracket_bracket$data }) => {
   return (
     <div className="edit-bracket-container">
       <Dialog
-        className="deletion"
         isOpen={showDeletionDialog}
         message="This will delete this bracket. Are you sure you want to proceed?"
         onConfirm={() => {

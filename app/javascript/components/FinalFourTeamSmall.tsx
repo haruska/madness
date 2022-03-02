@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Team } from 'AppContext'
 
 export const FinalFourTeamSmall = ({ team }: { team: Team }) => (
