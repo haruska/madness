@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
 import { Link } from 'found'
 
-import BestPossible from './BestPossibleSmall'
+import { BestPossibleSmall } from './BestPossibleSmall'
 import { FinalFourTeamSmall } from 'components/FinalFourTeamSmall'
 import { AppContext } from 'AppContext'
 import { SmallBracket_bracket$data } from 'RelayArtifacts/SmallBracket_bracket.graphql'
@@ -48,7 +48,7 @@ const Component = ({
                 <div className="total-points">{bracket.points}</div>
                 <div className="possible-points">{bracket.possiblePoints}</div>
               </div>
-              <BestPossible bracket={bracket} showEliminated={showEliminated} />
+              <BestPossibleSmall bracket={bracket} showEliminated={showEliminated} />
               <div className="final-four-teams">
                 {finalFourTeams.map((team, i) => (
                   <FinalFourTeamSmall key={i} team={team} />
