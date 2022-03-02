@@ -1,4 +1,5 @@
 import React from 'react'
+import { MutationErrors } from 'containers/NewBracket'
 
 const styles = {
   inputError: {
@@ -6,8 +7,7 @@ const styles = {
   },
 }
 
-function InputError(props) {
-  let { attr, errors } = props
+export const InputError = ({ attr, errors }: { attr: string; errors: MutationErrors }) => {
   if (errors) {
     let attrError = errors.find((e) => e.path[0] === attr)
     if (attrError) {
@@ -17,5 +17,3 @@ function InputError(props) {
 
   return null
 }
-
-export default InputError

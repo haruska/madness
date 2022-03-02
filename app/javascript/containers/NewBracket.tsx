@@ -2,7 +2,7 @@ import React, { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { AppContext } from 'AppContext'
 import Dialog from 'components/Dialog'
 import { ErrorFlash } from 'components/forms/ErrorFlash'
-import Label from 'components/forms/Label'
+import { Label } from 'components/forms/Label'
 import { Tournament } from 'components/Tournament'
 
 import { CreateBracketMutation } from 'mutations/CreateBracketMutation'
