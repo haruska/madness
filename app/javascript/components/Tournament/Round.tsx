@@ -15,16 +15,11 @@ export const Round = ({
 }: {
   round: Tournament['rounds'][0]
   bracket?: BasicBracket
-  onSlotClick?: () => void
+  onSlotClick?: (slotId: number, choice: number) => void
   highlightEmpty?: boolean
 }) => {
-  const { tournament } = useContext(AppContext)
-
   const gameSlots = () => {
-    const depthFor =
-      range(1, tournament.rounds.length + 1)
-        .reverse()
-        .indexOf(round.number) + 1
+    const depthFor = range(1, 7).reverse().indexOf(round.number) + 1
     if (depthFor === 0) {
       return [1]
     } else {

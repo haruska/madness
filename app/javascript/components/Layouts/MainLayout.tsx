@@ -4,6 +4,7 @@ import { AppContext } from 'AppContext'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { Router } from 'found'
 import { MainLayout_viewer$data } from 'RelayArtifacts/MainLayout_viewer.graphql'
+import TournamentTree from '../../objects/TournamentTree'
 
 export const DEFAULT_TITLE = 'Pool Madness'
 
@@ -24,6 +25,8 @@ const MainLayoutComponent = ({
     gameMask: BigInt(tournament64.gameMask),
   }
 
+  const tournamentTree = new TournamentTree(tournament.gameDecisions, tournament.gameMask)
+
   const setPageTitle = (title: string) => setTitle(title || DEFAULT_TITLE)
 
   return (
@@ -32,6 +35,7 @@ const MainLayoutComponent = ({
         value={{
           router,
           tournament,
+          tournamentTree,
           teams,
           setPageTitle: setPageTitle,
         }}
@@ -60,6 +64,7 @@ export const MainLayout = createFragmentContainer(MainLayoutComponent, {
         tipOff
         gameDecisions
         gameMask
+        started
       }
       teams {
         id

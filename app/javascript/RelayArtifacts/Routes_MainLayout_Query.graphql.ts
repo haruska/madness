@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e8ee1455481622a058360a6bbc05db83>>
+ * @generated SignedSource<<dae6bd4e1be8086dd2c4b0c946f73095>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -147,14 +147,14 @@ return {
                 "name": "gameMask",
                 "storageKey": null
               },
-              (v1/*: any*/),
               {
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
                 "name": "started",
                 "storageKey": null
-              }
+              },
+              (v1/*: any*/)
             ],
             "storageKey": null
           },
@@ -211,12 +211,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "66f552d64557e6a991e415d8ab7e95bb",
+    "cacheID": "aa47b43cdc9c17eed199314dc3a255db",
     "id": null,
     "metadata": {},
     "name": "Routes_MainLayout_Query",
     "operationKind": "query",
-    "text": "query Routes_MainLayout_Query {\n  viewer {\n    ...MainLayout_viewer\n    id\n  }\n}\n\nfragment Header_viewer on Viewer {\n  ...Menu_viewer\n}\n\nfragment MainLayout_viewer on Viewer {\n  tournament64 {\n    rounds {\n      name\n      number\n      startDate\n      endDate\n      regions\n      id\n    }\n    tipOff\n    gameDecisions\n    gameMask\n    id\n  }\n  teams {\n    id\n    startingSlot\n    seed\n    name\n  }\n  ...Header_viewer\n}\n\nfragment Menu_viewer on Viewer {\n  currentUser {\n    admin\n    id\n  }\n  tournament64 {\n    started\n    id\n  }\n}\n"
+    "text": "query Routes_MainLayout_Query {\n  viewer {\n    ...MainLayout_viewer\n    id\n  }\n}\n\nfragment Header_viewer on Viewer {\n  ...Menu_viewer\n}\n\nfragment MainLayout_viewer on Viewer {\n  tournament64 {\n    rounds {\n      name\n      number\n      startDate\n      endDate\n      regions\n      id\n    }\n    tipOff\n    gameDecisions\n    gameMask\n    started\n    id\n  }\n  teams {\n    id\n    startingSlot\n    seed\n    name\n  }\n  ...Header_viewer\n}\n\nfragment Menu_viewer on Viewer {\n  currentUser {\n    admin\n    id\n  }\n  tournament64 {\n    started\n    id\n  }\n}\n"
   }
 };
 })();

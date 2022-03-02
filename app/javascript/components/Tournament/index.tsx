@@ -13,19 +13,18 @@ export const Tournament = ({
   highlightEmpty,
 }: {
   bracket?: BasicBracket
-  onSlotClick?: () => void
+  onSlotClick?: (slotId: number, choice: number) => void
   editing?: boolean
   highlightEmpty?: boolean
 }) => {
   const { tournament } = useContext(AppContext)
 
   const { rounds } = tournament
-  const fieldClass = rounds.length >= 6 ? 'field-64' : 'sweet-16'
   const tieBreaker = bracket ? bracket.tieBreaker : null
 
   return (
     <div className="tournament-component">
-      <div className={fieldClass}>
+      <div className="field-64">
         <div className="tournament-heading">
           <RoundsBanner rounds={rounds} />
         </div>

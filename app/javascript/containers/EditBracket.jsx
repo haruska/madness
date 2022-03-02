@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
 import { AppContext } from '../AppContext'
 import Dialog from 'components/Dialog'
-import ErrorFlash from 'components/forms/ErrorFlash'
+import { ErrorFlash } from 'components/forms/ErrorFlash'
 import Label from 'components/forms/Label'
 import { Tournament } from 'components/Tournament'
 
@@ -136,7 +136,7 @@ class EditBracket extends Component {
         <h2>Editing Bracket</h2>
         <Tournament bracket={bracket} onSlotClick={this.handleSlotClick} editing={true} />
         <form className="edit-bracket-form" onSubmit={this.handleDone}>
-          <ErrorFlash errors={errors} objectType={'Bracket'} />
+          {errors ? <ErrorFlash errors={errors} objectType={'Bracket'} /> : null}
           <Label attr="name" text="Bracket Name" errors={errors} />
           <input
             id="name"

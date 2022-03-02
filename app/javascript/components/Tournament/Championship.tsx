@@ -2,9 +2,8 @@ import React, { useContext } from 'react'
 import classNames from 'classnames'
 
 import TournamentTree from 'objects/TournamentTree'
-import Team from 'objects/Team'
 import { BasicBracket } from 'containers/Bracket'
-import { AppContext } from 'AppContext'
+import { AppContext, Team } from 'AppContext'
 
 export const Championship = ({
   bracket,
@@ -13,46 +12,26 @@ export const Championship = ({
   bracket?: BasicBracket
   highlightEmpty: boolean
 }) => {
-  const { tournament, teams } = useContext(AppContext)
+  const { tournament, tournamentTree, teams } = useContext(AppContext)
 
-  const tournamentTree = () => {
-    const { rounds, gameDecisions, gameMask } = tournament
-    return new TournamentTree(rounds.length, gameDecisions, gameMask)
-  }
-
-  const bracketTree = () => {
+  const genBracketTree = () => {
     if (bracket) {
-      const { rounds } = tournament
       const { gameDecisions, gameMask } = bracket
-      return new TournamentTree(rounds.length, gameDecisions, gameMask)
+      return new TournamentTree(gameDecisions, gameMask)
     } else {
       return null
     }
   }
 
-  const game = () => {
-    return tournamentTree().gameNodes[1]
-  }
+  const bracketTree = genBracketTree()
+  const game = tournamentTree.gameNodes[1]
+  const pick = bracketTree.gameNodes[1]
 
-  const pick = () => {
-    const brTree = bracketTree()
-    return brTree ? brTree.gameNodes[1] : null
-  }
-
-  const teamByStartingSlot = (slot?: number) => {
-    if (slot) {
-      return new Team(
-        tournamentTree(),
-        teams.find((team) => team.startingSlot === slot)
-      )
-    }
-    return null
-  }
+  const teamByStartingSlot = (slot?: number): Team | null =>
+    teams.find((team) => team.startingSlot === slot)
 
   const championName = () => {
-    const startingSlot = pick()
-      ? pick().winningTeamStartingSlot()
-      : game().winningTeamStartingSlot()
+    const startingSlot = pick ? pick.winningTeamStartingSlot() : game.winningTeamStartingSlot()
     if (startingSlot) {
       return teamByStartingSlot(startingSlot).name
     }
@@ -60,13 +39,11 @@ export const Championship = ({
 
   const pickLabel = () => {
     let pickClass = ''
-    const theGame = game()
-    const thePick = pick()
 
-    if (theGame && thePick) {
-      const team = teamByStartingSlot(thePick.winningTeamStartingSlot())
-      const gameTeam = teamByStartingSlot(theGame.winningTeamStartingSlot())
-      if (team && (!team.stillPlaying() || gameTeam)) {
+    if (game && pick) {
+      const team = teamByStartingSlot(pick.winningTeamStartingSlot())
+      const gameTeam = teamByStartingSlot(game.winningTeamStartingSlot())
+      if (team && (!tournamentTree.stillPlaying(team) || gameTeam)) {
         if (gameTeam && team.name === gameTeam.name) {
           pickClass = 'correct-pick'
         } else {

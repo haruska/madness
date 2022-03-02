@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f3b0e99f15678c04aae056814ea374e8>>
+ * @generated SignedSource<<c15157fef0cea3811c9edfede0d5943d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,9 +12,6 @@ import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type UserBracketList_viewer$data = {
   readonly id: string;
-  readonly tournament64: {
-    readonly started: boolean;
-  };
   readonly brackets: {
     readonly nodes: ReadonlyArray<{
       readonly id: string;
@@ -47,24 +44,6 @@ return {
   "name": "UserBracketList_viewer",
   "selections": [
     (v0/*: any*/),
-    {
-      "alias": null,
-      "args": null,
-      "concreteType": "Tournament",
-      "kind": "LinkedField",
-      "name": "tournament64",
-      "plural": false,
-      "selections": [
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "started",
-          "storageKey": null
-        }
-      ],
-      "storageKey": null
-    },
     {
       "alias": null,
       "args": null,
@@ -123,6 +102,6 @@ return {
 };
 })();
 
-(node as any).hash = "526d503d4d3ffa20960fa92b46811cb8";
+(node as any).hash = "ac044655b859d3228fd44859ea9e6da3";
 
 export default node;

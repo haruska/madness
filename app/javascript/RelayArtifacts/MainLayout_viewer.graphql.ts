@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<4df8f2eb1b2d80959a7ac4139423266a>>
+ * @generated SignedSource<<c82e0ae7f38cdb3a3b69f07e25d723de>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -22,6 +22,7 @@ export type MainLayout_viewer$data = {
     readonly tipOff: any;
     readonly gameDecisions: string;
     readonly gameMask: string;
+    readonly started: boolean;
   };
   readonly teams: ReadonlyArray<{
     readonly id: string;
@@ -119,6 +120,13 @@ return {
           "kind": "ScalarField",
           "name": "gameMask",
           "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "started",
+          "storageKey": null
         }
       ],
       "storageKey": null
@@ -167,6 +175,6 @@ return {
 };
 })();
 
-(node as any).hash = "40f36f7ec1bad9dc76beba6cf4b0dd1a";
+(node as any).hash = "c06130792fde9dd24392bb2935eedfa5";
 
 export default node;

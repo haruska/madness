@@ -1,10 +1,10 @@
-import React, { Component, useContext } from 'react'
+import React, { useContext } from 'react'
 import classNames from 'classnames'
 
 import TournamentTree from 'objects/TournamentTree'
-import Team from 'objects/Team'
-import { AppContext } from '../../AppContext'
+import { AppContext, Team } from 'AppContext'
 import { BasicBracket } from 'containers/Bracket'
+import GameNode from '../../objects/GameNode'
 
 const GameSlot = ({
   gameSlot,
@@ -52,49 +52,38 @@ export const Game = ({
   highlightEmpty,
   onSlotClick,
 }: {
-  bracket: BasicBracket
+  bracket?: BasicBracket
   index: number
   slot: number
   regionIndex?: number
   roundNumber: number
-  highlightEmpty: boolean
-  onSlotClick: (gameSlot: number, decision: number) => void
+  highlightEmpty?: boolean
+  onSlotClick?: (gameSlot: number, decision: number) => void
 }) => {
-  const { tournament, teams } = useContext(AppContext)
+  const { tournamentTree, teams } = useContext(AppContext)
 
-  const tournamentTree = () => {
-    const { rounds, gameDecisions, gameMask } = tournament
-    return new TournamentTree(rounds.length, gameDecisions, gameMask)
-  }
-
-  const bracketTree = () => {
+  const genBracketTree = () => {
     if (bracket) {
-      const { rounds } = tournament
       const { gameDecisions, gameMask } = bracket
-      return new TournamentTree(rounds.length, gameDecisions, gameMask)
+      return new TournamentTree(gameDecisions, gameMask)
     } else {
       return null
     }
   }
 
-  const teamByStartingSlot = (slot?: number) => {
-    if (slot) {
-      return new Team(
-        tournamentTree(),
-        teams.find((team) => team.startingSlot === slot)
-      )
-    }
-    return null
-  }
+  const bracketTree = genBracketTree()
 
-  const renderTeam = (game, pick, slot) => {
-    let team = null
+  const teamByStartingSlot = (slot?: number): Team | null =>
+    teams.find((team) => team.startingSlot === slot)
+
+  const renderTeam = (game: GameNode, pick: GameNode | null, slot: number) => {
+    let team: Team
     let pickClass = ''
     if (slot === 1) {
       if (pick) {
         team = teamByStartingSlot(pick.firstTeamStartingSlot())
         const gameTeam = teamByStartingSlot(game.firstTeamStartingSlot())
-        if (team && (!team.stillPlaying() || gameTeam) && !game.isRoundOne()) {
+        if (team && (!tournamentTree.stillPlaying(team) || gameTeam) && !game.isRoundOne()) {
           if (gameTeam && team.name === gameTeam.name) {
             pickClass = 'correct-pick'
           } else {
@@ -109,7 +98,7 @@ export const Game = ({
       if (pick) {
         team = teamByStartingSlot(pick.secondTeamStartingSlot())
         const gameTeam = teamByStartingSlot(game.secondTeamStartingSlot())
-        if (team && (!team.stillPlaying() || gameTeam) && !game.isRoundOne()) {
+        if (team && (!tournamentTree.stillPlaying(team) || gameTeam) && !game.isRoundOne()) {
           if (gameTeam && team.name === gameTeam.name) {
             pickClass = 'correct-pick'
           } else {
@@ -133,9 +122,8 @@ export const Game = ({
     )
   }
 
-  const game = tournamentTree().gameNodes[slot]
-  const brTree = bracketTree()
-  const pick = brTree ? brTree.gameNodes[slot] : null
+  const game = tournamentTree.gameNodes[slot]
+  const pick = bracketTree?.gameNodes[slot]
 
   let classes = ['match', `m${index}`, `round${roundNumber}`]
   if (regionIndex) {
