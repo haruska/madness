@@ -10,9 +10,12 @@
 @import 'components/main_layout';
 @import 'components/final-four-team-small';
 @import 'components/dialog';
+@import 'components/small-bracket';
+@import 'components/bracket-row';
 
 @import 'containers/games';
 @import 'containers/user-bracket-list';
 @import 'containers/bracket';
 @import 'containers/edit-bracket';
 @import 'containers/new-bracket';
+@import 'containers/bracket-list-container';

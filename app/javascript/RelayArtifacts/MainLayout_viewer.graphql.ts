@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a25732ddcb203a6cfb1c9c98f01867b4>>
+ * @generated SignedSource<<f7936debff75930a6f9f00a2684a6b33>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -22,13 +22,20 @@ export type MainLayout_viewer$data = {
     readonly tipOff: any;
     readonly gameDecisions: string;
     readonly gameMask: string;
-    readonly teams: ReadonlyArray<{
-      readonly startingSlot: number;
-      readonly seed: number;
-      readonly name: string;
-    }>;
+    readonly started: boolean;
   };
-  readonly " $fragmentSpreads": FragmentRefs<"Header_viewer">;
+  readonly teams: ReadonlyArray<{
+    readonly id: string;
+    readonly startingSlot: number;
+    readonly seed: number;
+    readonly name: string;
+  }>;
+  readonly currentUser: {
+    readonly id: string;
+    readonly name: string;
+    readonly email: string | null;
+    readonly admin: boolean;
+  };
   readonly " $fragmentType": "MainLayout_viewer";
 };
 export type MainLayout_viewer$key = {
@@ -42,6 +49,13 @@ var v0 = {
   "args": null,
   "kind": "ScalarField",
   "name": "name",
+  "storageKey": null
+},
+v1 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
   "storageKey": null
 };
 return {
@@ -122,36 +136,66 @@ return {
         {
           "alias": null,
           "args": null,
-          "concreteType": "Team",
-          "kind": "LinkedField",
-          "name": "teams",
-          "plural": true,
-          "selections": [
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "startingSlot",
-              "storageKey": null
-            },
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "seed",
-              "storageKey": null
-            },
-            (v0/*: any*/)
-          ],
+          "kind": "ScalarField",
+          "name": "started",
           "storageKey": null
         }
       ],
       "storageKey": null
     },
     {
+      "alias": null,
       "args": null,
-      "kind": "FragmentSpread",
-      "name": "Header_viewer"
+      "concreteType": "Team",
+      "kind": "LinkedField",
+      "name": "teams",
+      "plural": true,
+      "selections": [
+        (v1/*: any*/),
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "startingSlot",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "seed",
+          "storageKey": null
+        },
+        (v0/*: any*/)
+      ],
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "concreteType": "User",
+      "kind": "LinkedField",
+      "name": "currentUser",
+      "plural": false,
+      "selections": [
+        (v1/*: any*/),
+        (v0/*: any*/),
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "email",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "admin",
+          "storageKey": null
+        }
+      ],
+      "storageKey": null
     }
   ],
   "type": "Viewer",
@@ -159,6 +203,6 @@ return {
 };
 })();
 
-(node as any).hash = "2eb374dabdda0a32855a31b98ea69ead";
+(node as any).hash = "d1e8a4402cada4bf07366f9f30868c06";
 
 export default node;

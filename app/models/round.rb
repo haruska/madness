@@ -16,6 +16,11 @@ class Round
     new(tournament: Tournament.find(tournament_id), number: round_number.to_i)
   end
 
+  def self.round_num_for_slot(slot)
+    depth = Math.log2(slot).floor + 1
+    (1..6).to_a.reverse[depth - 1]
+  end
+
   def id
     "#{tournament.id}~#{number}"
   end

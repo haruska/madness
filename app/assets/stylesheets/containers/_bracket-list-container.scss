@@ -1,0 +1,51 @@
+.bracket-list-container {
+  padding-top: $gutter;
+  min-width: 220px;
+
+  .refresh-wrapper {
+    width: 100%;
+    text-align: center;
+
+    @include medium-screen {
+      text-align: right;
+    }
+  }
+
+  .refresh-time {
+    display: inline-block;
+  }
+
+  .refresh-link {
+    display: inline-block;
+    padding-left: 5px;
+  }
+
+  .refresh {
+    cursor: pointer;
+  }
+
+  .small-screen {
+    display: block;
+
+    @include large-screen {
+      display: none;
+    }
+  }
+
+  .large-screen {
+    display: none;
+
+    @include large-screen {
+      display: block;
+    }
+  }
+
+  .tables {
+    font-size: 0.9em;
+    table-layout: auto;
+  }
+
+  .current-user-bracket {
+    background-color: $light-blue;
+  }
+}

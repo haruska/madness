@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_21_144145) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_28_033908) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,19 +42,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_21_144145) do
   end
 
   create_table "teams", force: :cascade do |t|
-    t.bigint "tournament_id"
     t.string "name", null: false
-    t.integer "seed", null: false
     t.string "score_team_id"
-    t.string "region", null: false
-    t.integer "starting_slot"
+    t.integer "starting_slot", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["region"], name: "index_teams_on_region"
     t.index ["score_team_id"], name: "index_teams_on_score_team_id"
-    t.index ["seed", "tournament_id", "region"], name: "index_teams_on_seed_and_tournament_id_and_region", unique: true
-    t.index ["starting_slot"], name: "index_teams_on_starting_slot"
-    t.index ["tournament_id"], name: "index_teams_on_tournament_id"
+    t.index ["starting_slot"], name: "index_teams_on_starting_slot", unique: true
   end
 
   create_table "tournaments", force: :cascade do |t|

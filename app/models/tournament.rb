@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class Tournament < ApplicationRecord
-  has_many :teams, dependent: :destroy
-
-  accepts_nested_attributes_for :teams
-
   def self.field_64
     Tournament.find_by(num_rounds: 6)
+  end
+
+  def teams
+    Team.all.order(:starting_slot)
   end
 
   def started?
@@ -36,11 +36,7 @@ class Tournament < ApplicationRecord
   end
 
   def team_seed(starting_slot)
-    @team_seeds ||= teams.each_with_object({}) do |val, acc|
-      acc[val.starting_slot] = val.seed
-    end
-
-    @team_seeds[starting_slot]
+    Team.seed_for_slot(starting_slot)
   end
 
   def game_slots_for(round_number, region = nil)
@@ -108,6 +104,25 @@ class Tournament < ApplicationRecord
         nextSlot: node.next_slot,
         choice: node.decision
       }
+    end
+  end
+
+  def decision_team_slots
+    @decision_team_slots ||= begin
+      decisions = game_decisions
+      result = Array.new(64)
+
+      (1..63).to_a.reverse.each do |i|
+        current_position = 1 << i
+        next unless (current_position & game_mask) != 0
+
+        decision = (decisions & current_position).zero? ? 0 : 1
+        position = (i * 2) + decision
+
+        result[i] = i >= 32 ? position : result[position]
+      end
+
+      result
     end
   end
 

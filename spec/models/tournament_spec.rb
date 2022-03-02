@@ -5,8 +5,6 @@ require 'rails_helper'
 RSpec.describe Tournament, type: :model do
   subject { tournament_unstarted }
 
-  it { is_expected.to have_many(:teams) }
-
   describe '#championship' do
     let(:expected_game) { subject.tree.at(1) }
 
@@ -27,7 +25,7 @@ RSpec.describe Tournament, type: :model do
     context 'round 1' do
       let(:expected_games) do
         [1, 8, 5, 4, 6, 3, 7, 2].map do |seed|
-          subject.teams.find_by(region:, seed:).first_game
+          subject.teams.find { |team| team.region == region && team.seed == seed }.first_game
         end
       end
 
