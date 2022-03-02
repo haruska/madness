@@ -4,10 +4,10 @@ import { createFragmentContainer, graphql } from 'react-relay'
 import { AppContext } from 'AppContext'
 import UserTableHeader from './UserTableHeader'
 import { UserBracketRow } from './UserBracketRow'
-import UserSmallBracket from './UserSmallBracket'
-import NewBracketButton from './NewBracketButton'
-import { UserBracketList_viewer$data } from '../../RelayArtifacts/UserBracketList_viewer.graphql'
-import { DEFAULT_TITLE } from '../../components/Layouts/MainLayout'
+import { UserSmallBracket } from './UserSmallBracket'
+import { NewBracketButton } from './NewBracketButton'
+import { UserBracketList_viewer$data } from 'RelayArtifacts/UserBracketList_viewer.graphql'
+import { DEFAULT_TITLE } from 'components/Layouts/MainLayout'
 
 const Component = ({ viewer }: { viewer: UserBracketList_viewer$data }) => {
   const { router, tournament, setPageTitle } = useContext(AppContext)

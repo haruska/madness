@@ -43,7 +43,7 @@ const Component = ({ bracket }: { bracket: UserSmallBracket_bracket$data }) => {
   )
 }
 
-export default createFragmentContainer(Component, {
+export const UserSmallBracket = createFragmentContainer(Component, {
   bracket: graphql`
     fragment UserSmallBracket_bracket on Bracket {
       id

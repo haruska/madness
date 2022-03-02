@@ -7,11 +7,10 @@ import { Tournament } from 'components/Tournament'
 
 import { CreateBracketMutation } from 'mutations/CreateBracketMutation'
 import { BasicBracket, COMPLETED_MASK } from './Bracket'
-import { DEFAULT_TITLE } from '../components/Layouts/MainLayout'
-import { CreateBracketMutation$data } from '../RelayArtifacts/CreateBracketMutation.graphql'
+import { DEFAULT_TITLE } from 'components/Layouts/MainLayout'
+import { CreateBracketMutation$data } from 'RelayArtifacts/CreateBracketMutation.graphql'
 
 export type MutationErrors = CreateBracketMutation$data['createBracket']['errors']
-export type MutationError = MutationErrors[0]
 
 export const NewBracket = () => {
   const { setPageTitle, router } = useContext(AppContext)
