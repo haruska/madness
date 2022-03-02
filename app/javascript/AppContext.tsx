@@ -28,5 +28,5 @@ export const AppContext: Context<{
   tournamentTree: null,
   teams: [],
   currentUser: null,
-  setPageTitle: (title: string) => title,
+  setPageTitle: (_title: string) => {},
 })

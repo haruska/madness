@@ -25,7 +25,7 @@ export const Championship = ({
 
   const bracketTree = genBracketTree()
   const game = tournamentTree.gameNodes[1]
-  const pick = bracketTree.gameNodes[1]
+  const pick = bracketTree?.gameNodes[1]
 
   const teamByStartingSlot = (slot?: number): Team | null =>
     teams.find((team) => team.startingSlot === slot)
