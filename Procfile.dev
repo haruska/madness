@@ -1,4 +1,5 @@
 web: bin/rails server -p 3000
+worker: bin/sidekiq
 js: yarn start --watch
 css: yarn build:css --watch
 types: yarn check-types --watch
