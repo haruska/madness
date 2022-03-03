@@ -1,6 +1,6 @@
 .small-bracket {
   .bracket-row {
-    margin: ($gutter/2) 0;
+    margin: calc($gutter / 2) 0;
   }
 
   .current-user-bracket {
@@ -18,7 +18,7 @@
 
   .bracket-position {
     display: inline-block;
-    margin: 0 $gutter/2;
+    margin: 0 calc($gutter / 2);
     vertical-align: top;
   }
 

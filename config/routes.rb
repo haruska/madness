@@ -21,8 +21,9 @@ Rails.application.routes.draw do
     root to: 'users#index'
   end
 
+  mount GraphiQL::Rails::Engine, at: '/graphiql' if Rails.env.development?
+
   authenticate :user, ->(u) { u.admin? } do
-    mount GraphiQL::Rails::Engine, at: '/graphiql'
     mount Sidekiq::Web => '/sidekiq'
   end
 
