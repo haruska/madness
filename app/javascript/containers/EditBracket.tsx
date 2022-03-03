@@ -17,13 +17,13 @@ import { DeleteBracketMutation$data } from 'RelayArtifacts/DeleteBracketMutation
 
 const Component = ({ bracket }: { bracket: EditBracket_bracket$data }) => {
   const { setPageTitle, router } = useContext(AppContext)
-  const [name, setName] = useState(bracket.name)
-  const [tieBreaker, setTieBreaker] = useState<number | ''>(bracket.tieBreaker)
-  const [gameDecisions, setGameDecisions] = useState(BigInt(bracket.gameDecisions))
+  const [name, setName] = useState(bracket?.name || '')
+  const [tieBreaker, setTieBreaker] = useState<number | ''>(bracket?.tieBreaker || '')
+  const [gameDecisions, setGameDecisions] = useState(BigInt(bracket?.gameDecisions || 0))
   const [errors, setErrors] = useState(null)
   const [showDeletionDialog, setShowDeletionDialog] = useState(false)
 
-  const policy = bracket.policy
+  const policy = bracket?.policy
   const coercedTiebreaker = tieBreaker === '' ? 0 : tieBreaker
 
   useEffect(() => {
@@ -134,7 +134,7 @@ const Component = ({ bracket }: { bracket: EditBracket_bracket$data }) => {
         />
 
         <input className="button left-button" type="submit" name="commit" value="Done" />
-        {policy.destroy ? (
+        {policy?.destroy ? (
           <div className="button danger" onClick={() => setShowDeletionDialog(true)}>
             Delete Bracket
           </div>
