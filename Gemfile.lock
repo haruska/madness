@@ -83,10 +83,6 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    airbrake (13.0.0)
-      airbrake-ruby (~> 6.0)
-    airbrake-ruby (6.0.2)
-      rbtree3 (~> 0.5)
     ast (2.4.2)
     bcrypt (3.1.16)
     bindex (0.8.1)
@@ -200,7 +196,6 @@ GEM
       digest
       net-protocol
       timeout
-    newrelic_rpm (8.5.0)
     nio4r (2.5.8)
     nokogiri (1.13.3)
       mini_portile2 (~> 2.8.0)
@@ -249,7 +244,6 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
-    rbtree3 (0.7.0)
     redis (4.6.0)
     regexp_parser (2.2.1)
     reline (0.3.1)
@@ -291,6 +285,14 @@ GEM
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
     ruby-progressbar (1.11.0)
+    sentry-rails (5.1.1)
+      railties (>= 5.0)
+      sentry-ruby-core (~> 5.1.1)
+    sentry-ruby (5.1.1)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      sentry-ruby-core (= 5.1.1)
+    sentry-ruby-core (5.1.1)
+      concurrent-ruby
     shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
     sidekiq (6.4.1)
@@ -331,7 +333,6 @@ PLATFORMS
 DEPENDENCIES
   active_attr
   administrate!
-  airbrake
   bitters
   bootsnap
   bourbon
@@ -347,7 +348,6 @@ DEPENDENCIES
   graphql
   jsbundling-rails
   letter_opener
-  newrelic_rpm
   pg (~> 1.1)
   puma (~> 5.0)
   pundit
@@ -355,6 +355,8 @@ DEPENDENCIES
   redis (~> 4.0)
   rspec-rails
   rubocop-rails
+  sentry-rails
+  sentry-ruby
   shoulda-matchers
   sidekiq
   sprockets-rails

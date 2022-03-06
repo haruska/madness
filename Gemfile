@@ -99,6 +99,6 @@ group :test do
 end
 
 group :production do
-  gem 'airbrake'
-  gem 'newrelic_rpm'
+  gem "sentry-ruby"
+  gem "sentry-rails"
 end
