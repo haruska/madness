@@ -1,2 +1,11 @@
-<p><%= @user.email  %></p>
-<%= link_to "Confirm", @url %>
+<p>
+  Someone (hopefully you) requested a magic link to log in to Pool Madness.
+  Click the following link to authenticate:
+</p>
+
+<p><%= link_to @url, @url %></p>
+
+<p>
+  Note, this is a one-time link. Enter your email on the site to log in again.
+</p>
+
