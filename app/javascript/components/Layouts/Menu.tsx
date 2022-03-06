@@ -16,7 +16,7 @@ export const Menu = () => {
     fetch('/users/sign_out', {
       method: 'DELETE',
       headers: {
-        'X-CSRF-Token': document.getElementsByName('csrf-token')[0].textContent,
+        'X-CSRF-Token': document.getElementsByName('csrf-token')[0]?.attributes['content']?.value,
       },
       credentials: 'same-origin',
     }).then(() => (window.location.href = '/'))
