@@ -9,7 +9,6 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get 'email_confirmation', to: 'users/sessions#redirect_from_magic_link'
-    post 'sign_in_with_token', to: 'users/sessions#sign_in_with_token'
   end
 
   namespace :admin do

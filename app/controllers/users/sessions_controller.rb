@@ -2,7 +2,7 @@
 
 module Users
   class SessionsController < Devise::SessionsController
-    def sign_in_with_token
+    def redirect_from_magic_link
       user = User.find_by(login_token: params[:login_token])
 
       if user.present?
@@ -13,10 +13,6 @@ module Users
         flash[:alert] = 'There was an error while login. Please enter your email again.'
         redirect_to new_user_session_path
       end
-    end
-
-    def redirect_from_magic_link
-      @login_token = params[:login_token] if params[:login_token].present?
     end
   end
 end
