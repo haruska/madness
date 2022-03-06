@@ -83,6 +83,10 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    airbrake (13.0.0)
+      airbrake-ruby (~> 6.0)
+    airbrake-ruby (6.0.2)
+      rbtree3 (~> 0.5)
     ast (2.4.2)
     bcrypt (3.1.16)
     bindex (0.8.1)
@@ -244,6 +248,7 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+    rbtree3 (0.7.0)
     redis (4.6.0)
     regexp_parser (2.2.1)
     reline (0.3.1)
@@ -325,6 +330,7 @@ PLATFORMS
 DEPENDENCIES
   active_attr
   administrate!
+  airbrake
   bitters
   bootsnap
   bourbon

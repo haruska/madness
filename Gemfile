@@ -97,3 +97,7 @@ group :test do
   gem 'cuprite'
   gem 'shoulda-matchers'
 end
+
+group :production do
+  gem 'airbrake'
+end
