@@ -10,7 +10,6 @@ class TeamDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    tournament: Field::BelongsTo,
     id: Field::Number,
     name: Field::String,
     seed: Field::Number,
@@ -36,7 +35,6 @@ class TeamDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    tournament
     id
     name
     seed
