@@ -2,7 +2,7 @@
 
 require 'active_support/core_ext/integer/time'
 
-Rails.application.default_url_options = { host: ENV['DEFAULT_URL_DOMAIN'], protocol: 'https' }
+Rails.application.default_url_options = { host: ENV['HOST'], protocol: 'https' }
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -75,7 +75,7 @@ Rails.application.configure do
     read_timeout: 5,
     user_name: 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
     password: ENV['SENDGRID_API_KEY'], # This is the secret sendgrid API key which was issued during API key creation
-    domain: ENV['DOMAIN'],
+    domain: ENV['MAILER_HOST'],
     address: 'smtp.sendgrid.net',
     port: 587,
     authentication: 'plain',
