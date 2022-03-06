@@ -16,10 +16,9 @@
     "sass": "^1.48.0"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
+    "build": "node esbuild.config.js",
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules",
     "check-types": "tsc --project tsconfig.json --noEmit --preserveWatchOutput",
-    "start": "node esbuild.config.js",
     "relay": "relay-compiler",
     "prettier": "prettier 'app/javascript/**/*.*' 'app/assets/stylesheets/**/*.scss'",
     "prettier:fix": "prettier --write 'app/javascript/**/*.*' 'app/assets/stylesheets/**/*.scss'"
