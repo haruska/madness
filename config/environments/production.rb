@@ -73,10 +73,10 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     open_timeout: 5,
     read_timeout: 5,
-    user_name: 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
-    password: ENV['SENDGRID_API_KEY'], # This is the secret sendgrid API key which was issued during API key creation
+    user_name: ENV['EMAIL_SENDER'],
+    password: ENV['MAILER_PASSWORD'],
     domain: ENV['MAILER_HOST'],
-    address: 'smtp.sendgrid.net',
+    address: 'smtp.gmail.com',
     port: 587,
     authentication: 'plain',
     enable_starttls_auto: true
