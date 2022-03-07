@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d4729aff7ca0df3b7f471ce6721cdc8d>>
+ * @generated SignedSource<<203dfaee2a84fe0d6aa624bc351086d9>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,7 +13,6 @@ import { FragmentRefs } from "relay-runtime";
 export type EditBracket_bracket$data = {
   readonly id: string;
   readonly name: string;
-  readonly tieBreaker: number;
   readonly gameDecisions: string;
   readonly policy: {
     readonly destroy: boolean;
@@ -50,13 +49,6 @@ return {
       "storageKey": null
     },
     (v0/*: any*/),
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "tieBreaker",
-      "storageKey": null
-    },
     {
       "alias": null,
       "args": null,
@@ -100,6 +92,6 @@ return {
 };
 })();
 
-(node as any).hash = "c992a8917b23dbe942397c0bd554df0f";
+(node as any).hash = "c6ce040e8f4531a610fad56a6dc81c80";
 
 export default node;

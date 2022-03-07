@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a70115e236f31feb1579fd2ae2e1a766>>
+ * @generated SignedSource<<8a84d643eb613a85d36bafd37ab95d57>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,7 +14,6 @@ export type UpdateBracketInput = {
   clientMutationId?: string | null;
   gameDecisions?: string | null;
   name?: string | null;
-  tieBreaker?: number | null;
 };
 export type UpdateBracketMutation$variables = {
   input: UpdateBracketInput;
@@ -24,7 +23,6 @@ export type UpdateBracketMutation$data = {
     readonly bracket: {
       readonly id: string;
       readonly name: string;
-      readonly tieBreaker: number;
       readonly gameDecisions: string;
     } | null;
     readonly errors: ReadonlyArray<{
@@ -87,13 +85,6 @@ v1 = [
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "tieBreaker",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
             "name": "gameDecisions",
             "storageKey": null
           }
@@ -147,16 +138,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "e4f38c8386b70172abe11dd48344fc9e",
+    "cacheID": "cc3f52f333b32281df7d3aeed953855e",
     "id": null,
     "metadata": {},
     "name": "UpdateBracketMutation",
     "operationKind": "mutation",
-    "text": "mutation UpdateBracketMutation(\n  $input: UpdateBracketInput!\n) {\n  updateBracket(input: $input) {\n    bracket {\n      id\n      name\n      tieBreaker\n      gameDecisions\n    }\n    errors {\n      path\n      message\n    }\n  }\n}\n"
+    "text": "mutation UpdateBracketMutation(\n  $input: UpdateBracketInput!\n) {\n  updateBracket(input: $input) {\n    bracket {\n      id\n      name\n      gameDecisions\n    }\n    errors {\n      path\n      message\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "ffa0c39ecdc00dd5de814ea88dfeeb72";
+(node as any).hash = "b217f511dd89f7eec04360792c687efe";
 
 export default node;

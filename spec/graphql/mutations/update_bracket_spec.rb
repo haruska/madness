@@ -7,14 +7,13 @@ RSpec.describe Mutations::UpdateBracket do
 
   let(:mutation) do
     <<~GRAPHQL
-      mutation ($bracketId: ID!, $name: String, $tieBreaker: Int, $gameDecisions: BigInt) {
+      mutation ($bracketId: ID!, $name: String, $gameDecisions: BigInt) {
         updateBracket(
-          input: {bracketId: $bracketId, name: $name, gameDecisions: $gameDecisions, tieBreaker: $tieBreaker}
+          input: {bracketId: $bracketId, name: $name, gameDecisions: $gameDecisions}
         ) {
           bracket {
             id
             name
-            tieBreaker
             paid
             gameDecisions
           }
@@ -34,7 +33,6 @@ RSpec.describe Mutations::UpdateBracket do
     {
       bracketId: schema.id_from_object(bracket),
       name: new_attrs.name,
-      tieBreaker: new_attrs.tie_breaker,
       gameDecisions: new_attrs.game_decisions
     }
   end
@@ -48,10 +46,7 @@ RSpec.describe Mutations::UpdateBracket do
 
   it 'updates the attributes' do
     expect(errors).to be_empty
-    %w[name tie_breaker].each do |attr|
-      expect(result[attr.camelize(:lower)]).to eq(new_attrs.public_send(attr))
-    end
-
+    expect(result[:name]).to eq(new_attrs.name)
     expect(result[:id]).to eq(schema.id_from_object(bracket))
     expect(result[:gameDecisions]).to eq(new_attrs.game_decisions.to_s)
   end

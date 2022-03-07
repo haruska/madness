@@ -6,7 +6,6 @@ class Bracket < ApplicationRecord
   belongs_to :user
 
   validates :name, presence: true, uniqueness: true
-  validates :tie_breaker, presence: true
 
   def sorted_four
     Array(decision_team_slots[1..7]).uniq.reverse

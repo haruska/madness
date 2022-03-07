@@ -13,7 +13,6 @@ const mutation = graphql`
       bracket {
         id
         name
-        tieBreaker
         gameDecisions
       }
       errors {
@@ -25,19 +24,18 @@ const mutation = graphql`
 `
 
 function commit(
-  { name, tieBreaker, gameDecisions, bracketId }: UpdateBracketInput,
+  { name, gameDecisions, bracketId }: UpdateBracketInput,
   onCompleted: (response: UpdateBracketMutation$data, errors: readonly PayloadError[]) => void
 ) {
   return commitMutation<UpdateBracketMutationType>(currentRelay, {
     mutation,
     onCompleted,
-    variables: { input: { name, tieBreaker, gameDecisions: gameDecisions.toString(), bracketId } },
+    variables: { input: { name, gameDecisions: gameDecisions.toString(), bracketId } },
     optimisticResponse: {
       updateBracket: {
         bracket: {
           id: bracketId,
           name,
-          tieBreaker,
           gameDecisions,
         },
         errors: [],

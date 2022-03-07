@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c21a6f55a733b09f89324edb9b124eea>>
+ * @generated SignedSource<<79bd5fc30d047b6d2efe386b2098506f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -118,13 +118,6 @@ return {
                     "alias": null,
                     "args": null,
                     "kind": "ScalarField",
-                    "name": "tieBreaker",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
                     "name": "sortedFour",
                     "storageKey": null
                   }
@@ -140,12 +133,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "cbb982244c80f7e7fe86a4220b164c05",
+    "cacheID": "073d2d8c76af4e3b345fb0c24240f42b",
     "id": null,
     "metadata": {},
     "name": "Routes_UserBracketList_Query",
     "operationKind": "query",
-    "text": "query Routes_UserBracketList_Query {\n  viewer {\n    ...UserBracketList_viewer\n    id\n  }\n}\n\nfragment UserBracketList_viewer on Viewer {\n  id\n  brackets {\n    nodes {\n      id\n      paid\n      user {\n        id\n      }\n      ...UserSmallBracket_bracket\n      ...UserBracketRow_bracket\n    }\n  }\n}\n\nfragment UserBracketRow_bracket on Bracket {\n  id\n  name\n  tieBreaker\n  paid\n  sortedFour\n}\n\nfragment UserSmallBracket_bracket on Bracket {\n  id\n  name\n  tieBreaker\n  paid\n  sortedFour\n}\n"
+    "text": "query Routes_UserBracketList_Query {\n  viewer {\n    ...UserBracketList_viewer\n    id\n  }\n}\n\nfragment UserBracketList_viewer on Viewer {\n  id\n  brackets {\n    nodes {\n      id\n      paid\n      user {\n        id\n      }\n      ...UserSmallBracket_bracket\n      ...UserBracketRow_bracket\n    }\n  }\n}\n\nfragment UserBracketRow_bracket on Bracket {\n  id\n  name\n  paid\n  sortedFour\n}\n\nfragment UserSmallBracket_bracket on Bracket {\n  id\n  name\n  paid\n  sortedFour\n}\n"
   }
 };
 })();

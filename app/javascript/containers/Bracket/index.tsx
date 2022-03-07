@@ -8,7 +8,6 @@ export const COMPLETED_MASK = 18446744073709551614n
 
 export interface BasicBracket {
   name: string
-  tieBreaker: number
   gameDecisions: bigint
   gameMask: bigint
 }
@@ -49,7 +48,6 @@ export const Bracket = createFragmentContainer(Component, {
     fragment Bracket_bracket on Bracket {
       id
       name
-      tieBreaker
       gameDecisions
       user {
         name

@@ -23,7 +23,6 @@ const Component = ({ bracket }: { bracket: UserBracketRow_bracket$data }) => {
       {finalFourTeams.map((team, i) => (
         <FinalFourTeam key={i} team={team} />
       ))}
-      <td>{bracket.tieBreaker}</td>
       <td>
         <BracketStatus paid={bracket.paid} />
       </td>
@@ -36,7 +35,6 @@ export const UserBracketRow = createFragmentContainer(Component, {
     fragment UserBracketRow_bracket on Bracket {
       id
       name
-      tieBreaker
       paid
       sortedFour
     }

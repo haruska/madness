@@ -34,7 +34,6 @@ const Component = ({ bracket }: { bracket: UserSmallBracket_bracket$data }) => {
                   <FinalFourTeamSmall key={i} team={team} />
                 ))}
               </div>
-              <div className="tie-breaker">{bracket.tieBreaker}</div>
             </div>
           </div>
         </div>
@@ -48,7 +47,6 @@ export const UserSmallBracket = createFragmentContainer(Component, {
     fragment UserSmallBracket_bracket on Bracket {
       id
       name
-      tieBreaker
       paid
       sortedFour
     }

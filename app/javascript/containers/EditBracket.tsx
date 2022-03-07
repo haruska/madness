@@ -18,13 +18,11 @@ import { DeleteBracketMutation$data } from 'RelayArtifacts/DeleteBracketMutation
 const Component = ({ bracket }: { bracket: EditBracket_bracket$data }) => {
   const { setPageTitle, router } = useContext(AppContext)
   const [name, setName] = useState(bracket?.name || '')
-  const [tieBreaker, setTieBreaker] = useState<number | ''>(bracket?.tieBreaker || '')
   const [gameDecisions, setGameDecisions] = useState(BigInt(bracket?.gameDecisions || 0))
   const [errors, setErrors] = useState(null)
   const [showDeletionDialog, setShowDeletionDialog] = useState(false)
 
   const policy = bracket?.policy
-  const coercedTiebreaker = tieBreaker === '' ? 0 : tieBreaker
 
   useEffect(() => {
     setPageTitle('Editing Bracket')
@@ -45,11 +43,6 @@ const Component = ({ bracket }: { bracket: EditBracket_bracket$data }) => {
     }
 
     setGameDecisions(decisions)
-  }
-
-  const handleTieBreakerChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const intValue = event.target.value ? parseInt(event.target.value, 10) : ''
-    setTieBreaker(intValue)
   }
 
   const handleUpdateCompleted = (response: UpdateBracketMutation$data, errors: MutationErrors) => {
@@ -80,7 +73,6 @@ const Component = ({ bracket }: { bracket: EditBracket_bracket$data }) => {
       {
         bracketId: bracket.id,
         name,
-        tieBreaker: coercedTiebreaker,
         gameDecisions: gameDecisions.toString(),
       },
       handleUpdateCompleted
@@ -104,11 +96,9 @@ const Component = ({ bracket }: { bracket: EditBracket_bracket$data }) => {
           ...bracket,
           name,
           gameDecisions,
-          tieBreaker: tieBreaker === '' ? 0 : tieBreaker,
           gameMask: COMPLETED_MASK,
         }}
         onSlotClick={handleSlotClick}
-        editing={true}
       />
       <form className="edit-bracket-form" onSubmit={handleDone}>
         {errors ? <ErrorFlash errors={errors} objectType={'Bracket'} /> : null}
@@ -120,17 +110,6 @@ const Component = ({ bracket }: { bracket: EditBracket_bracket$data }) => {
           required
           value={name}
           onChange={(event) => setName(event.target.value)}
-        />
-
-        <Label attr="tie_breaker" text="Tie Breaker" errors={errors} />
-        <input
-          id="tie_breaker"
-          name="tie_breaker"
-          required
-          placeholder="Final Score of Championship Game Added Together (ex: 147)"
-          type="number"
-          value={tieBreaker}
-          onChange={handleTieBreakerChange}
         />
 
         <input className="button left-button" type="submit" name="commit" value="Done" />
@@ -149,7 +128,6 @@ export const EditBracket = createFragmentContainer(Component, {
     fragment EditBracket_bracket on Bracket {
       id
       name
-      tieBreaker
       gameDecisions
       policy {
         destroy

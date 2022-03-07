@@ -12,7 +12,6 @@ RSpec.describe 'Querying for brackets' do
               id
               name
               gameDecisions
-              tieBreaker
               paid
               user {
                 id
