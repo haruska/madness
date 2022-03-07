@@ -6,7 +6,8 @@ module Users
       user = User.find_by(login_token: params[:login_token])
 
       if user.present?
-        user.update(login_token: nil, login_token_valid_until: 1.year.ago)
+        # allow token to be re-used for now.
+        # user.update(login_token: nil, login_token_valid_until: 1.year.ago)
         sign_in(user)
         redirect_to root_path
       else
