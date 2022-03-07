@@ -25,10 +25,10 @@ const mutation = graphql`
 `
 
 function commit(
-  { name, tieBreaker, gameDecisions }: CreateBracketInput,
+  { name, gameDecisions }: CreateBracketInput,
   onCompleted: (response: CreateBracketMutation$data, errors: readonly PayloadError[]) => void
 ) {
-  const variables: CreateBracketMutation$variables = { input: { name, tieBreaker, gameDecisions } }
+  const variables: CreateBracketMutation$variables = { input: { name, gameDecisions } }
   return commitMutation<CreateBracketMutationType>(currentRelay, {
     mutation,
     onCompleted,

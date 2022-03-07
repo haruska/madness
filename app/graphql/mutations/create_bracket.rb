@@ -7,7 +7,6 @@ module Mutations
 
     argument :name, String, required: true
     argument :game_decisions, GraphQL::Types::BigInt, required: true
-    argument :tie_breaker, Int, required: true
 
     def ready?(**_kwargs)
       if Pundit.policy(context[:current_user], Bracket).create?

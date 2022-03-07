@@ -8,7 +8,6 @@ module Mutations
     argument :bracket_id, ID, required: true, loads: Types::BracketType
     argument :name, String, required: false
     argument :game_decisions, GraphQL::Types::BigInt, required: false
-    argument :tie_breaker, Int, required: false
 
     def authorized?(bracket:, **_kwargs)
       if Pundit.policy(context[:current_user], bracket).update?

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e86587572f8db9611cf26ad101f98ab6>>
+ * @generated SignedSource<<68dc7ccdcb7797949fa1ea9994d3240a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,7 +13,6 @@ import { FragmentRefs } from "relay-runtime";
 export type UserBracketRow_bracket$data = {
   readonly id: string;
   readonly name: string;
-  readonly tieBreaker: number;
   readonly paid: boolean;
   readonly sortedFour: ReadonlyArray<number>;
   readonly " $fragmentType": "UserBracketRow_bracket";
@@ -47,13 +46,6 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "tieBreaker",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
       "name": "paid",
       "storageKey": null
     },
@@ -69,6 +61,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "1353646bae5e65bbfbd3737dbf2d7ff4";
+(node as any).hash = "c6d9990e0b96320c956009e95277f931";
 
 export default node;

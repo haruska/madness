@@ -5,7 +5,6 @@ module Types
     field :user, Types::UserType, null: false
     field :name, String, null: false
     field :game_decisions, GraphQL::Types::BigInt, null: false
-    field :tie_breaker, Int, null: false
     field :paid, Boolean, null: false
     field :sorted_four, [Int], null: false
     field :points, Int, null: false

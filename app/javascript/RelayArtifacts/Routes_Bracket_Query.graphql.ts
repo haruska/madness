@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2b0102da5265b4643d3e5e461597895b>>
+ * @generated SignedSource<<43502f4e25a9f7ad1a59e5aac8b9b1e0>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -109,13 +109,6 @@ return {
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
-                "name": "tieBreaker",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
                 "name": "gameDecisions",
                 "storageKey": null
               },
@@ -160,12 +153,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "cd8bb2f470705a888ac4d3dd7687fa9f",
+    "cacheID": "1fe479c562d5bc076053a3d8579458df",
     "id": null,
     "metadata": {},
     "name": "Routes_Bracket_Query",
     "operationKind": "query",
-    "text": "query Routes_Bracket_Query(\n  $bracketId: ID!\n) {\n  bracket: node(id: $bracketId) {\n    __typename\n    ...Bracket_bracket\n    id\n  }\n}\n\nfragment BracketActions_bracket on Bracket {\n  id\n  policy {\n    update\n  }\n}\n\nfragment Bracket_bracket on Bracket {\n  id\n  name\n  tieBreaker\n  gameDecisions\n  user {\n    name\n    id\n  }\n  ...BracketActions_bracket\n}\n"
+    "text": "query Routes_Bracket_Query(\n  $bracketId: ID!\n) {\n  bracket: node(id: $bracketId) {\n    __typename\n    ...Bracket_bracket\n    id\n  }\n}\n\nfragment BracketActions_bracket on Bracket {\n  id\n  policy {\n    update\n  }\n}\n\nfragment Bracket_bracket on Bracket {\n  id\n  name\n  gameDecisions\n  user {\n    name\n    id\n  }\n  ...BracketActions_bracket\n}\n"
   }
 };
 })();

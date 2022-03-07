@@ -13,7 +13,6 @@ RSpec.describe 'Querying a node by id' do
           ...on Bracket {
               name
               gameDecisions
-              tieBreaker
           }
         }
       }
@@ -37,7 +36,6 @@ RSpec.describe 'Querying a node by id' do
   it 'is the bracket node' do
     expect(result[:id]).to eq(schema.id_from_object(bracket))
     expect(result[:name]).to eq(bracket.name)
-    expect(result[:tieBreaker]).to eq(bracket.tie_breaker)
   end
 
   context 'with an unviewable bracket' do

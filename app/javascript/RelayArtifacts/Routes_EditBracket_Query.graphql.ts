@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<4ebfc2a9cff383bb16e826d0957cb620>>
+ * @generated SignedSource<<c64b35a7bd7bf6062f3a9f736b69ac72>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -109,13 +109,6 @@ return {
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
-                "name": "tieBreaker",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
                 "name": "gameDecisions",
                 "storageKey": null
               },
@@ -160,12 +153,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "e40592f7578ddfef011ae2f56e6405c2",
+    "cacheID": "ad13a9b2996b4f5c58bf4a4055a62045",
     "id": null,
     "metadata": {},
     "name": "Routes_EditBracket_Query",
     "operationKind": "query",
-    "text": "query Routes_EditBracket_Query(\n  $bracketId: ID!\n) {\n  bracket: node(id: $bracketId) {\n    __typename\n    ...EditBracket_bracket\n    id\n  }\n}\n\nfragment EditBracket_bracket on Bracket {\n  id\n  name\n  tieBreaker\n  gameDecisions\n  policy {\n    destroy\n  }\n  user {\n    name\n    id\n  }\n}\n"
+    "text": "query Routes_EditBracket_Query(\n  $bracketId: ID!\n) {\n  bracket: node(id: $bracketId) {\n    __typename\n    ...EditBracket_bracket\n    id\n  }\n}\n\nfragment EditBracket_bracket on Bracket {\n  id\n  name\n  gameDecisions\n  policy {\n    destroy\n  }\n  user {\n    name\n    id\n  }\n}\n"
   }
 };
 })();

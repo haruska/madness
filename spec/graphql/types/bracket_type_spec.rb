@@ -15,7 +15,6 @@ RSpec.describe Types::BracketType do
           ...on Bracket {
             name
             gameDecisions
-            tieBreaker
             paid
             user {
               id
@@ -39,7 +38,6 @@ RSpec.describe Types::BracketType do
     expect(result[:id]).to eq(schema.id_from_object(bracket))
     expect(result[:name]).to eq(bracket.name)
     expect(result[:gameDecisions]).to eq(bracket.game_decisions.to_s)
-    expect(result[:tieBreaker]).to eq(bracket.tie_breaker)
     expect(result[:paid]).to eq(bracket.paid)
   end
 end

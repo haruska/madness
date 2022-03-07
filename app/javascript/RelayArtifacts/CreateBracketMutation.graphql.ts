@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f9086aa2ddd32ef07a569efb2fc324c6>>
+ * @generated SignedSource<<376f53e2000d80243f11b7eda90b92d6>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,7 +14,6 @@ export type CreateBracketInput = {
   clientMutationId?: string | null;
   gameDecisions: string;
   name: string;
-  tieBreaker: number;
 };
 export type CreateBracketMutation$variables = {
   input: CreateBracketInput;
@@ -158,13 +157,6 @@ return {
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
-                "name": "tieBreaker",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
                 "name": "gameDecisions",
                 "storageKey": null
               },
@@ -209,12 +201,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "ca017d97337eaac9025e3b9527d33e1d",
+    "cacheID": "725a8ffa130bd1c91f2c210d00b6b5f3",
     "id": null,
     "metadata": {},
     "name": "CreateBracketMutation",
     "operationKind": "mutation",
-    "text": "mutation CreateBracketMutation(\n  $input: CreateBracketInput!\n) {\n  createBracket(input: $input) {\n    bracket {\n      id\n      ...EditBracket_bracket\n    }\n    errors {\n      path\n      message\n    }\n  }\n}\n\nfragment EditBracket_bracket on Bracket {\n  id\n  name\n  tieBreaker\n  gameDecisions\n  policy {\n    destroy\n  }\n  user {\n    name\n    id\n  }\n}\n"
+    "text": "mutation CreateBracketMutation(\n  $input: CreateBracketInput!\n) {\n  createBracket(input: $input) {\n    bracket {\n      id\n      ...EditBracket_bracket\n    }\n    errors {\n      path\n      message\n    }\n  }\n}\n\nfragment EditBracket_bracket on Bracket {\n  id\n  name\n  gameDecisions\n  policy {\n    destroy\n  }\n  user {\n    name\n    id\n  }\n}\n"
   }
 };
 })();

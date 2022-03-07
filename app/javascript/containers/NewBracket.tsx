@@ -17,16 +17,13 @@ export const NewBracket = () => {
 
   const [name, setName] = useState('')
   const [gameDecisionsMask, setGameDecisionsMask] = useState<[bigint, bigint]>([0n, 0n])
-  const [tieBreaker, setTieBreaker] = useState<number | ''>('')
   const [errors, setErrors] = useState<MutationErrors>(null)
   const [showDiscardDialog, setShowDiscardDialog] = useState(false)
 
   const [gameDecisions, gameMask] = gameDecisionsMask
-  const coercedTiebreaker = tieBreaker === '' ? 0 : tieBreaker
 
   const bracket: BasicBracket = {
     name,
-    tieBreaker: coercedTiebreaker,
     gameDecisions,
     gameMask,
   }
@@ -59,11 +56,6 @@ export const NewBracket = () => {
     setName(event.target.value)
   }
 
-  const handleTieBreakerChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const intValue = event.target.value ? parseInt(event.target.value, 10) : ''
-    setTieBreaker(intValue)
-  }
-
   const handleCreateCompleted = (response: CreateBracketMutation$data, errors: MutationErrors) => {
     const allErrors = errors || response.createBracket.errors
 
@@ -76,7 +68,7 @@ export const NewBracket = () => {
 
   const commitMutation = () => {
     CreateBracketMutation.commit(
-      { name, tieBreaker: coercedTiebreaker, gameDecisions: gameDecisions.toString() },
+      { name, gameDecisions: gameDecisions.toString() },
       handleCreateCompleted
     )
   }
@@ -122,12 +114,7 @@ export const NewBracket = () => {
       />
       <h2>New Bracket Entry</h2>
       {errors ? <ErrorFlash errors={errors} objectType={'Bracket'} /> : null}
-      <Tournament
-        bracket={bracket}
-        onSlotClick={handleSlotClick}
-        highlightEmpty={!!errors}
-        editing={true}
-      />
+      <Tournament bracket={bracket} onSlotClick={handleSlotClick} highlightEmpty={!!errors} />
       <form className="new-bracket-form" onSubmit={handleDone}>
         <Label attr="name" text="Bracket Name" errors={errors} />
         <input
@@ -137,17 +124,6 @@ export const NewBracket = () => {
           required
           value={name}
           onChange={handleNameChange}
-        />
-
-        <Label attr="tie_breaker" text="Tie Breaker" errors={errors} />
-        <input
-          id="tie_breaker"
-          name="tie_breaker"
-          required
-          placeholder="Final Score of Championship Game Added Together (ex: 147)"
-          type="number"
-          value={tieBreaker}
-          onChange={handleTieBreakerChange}
         />
 
         <input className="button left-button" type="submit" name="commit" value="Create" />

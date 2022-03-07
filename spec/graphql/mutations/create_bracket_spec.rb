@@ -7,14 +7,13 @@ RSpec.describe Mutations::CreateBracket do
 
   let(:mutation) do
     <<~GRAPHQL
-      mutation ($name: String!, $tieBreaker: Int!, $gameDecisions: BigInt!) {
+      mutation ($name: String!, $gameDecisions: BigInt!) {
         createBracket(
-          input: {name: $name, gameDecisions: $gameDecisions, tieBreaker: $tieBreaker}
+          input: {name: $name, gameDecisions: $gameDecisions}
         ) {
           bracket {
             id
             name
-            tieBreaker
             paid
             gameDecisions
           }
@@ -32,7 +31,6 @@ RSpec.describe Mutations::CreateBracket do
   let(:variables) do
     {
       name: new_attrs.name,
-      tieBreaker: new_attrs.tie_breaker,
       gameDecisions: new_attrs.game_decisions
     }
   end
@@ -50,10 +48,8 @@ RSpec.describe Mutations::CreateBracket do
     expect { result_exe }.to change(Bracket, :count).by(1)
 
     expect(errors).to be_empty
-    %w[name tie_breaker].each do |attr|
-      expect(result[attr.camelize(:lower)]).to eq(new_attrs.public_send(attr))
-    end
 
+    expect(result[:name]).to eq(new_attrs.name)
     expect(result[:gameDecisions]).to eq(new_attrs.game_decisions.to_s)
     expect(result[:paid]).to eq(false)
   end

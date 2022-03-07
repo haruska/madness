@@ -14,7 +14,6 @@ class BracketDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     game_decisions: Field::String.with_options(searchable: false),
-    tie_breaker: Field::Number,
     paid: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
@@ -39,7 +38,6 @@ class BracketDashboard < Administrate::BaseDashboard
     id
     name
     game_decisions
-    tie_breaker
     paid
     created_at
     updated_at
@@ -52,7 +50,6 @@ class BracketDashboard < Administrate::BaseDashboard
     user
     name
     game_decisions
-    tie_breaker
     paid
   ].freeze
 

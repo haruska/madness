@@ -19,7 +19,6 @@ type Bracket implements HasPolicy & Node {
   policy: NodePolicy!
   possiblePoints: Int!
   sortedFour: [Int!]!
-  tieBreaker: Int!
   user: User!
 }
 
@@ -69,7 +68,6 @@ input CreateBracketInput {
   clientMutationId: String
   gameDecisions: BigInt!
   name: String!
-  tieBreaker: Int!
 }
 
 """
@@ -241,7 +239,6 @@ input UpdateBracketInput {
   clientMutationId: String
   gameDecisions: BigInt
   name: String
-  tieBreaker: Int
 }
 
 """
