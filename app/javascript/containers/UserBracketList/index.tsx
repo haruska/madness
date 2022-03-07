@@ -18,10 +18,6 @@ const Component = ({ viewer }: { viewer: UserBracketList_viewer$data }) => {
       router.replace(`/brackets`)
     }
 
-    if (brackets.length === 0) {
-      router.push(`/new_bracket`)
-    }
-
     setPageTitle('My Brackets')
 
     return () => {
