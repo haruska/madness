@@ -75,7 +75,6 @@ Rails.application.configure do
     read_timeout: 5,
     user_name: ENV['EMAIL_SENDER'],
     password: ENV['MAILER_PASSWORD'],
-    domain: ENV['MAILER_HOST'],
     address: 'smtp.gmail.com',
     port: 587,
     authentication: 'plain',
