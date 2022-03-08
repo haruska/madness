@@ -1,3 +1,7 @@
 # Madness Project Docs
 
-This project is largely a labor of love. Development is done in fits and spurts.
+## DevOps
+
+The main goal is to not have many moving parts or dependencies.
+
+* [Heroku Deployment](heroku.md)
