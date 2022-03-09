@@ -1,24 +1,46 @@
-# README
+# Madness Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project runs a private friends and family "office pool" for the NCAA March Madness tournament. People fill out brackets, get points for correct picks, and compete with one another.
 
-Things you may want to cover:
+For more info, see the [DOCUMENTATION](https://haruska.github.io/madness/).
+## Development Setup
 
-* Ruby version
+### Postgres & Redis
 
-* System dependencies
+Install using homebrew
+```bash
+brew install postgres redis
+```
 
-* Configuration
+Ensure user can access postgres
+```bash
+createdb <username>
+psql
+```
 
-* Database creation
+### Project setup
 
-* Database initialization
+Install ruby from rbenv
+```bash
+rbenv install $(cat .ruby-version)
+```
 
-* How to run the test suite
+Standard rails / yarn setup
+```bash
+bundle install
+yarn install
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Database setup
+```
+bin/rails db:create:all
+bin/rails db:schema:load
+bin/rails db:seed
+```
 
-* Deployment instructions
+### Commands
 
-* ...
+* `bin/rake`: Run tests
+* `bin/dev`: Start dev server. Watchers for rails, sidekiq, react, relay, and dart-sass
+* `bin/rubocop -A`: Auto-correct Rubocop violations
+* `bin/rake schema`: Generate [GraphQL Schema](schema.graphql)
