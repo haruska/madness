@@ -65,7 +65,7 @@ export const RulesAndScoring = () => {
         <h3 className="sub-heading">Prizes</h3>
         <table>
           <tbody>
-            {[0.45, 0.25, 0.15, 0.1, 0.05].map((percent, i) => (
+            {[0.5, 0.2, 0.15, 0.1, 0.05].map((percent, i) => (
               <PrizeRow key={`prizerow-${i}`} place={i + 1} percent={percent} />
             ))}
           </tbody>
