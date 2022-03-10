@@ -5,3 +5,4 @@
 * Deployed to Heroku: Useful [Heroku CLI](heroku-cli.md) commands
 * Explanation of [environment variables](env-vars.md) used to configure project
 * [Cloudflare Setup](cloudflare.md)
+* [Seed team data](prep-tournament.md) after selection sunday
