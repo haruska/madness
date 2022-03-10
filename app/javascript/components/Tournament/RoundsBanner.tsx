@@ -1,19 +1,17 @@
-import React, { Component, useContext } from 'react'
-import { arrayOf, shape, string } from 'prop-types'
-
-import moment from 'moment'
-import { AppContext } from '../../AppContext'
+import React, { useContext } from 'react'
+import { AppContext } from 'AppContext'
 
 export const RoundsBanner = () => {
   const { tournament } = useContext(AppContext)
 
   const dateRangeString = (start: string, end: string) => {
-    const startDate = moment(start)
-    const endDate = moment(end)
-    let dateStr = startDate.format('MMM D')
+    const startDate = new Date(start)
+    const endDate = new Date(end)
+    let dateStr = Intl.DateTimeFormat('en', { month: 'short', day: 'numeric' }).format(startDate)
 
     if (endDate > startDate) {
-      dateStr += `-${endDate.format('D')}`
+      const endStr = Intl.DateTimeFormat('en', { day: 'numeric' }).format(endDate)
+      dateStr += `-${endStr}`
     }
 
     return dateStr

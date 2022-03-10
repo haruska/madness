@@ -25,7 +25,6 @@ export const RulesAndScoring = () => {
   const { tournament } = useContext(AppContext)
 
   const formattedTipOffTime = () => {
-    // let tipOff = moment(this.props.pool.tournament.tipOff).tz('America/New_York')
     const tipOff = new Date(tournament.tipOff)
     const dateStr = Intl.DateTimeFormat('en', {
       weekday: 'long',
