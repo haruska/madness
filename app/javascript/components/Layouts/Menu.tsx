@@ -56,10 +56,11 @@ export const Menu = () => {
       </Link>
     )
 
-    //   links.push(
-    //     <Link to={`/rules`} onClick={this.handleToggleMenuClick}>
-    //       Rules and Scoring
-    //     </Link>
+    links.push(
+      <Link to={`/rules`} onClick={handleToggleMenuClick}>
+        Rules and Scoring
+      </Link>
+    )
 
     links.push(<a onClick={handleLogout}>Sign Out</a>)
 

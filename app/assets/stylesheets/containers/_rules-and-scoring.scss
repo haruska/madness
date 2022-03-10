@@ -1,0 +1,12 @@
+.rules-and-scoring-container {
+  padding: $gutter 0;
+
+  .sub-heading {
+    font-size: 1.5em;
+    padding-top: 25px;
+  }
+
+  .tie-breaker-list {
+    padding: $half-gutter;
+  }
+}
