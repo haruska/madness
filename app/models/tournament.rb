@@ -1,8 +1,39 @@
 # frozen_string_literal: true
 
 class Tournament < ApplicationRecord
+  NUM_ROUNDS = 6
+
+  def self.num_games
+    (2**NUM_ROUNDS) - 1
+  end
+
   def self.field_64
-    Tournament.find_by(num_rounds: 6)
+    Tournament.first
+  end
+
+  # this never changes
+  def self.tip_off
+    @tip_off ||= field_64.tip_off
+  end
+
+  def self.num_rounds
+    NUM_ROUNDS
+  end
+
+  def self.rounds
+    @rounds ||= (1..NUM_ROUNDS).to_a.map { |n| Round.new number: n }
+  end
+
+  def self.round_name_date_pairs
+    @round_name_date_pairs = rounds.map do |round|
+      date_range_string = round.start_date.strftime('%b %e')
+      date_range_string += "-#{round.end_date.strftime('%e')}" if round.start_date != round.end_date
+      [round.name, date_range_string]
+    end
+  end
+
+  def num_rounds
+    NUM_ROUNDS
   end
 
   def teams
@@ -24,7 +55,7 @@ class Tournament < ApplicationRecord
   delegate :championship, to: :tree
 
   def num_games
-    (2**num_rounds) - 1
+    Tournament.num_games
   end
 
   def num_games_played
@@ -53,15 +84,11 @@ class Tournament < ApplicationRecord
   end
 
   def rounds
-    (1..num_rounds).to_a.map { |n| Round.new number: n, tournament: self }
+    Tournament.rounds
   end
 
   def round_name_date_pairs
-    rounds.map do |round|
-      date_range_string = round.start_date.strftime('%b %e')
-      date_range_string += "-#{round.end_date.strftime('%e')}" if round.start_date != round.end_date
-      [round.name, date_range_string]
-    end
+    Tournament.round_name_date_pairs
   end
 
   def round_for(round_number, region = nil)

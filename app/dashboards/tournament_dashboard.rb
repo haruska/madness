@@ -12,7 +12,6 @@ class TournamentDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     tip_off: Field::DateTime,
-    num_rounds: Field::Number,
     game_decisions: Field::String.with_options(searchable: false),
     game_mask: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
@@ -26,7 +25,7 @@ class TournamentDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     tip_off
-    num_rounds
+    updated_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -34,7 +33,6 @@ class TournamentDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     tip_off
-    num_rounds
     game_decisions
     game_mask
     created_at
@@ -46,7 +44,6 @@ class TournamentDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     tip_off
-    num_rounds
     game_decisions
     game_mask
   ].freeze

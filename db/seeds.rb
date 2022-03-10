@@ -8,7 +8,6 @@ admin_email = ENV['ADMIN_EMAIL']
 User.find_or_create_by!(name: admin_name, email: admin_email, admin: true)
 
 Tournament.field_64 || Tournament.create!(
-  num_rounds: 6,
   tip_off: Time.parse("March 21, #{Time.current.year} 16:00 UTC").utc
 )
 

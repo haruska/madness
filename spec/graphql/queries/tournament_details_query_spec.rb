@@ -46,7 +46,7 @@ RSpec.describe Types::TournamentType do
   let(:result) { result_exe.dig('data', 'viewer', 'tournament64')&.with_indifferent_access }
 
   before do
-    expect(Tournament).to receive(:field_64).and_return(tournament)
+    expect(Tournament).to receive(:field_64).and_return(tournament).at_least(1)
   end
 
   describe 'tip_off' do

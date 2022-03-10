@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_07_003101) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_10_204327) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,12 +52,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_07_003101) do
 
   create_table "tournaments", force: :cascade do |t|
     t.datetime "tip_off"
-    t.integer "num_rounds", default: 6, null: false
     t.decimal "game_decisions", precision: 20, default: "0", null: false
     t.decimal "game_mask", precision: 20, default: "0", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["num_rounds"], name: "index_tournaments_on_num_rounds"
   end
 
   create_table "users", force: :cascade do |t|

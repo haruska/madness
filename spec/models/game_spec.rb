@@ -83,7 +83,6 @@ RSpec.describe Game, type: :model do
         game = tournament_tree.round_for(round_num).sample
         expect(game.round).to be_a(Round)
         expect(game.round.number).to eq(round_num)
-        expect(game.round.tournament).to eq(tournament)
       end
     end
   end

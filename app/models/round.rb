@@ -6,14 +6,13 @@ class Round
 
   NAMES = ['Field 64', 'Field 32', 'Sweet 16', 'Elite Eight', 'Final Four', 'Champion'].freeze
 
-  attribute :tournament
   attribute :number, type: Integer
 
-  validates :tournament, :number, presence: true
+  validates :number, presence: true
 
   def self.find(graph_id)
-    tournament_id, round_number = graph_id.split('~')
-    new(tournament: Tournament.find(tournament_id), number: round_number.to_i)
+    _, round_number = graph_id.split('~')
+    Tournament.rounds[round_number.to_i - 1]
   end
 
   def self.round_num_for_slot(slot)
@@ -22,12 +21,11 @@ class Round
   end
 
   def id
-    "#{tournament.id}~#{number}"
+    "round~#{number}"
   end
 
   def name
-    names = NAMES.last(tournament.num_rounds)
-    names[number - 1]
+    NAMES[number - 1]
   end
 
   def start_date
@@ -55,12 +53,12 @@ class Round
   def start_date_for(round_number)
     case round_number
     when 1
-      tournament.tip_off.to_date
+      Tournament.tip_off.to_date
     when 2, 4, 6
       start_date_for(round_number - 1) + 2.days
     else
       day = start_date_for(round_number - 1) + 5.days
-      day += tournament.num_rounds > 4 ? (round_number - 3).days : (round_number - 1).days
+      day += (round_number - 3).days
       day
     end
   end
