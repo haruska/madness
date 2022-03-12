@@ -11,6 +11,7 @@ export const Region = ({
   roundNumber,
   bracket,
   onSlotClick,
+  onSlotClear,
   highlightEmpty,
 }: {
   gameSlots: number[]
@@ -19,6 +20,7 @@ export const Region = ({
   roundNumber: number
   bracket?: BasicBracket
   onSlotClick?: (gameSlot: number, decision: number) => void
+  onSlotClear?: (slotId: number) => void
   highlightEmpty?: boolean
 }) => {
   return (
@@ -35,6 +37,7 @@ export const Region = ({
           roundNumber={roundNumber}
           bracket={bracket}
           onSlotClick={onSlotClick}
+          onSlotClear={onSlotClear}
           highlightEmpty={highlightEmpty}
         />
       ))}

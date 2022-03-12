@@ -13,6 +13,7 @@ const GameSlot = ({
   pickClass,
   highlightEmpty,
   onSlotClick,
+  onSlotClear
 }: {
   gameSlot: number
   team: Team
@@ -20,10 +21,18 @@ const GameSlot = ({
   pickClass: string
   highlightEmpty: boolean
   onSlotClick: (gameSlot: number, decision: number) => void
+  onSlotClear?: (slotId: number) => void
 }) => {
+
   const handleClick = () => {
     if (onSlotClick) {
       onSlotClick(gameSlot, decision)
+    }
+  }
+
+  const handleClear = () => {
+    if(onSlotClear) {
+      onSlotClear(gameSlot)
     }
   }
 
@@ -31,9 +40,15 @@ const GameSlot = ({
 
   if (team) {
     return (
+        <>
+
       <p className={classNames('slot', `slot${decision}`, pickClass)} onClick={handleClick}>
         <span className="seed">{team.seed}</span> {team.name}
       </p>
+    { onSlotClear ? (
+        <p className="clear-pick">onClick={handleClear} style={{zIndex: 150}}>X</p>
+    ): null}
+          </>
     )
   }
   return (
@@ -51,6 +66,7 @@ export const Game = ({
   roundNumber,
   highlightEmpty,
   onSlotClick,
+  onSlotClear,
 }: {
   bracket?: BasicBracket
   index: number
@@ -59,6 +75,7 @@ export const Game = ({
   roundNumber: number
   highlightEmpty?: boolean
   onSlotClick?: (gameSlot: number, decision: number) => void
+  onSlotClear?: (slotId: number) => void
 }) => {
   const { tournamentTree, teams } = useContext(AppContext)
 
@@ -118,6 +135,7 @@ export const Game = ({
         pickClass={pickClass}
         highlightEmpty={highlightEmpty}
         onSlotClick={onSlotClick}
+        onSlotClear={onSlotClear}
       />
     )
   }

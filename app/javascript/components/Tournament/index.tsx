@@ -8,10 +8,12 @@ import { BasicBracket } from 'containers/Bracket'
 export const Tournament = ({
   bracket,
   onSlotClick,
+  onSlotClear,
   highlightEmpty,
 }: {
   bracket?: BasicBracket
   onSlotClick?: (slotId: number, choice: number) => void
+  onSlotClear?: (slotId: number) => void
   highlightEmpty?: boolean
 }) => {
   const { tournament } = useContext(AppContext)
@@ -31,6 +33,7 @@ export const Tournament = ({
               round={r}
               bracket={bracket}
               onSlotClick={onSlotClick}
+              onSlotClear={onSlotClear}
               highlightEmpty={highlightEmpty}
             />
           ))}

@@ -43,6 +43,11 @@ export const EditTournament = () => {
     setGameDecisionsMask([decisions, mask])
   }
 
+  const handleSlotClear = (slotId: number) => {
+    const mask = gameMask & (~(BigInt(1) << BigInt(slotId)))
+    setGameDecisionsMask([gameDecisions, mask])
+  }
+
   const handleUpdateCompleted = (
     response: UpdateTournamentMutation$data,
     errors: MutationErrors
@@ -96,6 +101,7 @@ export const EditTournament = () => {
           gameDecisions,
         }}
         onSlotClick={handleSlotClick}
+        onSlotClear={handleSlotClear}
       />
       <form className="edit-tournament-form" onSubmit={handleDone}>
         {errors ? <ErrorFlash errors={errors} objectType={'Tournament'} /> : null}

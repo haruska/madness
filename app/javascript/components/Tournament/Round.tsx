@@ -11,11 +11,13 @@ export const Round = ({
   round,
   bracket,
   onSlotClick,
+  onSlotClear,
   highlightEmpty,
 }: {
   round: Tournament['rounds'][0]
   bracket?: BasicBracket
   onSlotClick?: (slotId: number, choice: number) => void
+  onSlotClear?: (slotId: number) => void
   highlightEmpty?: boolean
 }) => {
   const gameSlots = () => {
@@ -45,6 +47,7 @@ export const Round = ({
             bracket={bracket}
             roundNumber={round.number}
             onSlotClick={onSlotClick}
+            onSlotClear={onSlotClear}
             highlightEmpty={highlightEmpty}
           />
         ))}
