@@ -2,4 +2,14 @@
   padding-top: $gutter * 2;
   width: $bracket-width;
   margin: 0 auto;
+
+  .games-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      margin: 0;
+    }
+  }
 }

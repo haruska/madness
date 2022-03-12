@@ -1,0 +1,32 @@
+.edit-tournament-container {
+  padding-top: $gutter * 2;
+  width: $bracket-width;
+  margin: 0 auto;
+
+  .edit-tournament-form {
+    margin: 0 auto;
+    width: 300px;
+    padding-bottom: $gutter;
+  }
+
+  .button {
+    display: inline-block;
+    width: 48% !important;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .left-button {
+    margin-right: 10px;
+  }
+
+  .slot {
+    cursor: pointer;
+
+    &:hover {
+      background-color: $light-blue;
+    }
+
+    z-index: 100;
+  }
+}

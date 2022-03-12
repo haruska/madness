@@ -10,6 +10,7 @@ import { Bracket } from 'containers/Bracket'
 import { EditBracket } from 'containers/EditBracket'
 import { NewBracket } from 'containers/NewBracket'
 import { Games } from 'containers/Games'
+import { EditTournament } from 'containers/EditTournament'
 import { RulesAndScoring } from 'containers/RulesAndScoring'
 
 const MainLayoutQuery = graphql`
@@ -62,6 +63,7 @@ export default makeRouteConfig(
       <Route path="new_bracket" Component={NewBracket} />
       <Route path="games" Component={Games} />
       <Route path="rules" Component={RulesAndScoring} />
+      <Route path="tournament/edit" Component={EditTournament} />
       <Route path="brackets/:bracketId">
         <Route Component={Bracket} query={BracketQuery} />
         <Route path="edit" Component={EditBracket} query={EditBracketQuery} />
