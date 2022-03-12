@@ -55,6 +55,10 @@ export const MainLayout = createFragmentContainer(MainLayoutComponent, {
   viewer: graphql`
     fragment MainLayout_viewer on Viewer {
       tournament64 {
+        id
+        policy {
+          update
+        }
         rounds {
           name
           number

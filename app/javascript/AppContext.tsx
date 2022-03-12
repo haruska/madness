@@ -8,6 +8,8 @@ export type Team = MainLayout_viewer$data['teams'][0]
 type Teams = MainLayout_viewer$data['teams']
 
 export interface Tournament {
+  id: Tournament64['id']
+  policy: Tournament64['policy']
   rounds: Tournament64['rounds']
   tipOff: Tournament64['tipOff']
   gameDecisions: bigint

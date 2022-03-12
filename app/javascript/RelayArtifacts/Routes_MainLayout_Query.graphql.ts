@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<245d41ca52201d0b1f17fa4b532fb0d4>>
+ * @generated SignedSource<<9ca8137fe4e8b8f61c19000514c09970>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -26,14 +26,14 @@ var v0 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "name",
+  "name": "id",
   "storageKey": null
 },
 v1 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "id",
+  "name": "name",
   "storageKey": null
 };
 return {
@@ -85,6 +85,25 @@ return {
             "name": "tournament64",
             "plural": false,
             "selections": [
+              (v0/*: any*/),
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "NodePolicy",
+                "kind": "LinkedField",
+                "name": "policy",
+                "plural": false,
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "update",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              },
               {
                 "alias": null,
                 "args": null,
@@ -93,7 +112,7 @@ return {
                 "name": "rounds",
                 "plural": true,
                 "selections": [
-                  (v0/*: any*/),
+                  (v1/*: any*/),
                   {
                     "alias": null,
                     "args": null,
@@ -122,7 +141,7 @@ return {
                     "name": "regions",
                     "storageKey": null
                   },
-                  (v1/*: any*/)
+                  (v0/*: any*/)
                 ],
                 "storageKey": null
               },
@@ -153,8 +172,7 @@ return {
                 "kind": "ScalarField",
                 "name": "started",
                 "storageKey": null
-              },
-              (v1/*: any*/)
+              }
             ],
             "storageKey": null
           },
@@ -166,7 +184,7 @@ return {
             "name": "teams",
             "plural": true,
             "selections": [
-              (v1/*: any*/),
+              (v0/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -181,7 +199,7 @@ return {
                 "name": "seed",
                 "storageKey": null
               },
-              (v0/*: any*/)
+              (v1/*: any*/)
             ],
             "storageKey": null
           },
@@ -193,8 +211,8 @@ return {
             "name": "currentUser",
             "plural": false,
             "selections": [
-              (v1/*: any*/),
               (v0/*: any*/),
+              (v1/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -212,19 +230,19 @@ return {
             ],
             "storageKey": null
           },
-          (v1/*: any*/)
+          (v0/*: any*/)
         ],
         "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "f5ca659b9edd6f955f642ce3ae0292d2",
+    "cacheID": "f6301cb65bf8534652363a52c94c7243",
     "id": null,
     "metadata": {},
     "name": "Routes_MainLayout_Query",
     "operationKind": "query",
-    "text": "query Routes_MainLayout_Query {\n  viewer {\n    ...MainLayout_viewer\n    id\n  }\n}\n\nfragment MainLayout_viewer on Viewer {\n  tournament64 {\n    rounds {\n      name\n      number\n      startDate\n      endDate\n      regions\n      id\n    }\n    tipOff\n    gameDecisions\n    gameMask\n    started\n    id\n  }\n  teams {\n    id\n    startingSlot\n    seed\n    name\n  }\n  currentUser {\n    id\n    name\n    email\n    admin\n  }\n}\n"
+    "text": "query Routes_MainLayout_Query {\n  viewer {\n    ...MainLayout_viewer\n    id\n  }\n}\n\nfragment MainLayout_viewer on Viewer {\n  tournament64 {\n    id\n    policy {\n      update\n    }\n    rounds {\n      name\n      number\n      startDate\n      endDate\n      regions\n      id\n    }\n    tipOff\n    gameDecisions\n    gameMask\n    started\n  }\n  teams {\n    id\n    startingSlot\n    seed\n    name\n  }\n  currentUser {\n    id\n    name\n    email\n    admin\n  }\n}\n"
   }
 };
 })();
