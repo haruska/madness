@@ -6,7 +6,7 @@ class Team < ApplicationRecord
   MIDWEST = 'Midwest'
   SOUTH = 'South'
 
-  REGIONS = [EAST, WEST, SOUTH, MIDWEST].freeze
+  REGIONS = [WEST, EAST, SOUTH, MIDWEST].freeze
   SEED_ORDER = [1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15].freeze
 
   validates :name, length: { maximum: 15 }
