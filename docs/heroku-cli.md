@@ -43,3 +43,8 @@ heroku logs -t -r staging
 heroku console -r staging
 ```
 
+### Copy production DB to staging environment
+
+```bash
+heroku pg:copy madness::DATABASE_URL DATABASE_URL -a madness-staging --confirm madness-staging
+```
