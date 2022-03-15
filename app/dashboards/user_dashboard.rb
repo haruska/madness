@@ -15,6 +15,7 @@ class UserDashboard < Administrate::BaseDashboard
     email: Field::String,
     admin: Field::Boolean,
     brackets: Field::HasMany,
+    sign_in_count: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
@@ -28,6 +29,7 @@ class UserDashboard < Administrate::BaseDashboard
     id
     name
     email
+    sign_in_count
     brackets
   ].freeze
 
@@ -40,6 +42,7 @@ class UserDashboard < Administrate::BaseDashboard
     admin
     created_at
     updated_at
+    sign_in_count
     brackets
   ].freeze
 
@@ -49,7 +52,6 @@ class UserDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     name
     email
-    admin
   ].freeze
 
   # COLLECTION_FILTERS
