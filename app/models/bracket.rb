@@ -8,11 +8,13 @@ class Bracket < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   def sorted_four
-    Array(decision_team_slots[1..7]).uniq.reverse
+    @sorted_four ||= Rails.cache.fetch("#{cache_key_with_version}/sorted_four") do
+      Array(decision_team_slots[1..7]).uniq.reverse
+    end
   end
 
   def points
-    @points ||= begin
+    @points ||= Rails.cache.fetch(bt_cache_key('points')) do
       tournament_decision_team_slots = Tournament.field_64.decision_team_slots
       (1..63).reduce(0) do |acc, i|
         t = tournament_decision_team_slots[i]
@@ -29,7 +31,7 @@ class Bracket < ApplicationRecord
   end
 
   def possible_points
-    @possible_points ||= begin
+    @possible_points ||= Rails.cache.fetch(bt_cache_key('possible_points')) do
       tournament_decision_team_slots = Tournament.field_64.decision_team_slots
       eliminated_picks = Set.new
 
@@ -61,8 +63,12 @@ class Bracket < ApplicationRecord
 
   private
 
+  def bt_cache_key(suffix)
+    "#{Tournament.field_64.cache_key_with_version}/#{cache_key_with_version}/#{suffix}"
+  end
+
   def decision_team_slots
-    @decision_team_slots ||= begin
+    @decision_team_slots ||= Rails.cache.fetch("#{cache_key_with_version}/decision_team_slots") do
       decisions = game_decisions
       result = []
 

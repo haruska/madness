@@ -108,7 +108,7 @@ class Tournament < ApplicationRecord
   end
 
   def decision_team_slots
-    @decision_team_slots ||= begin
+    @decision_team_slots ||= Rails.cache.fetch("#{cache_key_with_version}/decision_team_slots") do
       decisions = game_decisions
       result = Array.new(64)
 
