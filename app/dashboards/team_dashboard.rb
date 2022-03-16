@@ -50,9 +50,7 @@ class TeamDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     name
-    seed
     score_team_id
-    region
     starting_slot
   ].freeze
 
