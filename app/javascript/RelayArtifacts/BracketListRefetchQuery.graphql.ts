@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ca8de65f087cffeff522101656404f6c>>
+ * @generated SignedSource<<ae63e2e53d9d42fec8b235254d17a6cb>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,19 +10,28 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type Routes_BracketList_Query$variables = {};
-export type Routes_BracketList_Query$data = {
+export type BracketListRefetchQuery$variables = {
+  count: number;
+};
+export type BracketListRefetchQuery$data = {
   readonly viewer: {
     readonly " $fragmentSpreads": FragmentRefs<"BracketList_viewer">;
   };
 };
-export type Routes_BracketList_Query = {
-  variables: Routes_BracketList_Query$variables;
-  response: Routes_BracketList_Query$data;
+export type BracketListRefetchQuery = {
+  variables: BracketListRefetchQuery$variables;
+  response: BracketListRefetchQuery$data;
 };
 
 const node: ConcreteRequest = (function(){
-var v0 = {
+var v0 = [
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "count"
+  }
+],
+v1 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
@@ -31,10 +40,10 @@ var v0 = {
 };
 return {
   "fragment": {
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "Routes_BracketList_Query",
+    "name": "BracketListRefetchQuery",
     "selections": [
       {
         "alias": null,
@@ -45,7 +54,13 @@ return {
         "plural": false,
         "selections": [
           {
-            "args": null,
+            "args": [
+              {
+                "kind": "Variable",
+                "name": "count",
+                "variableName": "count"
+              }
+            ],
             "kind": "FragmentSpread",
             "name": "BracketList_viewer"
           }
@@ -58,9 +73,9 @@ return {
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "Routes_BracketList_Query",
+    "name": "BracketListRefetchQuery",
     "selections": [
       {
         "alias": null,
@@ -74,9 +89,9 @@ return {
             "alias": null,
             "args": [
               {
-                "kind": "Literal",
+                "kind": "Variable",
                 "name": "first",
-                "value": 25
+                "variableName": "count"
               }
             ],
             "concreteType": "BracketConnection",
@@ -92,7 +107,7 @@ return {
                 "name": "nodes",
                 "plural": true,
                 "selections": [
-                  (v0/*: any*/),
+                  (v1/*: any*/),
                   {
                     "alias": null,
                     "args": null,
@@ -129,7 +144,7 @@ return {
                     "name": "user",
                     "plural": false,
                     "selections": [
-                      (v0/*: any*/)
+                      (v1/*: any*/)
                     ],
                     "storageKey": null
                   },
@@ -158,25 +173,25 @@ return {
                 "storageKey": null
               }
             ],
-            "storageKey": "brackets(first:25)"
+            "storageKey": null
           },
-          (v0/*: any*/)
+          (v1/*: any*/)
         ],
         "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "79cf9c3f5281d36eab992beedca4a46f",
+    "cacheID": "e8e143c1196575faffee010a47b143fe",
     "id": null,
     "metadata": {},
-    "name": "Routes_BracketList_Query",
+    "name": "BracketListRefetchQuery",
     "operationKind": "query",
-    "text": "query Routes_BracketList_Query {\n  viewer {\n    ...BracketList_viewer\n    id\n  }\n}\n\nfragment BestPossibleSmall_bracket on Bracket {\n  bestPossibleFinish\n  eliminated\n}\n\nfragment BestPossible_bracket on Bracket {\n  bestPossibleFinish\n}\n\nfragment BracketList_viewer on Viewer {\n  brackets(first: 25) {\n    nodes {\n      id\n      points\n      possiblePoints\n      ...BracketRow_bracket\n      ...SmallBracket_bracket\n    }\n    totalCount\n  }\n}\n\nfragment BracketRow_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  sortedFour\n  ...BestPossible_bracket\n}\n\nfragment SmallBracket_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  sortedFour\n  ...BestPossibleSmall_bracket\n}\n"
+    "text": "query BracketListRefetchQuery(\n  $count: Int!\n) {\n  viewer {\n    ...BracketList_viewer_yu5n1\n    id\n  }\n}\n\nfragment BestPossibleSmall_bracket on Bracket {\n  bestPossibleFinish\n  eliminated\n}\n\nfragment BestPossible_bracket on Bracket {\n  bestPossibleFinish\n}\n\nfragment BracketList_viewer_yu5n1 on Viewer {\n  brackets(first: $count) {\n    nodes {\n      id\n      points\n      possiblePoints\n      ...BracketRow_bracket\n      ...SmallBracket_bracket\n    }\n    totalCount\n  }\n}\n\nfragment BracketRow_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  sortedFour\n  ...BestPossible_bracket\n}\n\nfragment SmallBracket_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  sortedFour\n  ...BestPossibleSmall_bracket\n}\n"
   }
 };
 })();
 
-(node as any).hash = "30bad7068d4b87a19bcd3724280a43cd";
+(node as any).hash = "2803dcf39d3587875d109dabbe324038";
 
 export default node;

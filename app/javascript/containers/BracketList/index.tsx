@@ -1,17 +1,31 @@
-import React, { useContext, useEffect } from 'react'
-import { graphql, createFragmentContainer } from 'react-relay'
+import React, { useContext, useEffect, useState } from 'react'
+import { graphql, createRefetchContainer, RelayRefetchProp } from 'react-relay'
 import { AppContext } from 'AppContext'
 import { TableHeader } from './TableHeader'
 import { BracketRow } from './BracketRow'
 import SmallBracket from './SmallBracket'
 import { BracketList_viewer$data } from 'RelayArtifacts/BracketList_viewer.graphql'
-import { DEFAULT_TITLE } from '../../components/Layouts/MainLayout'
+import { DEFAULT_TITLE } from 'components/Layouts/MainLayout'
 
-const Component = ({ viewer }: { viewer: BracketList_viewer$data }) => {
+const Component = ({
+  viewer,
+  relay,
+}: {
+  viewer: BracketList_viewer$data
+  relay: RelayRefetchProp
+}) => {
   const { setPageTitle } = useContext(AppContext)
+  const [hasRefetched, setHasRefetched] = useState<boolean>(false)
 
   useEffect(() => {
     setPageTitle(`Brackets (${viewer.brackets.totalCount} total)`)
+
+    const refetchVariables = { count: viewer.brackets.totalCount }
+    const callback = () => setHasRefetched(true)
+
+    if (!hasRefetched) {
+      relay.refetch(refetchVariables, null, callback, { force: true })
+    }
 
     return () => {
       setPageTitle(DEFAULT_TITLE)
@@ -80,19 +94,30 @@ const Component = ({ viewer }: { viewer: BracketList_viewer$data }) => {
   )
 }
 
-export const BracketList = createFragmentContainer(Component, {
-  viewer: graphql`
-    fragment BracketList_viewer on Viewer {
-      brackets {
-        nodes {
-          id
-          points
-          possiblePoints
-          ...BracketRow_bracket
-          ...SmallBracket_bracket
+export const BracketList = createRefetchContainer(
+  Component,
+  {
+    viewer: graphql`
+      fragment BracketList_viewer on Viewer
+      @argumentDefinitions(count: { type: "Int", defaultValue: 25 }) {
+        brackets(first: $count) {
+          nodes {
+            id
+            points
+            possiblePoints
+            ...BracketRow_bracket
+            ...SmallBracket_bracket
+          }
+          totalCount
         }
-        totalCount
+      }
+    `,
+  },
+  graphql`
+    query BracketListRefetchQuery($count: Int!) {
+      viewer {
+        ...BracketList_viewer @arguments(count: $count)
       }
     }
-  `,
-})
+  `
+)

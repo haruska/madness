@@ -48,3 +48,14 @@ heroku console -r staging
 ```bash
 heroku pg:copy madness::DATABASE_URL DATABASE_URL -a madness-staging --confirm madness-staging
 ```
+
+### Copy staging DB to development
+
+```bash
+heroku pg:backups:capture -a madness-staging
+heroku pg:backups:download -a madness-staging
+rails db:drop
+rails db:drop DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+rails db:create
+pg_restore --verbose --clean --no-acl --no-owner -d madness_development latest.dump
+```

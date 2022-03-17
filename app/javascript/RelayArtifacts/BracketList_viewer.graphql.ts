@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d751f6f17a484186a51e69879c266f77>>
+ * @generated SignedSource<<fb35ecc256c58378f22acb1f72c57d8a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -28,14 +28,26 @@ export type BracketList_viewer$key = {
 };
 
 const node: ReaderFragment = {
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "defaultValue": 25,
+      "kind": "LocalArgument",
+      "name": "count"
+    }
+  ],
   "kind": "Fragment",
   "metadata": null,
   "name": "BracketList_viewer",
   "selections": [
     {
       "alias": null,
-      "args": null,
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "first",
+          "variableName": "count"
+        }
+      ],
       "concreteType": "BracketConnection",
       "kind": "LinkedField",
       "name": "brackets",
@@ -98,6 +110,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "320193ed659e0c5ad50a40e1d79b01eb";
+(node as any).hash = "142f24c87e5ffb308adafe25975f9a49";
 
 export default node;
