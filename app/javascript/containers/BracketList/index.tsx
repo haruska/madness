@@ -40,7 +40,7 @@ const Component = ({
     let currentPlace = 0
     brackets.forEach((b, i) => {
       if (i !== 0 && b.points !== brackets[i - 1].points) {
-        currentPlace = i + 1
+        currentPlace = i
       }
       placeBrackets[currentPlace] = placeBrackets[currentPlace] || []
       placeBrackets[currentPlace].push(b)
