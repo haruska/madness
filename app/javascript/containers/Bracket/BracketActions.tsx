@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 import classNames from 'classnames'
 import { Link } from 'found'
 import { BracketActions_bracket$data } from 'RelayArtifacts/BracketActions_bracket.graphql'
+import { AppContext } from 'AppContext'
 
 const Component = ({ bracket }: { bracket: BracketActions_bracket$data }) => {
-  if (bracket.policy.update) {
+  const { tournament } = useContext(AppContext)
+  if (bracket.policy.update && !tournament.started) {
     return (
       <div className="bracket-actions">
         <Link to={`/brackets/${bracket.id}/edit`} className={classNames('button', 'edit')}>
