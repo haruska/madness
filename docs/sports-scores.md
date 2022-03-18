@@ -71,3 +71,50 @@ class EspnScores
   end
 end
 ```
+
+## Associating Teams with ESPN teams
+
+For ESPN on each game we know the seed, abbreviation, and who they're playing. As a first pass, we can just take the seed number, compare the first char of the abbreviation to the 4 teams with the same seed and assign if it matches.
+
+If needed, we can do it in pairs. For each pair of teams, find the 2 abbreviation first letters that match the pair/slots.
+
+This should allow a fairly accurate script.
+
+Grab the scores for thursday and friday:
+
+```ruby
+first_round = EspnScores.scores_for(Date.today) + EspnScores.scores_for(Date.tomorrow)
+first_round.size # should == 32
+
+teams = Team.all.to_a
+
+
+first_round.each do |score|
+  score_team_one, score_team_two = score[:teams].map {|t| [t[:seed], t[:abbrev]]}
+
+
+  possible_team_one = teams.find {|t| t.seed == score_team_one.first && t.name.starts_with?(score_team_one[1].chars.first)}
+  possible_team_two = teams.find {|t| t.seed == score_team_two.first && t.name.starts_with?(score_team_two[1].chars.first)}
+
+  if possible_team_one && !possible_team_two
+    possible_team_two = teams.find {|t| t.starting_slot == possible_team_one.starting_slot + 1}
+  elsif possible_team_two && !possible_team_one
+    possible_team_one = teams.find {|t| t.starting_slot == possible_team_two.starting_slot - 1}
+  end
+
+  possible_team_one&.update(score_team_id: score_team_one[1])
+  possible_team_two&.update(score_team_id: score_team_two[1])
+end
+
+#Left over abbrev
+out = ["Unused Abbreviations: "]
+first_round.each do |score|
+  score[:teams].each do |team|
+    if Team.find_by(score_team_id: team[:abbrev]).nil?
+      out << "#{team[:seed]}, #{team[:abbrev]}"
+    end
+  end
+end
+
+out.each {|line| puts line}
+```

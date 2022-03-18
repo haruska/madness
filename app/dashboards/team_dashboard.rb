@@ -30,6 +30,7 @@ class TeamDashboard < Administrate::BaseDashboard
     region
     seed
     name
+    score_team_id
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
