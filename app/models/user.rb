@@ -14,4 +14,10 @@ class User < ApplicationRecord
   def password_required?
     false
   end
+
+  # @return [Boolean] user should be remembered when they log in (with cookie)
+  #   so he won't be asked to login again
+  def remember_me
+    true
+  end
 end
