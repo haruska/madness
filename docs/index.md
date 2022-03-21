@@ -7,3 +7,4 @@
 * [Cloudflare Setup](cloudflare.md)
 * [Seed team data](prep-tournament.md) after selection sunday
 * [Caching](caching.md) on the project
+* [Updating game scores](sports-scores.md) with the ESPN API
