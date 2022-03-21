@@ -20,4 +20,6 @@ Naming/VariableNumber:
   Enabled: false
 Rails/BulkChangeTable:
   Enabled: false
+Metrics/BlockNesting:
+  Enabled: false
 
