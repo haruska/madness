@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3d3ff4f52b3a0574a4702ab51e208e19>>
+ * @generated SignedSource<<859799bfede7791a45f06e1227502e79>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,6 +12,7 @@ import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type BestPossible_bracket$data = {
   readonly bestPossibleFinish: number | null;
+  readonly eliminated: boolean;
   readonly " $fragmentType": "BestPossible_bracket";
 };
 export type BestPossible_bracket$key = {
@@ -31,12 +32,19 @@ const node: ReaderFragment = {
       "kind": "ScalarField",
       "name": "bestPossibleFinish",
       "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "eliminated",
+      "storageKey": null
     }
   ],
   "type": "Bracket",
   "abstractKey": null
 };
 
-(node as any).hash = "c268774a27a495a0896da424a95e36f5";
+(node as any).hash = "614d37d9b78fbe5d8d716ee15317d63f";
 
 export default node;

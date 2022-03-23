@@ -32,6 +32,7 @@ const Component = ({
     }
   })
 
+  const showEliminated = viewer.showEliminated
   const brackets = viewer.brackets.nodes
 
   const bracketsWithPlace = (() => {
@@ -53,8 +54,7 @@ const Component = ({
     <div className="bracket-list-container">
       <div className="large-screen">
         <table className="tables">
-          {/*<TableHeader showEliminated={this.showEliminated()} />*/}
-          <TableHeader showEliminated={false} />
+          <TableHeader showEliminated={showEliminated} />
           <tbody>
             {bracketsWithPlace
               .map((brackets, place) =>
@@ -63,8 +63,7 @@ const Component = ({
                     key={bracket.id}
                     index={place + 1}
                     tied={brackets.length > 1}
-                    // showEliminated={this.showEliminated()}
-                    showEliminated={false}
+                    showEliminated={showEliminated}
                     bracket={bracket}
                   />
                 ))
@@ -83,8 +82,7 @@ const Component = ({
                 index={place + 1}
                 tied={brackets.length > 1}
                 bracket={bracket}
-                // showEliminated={this.showEliminated()}
-                showEliminated={false}
+                showEliminated={showEliminated}
               />
             ))
           )
@@ -100,6 +98,7 @@ export const BracketList = createRefetchContainer(
     viewer: graphql`
       fragment BracketList_viewer on Viewer
       @argumentDefinitions(count: { type: "Int", defaultValue: 25 }) {
+        showEliminated
         brackets(first: $count) {
           nodes {
             id

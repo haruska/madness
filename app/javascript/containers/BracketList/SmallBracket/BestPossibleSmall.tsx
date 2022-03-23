@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
 import { BestPossibleSmall_bracket$data } from 'RelayArtifacts/BestPossibleSmall_bracket.graphql'
+import { ordinalInNumber } from 'lib/ordinals'
 
 const Component = ({
   showEliminated,
@@ -12,7 +13,7 @@ const Component = ({
   if (showEliminated) {
     let bestPossible = bracket.eliminated
       ? 'eliminated'
-      : `possible ${bracket.bestPossibleFinish} place finish`
+      : `possible ${ordinalInNumber(bracket.bestPossibleFinish)} place finish`
     return <div className="best-possible">{bestPossible}</div>
   } else {
     return null

@@ -107,6 +107,23 @@ class Tournament < ApplicationRecord
     end
   end
 
+  def self.slots_to_decisions(slots)
+    decisions = 0
+    slots.to_enum.with_index.reverse_each do |slot, i|
+      next if i.zero?
+
+      decision = if i >= 32
+                   slot.even? ? 0 : 1
+                 else
+                   slot == slots[i * 2] ? 0 : 1
+                 end
+
+      decisions |= decision << i
+    end
+
+    decisions
+  end
+
   def decision_team_slots
     @decision_team_slots ||= Rails.cache.fetch("#{cache_key_with_version}/decision_team_slots") do
       decisions = game_decisions

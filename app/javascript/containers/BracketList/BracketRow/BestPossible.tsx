@@ -9,13 +9,18 @@ const Component = ({
   showEliminated: boolean
   bracket: BestPossible_bracket$data
 }) => {
-  return showEliminated ? <td>{bracket.bestPossibleFinish}</td> : null
+  if (!showEliminated) {
+    return null
+  }
+
+  return <td>{bracket.eliminated ? '-' : bracket.bestPossibleFinish}</td>
 }
 
 export const BestPossible = createFragmentContainer(Component, {
   bracket: graphql`
     fragment BestPossible_bracket on Bracket {
       bestPossibleFinish
+      eliminated
     }
   `,
 })
