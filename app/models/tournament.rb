@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class Tournament < ApplicationRecord
+  after_update do |tournament|
+    UpdateBestFinishesJob.perform_later if tournament.num_games_remaining < 16
+  end
+
   def self.field_64
     Tournament.find_by(num_rounds: 6)
   end
