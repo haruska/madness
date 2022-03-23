@@ -340,6 +340,7 @@ type Viewer implements HasPolicy & Node {
   """
   id: ID!
   policy: ViewerPolicy!
+  showEliminated: Boolean!
   teams: [Team!]!
   tournament64: Tournament!
 }

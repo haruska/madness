@@ -16,16 +16,20 @@ class Bracket < ApplicationRecord
   def points
     @points ||= Rails.cache.fetch(bt_cache_key('points')) do
       tournament_decision_team_slots = Tournament.field_64.decision_team_slots
-      (1..63).reduce(0) do |acc, i|
-        t = tournament_decision_team_slots[i]
-        b = decision_team_slots[i]
-        if t.present? && t == b
-          team_seed = Team.seed_for_slot(b)
-          round_number = Round.round_num_for_slot(i)
-          acc + POINTS_PER_ROUND[round_number] + team_seed
-        else
-          acc
-        end
+      points_for(tournament_decision_team_slots)
+    end
+  end
+
+  def points_for(tournament_decision_team_slots)
+    (1..63).reduce(0) do |acc, i|
+      t = tournament_decision_team_slots[i]
+      b = decision_team_slots[i]
+      if t.present? && t == b
+        team_seed = Team.seed_for_slot(b)
+        round_number = Round.round_num_for_slot(i)
+        acc + POINTS_PER_ROUND[round_number] + team_seed
+      else
+        acc
       end
     end
   end
@@ -54,11 +58,7 @@ class Bracket < ApplicationRecord
   end
 
   def eliminated
-    false
-  end
-
-  def best_possible_finish
-    1
+    best_possible_finish > 5
   end
 
   private

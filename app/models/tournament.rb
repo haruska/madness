@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class Tournament < ApplicationRecord
+  after_update do |tournament|
+    UpdateBestFinishesJob.perform_later if tournament.num_games_remaining < 16
+  end
+
   def self.field_64
     Tournament.find_by(num_rounds: 6)
   end
@@ -105,6 +109,23 @@ class Tournament < ApplicationRecord
         choice: node.decision
       }
     end
+  end
+
+  def self.slots_to_decisions(slots)
+    decisions = 0
+    slots.to_enum.with_index.reverse_each do |slot, i|
+      next if i.zero?
+
+      decision = if i >= 32
+                   slot.even? ? 0 : 1
+                 else
+                   slot == slots[i * 2] ? 0 : 1
+                 end
+
+      decisions |= decision << i
+    end
+
+    decisions
   end
 
   def decision_team_slots

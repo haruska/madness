@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ca8de65f087cffeff522101656404f6c>>
+ * @generated SignedSource<<96db14ae6c884a91484751e0fb74442a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -70,6 +70,13 @@ return {
         "name": "viewer",
         "plural": false,
         "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "showEliminated",
+            "storageKey": null
+          },
           {
             "alias": null,
             "args": [
@@ -167,12 +174,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "79cf9c3f5281d36eab992beedca4a46f",
+    "cacheID": "d5a6770b20fa2071bf23ecda56515d93",
     "id": null,
     "metadata": {},
     "name": "Routes_BracketList_Query",
     "operationKind": "query",
-    "text": "query Routes_BracketList_Query {\n  viewer {\n    ...BracketList_viewer\n    id\n  }\n}\n\nfragment BestPossibleSmall_bracket on Bracket {\n  bestPossibleFinish\n  eliminated\n}\n\nfragment BestPossible_bracket on Bracket {\n  bestPossibleFinish\n}\n\nfragment BracketList_viewer on Viewer {\n  brackets(first: 25) {\n    nodes {\n      id\n      points\n      possiblePoints\n      ...BracketRow_bracket\n      ...SmallBracket_bracket\n    }\n    totalCount\n  }\n}\n\nfragment BracketRow_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  sortedFour\n  ...BestPossible_bracket\n}\n\nfragment SmallBracket_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  sortedFour\n  ...BestPossibleSmall_bracket\n}\n"
+    "text": "query Routes_BracketList_Query {\n  viewer {\n    ...BracketList_viewer\n    id\n  }\n}\n\nfragment BestPossibleSmall_bracket on Bracket {\n  bestPossibleFinish\n  eliminated\n}\n\nfragment BestPossible_bracket on Bracket {\n  bestPossibleFinish\n  eliminated\n}\n\nfragment BracketList_viewer on Viewer {\n  showEliminated\n  brackets(first: 25) {\n    nodes {\n      id\n      points\n      possiblePoints\n      ...BracketRow_bracket\n      ...SmallBracket_bracket\n    }\n    totalCount\n  }\n}\n\nfragment BracketRow_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  sortedFour\n  ...BestPossible_bracket\n}\n\nfragment SmallBracket_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  sortedFour\n  ...BestPossibleSmall_bracket\n}\n"
   }
 };
 })();

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<fb35ecc256c58378f22acb1f72c57d8a>>
+ * @generated SignedSource<<8861f64ed8472d570d712ebce50efa64>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,6 +11,7 @@
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type BracketList_viewer$data = {
+  readonly showEliminated: boolean;
   readonly brackets: {
     readonly nodes: ReadonlyArray<{
       readonly id: string;
@@ -39,6 +40,13 @@ const node: ReaderFragment = {
   "metadata": null,
   "name": "BracketList_viewer",
   "selections": [
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "showEliminated",
+      "storageKey": null
+    },
     {
       "alias": null,
       "args": [
@@ -110,6 +118,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "142f24c87e5ffb308adafe25975f9a49";
+(node as any).hash = "e20dd06a6072992d8f20da36248733bb";
 
 export default node;

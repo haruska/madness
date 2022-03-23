@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ae63e2e53d9d42fec8b235254d17a6cb>>
+ * @generated SignedSource<<df00f5bfed13e88f68b19966accbff4c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -85,6 +85,13 @@ return {
         "name": "viewer",
         "plural": false,
         "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "showEliminated",
+            "storageKey": null
+          },
           {
             "alias": null,
             "args": [
@@ -182,12 +189,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "e8e143c1196575faffee010a47b143fe",
+    "cacheID": "ae6ca68742aaf017eee7fe17ca026a6c",
     "id": null,
     "metadata": {},
     "name": "BracketListRefetchQuery",
     "operationKind": "query",
-    "text": "query BracketListRefetchQuery(\n  $count: Int!\n) {\n  viewer {\n    ...BracketList_viewer_yu5n1\n    id\n  }\n}\n\nfragment BestPossibleSmall_bracket on Bracket {\n  bestPossibleFinish\n  eliminated\n}\n\nfragment BestPossible_bracket on Bracket {\n  bestPossibleFinish\n}\n\nfragment BracketList_viewer_yu5n1 on Viewer {\n  brackets(first: $count) {\n    nodes {\n      id\n      points\n      possiblePoints\n      ...BracketRow_bracket\n      ...SmallBracket_bracket\n    }\n    totalCount\n  }\n}\n\nfragment BracketRow_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  sortedFour\n  ...BestPossible_bracket\n}\n\nfragment SmallBracket_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  sortedFour\n  ...BestPossibleSmall_bracket\n}\n"
+    "text": "query BracketListRefetchQuery(\n  $count: Int!\n) {\n  viewer {\n    ...BracketList_viewer_yu5n1\n    id\n  }\n}\n\nfragment BestPossibleSmall_bracket on Bracket {\n  bestPossibleFinish\n  eliminated\n}\n\nfragment BestPossible_bracket on Bracket {\n  bestPossibleFinish\n  eliminated\n}\n\nfragment BracketList_viewer_yu5n1 on Viewer {\n  showEliminated\n  brackets(first: $count) {\n    nodes {\n      id\n      points\n      possiblePoints\n      ...BracketRow_bracket\n      ...SmallBracket_bracket\n    }\n    totalCount\n  }\n}\n\nfragment BracketRow_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  sortedFour\n  ...BestPossible_bracket\n}\n\nfragment SmallBracket_bracket on Bracket {\n  id\n  name\n  points\n  possiblePoints\n  eliminated\n  user {\n    id\n  }\n  sortedFour\n  ...BestPossibleSmall_bracket\n}\n"
   }
 };
 })();

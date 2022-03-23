@@ -7,6 +7,7 @@ module Types
     field :tournament_64, Types::TournamentType, null: false
     field :teams, [Types::TeamType], null: false
     field :brackets, Types::BracketType.connection_type, null: false, max_page_size: nil
+    field :show_eliminated, Boolean, null: false
 
     def current_user
       context[:current_user]
@@ -23,6 +24,10 @@ module Types
     def brackets
       brackets = Pundit.policy_scope(current_user, Bracket)
       tournament_64.started? ? brackets.includes(:user).to_a.sort_by { |b| [b.points * -1, b.possible_points * -1] } : brackets.where(user_id: current_user.id)
+    end
+
+    def show_eliminated
+      Bracket.exists?(['best_possible_finish > ?', 1])
     end
   end
 end
