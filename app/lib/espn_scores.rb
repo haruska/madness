@@ -13,7 +13,7 @@ class EspnScores
     @date = date
   end
 
-  def self.associate_teams # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  def self.associate_teams
     tip_off = Tournament.field_64.tip_off.to_date
     first_round = new(tip_off).all_scores + new(tip_off + 1.day).all_scores
 
@@ -78,7 +78,7 @@ class EspnScores
     all_scores.filter { |s| s[:status] == status }
   end
 
-  def update_tournament # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  def update_tournament
     tournament = Tournament.field_64
     tip_off = tournament.tip_off.to_date
 

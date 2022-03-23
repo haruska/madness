@@ -5,7 +5,9 @@ class UpdateBestFinishesJob < ApplicationJob
 
   def perform
     eliminations = Eliminations.new
-    eliminations.best_possible_finishes.each do |bracket_id, best_finish|
+    eliminations.results(Tournament.field_64.decision_team_slots)
+
+    eliminations.acc.each do |bracket_id, best_finish|
       Bracket.find(bracket_id).update(best_possible_finish: best_finish)
     end
   end
