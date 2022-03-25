@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UpdateBestFinishesJob < ApplicationJob
-  queue_as :default
+  queue_as :elimination
 
   def perform
     eliminations = Eliminations.new
