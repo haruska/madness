@@ -32,13 +32,16 @@ class Team < ApplicationRecord
   end
 
   def still_playing?
-    game = first_game
-    while game.present? && !game.decision.nil?
-      return false if game.value != starting_slot
+    @still_playing ||= Rails.cache.fetch("#{Tournament.field_64.cache_key_with_version}/#{starting_slot}/still_playing") do
+      dts = Tournament.field_64.decision_team_slots
+      slot = starting_slot / 2
+      until dts[slot].nil?
+        return false if dts[slot] != starting_slot
 
-      game = game.parent
+        slot /= 2
+      end
+      true
     end
-    true
   end
 
   def eliminated?

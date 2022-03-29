@@ -215,6 +215,7 @@ type Team implements Node {
   name: String!
   seed: Int!
   startingSlot: Int!
+  stillPlaying: Boolean!
 }
 
 type Tournament implements HasPolicy & Node {

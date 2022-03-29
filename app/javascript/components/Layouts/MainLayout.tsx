@@ -76,6 +76,7 @@ export const MainLayout = createFragmentContainer(MainLayoutComponent, {
         startingSlot
         seed
         name
+        stillPlaying
       }
       currentUser {
         id
