@@ -1,8 +1,13 @@
 .bracket-row {
-  margin: calc($gutter/2) 0;
+  margin: $half-gutter 0;
 
   .current-user-bracket {
     background-color: $light-blue;
+  }
+
+  .eliminated {
+    text-decoration: line-through;
+    color: $middark-gray;
   }
 
   .position-column {

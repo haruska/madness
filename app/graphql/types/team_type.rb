@@ -7,5 +7,6 @@ module Types
     field :seed, Int, null: false
     field :name, String, null: false
     field :starting_slot, Int, null: false
+    field :still_playing, Boolean, null: false, method: :still_playing?
   end
 end

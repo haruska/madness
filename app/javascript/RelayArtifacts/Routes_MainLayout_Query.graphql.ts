@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9ca8137fe4e8b8f61c19000514c09970>>
+ * @generated SignedSource<<763d041a265da8c0ea00bb618f2cea7d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -199,7 +199,14 @@ return {
                 "name": "seed",
                 "storageKey": null
               },
-              (v1/*: any*/)
+              (v1/*: any*/),
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "stillPlaying",
+                "storageKey": null
+              }
             ],
             "storageKey": null
           },
@@ -237,12 +244,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "f6301cb65bf8534652363a52c94c7243",
+    "cacheID": "e3d2636759f805818084864d6b3e7c7d",
     "id": null,
     "metadata": {},
     "name": "Routes_MainLayout_Query",
     "operationKind": "query",
-    "text": "query Routes_MainLayout_Query {\n  viewer {\n    ...MainLayout_viewer\n    id\n  }\n}\n\nfragment MainLayout_viewer on Viewer {\n  tournament64 {\n    id\n    policy {\n      update\n    }\n    rounds {\n      name\n      number\n      startDate\n      endDate\n      regions\n      id\n    }\n    tipOff\n    gameDecisions\n    gameMask\n    started\n  }\n  teams {\n    id\n    startingSlot\n    seed\n    name\n  }\n  currentUser {\n    id\n    name\n    email\n    admin\n  }\n}\n"
+    "text": "query Routes_MainLayout_Query {\n  viewer {\n    ...MainLayout_viewer\n    id\n  }\n}\n\nfragment MainLayout_viewer on Viewer {\n  tournament64 {\n    id\n    policy {\n      update\n    }\n    rounds {\n      name\n      number\n      startDate\n      endDate\n      regions\n      id\n    }\n    tipOff\n    gameDecisions\n    gameMask\n    started\n  }\n  teams {\n    id\n    startingSlot\n    seed\n    name\n    stillPlaying\n  }\n  currentUser {\n    id\n    name\n    email\n    admin\n  }\n}\n"
   }
 };
 })();

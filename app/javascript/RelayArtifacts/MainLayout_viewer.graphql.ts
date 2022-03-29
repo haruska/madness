@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9838143f926529f80e676b0fd2277a0c>>
+ * @generated SignedSource<<3ee7c1509f5d2cecd770840fa5dd0e78>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -33,6 +33,7 @@ export type MainLayout_viewer$data = {
     readonly startingSlot: number;
     readonly seed: number;
     readonly name: string;
+    readonly stillPlaying: boolean;
   }>;
   readonly currentUser: {
     readonly id: string;
@@ -189,7 +190,14 @@ return {
           "name": "seed",
           "storageKey": null
         },
-        (v1/*: any*/)
+        (v1/*: any*/),
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "stillPlaying",
+          "storageKey": null
+        }
       ],
       "storageKey": null
     },
@@ -226,6 +234,6 @@ return {
 };
 })();
 
-(node as any).hash = "c1ca8b35f9f2ca250f87e0a806f6077b";
+(node as any).hash = "218face575e566265d3e1bcbcb3d25a4";
 
 export default node;
