@@ -3,8 +3,8 @@
 puts 'Running seeds.rb...' # rubocop:disable Rails/Output
 
 # ensure admin user
-admin_name = ENV['ADMIN_NAME']
-admin_email = ENV['ADMIN_EMAIL']
+admin_name = ENV.fetch('ADMIN_NAME', nil)
+admin_email = ENV.fetch('ADMIN_EMAIL', nil)
 User.find_or_create_by!(name: admin_name, email: admin_email, admin: true)
 
 # Find or create the tournament and update the tip off time

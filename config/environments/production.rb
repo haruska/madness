@@ -2,7 +2,7 @@
 
 require 'active_support/core_ext/integer/time'
 
-Rails.application.default_url_options = { host: ENV['HOST'], protocol: 'https' }
+Rails.application.default_url_options = { host: ENV.fetch('HOST', nil), protocol: 'https' }
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -61,7 +61,7 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   config.cache_store = :redis_cache_store, {
-    url: ENV['REDIS_URL'],
+    url: ENV.fetch('REDIS_URL', nil),
     reconnect_attempts: 1
   }
 
@@ -76,8 +76,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     open_timeout: 5,
     read_timeout: 5,
-    user_name: ENV['EMAIL_SENDER'],
-    password: ENV['MAILER_PASSWORD'],
+    user_name: ENV.fetch('EMAIL_SENDER', nil),
+    password: ENV.fetch('MAILER_PASSWORD', nil),
     address: 'smtp.gmail.com',
     port: 587,
     authentication: 'plain',
