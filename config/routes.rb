@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'sidekiq/web'
-
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions'
@@ -21,10 +19,6 @@ Rails.application.routes.draw do
   end
 
   mount GraphiQL::Rails::Engine, at: '/graphiql' if Rails.env.development?
-
-  authenticate :user, ->(u) { u.admin? } do
-    mount Sidekiq::Web => '/sidekiq'
-  end
 
   post '/graphql', to: 'graphql#execute'
 

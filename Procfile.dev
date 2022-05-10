@@ -1,5 +1,6 @@
 web: bin/rails server -p 3000
-worker: bin/sidekiq
+worker: bin/faktory-worker
+job-queue: faktory
 js: yarn build --watch
 css: yarn build:css --watch
 types: yarn check-types --watch

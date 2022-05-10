@@ -18,6 +18,14 @@ createdb <username>
 psql
 ```
 
+### Faktory
+
+Install using homebrew
+```bash
+brew install contribsys/faktory/faktory
+```
+Dashboard:  http://localhost:7419
+
 ### Project setup
 
 Install ruby from rbenv
