@@ -1,7 +1,16 @@
 # frozen_string_literal: true
 
-class UpdateBestFinishesJob < ApplicationJob
-  queue_as :elimination
+class UpdateBestFinishesJob
+  include Faktory::Job
+
+  # This enqueues a job to (eventually) be performed by the Golang worker
+  def self.perform_later
+    jid = SecureRandom.hex(8)
+    Faktory.server_pool.with do |client|
+      client.push({ jid:, jobtype: 'UpdateBestFinishesJob', args: [] })
+    end
+    jid
+  end
 
   def perform
     eliminations = Eliminations.new
