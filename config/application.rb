@@ -38,6 +38,6 @@ module Madness
 
     config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
-    config.active_job.queue_adapter = :sidekiq
+    config.active_job.queue_adapter = :faktory
   end
 end
