@@ -28,7 +28,7 @@ class Eliminations
       rank = 1
       tuples.each.with_index do |tuple, i|
         rank = i + 1 unless i.zero? || tuple[1] == tuples[i - 1][1]
-        acc[tuple[0]] = rank < acc[tuple[0]] ? rank : acc[tuple[0]]
+        acc[tuple[0]] = [rank, acc[tuple[0]]].min
         break unless rank < 6
       end
     end
