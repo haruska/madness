@@ -1,5 +1,6 @@
 web: bin/rails server -p 3000
 worker: bin/faktory-worker
+# goworker: cd pkg && ../bin/gow run .
 job-queue: faktory
 js: yarn build --watch
 css: yarn build:css --watch

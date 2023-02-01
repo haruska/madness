@@ -6,9 +6,15 @@ class UpdateBestFinishesJob
   # This enqueues a job to (eventually) be performed by the Golang worker
   def self.perform_later
     jid = SecureRandom.hex(8)
+
+    tournament = Tournament.field_64
+    bracket_decisions = Bracket.pluck(:game_decisions).to_a.map { |i| i.to_s(16) }
+    args = [[tournament.game_decisions.to_s(16), tournament.game_mask.to_s(16)], bracket_decisions]
+
     Faktory.server_pool.with do |client|
-      client.push({ jid:, jobtype: 'UpdateBestFinishesJob', args: [] })
+      client.push({ jid:, queue: 'eliminations', jobtype: 'UpdateBestFinishesJob', args: })
     end
+
     jid
   end
 

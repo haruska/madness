@@ -165,6 +165,11 @@ class Tournament < ApplicationRecord
     save
   end
 
+  def reset_mask_to_sweet_16
+    mask = (('1' * (64 - 16)) + ('0' * 16)).to_i(2)
+    update(game_mask: mask)
+  end
+
   def mock_in_final_four
     self.game_mask = 0
     self.tip_off = 2.weeks.ago
