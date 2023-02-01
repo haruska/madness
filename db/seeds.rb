@@ -8,7 +8,7 @@ admin_email = ENV.fetch('ADMIN_EMAIL', nil)
 User.find_or_create_by!(name: admin_name, email: admin_email, admin: true)
 
 # Find or create the tournament and update the tip off time
-tip_off = Rails.env.test? ? 2.weeks.from_now : Time.parse('March 17, 2022 16:00 UTC').utc
+tip_off = Rails.env.test? ? 2.weeks.from_now : Time.parse('March 16, 2023 16:00 UTC').utc
 tournament = Tournament.field_64 || Tournament.create!(num_rounds: 6, tip_off:)
 tournament.update(tip_off:)
 

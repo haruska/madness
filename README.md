@@ -12,6 +12,12 @@ Install using homebrew
 brew install postgres redis
 ```
 
+Start and Stop Postgres (if not auto-start by homebrew setup)
+```bash
+brew services start postgresql
+brew services start redis
+```
+
 Ensure user can access postgres
 ```bash
 createdb <username>
