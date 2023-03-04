@@ -3,8 +3,8 @@
 @import 'bourbon';
 @import 'base/base';
 @import 'layout';
-@import 'controllers/sessions';
-@import 'controllers/users';
+
+@import 'controllers/devise';
 
 @import 'components/tournament';
 @import 'components/main_layout';

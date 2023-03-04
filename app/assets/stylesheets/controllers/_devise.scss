@@ -1,4 +1,30 @@
-.sessions-controller {
+.sessions-controller,
+.passwords-controller {
+  p.notice {
+    text-align: left;
+    color: blue;
+    border: blue 1px solid;
+    padding: calc($gutter / 4);
+    background-color: lighten(blue, 45);
+  }
+
+  p.alert,
+  #error_explanation {
+    text-align: left;
+    color: darkred;
+    border: darkred 1px solid;
+    padding: calc($gutter / 4);
+    background-color: lighten(darkred, 65);
+  }
+
+  #error_explanation {
+    h2 {
+      display: none;
+    }
+
+    margin-bottom: $gutter;
+  }
+
   .login-container {
     display: flex;
     flex-direction: column;
@@ -61,21 +87,23 @@
       }
     }
 
-    .auth-content {
-      display: flex;
-      justify-content: center;
+    .auth-wrapper {
+      text-align: left;
+      .auth-content {
+        //adjustments to devise default views
 
-      form {
-        max-width: 500px;
-        display: flex;
-        justify-content: space-between;
-        input {
-          margin: $gutter calc($gutter / 4);
+        h2 {
+          margin-bottom: $gutter;
         }
-      }
 
-      .auth-create {
-        padding: $gutter;
+        form {
+          margin-bottom: $gutter;
+        }
+
+        //devise adds <br> tags to the default HTML
+        br {
+          display: none;
+        }
       }
     }
 
