@@ -1,27 +1,28 @@
 import React from 'react'
-import { graphql, createFragmentContainer } from 'react-relay'
-import { BestPossible_bracket$data } from 'RelayArtifacts/BestPossible_bracket.graphql'
+import { graphql, useFragment } from 'react-relay'
+import { BestPossible_bracket$key } from 'RelayArtifacts/BestPossible_bracket.graphql'
 import { ordinalInNumber } from 'lib/ordinals'
 
-const Component = ({
+export const BestPossible = ({
   showEliminated,
-  bracket,
+  bracket: bracket_key,
 }: {
   showEliminated: boolean
-  bracket: BestPossible_bracket$data
+  bracket: BestPossible_bracket$key
 }) => {
+  const bracket = useFragment(
+    graphql`
+        fragment BestPossible_bracket on Bracket {
+            bestPossibleFinish
+            eliminated
+        }
+    `,
+    bracket_key
+  )
+
   if (!showEliminated) {
     return null
   }
 
   return <td>{bracket.eliminated ? '-' : ordinalInNumber(bracket.bestPossibleFinish)}</td>
 }
-
-export const BestPossible = createFragmentContainer(Component, {
-  bracket: graphql`
-    fragment BestPossible_bracket on Bracket {
-      bestPossibleFinish
-      eliminated
-    }
-  `,
-})

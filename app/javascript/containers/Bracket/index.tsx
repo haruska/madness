@@ -1,9 +1,9 @@
 import React from 'react'
-import { createFragmentContainer, graphql } from 'react-relay'
+import { useFragment, graphql } from 'react-relay'
 import { Tournament } from 'components/Tournament'
 import { BracketActions } from './BracketActions'
 import { Bracket_bracket$data } from 'RelayArtifacts/Bracket_bracket.graphql'
-
+import { Bracket_bracket$key } from 'RelayArtifacts/Bracket_bracket.graphql'
 export const COMPLETED_MASK = 18446744073709551614n
 
 export interface BasicBracket {
@@ -18,7 +18,21 @@ export interface BracketData extends BasicBracket {
 }
 
 // class Bracket extends Component {
-const Component = ({ bracket }: { bracket: Bracket_bracket$data }) => {
+export const Bracket = (props: { bracket: Bracket_bracket$key }) => {
+  const bracket = useFragment(
+    graphql`
+        fragment Bracket_bracket on Bracket {
+            id
+            name
+            gameDecisions
+            user {
+                name
+            }
+            ...BracketActions_bracket
+        }
+    `,
+    props.bracket
+  )
   const title = () => {
     const { user } = bracket
     return `${bracket.name} (${user.name})`
@@ -42,17 +56,3 @@ const Component = ({ bracket }: { bracket: Bracket_bracket$data }) => {
     </div>
   )
 }
-
-export const Bracket = createFragmentContainer(Component, {
-  bracket: graphql`
-    fragment Bracket_bracket on Bracket {
-      id
-      name
-      gameDecisions
-      user {
-        name
-      }
-      ...BracketActions_bracket
-    }
-  `,
-})

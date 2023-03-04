@@ -1,6 +1,8 @@
 import React, { PropsWithChildren } from 'react'
 import { AppContext } from 'AppContext'
 import { Router } from 'found'
+import {RelayEnvironmentProvider} from 'react-relay'
+import { currentRelay } from './lib/currentRelay'
 
 export const App = ({
   router,
@@ -10,6 +12,7 @@ export const App = ({
 }>) => {
   return (
     <div className="app-container">
+      <RelayEnvironmentProvider environment={currentRelay}>
       <AppContext.Provider
         value={{
           router,
@@ -22,6 +25,7 @@ export const App = ({
       >
         <div className="app-content">{children}</div>
       </AppContext.Provider>
+      </RelayEnvironmentProvider>
     </div>
   )
 }

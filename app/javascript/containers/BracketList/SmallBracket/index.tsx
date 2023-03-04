@@ -1,25 +1,38 @@
 import React, { useContext } from 'react'
-import { graphql, createFragmentContainer } from 'react-relay'
+import { graphql, createFragmentContainer, useFragment } from 'react-relay'
 import { Link } from 'found'
 
 import { BestPossibleSmall } from './BestPossibleSmall'
 import { FinalFourTeamSmall } from 'components/FinalFourTeamSmall'
 import { AppContext } from 'AppContext'
-import { SmallBracket_bracket$data } from 'RelayArtifacts/SmallBracket_bracket.graphql'
+import { SmallBracket_bracket$key } from 'RelayArtifacts/SmallBracket_bracket.graphql'
 
-const Component = ({
-  bracket,
+const SmallBracket = ({
+  bracket: bracketKey,
   showEliminated,
   index,
   tied,
 }: {
-  bracket: SmallBracket_bracket$data
+  bracket: SmallBracket_bracket$key
   showEliminated?: boolean
   index: number
   tied?: boolean
 }) => {
   const { teams, currentUser } = useContext(AppContext)
-
+  const bracket = useFragment(graphql`
+      fragment SmallBracket_bracket on Bracket {
+          id
+          name
+          points
+          possiblePoints
+          eliminated
+          user {
+              id
+          }
+          sortedFour
+          ...BestPossibleSmall_bracket
+      }
+  `, bracketKey)
   const finalFourTeams = bracket.sortedFour.map((slot) =>
     teams.find((team) => team.startingSlot === slot)
   )
@@ -62,19 +75,4 @@ const Component = ({
   )
 }
 
-export default createFragmentContainer(Component, {
-  bracket: graphql`
-    fragment SmallBracket_bracket on Bracket {
-      id
-      name
-      points
-      possiblePoints
-      eliminated
-      user {
-        id
-      }
-      sortedFour
-      ...BestPossibleSmall_bracket
-    }
-  `,
-})
+export default SmallBracket;

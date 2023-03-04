@@ -1,16 +1,23 @@
 import React, { useContext } from 'react'
-import { createFragmentContainer, graphql } from 'react-relay'
+import { createFragmentContainer, graphql, useFragment } from 'react-relay'
 
 import { Link } from 'found'
 
 import { BracketStatus } from './BracketStatus'
 import { FinalFourTeamSmall } from 'components/FinalFourTeamSmall'
 import { AppContext } from 'AppContext'
-import { UserSmallBracket_bracket$data } from 'RelayArtifacts/UserSmallBracket_bracket.graphql'
+import { UserSmallBracket_bracket$key } from 'RelayArtifacts/UserSmallBracket_bracket.graphql'
 
-const Component = ({ bracket }: { bracket: UserSmallBracket_bracket$data }) => {
+export const UserSmallBracket = ({ bracket: bracketKey }: { bracket: UserSmallBracket_bracket$key }) => {
   const { teams } = useContext(AppContext)
-
+  const bracket = useFragment(graphql`
+      fragment UserSmallBracket_bracket on Bracket {
+          id
+          name
+          paid
+          sortedFour
+      }
+  `, bracketKey)
   const finalFourTeams = bracket.sortedFour.map((slot) =>
     teams.find((team) => team.startingSlot === slot)
   )
@@ -42,13 +49,3 @@ const Component = ({ bracket }: { bracket: UserSmallBracket_bracket$data }) => {
   )
 }
 
-export const UserSmallBracket = createFragmentContainer(Component, {
-  bracket: graphql`
-    fragment UserSmallBracket_bracket on Bracket {
-      id
-      name
-      paid
-      sortedFour
-    }
-  `,
-})

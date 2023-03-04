@@ -1,25 +1,38 @@
 import React, { useContext } from 'react'
-import { graphql, createFragmentContainer } from 'react-relay'
+import { graphql, createFragmentContainer, useFragment } from 'react-relay'
 import { Link } from 'found'
 
 import { BestPossible } from './BestPossible'
 import { FinalFourTeam } from 'components/FinalFourTeam'
 import { AppContext } from 'AppContext'
-import { BracketRow_bracket$data } from 'RelayArtifacts/BracketRow_bracket.graphql'
+import { BracketRow_bracket$key } from 'RelayArtifacts/BracketRow_bracket.graphql'
 
-const Component = ({
-  bracket,
+export const BracketRow = ({
+  bracket: bracket_key,
   index,
   showEliminated,
   tied,
 }: {
-  bracket: BracketRow_bracket$data
+  bracket: BracketRow_bracket$key
   index: number
   showEliminated?: boolean
   tied?: boolean
 }) => {
   const { currentUser, teams } = useContext(AppContext)
-
+  const bracket = useFragment(graphql`
+      fragment BracketRow_bracket on Bracket {
+          id
+          name
+          points
+          possiblePoints
+          eliminated
+          user {
+              id
+          }
+          sortedFour
+          ...BestPossible_bracket
+      }
+  `, bracket_key)
   const truncatedBracketName = () => {
     const maxSize = 25
     const bracketName = bracket.name
@@ -69,19 +82,3 @@ const Component = ({
   )
 }
 
-export const BracketRow = createFragmentContainer(Component, {
-  bracket: graphql`
-    fragment BracketRow_bracket on Bracket {
-      id
-      name
-      points
-      possiblePoints
-      eliminated
-      user {
-        id
-      }
-      sortedFour
-      ...BestPossible_bracket
-    }
-  `,
-})

@@ -1,12 +1,23 @@
 import React, { useContext } from 'react'
-import { createFragmentContainer, graphql } from 'react-relay'
+import { useFragment, graphql } from 'react-relay'
 import classNames from 'classnames'
 import { Link } from 'found'
-import { BracketActions_bracket$data } from 'RelayArtifacts/BracketActions_bracket.graphql'
 import { AppContext } from 'AppContext'
+import type {BracketActions_bracket$key} from 'RelayArtifacts/BracketActions_bracket.graphql'
 
-const Component = ({ bracket }: { bracket: BracketActions_bracket$data }) => {
+export const BracketActions = (props: { bracket: BracketActions_bracket$key }) => {
   const { tournament } = useContext(AppContext)
+  const bracket = useFragment(
+    graphql`
+             fragment BracketActions_bracket on Bracket {
+               id
+               policy {
+                 update
+               }
+             }
+    `,
+    props.bracket
+  )
   if (bracket.policy.update && !tournament.started) {
     return (
       <div className="bracket-actions">
@@ -19,13 +30,3 @@ const Component = ({ bracket }: { bracket: BracketActions_bracket$data }) => {
   return null
 }
 
-export const BracketActions = createFragmentContainer(Component, {
-  bracket: graphql`
-    fragment BracketActions_bracket on Bracket {
-      id
-      policy {
-        update
-      }
-    }
-  `,
-})
