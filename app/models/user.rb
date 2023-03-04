@@ -6,11 +6,11 @@ class User < ApplicationRecord
          # :confirmable,
          :recoverable,
          # :registerable,
-         :rememberable,
-         :trackable,
-         :timeoutable,
+         # :timeoutable,
          # :lockable,
-         :validatable
+         :validatable,
+         :rememberable,
+         :trackable
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: /.+@.+\..+/
