@@ -1,17 +1,19 @@
-.sessions-controller, .passwords-controller {
+.sessions-controller,
+.passwords-controller {
   p.notice {
     text-align: left;
     color: blue;
     border: blue 1px solid;
-    padding: $gutter / 4;
+    padding: calc($gutter / 4);
     background-color: lighten(blue, 45);
   }
 
-  p.alert, #error_explanation {
+  p.alert,
+  #error_explanation {
     text-align: left;
     color: darkred;
     border: darkred 1px solid;
-    padding: $gutter / 4;
+    padding: calc($gutter / 4);
     background-color: lighten(darkred, 65);
   }
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AdjustAuthentication < ActiveRecord::Migration[7.0]
   def self.up
     drop_table 'passwordless_sessions'
