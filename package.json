@@ -1,12 +1,13 @@
 {
   "name": "app",
   "dependencies": {
-    "@sentry/react": "^6.19.7",
-    "@sentry/tracing": "^6.19.7",
+    "@sentry/react": "^7.40.0",
+    "@sentry/tracing": "^7.40.0",
     "classnames": "^2.3.2",
     "farce": "^0.4.5",
     "found": "^1.2.1",
-    "found-relay": "^0.9.1",
+    "found-relay": "^1.0.2",
+    "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-relay": "^13.2.0",
