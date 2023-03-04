@@ -3,13 +3,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    sessions: 'users/sessions'
-  }
-
-  devise_scope :user do
-    get 'email_confirmation', to: 'users/sessions#redirect_from_magic_link'
-  end
+  devise_for :users
 
   namespace :admin do
     resources :users

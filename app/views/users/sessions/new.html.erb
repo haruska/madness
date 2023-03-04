@@ -1,7 +1,0 @@
-<% unless alert && alert =~ /An email was sent/ %>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= f.email_field :email, autofocus: true, placeholder: "Email Address", autocomplete: "email" %>
-      <%= f.hidden_field :remember_me, value: true %>
-      <%= f.submit "Send Link" %>
-  <% end %>
-<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_23_011522) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_04_141342) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,20 +26,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_23_011522) do
     t.index ["name"], name: "index_brackets_on_name", unique: true
     t.index ["paid"], name: "index_brackets_on_paid"
     t.index ["user_id"], name: "index_brackets_on_user_id"
-  end
-
-  create_table "passwordless_sessions", force: :cascade do |t|
-    t.string "authenticatable_type"
-    t.bigint "authenticatable_id"
-    t.datetime "timeout_at", null: false
-    t.datetime "expires_at", null: false
-    t.datetime "claimed_at"
-    t.text "user_agent", null: false
-    t.string "remote_addr", null: false
-    t.string "token", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["authenticatable_type", "authenticatable_id"], name: "authenticatable"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -82,12 +68,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_23_011522) do
     t.string "login_token"
     t.datetime "login_token_valid_until", precision: nil
     t.string "remember_token"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at", precision: nil
     t.index ["admin"], name: "index_users_on_admin"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["login_token"], name: "index_users_on_login_token", unique: true
     t.index ["name"], name: "index_users_on_name"
     t.index ["remember_token"], name: "index_users_on_remember_token"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
