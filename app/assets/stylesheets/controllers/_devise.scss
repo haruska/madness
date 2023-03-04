@@ -1,4 +1,4 @@
-.sessions-controller {
+.sessions-controller, .passwords-controller {
   .login-container {
     display: flex;
     flex-direction: column;
@@ -61,23 +61,43 @@
       }
     }
 
-    .auth-content {
-      display: flex;
-      justify-content: center;
+    .auth-wrapper {
+      text-align: left;
+      .auth-content {
+        //adjustments to devise default views
 
-      form {
-        max-width: 500px;
-        display: flex;
-        justify-content: space-between;
-        input {
-          margin: $gutter calc($gutter / 4);
+        h2 {
+          margin-bottom: $gutter;
+        }
+
+        form {
+          margin-bottom: $gutter;
+        }
+
+        //devise adds <br> tags to the default HTML
+        br {
+          display: none;
         }
       }
-
-      .auth-create {
-        padding: $gutter;
-      }
     }
+
+    //.auth-content {
+    //  //display: flex;
+    //  //justify-content: center;
+    //
+    //  form {
+    //    //max-width: 500px;
+    //    //display: flex;
+    //    //justify-content: space-between;
+    //    //input {
+    //    //  margin: $gutter calc($gutter / 4);
+    //    //}
+    //  }
+    //
+    //  .auth-create {
+    //    //padding: $gutter;
+    //  }
+    //}
 
     .wood-background {
       background-image: url('wood_pattern.png');

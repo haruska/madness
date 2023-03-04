@@ -4,16 +4,13 @@
     <div class="box">
       <h1 class="title">Pool Madness</h1>
       <h1>NCAA March Madness</h1>
-      <h3>
-        Private pool. Login Now
-      </h3>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-      <div class="auth-content">
-        <%= yield %>
+      <div class="auth-wrapper">
+        <div class="auth-content">
+          <%= yield %>
+        </div>
       </div>
-
-      <div class="copyright">© 2014-2023 Pool Madness</div>
     </div>
   </div>
 <% end %>
