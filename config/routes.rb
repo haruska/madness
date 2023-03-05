@@ -22,6 +22,9 @@ Rails.application.routes.draw do
 
   post '/graphql', to: 'graphql#execute'
 
+  get '/up/', to: 'up#index', as: :up
+  get '/up/databases', to: 'up#databases', as: :up_databases
+
   root 'home#index'
 
   # send all other routes to react
