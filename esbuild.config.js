@@ -25,4 +25,5 @@ require('esbuild').build({
     })],
     absWorkingDir: path.join(process.cwd(), "app/javascript"),
     watch: watch && watchOptions,
+    minify: !watch,
 }).catch(() => process.exit(1));
