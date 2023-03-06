@@ -76,4 +76,11 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   # config.action_controller.raise_on_missing_callback_actions = true
+
+  # Comma separated list of IP addresses / CIDRs that can use the web-console
+  # which is invoked with `console` in a controller or <% console %> in a view.
+  #
+  # Docker supports a bunch of ranges so let's just support everything. This
+  # isn't insecure due to only running in development.
+  config.web_console.allowed_ips = ['0.0.0.0/0']
 end
