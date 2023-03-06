@@ -25,7 +25,11 @@ Rails.application.configure do
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
-    config.cache_store = :redis_cache_store
+    config.cache_store = :redis_cache_store, {
+      url: ENV.fetch('REDIS_URL', 'redis://redis:6379/1'),
+      namespace: 'cache',
+      reconnect_attempts: 1
+    }
   else
     config.action_controller.perform_caching = false
 

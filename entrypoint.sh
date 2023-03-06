@@ -61,12 +61,6 @@ function db_seed {
 }
 export -f db_seed
 
-function schema {
-  echo "Outputting schema"
-  bundle exec rake schema
-}
-export -f schema
-
 function build_assets {
   echo "building assets"
   yarn build
@@ -80,11 +74,11 @@ function start_app {
   # Remove a potentially pre-existing server.pid for Rails.
   rm -f tmp/pids/server.pid
 
-  if [[ -z $DEBUG_GRAPH ]]; then
-    echo "*** Starting graph without debugger support ***"
+  if [[ -z $DEBUG_APP ]]; then
+    echo "*** Starting app without debugger support ***"
     exec bundle exec rails server -b 0.0.0.0 -p $SVC_PORT -e $SVC_ENV
   else
-    echo "*** Starting graph with debugger support ***"
+    echo "*** Starting app with debugger support ***"
     exec bundle exec rdebug-ide --host 0.0.0.0 --port 1235 --dispatcher-port 26162 --rubymine-protocol-extensions -- bin/rails server -b 0.0.0.0 -p $SVC_PORT -e $SVC_ENV
   fi
 }
@@ -155,11 +149,6 @@ case $action in
     db_init
     echo "Starting tests"
     bundle exec rake
-  ;;
-
-  schema)
-    wait_for_services
-    schema
   ;;
 
   build_assets)

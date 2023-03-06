@@ -22,5 +22,6 @@
 
 <body id="application-layout" class="<%= controller_name %>-controller <%= action_name %>-action">
   <%= content_for?(:content) ? yield(:content) : yield %>
+  User: <%= User.first.email %>
 </body>
 </html>
