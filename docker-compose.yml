@@ -1,4 +1,11 @@
 services:
+  tunnel:
+    container_name: cloudflared-tunnel
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=<token from cloudflare>
   postgres:
     environment:
       POSTGRES_USER: "${POSTGRES_USER}"
@@ -18,7 +25,7 @@ services:
       - "postgres"
       - "redis"
     env_file: .env
-    tty: true
+#    tty: true
     ports:
       - "3000:3000"
 
@@ -30,7 +37,7 @@ services:
       - "postgres"
       - "redis"
     env_file: .env
-    tty: true
+#    tty: true
 
 volumes:
   postgres: {}
