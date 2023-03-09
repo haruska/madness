@@ -13,6 +13,7 @@ class UserDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     email: Field::String,
+    password: Field::Password,
     admin: Field::Boolean,
     brackets: Field::HasMany,
     sign_in_count: Field::Number,
@@ -52,6 +53,7 @@ class UserDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     name
     email
+    password
   ].freeze
 
   # COLLECTION_FILTERS
