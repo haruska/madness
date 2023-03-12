@@ -55,7 +55,7 @@ class Round
   def start_date_for(round_number)
     case round_number
     when 1
-      tournament.tip_off.to_date
+      tournament.tip_off.to_date + 1.day
     when 2, 4, 6
       start_date_for(round_number - 1) + 2.days
     else

@@ -71,7 +71,7 @@ RSpec.describe Round do
       it 'is the correct dates for all six rounds' do
         expected_days.each_with_index do |extra_days, i|
           round = tournament.rounds[i]
-          expect(round.start_date).to eq(tournament.tip_off.to_date + extra_days.days)
+          expect(round.start_date).to eq(tournament.tip_off.to_date + 1.day + extra_days.days)
         end
       end
     end
