@@ -16,4 +16,9 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: /.+@.+\..+/
 
   has_many :brackets, dependent: :destroy
+
+  # send devise emails via deliver_later background jobs
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
 end
