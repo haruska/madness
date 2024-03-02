@@ -10,7 +10,7 @@ class Tournament < ApplicationRecord
   end
 
   def teams
-    Team.all.order(:starting_slot)
+    Team.order(:starting_slot)
   end
 
   def started?

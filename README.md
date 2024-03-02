@@ -8,7 +8,8 @@ For more info, see the [DOCUMENTATION](https://haruska.github.io/madness/).
 ### Postgres & Redis
 
 ```bash
-sudo apt install redis-server postgresql
+sudo apt install postgresql
+snap install redis
 ```
 
 Setup regular user in postgres. Recommend no superuser and allowed to create dbs.
