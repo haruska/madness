@@ -8,9 +8,9 @@
     "found": "^1.2.1",
     "found-relay": "^1.0.2",
     "lodash": "^4.17.21",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-relay": "^13.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-relay": "^16.2.0",
     "relay-runtime": "^13.2.0"
   },
   "scripts": {
@@ -24,23 +24,24 @@
   "devDependencies": {
     "@types/react": "^17.0.53",
     "@types/react-dom": "^17.0.19",
-    "@types/react-relay": "^13.0.4",
-    "@types/relay-runtime": "^13.0.5",
+    "@types/react-relay": "^16.0.6",
+    "@types/relay-runtime": "^14.1.23",
     "esbuild": "^0.16.17",
     "graphql": "^16.6.0",
     "prettier": "^2.8.4",
-    "relay-compiler": "^13.2.0",
+    "relay-compiler": "^16.2.0",
     "sass": "^1.58.3",
     "typescript": "^4.9.5"
   },
   "relay": {
     "src": "./app/javascript",
-    "artifactDirectory": "./app/javascript/RelayArtifacts",
-    "schema": "./schema.graphql",
     "language": "typescript",
-    "customScalars": {
-      "BigInt": "string"
-    }
+    "schema": "./schema.graphql",
+    "excludes": [
+      "**/node_modules/**",
+      "**/__mocks__/**",
+      "**/__generated__/**"
+    ]
   },
   "prettier": {
     "trailingComma": "es5",
