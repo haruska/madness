@@ -2,9 +2,9 @@
 
 ## Setup
 
-1. Install from homebrew and login:
+1. Install from script and login:
 ```bash
-brew install heroku
+curl https://cli-assets.heroku.com/install.sh | sh
 heroku login
 ```
 

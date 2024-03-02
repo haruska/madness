@@ -7,15 +7,13 @@ For more info, see the [DOCUMENTATION](https://haruska.github.io/madness/).
 
 ### Postgres & Redis
 
-Install using homebrew
 ```bash
-brew install postgres redis
+sudo apt install redis-server postgresql
 ```
 
-Start and Stop Postgres (if not auto-start by homebrew setup)
+Setup regular user in postgres. Recommend no superuser and allowed to create dbs.
 ```bash
-brew services start postgresql
-brew services start redis
+sudo -u postgres createuser --interactive <username>
 ```
 
 Ensure user can access postgres
