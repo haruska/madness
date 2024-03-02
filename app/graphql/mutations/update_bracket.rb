@@ -17,8 +17,8 @@ module Mutations
       end
     end
 
-    def resolve(bracket:, **kwargs)
-      if bracket.update(**kwargs)
+    def resolve(bracket:, **)
+      if bracket.update(**)
         { bracket:, errors: [] }
       else
         { errors: user_errors(bracket) }

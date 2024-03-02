@@ -18,7 +18,7 @@ class User < ApplicationRecord
   has_many :brackets, dependent: :destroy
 
   # send devise emails via deliver_later background jobs
-  def send_devise_notification(notification, *args)
-    devise_mailer.send(notification, self, *args).deliver_later
+  def send_devise_notification(notification, *)
+    devise_mailer.send(notification, self, *).deliver_later
   end
 end

@@ -6,7 +6,7 @@ class Viewer
   ID = 'VIEWER'
 
   def self.find(id)
-    return new if id == ID
+    new if id == ID
   end
 
   def id

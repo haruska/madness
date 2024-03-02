@@ -17,9 +17,9 @@ module Mutations
       end
     end
 
-    def resolve(**kwargs)
+    def resolve(**)
       tournament = Tournament.field_64
-      if tournament.update(**kwargs)
+      if tournament.update(**)
         { tournament:, errors: [] }
       else
         { errors: user_errors(tournament) }
