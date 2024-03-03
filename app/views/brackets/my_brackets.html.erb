@@ -1,104 +1,31 @@
-<div class="app-container">
-  <div class="app-content">
-    <div class="main-layout-component">
-      <header class="header-component">
-        <div class="title-wrapper">
-          <div class="title">My Brackets</div>
-        </div>
-        <div class="menu">
-          <div>
-            <a class="sliding-panel-button">
-              <i class="fa fa-bars"></i>
-            </a>
-            <nav class="sliding-panel-content">
-              <ul>
-                <li>Admin Dashboard</li>
-                <li>My Brackets</li>
-                <li>Game Results</li>
-                <li>Rules and Scoring</li>
-                <li>Sign Out</li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </header>
-      <section class="container" id="content">
-        <div class="wrapper">
-          <div class="user-bracket-list-container">
-            <div class="small-screen">
-              <% @brackets.each do |bracket| %>
-                <div class="user-small-bracket">
-                  <a class="bracket-link" href="/brackets/<%= bracket.id %>">
-                    <div class="bracket-row">
-                        <div class="bracket-details">
-                          <div class="name-wrapper">
-                            <div class="bracket-name"><%= bracket.name %></div>
-                            <div class="status">
-                              <% if bracket.paid? %>
-                                <span class="badge-success">OK</span>
-                              <% else %>
-                                <span class="badge-alert">Unpaid</span>
-                              <% end %>
-                            </div>
-                          </div>
-                          <div>
-                            <%= bracket.sorted_four_teams.map(&:name).join(', ') %>
-                          </div>
-                        </div>
-                    </div>
-                  </a>
-                </div>
-              <% end %>
-            </div>
+<div class="user-bracket-list-container">
+  <div class="small-screen">
+    <%= render partial: 'user_small_bracket', collection: @brackets, as: :bracket  %>
+  </div>
 
-            <div class="large-screen">
-              <table class="table-minimal">
-                <% unless @brackets.empty? %>
-                  <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Final Four</th>
-                    <th>Final Four</th>
-                    <th>Second</th>
-                    <th>Winner</th>
-                    <th>Status</th>
-                  </tr>
-                  </thead>
-                <% end %>
-                <tbody>
-                <% @brackets.each do |bracket| %>
-                  <tr>
-                    <td>
-                      <a href="/brackets/<%= bracket.id %>"><%= bracket.name %></a>
-                    </td>
-                    <% bracket.sorted_four_teams.each do |team| %>
-                      <td>
-                        <%= team.name %>
-                      </td>
-                    <% end %>
-                    <td>
-                      <% if bracket.paid? %>
-                        <span class="badge-success">OK</span>
-                      <% else %>
-                        <span class="badge-alert">Unpaid</span>
-                      <% end %>
-                    </td>
-                  </tr>
-                <% end %>
-                </tbody>
-              </table>
-            </div>
-            <div class="actions">
-              <% if @brackets.empty? %>
-                <a class="button" href="/new_bracket">New Bracket Entry</a>
-              <% else %>
-                <a class="button minor" href="/new_bracket">Another Bracket Entry</a>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </section>
-      <footer></footer>
-    </div>
+  <div class="large-screen">
+    <table class="table-minimal">
+      <% unless @brackets.empty? %>
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Final Four</th>
+          <th>Final Four</th>
+          <th>Second</th>
+          <th>Winner</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+      <% end %>
+      <tbody>
+        <%= render partial: 'user_large_bracket', collection: @brackets, as: :bracket  %>
+      </tbody>
+    </table>
+  </div>
+  <div class="actions">
+    <%= link_to "/new_bracket", class: "button" do %>
+      <%= @brackets.empty? ? "New Bracket Entry" : "Another Bracket Entry" %>
+    <% end %>
   </div>
 </div>
+

@@ -1,0 +1,17 @@
+<tr>
+  <td>
+    <a href="/brackets/<%= bracket.id %>"><%= bracket.name %></a>
+  </td>
+  <% bracket.sorted_four_teams.each do |team| %>
+    <td>
+      <%= team.name %>
+    </td>
+  <% end %>
+  <td>
+    <% if bracket.paid? %>
+      <span class="badge-success">OK</span>
+    <% else %>
+      <span class="badge-alert">Unpaid</span>
+    <% end %>
+  </td>
+</tr>
