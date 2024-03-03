@@ -3,8 +3,12 @@ import classNames from 'classnames'
 
 import { Game } from './Game'
 import { BasicBracket } from 'containers/Bracket'
+import { Team, Tournament } from '../../AppContext'
+import TournamentTree from '../../objects/TournamentTree'
 
 export const Region = ({
+  tournamentTree,
+  teams,
   gameSlots,
   index,
   region,
@@ -13,6 +17,8 @@ export const Region = ({
   onSlotClick,
   highlightEmpty,
 }: {
+  tournamentTree: TournamentTree
+  teams: readonly Team[]
   gameSlots: number[]
   index: number
   region: string
@@ -28,6 +34,8 @@ export const Region = ({
       ) : null}
       {gameSlots.map((slot, i) => (
         <Game
+          tournamentTree={tournamentTree}
+          teams={teams}
           key={i}
           index={i + 1}
           slot={slot}

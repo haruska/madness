@@ -17,7 +17,7 @@ const watchOptions = {
 }
 
 require('esbuild').build({
-    entryPoints: ["./application.tsx", "./tournamentBracket.tsx"],
+    entryPoints: ["./application.tsx", "./reactComponents.tsx"],
     bundle: true,
     outdir: path.join(process.cwd(), "app/assets/builds"),
     plugins: [relay({

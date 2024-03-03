@@ -4,15 +4,20 @@ import classNames from 'classnames'
 
 import { Region } from './Region'
 import { Game } from './Game'
-import { AppContext, Tournament } from 'AppContext'
+import { AppContext, Team, Tournament } from 'AppContext'
 import { BasicBracket } from 'containers/Bracket'
+import TournamentTree from '../../objects/TournamentTree'
 
 export const Round = ({
+  tournamentTree,
+  teams,
   round,
   bracket,
   onSlotClick,
   highlightEmpty,
 }: {
+  tournamentTree: TournamentTree
+  teams: readonly Team[]
   round: Tournament['rounds'][0]
   bracket?: BasicBracket
   onSlotClick?: (slotId: number, choice: number) => void
@@ -40,6 +45,8 @@ export const Round = ({
           <Region
             key={i}
             index={i + 1}
+            tournamentTree={tournamentTree}
+            teams={teams}
             region={r}
             gameSlots={gameSlotsByRegion()[i]}
             bracket={bracket}
@@ -57,6 +64,8 @@ export const Round = ({
           <Game
             key={i}
             index={i + 1}
+            tournamentTree={tournamentTree}
+            teams={teams}
             slot={slot}
             roundNumber={round.number}
             bracket={bracket}

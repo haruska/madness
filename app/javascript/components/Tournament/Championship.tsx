@@ -3,17 +3,21 @@ import classNames from 'classnames'
 
 import TournamentTree from 'objects/TournamentTree'
 import { BasicBracket } from 'containers/Bracket'
-import { AppContext, Team } from 'AppContext'
+import { AppContext, Team, Tournament } from 'AppContext'
 
 export const Championship = ({
   bracket,
   highlightEmpty,
+  tournament,
+  tournamentTree,
+  teams
 }: {
   bracket?: BasicBracket
   highlightEmpty: boolean
+  tournament: Tournament
+  tournamentTree: TournamentTree
+  teams: readonly Team[]
 }) => {
-  const { tournament, tournamentTree, teams } = useContext(AppContext)
-
   const genBracketTree = () => {
     if (bracket) {
       const { gameDecisions, gameMask } = bracket

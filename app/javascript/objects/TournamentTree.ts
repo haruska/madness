@@ -14,8 +14,8 @@ export default class TournamentTree {
         const i = BigInt(num)
 
         const maskBit = 1n << i
-        if ((mask & maskBit) !== 0n) {
-          const decision = ((decisions >> i) & 1n) === 0n ? 0 : 1
+        if ((BigInt(mask) & BigInt(maskBit)) !== 0n) {
+          const decision = ((BigInt(decisions) >> BigInt(i)) & 1n) === 0n ? 0 : 1
           return new GameNode(this, num, decision)
         } else {
           return new GameNode(this, num, null)

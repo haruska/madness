@@ -1,9 +1,7 @@
-import React, { useContext } from 'react'
-import { AppContext } from 'AppContext'
+import React from 'react'
+import { Tournament } from '../../AppContext'
 
-export const RoundsBanner = () => {
-  const { tournament } = useContext(AppContext)
-
+export const RoundsBanner = ({tournament}: {tournament: Tournament}) => {
   const dateRangeString = (start: string, end: string) => {
     const startDate = new Date(start)
     const endDate = new Date(end)
