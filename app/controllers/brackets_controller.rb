@@ -9,4 +9,8 @@ class BracketsController < ApplicationController
     @title = 'My Brackets'
     @brackets = current_user.brackets
   end
+
+  def show
+    @bracket = authorize Bracket.find(params[:id])
+  end
 end

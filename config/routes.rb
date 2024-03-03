@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  resources :brackets, only: :show
   get '/my_brackets', to: 'brackets#my_brackets'
 
   # send all other routes to react
