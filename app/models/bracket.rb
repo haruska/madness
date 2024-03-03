@@ -13,6 +13,10 @@ class Bracket < ApplicationRecord
     end
   end
 
+  def sorted_four_teams
+    sorted_four.map { |slot| Team.find_by(starting_slot: slot) }
+  end
+
   def points
     @points ||= Rails.cache.fetch(bt_cache_key('points')) do
       tournament_decision_team_slots = Tournament.field_64.decision_team_slots
