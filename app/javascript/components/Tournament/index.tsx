@@ -3,7 +3,7 @@ import { Round } from './Round'
 import { Championship } from './Championship'
 import { RoundsBanner } from './RoundsBanner'
 import { AppContext, Team, Tournament as ITournament } from 'AppContext'
-import { BasicBracket } from 'containers/Bracket'
+import { BasicBracket } from 'components/BasicBracket'
 import TournamentTree from '../../objects/TournamentTree'
 
 export const Tournament = ({

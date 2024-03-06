@@ -3,7 +3,6 @@ import { Tournament } from 'components/Tournament'
 import { Link } from 'found'
 import classNames from 'classnames'
 import { AppContext } from '../AppContext'
-import { BracketActions } from './Bracket/BracketActions'
 
 const Actions = () => {
   const { tournament } = useContext(AppContext)

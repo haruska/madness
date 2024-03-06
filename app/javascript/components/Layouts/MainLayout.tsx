@@ -41,7 +41,7 @@ const MainLayoutComponent = ({
           setPageTitle: setPageTitle,
         }}
       >
-        <Header title={title} />
+        <Header title={title} started={tournament.started} admin={currentUser.admin} />
         <section className="container" id="content">
           <div className="wrapper">{children}</div>
         </section>

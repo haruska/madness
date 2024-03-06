@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { range, chunk } from 'lodash'
 import classNames from 'classnames'
 
 import { Region } from './Region'
 import { Game } from './Game'
-import { AppContext, Team, Tournament } from 'AppContext'
-import { BasicBracket } from 'containers/Bracket'
+import { Team, Tournament } from 'AppContext'
+import { BasicBracket } from 'components/BasicBracket'
 import TournamentTree from '../../objects/TournamentTree'
 
 export const Round = ({

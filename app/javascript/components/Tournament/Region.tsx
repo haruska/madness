@@ -2,8 +2,8 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { Game } from './Game'
-import { BasicBracket } from 'containers/Bracket'
-import { Team, Tournament } from '../../AppContext'
+import { BasicBracket } from 'components/BasicBracket'
+import { Team } from '../../AppContext'
 import TournamentTree from '../../objects/TournamentTree'
 
 export const Region = ({

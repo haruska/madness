@@ -3,7 +3,7 @@ import classNames from 'classnames'
 
 import TournamentTree from 'objects/TournamentTree'
 import { Team } from 'AppContext'
-import { BasicBracket } from 'containers/Bracket'
+import { BasicBracket } from 'components/BasicBracket'
 import GameNode from '../../objects/GameNode'
 
 const GameSlot = ({
