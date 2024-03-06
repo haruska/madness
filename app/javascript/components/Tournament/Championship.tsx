@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import classNames from 'classnames'
 
 import TournamentTree from 'objects/TournamentTree'
-import { BasicBracket } from 'containers/Bracket'
-import { AppContext, Team, Tournament } from 'AppContext'
+import { BasicBracket } from 'components/BasicBracket'
+import { Team, Tournament } from 'AppContext'
 
 export const Championship = ({
   bracket,

@@ -8,7 +8,7 @@ import { Tournament } from 'components/Tournament'
 
 import { UpdateBracketMutation } from 'mutations/UpdateBracketMutation'
 import { DeleteBracketMutation } from 'mutations/DeleteBracketMutation'
-import { COMPLETED_MASK } from './Bracket'
+import { COMPLETED_MASK } from 'components/BasicBracket'
 import { EditBracket_bracket$data } from 'RelayArtifacts/EditBracket_bracket.graphql'
 import { DEFAULT_TITLE } from 'components/Layouts/MainLayout'
 import { UpdateBracketMutation$data } from 'RelayArtifacts/UpdateBracketMutation.graphql'

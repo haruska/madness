@@ -6,7 +6,7 @@ import { Label } from 'components/forms/Label'
 import { Tournament } from 'components/Tournament'
 
 import { CreateBracketMutation } from 'mutations/CreateBracketMutation'
-import { BasicBracket, COMPLETED_MASK } from './Bracket'
+import { BasicBracket, COMPLETED_MASK } from 'components/BasicBracket'
 import { DEFAULT_TITLE } from 'components/Layouts/MainLayout'
 import { CreateBracketMutation$data } from 'RelayArtifacts/CreateBracketMutation.graphql'
 

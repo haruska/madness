@@ -11,6 +11,7 @@ class BracketsController < ApplicationController
   end
 
   def show
+    @tournament = Tournament.field_64
     @bracket = authorize Bracket.find(params[:id])
   end
 end

@@ -15,8 +15,6 @@
   </div>
   <div class="tournament-component">
     <%=
-      @tournament = Tournament.field_64
-
       react("Tournament", props: {
         bracket: {
           name: @bracket.name,
@@ -24,11 +22,8 @@
           gameMask: 18446744073709551614.to_s
         },
         tournament: {
-          id: "field64",
-          tipOff: @tournament.tip_off.iso8601,
           gameDecisions: @tournament.game_decisions.to_s,
           gameMask: @tournament.game_mask.to_s,
-          started: @tournament.started?,
           rounds: @tournament.rounds.map {|round|
             {
               name: round.name,
@@ -39,13 +34,11 @@
             }
           },
         },
-        teams: Tournament.field_64.teams.map {|team|
+        teams: @tournament.teams.map {|team|
           {
-            id: team.id,
             startingSlot: team.starting_slot,
             seed: team.seed,
-            name: team.name,
-            stillPlaying: team.still_playing?
+            name: team.name
           }
         }
       })

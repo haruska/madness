@@ -22,10 +22,10 @@ Rails.application.routes.draw do
 
   post '/graphql', to: 'graphql#execute'
 
-  root 'home#index'
-
   resources :brackets, only: :show
   get '/my_brackets', to: 'brackets#my_brackets'
+
+  root 'brackets#my_brackets'
 
   # send all other routes to react
   get '*pages', to: 'home#index'
