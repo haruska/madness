@@ -2,20 +2,5 @@
   <div class="title-wrapper">
     <div class="title"><%= @title || "Pool Madness" %></div>
   </div>
-  <div class="menu">
-    <div>
-      <a class="sliding-panel-button">
-        <i class="fa fa-bars"></i>
-      </a>
-      <nav class="sliding-panel-content">
-        <ul>
-          <li>Admin Dashboard</li>
-          <li>My Brackets</li>
-          <li>Game Results</li>
-          <li>Rules and Scoring</li>
-          <li>Sign Out</li>
-        </ul>
-      </nav>
-    </div>
-  </div>
+  <%= react("Menu", props: {admin: current_user.admin?, started: tournament.started?}) %>
 </header>
