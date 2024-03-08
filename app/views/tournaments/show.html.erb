@@ -9,30 +9,5 @@
       <% end %>
     </div>
   </div>
-  <div class="tournament-component">
-    <%=
-      react("Tournament", props: {
-        tournament: {
-          gameDecisions: tournament.game_decisions.to_s,
-          gameMask: tournament.game_mask.to_s,
-          rounds: tournament.rounds.map {|round|
-            {
-              name: round.name,
-              number: round.number,
-              startDate: round.start_date.iso8601,
-              endDate: round.end_date.iso8601,
-              regions: round.regions
-            }
-          },
-        },
-        teams: tournament.teams.map {|team|
-          {
-            startingSlot: team.starting_slot,
-            seed: team.seed,
-            name: team.name
-          }
-        }
-      })
-    %>
-  </div>
+  <%= render partial: 'application/tournament' %>
 </div>
