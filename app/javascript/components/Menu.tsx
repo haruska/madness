@@ -38,7 +38,7 @@ export const Menu = ({
       links.push(<a href="/my_brackets" onClick={handleToggleMenuClick}>My Brackets</a>)
     }
 
-    links.push(<a href="/games" onClick={handleToggleMenuClick}>Game Results</a>)
+    links.push(<a href="/tournament" onClick={handleToggleMenuClick}>Game Results</a>)
     links.push(<a href="/rules" onClick={handleToggleMenuClick}>Rules and Scoring</a>)
     links.push(<a onClick={handleLogout}>Sign Out</a>)
 

@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   resources :brackets, only: :show
   get '/my_brackets', to: 'brackets#my_brackets'
 
+  resource :tournament
+
   get '/rules', to: 'pages#rules'
 
   root 'brackets#my_brackets'
