@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BracketsController < ApplicationController
   layout 'static'
   def my_brackets
