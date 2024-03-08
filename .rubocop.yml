@@ -28,3 +28,5 @@ Metrics/PerceivedComplexity:
   Enabled: false
 Rails/I18nLocaleTexts:
   Enabled: false
+Naming/MethodParameterName:
+  Enabled: false
