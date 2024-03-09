@@ -6,6 +6,10 @@ import { Tournament } from 'components/Tournament'
 
 import { COMPLETED_MASK } from 'components/BasicBracket'
 import { Team, Bracket, Tournament as ITournament } from '../objects/TournamentTypes'
+import { types } from 'sass'
+import Error = types.Error
+import { Simulate } from 'react-dom/test-utils'
+import error = Simulate.error
 
 export const EditBracket = ({
   bracket,
@@ -18,7 +22,6 @@ export const EditBracket = ({
 }) => {
   const [name, setName] = useState(bracket?.name || '')
   const [gameDecisions, setGameDecisions] = useState(BigInt(bracket?.gameDecisions || 0))
-  const [errors, setErrors] = useState(null)
   const [showDeletionDialog, setShowDeletionDialog] = useState(false)
 
   const policy = bracket?.policy
@@ -37,50 +40,35 @@ export const EditBracket = ({
     setGameDecisions(decisions)
   }
 
-  // const handleUpdateCompleted = (response: UpdateBracketMutation$data, errors: MutationErrors) => {
-  //   const allErrors = errors || response.updateBracket.errors
-  //
-  //   if (allErrors?.length !== 0) {
-  //     setErrors(allErrors)
-  //   } else {
-  //     // window.location.href = `/brackets/${bracket.id}`
-  //     window.location.href = '/'
-  //   }
-  // }
+  const performDelete = async () => {
+    const reqOpts = {
+      method: 'DELETE',
+      headers: {
+        'X-CSRF-Token': authenticityToken,
+      },
+    }
 
-  // const handleDeletionCompleted = (
-  //   response: DeleteBracketMutation$data,
-  //   errors: MutationErrors
-  // ) => {
-  //   if (errors && errors.length !== 0) {
-  //     console.error(`commit failed: ${errors}`) // eslint-disable-line
-  //   } else {
-  //     window.location.href = `/`
-  //   }
-  // }
+    const response = await fetch(`/brackets/${bracket.id}`, reqOpts)
 
-  const handleDone = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    //
-    // UpdateBracketMutation.commit(
-    //   {
-    //     bracketId: bracket.id,
-    //     name,
-    //     gameDecisions: gameDecisions.toString(),
-    //   },
-    //   handleUpdateCompleted
-    // )
-    window.location.href = `/`
+    if (!response.ok) {
+      alert('Delete Failed')
+    } else {
+      window.location.href = '/'
+    }
   }
+
+  const authenticityToken = document
+    .querySelector('meta[name="csrf-token"]')
+    .getAttribute('content')
 
   return (
     <div className="edit-bracket-container">
       <Dialog
         isOpen={showDeletionDialog}
         message="This will delete this bracket. Are you sure you want to proceed?"
-        onConfirm={() => {
+        onConfirm={async () => {
           setShowDeletionDialog(false)
-          // DeleteBracketMutation.commit(bracket.id, handleDeletionCompleted)
+          await performDelete()
         }}
         onCancel={() => setShowDeletionDialog(false)}
       />
@@ -96,13 +84,15 @@ export const EditBracket = ({
         teams={teams}
         onSlotClick={handleSlotClick}
       />
-      <form className="edit-bracket-form" onSubmit={handleDone}>
-        {errors ? <ErrorFlash errors={errors} objectType={'Bracket'} /> : null}
-        <Label attr="name" text="Bracket Name" errors={errors} />
+      <form className="edit-bracket-form" action={`/brackets/${bracket.id}`} method="POST">
+        <input type="hidden" name="_method" value="PUT" />
+        <input name="authenticity_token" type="hidden" value={authenticityToken} />
+        <input name="bracket[game_decisions]" type="hidden" value={gameDecisions.toString()} />
+        <Label attr="bracket[name]" text="Bracket Name" />
         <input
           id="name"
           type="text"
-          name="name"
+          name="bracket[name]"
           required
           value={name}
           onChange={(event) => setName(event.target.value)}

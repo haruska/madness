@@ -35,4 +35,38 @@ class BracketsController < ApplicationController
   def edit
     @bracket = authorize Bracket.find(params[:id])
   end
+
+  def create
+    authorize Bracket
+    @bracket = current_user.brackets.build(bracket_params)
+    if @bracket.save
+      redirect_to @bracket, notice: 'Bracket was successfully created.'
+    else
+      render :new
+    end
+  end
+
+  def update
+    @bracket = authorize Bracket.find(params[:id])
+    if @bracket.update(bracket_params)
+      redirect_to @bracket, notice: 'Bracket was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    bracket = authorize Bracket.find(params[:id])
+    if bracket.destroy
+      render nothing: true, status: :ok
+    else
+      render json: { error: 'Failed to delete bracket' }, status: :unprocessable_entity
+    end
+  end
+
+  protected
+
+  def bracket_params
+    params.require(:bracket).permit(:name, :game_decisions)
+  end
 end

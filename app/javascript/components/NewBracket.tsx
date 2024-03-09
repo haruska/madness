@@ -7,6 +7,13 @@ import { Tournament } from 'components/Tournament'
 import { BasicBracket, COMPLETED_MASK } from 'components/BasicBracket'
 import { Team, Tournament as ITournament } from 'objects/TournamentTypes'
 
+export type BracketError = {
+  path?: string[]
+  message: string
+}
+
+export type BracketErrors = BracketError[]
+
 export const NewBracket = ({
   tournament,
   teams,
@@ -16,7 +23,7 @@ export const NewBracket = ({
 }) => {
   const [name, setName] = useState('')
   const [gameDecisionsMask, setGameDecisionsMask] = useState<[bigint, bigint]>([0n, 0n])
-  // const [errors, setErrors] = useState<MutationErrors>(null)
+  const [errors, setErrors] = useState<BracketErrors>(null)
   const [showDiscardDialog, setShowDiscardDialog] = useState(false)
 
   const [gameDecisions, gameMask] = gameDecisionsMask
@@ -47,24 +54,6 @@ export const NewBracket = ({
   const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value)
   }
-
-  // const handleCreateCompleted = (response: CreateBracketMutation$data, errors: MutationErrors) => {
-  //   const allErrors = errors || response.createBracket.errors
-  //
-  //   if (allErrors && allErrors.length !== 0) {
-  //     setErrors(allErrors)
-  //   } else {
-  //     window.location.href = '/'
-  //   }
-  // }
-  //
-  // const commitMutation = () => {
-  //   CreateBracketMutation.commit(
-  //     { name, gameDecisions: gameDecisions.toString() },
-  //     handleCreateCompleted
-  //   )
-  // }
-
   const isFilledIn = () => gameMask === COMPLETED_MASK
 
   const highlightMissingPicks = () => {
@@ -72,13 +61,10 @@ export const NewBracket = ({
   }
 
   const handleDone = (event) => {
-    event.preventDefault()
-
-    if (isFilledIn()) {
-      // commitMutation()
-    } else {
+    if (!isFilledIn()) {
+      event.preventDefault()
       highlightMissingPicks()
-      // setErrors([{ path: ['base'], message: 'is not complete' }])
+      setErrors([{ path: ['base'], message: 'is not complete' }])
     }
   }
 
@@ -96,29 +82,34 @@ export const NewBracket = ({
     window.location.href = '/'
   }
 
+  const authenticityToken = document
+    .querySelector('meta[name="csrf-token"]')
+    .getAttribute('content')
+
   return (
-    <div className="new-bracket-container">
+    <>
       <Dialog
         isOpen={showDiscardDialog}
         message="You will lose your changes. Are you sure you want to proceed?"
         onConfirm={handleConfirmDiscard}
         onCancel={handleCancelDiscard}
       />
-      <h2>New Bracket Entry</h2>
-      {/*{errors ? <ErrorFlash errors={errors} objectType={'Bracket'} /> : null}*/}
+      {errors ? <ErrorFlash errors={errors} objectType={'Bracket'} /> : null}
       <Tournament
         tournament={tournament}
         teams={teams}
         bracket={bracket}
         onSlotClick={handleSlotClick}
-        highlightEmpty={false /*!!errors*/}
+        highlightEmpty={!!errors}
       />
-      <form className="new-bracket-form" onSubmit={handleDone}>
-        {/*<Label attr="name" text="Bracket Name" errors={errors} />*/}
+      <form className="new-bracket-form" action="/brackets" method="POST" onSubmit={handleDone}>
+        <input name="authenticity_token" type="hidden" value={authenticityToken} />
+        <input name="bracket[game_decisions]" type="hidden" value={gameDecisions.toString()} />
+        <Label attr="bracket[name]" text="Bracket Name" errors={errors} />
         <input
           id="name"
           type="text"
-          name="name"
+          name="bracket[name]"
           required
           value={name}
           onChange={handleNameChange}
@@ -129,6 +120,6 @@ export const NewBracket = ({
           Discard
         </div>
       </form>
-    </div>
+    </>
   )
 }

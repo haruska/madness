@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { BracketErrors } from '../NewBracket'
 
 export const ErrorFlash = ({
   errors,
   message = 'There was an issue. See below.',
   objectType = 'Below',
 }: {
-  errors?: string[]
+  errors?: BracketErrors
   message?: string
   objectType?: string
 }) => {
@@ -22,12 +23,12 @@ export const ErrorFlash = ({
   })
 
   const formattedMessage = () => {
-    // if (errors) {
-    //   const baseError = errors.find((error) => error.path[0] === 'base')
-    //   if (baseError) {
-    //     return `${objectType} ${baseError.message}`
-    //   }
-    // }
+    if (errors) {
+      const baseError = errors.find((error) => error.path[0] === 'base')
+      if (baseError) {
+        return `${objectType} ${baseError.message}`
+      }
+    }
     return message
   }
 
