@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { MutationErrors } from 'containers/NewBracket'
+import { MutationErrors } from 'components/NewBracket'
 
 export const ErrorFlash = ({
   errors,

@@ -1,5 +1,5 @@
 import React from 'react'
-import { MutationErrors } from 'containers/NewBracket'
+import { MutationErrors } from 'components/NewBracket'
 
 const styles = {
   inputError: {

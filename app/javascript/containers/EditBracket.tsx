@@ -12,7 +12,7 @@ import { COMPLETED_MASK } from 'components/BasicBracket'
 import { EditBracket_bracket$data } from 'RelayArtifacts/EditBracket_bracket.graphql'
 import { DEFAULT_TITLE } from 'components/Layouts/MainLayout'
 import { UpdateBracketMutation$data } from 'RelayArtifacts/UpdateBracketMutation.graphql'
-import { MutationErrors } from './NewBracket'
+import { MutationErrors } from 'components/NewBracket'
 import { DeleteBracketMutation$data } from 'RelayArtifacts/DeleteBracketMutation.graphql'
 
 const Component = ({ bracket }: { bracket: EditBracket_bracket$data }) => {

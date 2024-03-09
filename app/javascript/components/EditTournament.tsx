@@ -1,16 +1,17 @@
-import React, { FormEvent, useContext, useEffect, useState } from 'react'
-import { AppContext } from 'AppContext'
+import React, { FormEvent, useState } from 'react'
+import { Team, Tournament as ITournament } from 'AppContext'
 import { ErrorFlash } from 'components/forms/ErrorFlash'
 import { Tournament } from 'components/Tournament'
 
-import { DEFAULT_TITLE } from 'components/Layouts/MainLayout'
-import { MutationErrors } from './NewBracket'
+import { MutationErrors } from 'components/NewBracket'
 import { UpdateTournamentMutation } from 'mutations/UpdateTournamentMutation'
 import { UpdateTournamentMutation$data } from 'RelayArtifacts/UpdateTournamentMutation.graphql'
 import { Dialog } from 'components/Dialog'
 
-export const EditTournament = () => {
-  const { setPageTitle, router, tournament } = useContext(AppContext)
+export const EditTournament = ({tournament, teams}:{
+  tournament: ITournament
+  teams: readonly Team[]
+}) => {
   const [gameDecisionsMask, setGameDecisionsMask] = useState([
     BigInt(tournament.gameDecisions),
     BigInt(tournament.gameMask),
@@ -19,12 +20,6 @@ export const EditTournament = () => {
   const [showDiscardDialog, setShowDiscardDialog] = useState(false)
 
   const [gameDecisions, gameMask] = gameDecisionsMask
-
-  useEffect(() => {
-    setPageTitle('Editing Tournament')
-
-    return () => setPageTitle(DEFAULT_TITLE)
-  })
 
   const handleSlotClick = (slotId: number, choice: number) => {
     let decisions = gameDecisions
@@ -51,7 +46,7 @@ export const EditTournament = () => {
     if (allErrors?.length !== 0) {
       setErrors(allErrors)
     } else {
-      router.push(`/games`)
+      window.location.href = '/'
     }
   }
 
@@ -77,7 +72,7 @@ export const EditTournament = () => {
 
   const handleConfirmDiscard = () => {
     setShowDiscardDialog(false)
-    router.push(`/games`)
+    window.location.href = '/'
   }
 
   return (
@@ -95,6 +90,8 @@ export const EditTournament = () => {
           gameMask,
           gameDecisions,
         }}
+        tournament={tournament}
+        teams={teams}
         onSlotClick={handleSlotClick}
       />
       <form className="edit-tournament-form" onSubmit={handleDone}>

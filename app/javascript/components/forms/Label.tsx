@@ -1,6 +1,6 @@
 import React from 'react'
 import { InputError } from './InputError'
-import { MutationErrors } from 'containers/NewBracket'
+import { MutationErrors } from 'components/NewBracket'
 
 export const Label = ({
   attr,
