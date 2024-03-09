@@ -1,0 +1,12 @@
+<tr class="bracket-row<%= ' current-user-bracket' if bracket.user == current_user %>">
+  <td class="position-column"><%= 'T' if tied %><%= place %>.</td>
+  <td class="name-column">
+    <%= link_to bracket.name.truncate(25), bracket %>
+  </td>
+  <td><%= bracket.points %></td>
+  <td><%= bracket.possible_points %></td>
+  <% if @show_eliminated %>
+    <td><%= bracket.eliminated? ? '-' : bracket.best_possible_finish.ordinalize %></td>
+  <% end %>
+  <%= render partial: 'final_four_team', collection: bracket.sorted_four_teams, as: :team %>
+</tr>

@@ -1,0 +1,38 @@
+<div class="bracket-list-container">
+  <div class="large-screen">
+    <table class="tables">
+      <thead>
+        <tr>
+          <% headings = @show_eliminated ? ['', 'Name', 'Score', 'Possible', 'Best', 'Final Four', 'Final Four', 'Second', 'Winner'] : ['', 'Name', 'Score', 'Possible', 'Final Four', 'Final Four', 'Second', 'Winner'] %>
+          <% headings.map do |heading| %>
+            <th><%= heading %></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% with_place(@brackets).each do |(bracket, place, tied)| %>
+          <%= render partial: 'bracket_row', locals: { bracket: bracket, place: place + 1, tied: tied } %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="small-screen">
+    <% with_place(@brackets).each do |(bracket, place, tied)| %>
+      <%= render partial: 'small_bracket', locals: { bracket:, place: place + 1, tied:, } %>
+    <% end %>
+<!--    {bracketsWithPlace-->
+<!--    .map((brackets, place) =>-->
+<!--    brackets.map((bracket) => (-->
+<!--    <SmallBracket-->
+<!--      key={bracket.id}-->
+<!--      index={place + 1}-->
+<!--      tied={brackets.length > 1}-->
+<!--      bracket={bracket}-->
+<!--      showEliminated={showEliminated}-->
+<!--      />-->
+<!--      ))-->
+<!--      )-->
+<!--      .reduce((acc, val) => acc.concat(val), [])}-->
+  </div>
+</div>

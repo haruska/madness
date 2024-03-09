@@ -14,7 +14,7 @@ class Bracket < ApplicationRecord
   end
 
   def sorted_four_teams
-    sorted_four.map { |slot| Team.find_by(starting_slot: slot) }
+    sorted_four.map { |slot| Tournament.field_64.team_by_slot(slot) }
   end
 
   def points
@@ -63,6 +63,10 @@ class Bracket < ApplicationRecord
 
   def eliminated
     best_possible_finish > 5
+  end
+
+  def eliminated?
+    eliminated
   end
 
   private

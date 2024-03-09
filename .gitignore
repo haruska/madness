@@ -42,5 +42,5 @@
 !.yarn/sdks
 !.yarn/versions
 
-latest.dump
+*.dump
 .env
