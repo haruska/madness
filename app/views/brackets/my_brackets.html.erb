@@ -23,7 +23,7 @@
     </table>
   </div>
   <div class="actions">
-    <%= link_to "/new_bracket", class: "button" do %>
+    <%= link_to new_bracket_path, class: "button" do %>
       <%= @brackets.empty? ? "New Bracket Entry" : "Another Bracket Entry" %>
     <% end %>
   </div>

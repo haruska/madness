@@ -1,5 +1,4 @@
-import React, { ChangeEvent, useContext, useEffect, useState } from 'react'
-import { AppContext } from 'AppContext'
+import React, { ChangeEvent, useState } from 'react'
 import { Dialog } from 'components/Dialog'
 import { ErrorFlash } from 'components/forms/ErrorFlash'
 import { Label } from 'components/forms/Label'
@@ -7,14 +6,15 @@ import { Tournament } from 'components/Tournament'
 
 import { CreateBracketMutation } from 'mutations/CreateBracketMutation'
 import { BasicBracket, COMPLETED_MASK } from 'components/BasicBracket'
-import { DEFAULT_TITLE } from 'components/Layouts/MainLayout'
 import { CreateBracketMutation$data } from 'RelayArtifacts/CreateBracketMutation.graphql'
+import { Team, Tournament as ITournament } from '../AppContext'
 
 export type MutationErrors = CreateBracketMutation$data['createBracket']['errors']
 
-export const NewBracket = () => {
-  const { setPageTitle, router } = useContext(AppContext)
-
+export const NewBracket = ({tournament, teams}:{
+  tournament: ITournament
+  teams: readonly Team[]
+}) => {
   const [name, setName] = useState('')
   const [gameDecisionsMask, setGameDecisionsMask] = useState<[bigint, bigint]>([0n, 0n])
   const [errors, setErrors] = useState<MutationErrors>(null)
@@ -27,13 +27,6 @@ export const NewBracket = () => {
     gameDecisions,
     gameMask,
   }
-
-  useEffect(() => {
-    setPageTitle('New Bracket')
-    return () => {
-      setPageTitle(DEFAULT_TITLE)
-    }
-  })
 
   const handleSlotClick = (slotId: number, choice: number) => {
     const decision = choice - 1
@@ -62,7 +55,7 @@ export const NewBracket = () => {
     if (allErrors && allErrors.length !== 0) {
       setErrors(allErrors)
     } else {
-      router.push(`/`)
+      window.location.href = '/'
     }
   }
 
@@ -101,7 +94,7 @@ export const NewBracket = () => {
 
   const handleConfirmDiscard = () => {
     setShowDiscardDialog(false)
-    router.push(`/`)
+    window.location.href = '/'
   }
 
   return (
@@ -114,7 +107,7 @@ export const NewBracket = () => {
       />
       <h2>New Bracket Entry</h2>
       {errors ? <ErrorFlash errors={errors} objectType={'Bracket'} /> : null}
-      <Tournament bracket={bracket} onSlotClick={handleSlotClick} highlightEmpty={!!errors} />
+      <Tournament tournament={tournament} teams={teams} bracket={bracket} onSlotClick={handleSlotClick} highlightEmpty={!!errors} />
       <form className="new-bracket-form" onSubmit={handleDone}>
         <Label attr="name" text="Bracket Name" errors={errors} />
         <input

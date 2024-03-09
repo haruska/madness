@@ -27,4 +27,8 @@ class BracketsController < ApplicationController
   def show
     @bracket = authorize Bracket.find(params[:id])
   end
+
+  def new
+    @bracket = Bracket.new
+  end
 end

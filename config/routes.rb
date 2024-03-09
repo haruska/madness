@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   post '/graphql', to: 'graphql#execute'
 
-  resources :brackets, only: %i[show index]
+  resources :brackets
   get '/my_brackets', to: 'brackets#my_brackets'
 
   resource :tournament

@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { Tournament } from './components/Tournament'
 import { Menu } from './components/Menu'
+import { NewBracket } from './components/NewBracket'
 
 type Components = Record<string, React.ElementType>;
 function mount(components: Components): void {
@@ -31,5 +32,6 @@ function mount(components: Components): void {
 
 mount({
   Tournament,
-  Menu
+  Menu,
+  NewBracket
 })
