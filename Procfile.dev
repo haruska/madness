@@ -3,4 +3,3 @@ worker: bin/sidekiq
 js: yarn build --watch
 css: yarn build:css --watch
 types: yarn check-types --watch
-relay: yarn relay --watch

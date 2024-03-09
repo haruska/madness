@@ -1,5 +1,5 @@
 import GameNode from './GameNode'
-import { Team } from 'TournamentTypes'
+import { Team } from 'objects/TournamentTypes'
 
 const NUM_GAMES = 63
 

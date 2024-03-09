@@ -3,7 +3,7 @@ import classNames from 'classnames'
 
 import TournamentTree from 'objects/TournamentTree'
 import { BasicBracket } from 'components/BasicBracket'
-import { Team, Tournament } from 'TournamentTypes'
+import { Team, Tournament } from 'objects/TournamentTypes'
 
 export const Championship = ({
   bracket,

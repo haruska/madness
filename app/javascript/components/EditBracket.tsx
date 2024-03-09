@@ -5,7 +5,7 @@ import { Label } from 'components/forms/Label'
 import { Tournament } from 'components/Tournament'
 
 import { COMPLETED_MASK } from 'components/BasicBracket'
-import { Team, Bracket, Tournament as ITournament } from '../TournamentTypes'
+import { Team, Bracket, Tournament as ITournament } from '../objects/TournamentTypes'
 
 export const EditBracket = ({
   bracket,

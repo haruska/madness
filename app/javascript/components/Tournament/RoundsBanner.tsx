@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tournament } from 'TournamentTypes'
+import { Tournament } from 'objects/TournamentTypes'
 
 export const RoundsBanner = ({ tournament }: { tournament: Tournament }) => {
   const dateRangeString = (start: string, end: string) => {

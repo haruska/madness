@@ -14,13 +14,9 @@ Rails.application.routes.draw do
     root to: 'users#index'
   end
 
-  mount GraphiQL::Rails::Engine, at: '/graphiql' if Rails.env.development?
-
   authenticate :user, ->(u) { u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
-
-  post '/graphql', to: 'graphql#execute'
 
   resources :brackets
   get '/my_brackets', to: 'brackets#my_brackets'

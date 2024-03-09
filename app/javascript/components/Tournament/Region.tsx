@@ -3,7 +3,7 @@ import classNames from 'classnames'
 
 import { Game } from './Game'
 import { BasicBracket } from 'components/BasicBracket'
-import { Team } from 'TournamentTypes'
+import { Team } from 'objects/TournamentTypes'
 import TournamentTree from 'objects/TournamentTree'
 
 export const Region = ({

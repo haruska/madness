@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from 'react'
-import { Team, Tournament as ITournament } from 'TournamentTypes'
+import { Team, Tournament as ITournament } from 'objects/TournamentTypes'
 import { ErrorFlash } from 'components/forms/ErrorFlash'
 import { Tournament } from 'components/Tournament'
 import { Dialog } from 'components/Dialog'

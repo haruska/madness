@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 
 import TournamentTree from 'objects/TournamentTree'
-import { Team } from 'TournamentTypes'
+import { Team } from 'objects/TournamentTypes'
 import { BasicBracket } from 'components/BasicBracket'
 import GameNode from 'objects/GameNode'
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { Round } from './Round'
 import { Championship } from './Championship'
 import { RoundsBanner } from './RoundsBanner'
-import { Team, Tournament as ITournament } from 'TournamentTypes'
+import { Team, Tournament as ITournament } from 'objects/TournamentTypes'
 import { BasicBracket } from 'components/BasicBracket'
 import TournamentTree from 'objects/TournamentTree'
 
