@@ -31,4 +31,8 @@ class BracketsController < ApplicationController
   def new
     @bracket = Bracket.new
   end
+
+  def edit
+    @bracket = authorize Bracket.find(params[:id])
+  end
 end

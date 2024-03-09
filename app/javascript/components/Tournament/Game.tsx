@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 
 import TournamentTree from 'objects/TournamentTree'
-import { Team } from 'AppContext'
+import { Team } from 'TournamentTypes'
 import { BasicBracket } from 'components/BasicBracket'
-import GameNode from '../../objects/GameNode'
+import GameNode from 'objects/GameNode'
 
 const GameSlot = ({
   gameSlot,

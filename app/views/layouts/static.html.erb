@@ -1,8 +1,3 @@
-<% content_for :html_head do %>
-  <%= stylesheet_link_tag "fa-icons" %>
-  <meta name="sentry-dsn" content="<%= ENV['SENTRY_DSN'] %>" />
-<% end %>
-
 <% content_for :content do %>
   <div class="app-container">
     <div class="app-content">
@@ -17,7 +12,6 @@
       </div>
     </div>
   </div>
-  <%= javascript_include_tag "reactComponents" %>
 <% end %>
 
 <%= render template: "layouts/application" %>

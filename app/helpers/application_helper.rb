@@ -34,10 +34,15 @@ module ApplicationHelper
     }
 
     if bracket
+      policy = policy(bracket)
       props[:bracket] = {
+        id: bracket.id,
         name: bracket.name,
         gameDecisions: bracket.game_decisions.to_s,
-        gameMask: 18_446_744_073_709_551_614.to_s
+        gameMask: 18_446_744_073_709_551_614.to_s,
+        policy: {
+          destroy: policy.destroy?
+        }
       }
     end
 

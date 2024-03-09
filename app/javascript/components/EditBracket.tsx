@@ -1,35 +1,27 @@
-import React, { ChangeEvent, FormEvent, useContext, useEffect, useState } from 'react'
-import { graphql, createFragmentContainer } from 'react-relay'
-import { AppContext } from 'AppContext'
+import React, { FormEvent, useState } from 'react'
 import { Dialog } from 'components/Dialog'
 import { ErrorFlash } from 'components/forms/ErrorFlash'
 import { Label } from 'components/forms/Label'
 import { Tournament } from 'components/Tournament'
 
-import { UpdateBracketMutation } from 'mutations/UpdateBracketMutation'
-import { DeleteBracketMutation } from 'mutations/DeleteBracketMutation'
 import { COMPLETED_MASK } from 'components/BasicBracket'
-import { EditBracket_bracket$data } from 'RelayArtifacts/EditBracket_bracket.graphql'
-import { DEFAULT_TITLE } from 'components/Layouts/MainLayout'
-import { UpdateBracketMutation$data } from 'RelayArtifacts/UpdateBracketMutation.graphql'
-import { MutationErrors } from 'components/NewBracket'
-import { DeleteBracketMutation$data } from 'RelayArtifacts/DeleteBracketMutation.graphql'
+import { Team, Bracket, Tournament as ITournament } from '../TournamentTypes'
 
-const Component = ({ bracket }: { bracket: EditBracket_bracket$data }) => {
-  const { setPageTitle, router } = useContext(AppContext)
+export const EditBracket = ({
+  bracket,
+  tournament,
+  teams,
+}: {
+  bracket: Bracket
+  tournament: ITournament
+  teams: readonly Team[]
+}) => {
   const [name, setName] = useState(bracket?.name || '')
   const [gameDecisions, setGameDecisions] = useState(BigInt(bracket?.gameDecisions || 0))
   const [errors, setErrors] = useState(null)
   const [showDeletionDialog, setShowDeletionDialog] = useState(false)
 
   const policy = bracket?.policy
-
-  useEffect(() => {
-    setPageTitle('Editing Bracket')
-
-    return () => setPageTitle(DEFAULT_TITLE)
-  })
-
   const handleSlotClick = (slotId: number, choice: number) => {
     let decisions = gameDecisions
 
@@ -45,38 +37,40 @@ const Component = ({ bracket }: { bracket: EditBracket_bracket$data }) => {
     setGameDecisions(decisions)
   }
 
-  const handleUpdateCompleted = (response: UpdateBracketMutation$data, errors: MutationErrors) => {
-    const allErrors = errors || response.updateBracket.errors
+  // const handleUpdateCompleted = (response: UpdateBracketMutation$data, errors: MutationErrors) => {
+  //   const allErrors = errors || response.updateBracket.errors
+  //
+  //   if (allErrors?.length !== 0) {
+  //     setErrors(allErrors)
+  //   } else {
+  //     // window.location.href = `/brackets/${bracket.id}`
+  //     window.location.href = '/'
+  //   }
+  // }
 
-    if (allErrors?.length !== 0) {
-      setErrors(allErrors)
-    } else {
-      router.push(`/brackets/${response.updateBracket.bracket.id}`)
-    }
-  }
-
-  const handleDeletionCompleted = (
-    response: DeleteBracketMutation$data,
-    errors: MutationErrors
-  ) => {
-    if (errors && errors.length !== 0) {
-      console.error(`commit failed: ${errors}`) // eslint-disable-line
-    } else {
-      router.push(`/`)
-    }
-  }
+  // const handleDeletionCompleted = (
+  //   response: DeleteBracketMutation$data,
+  //   errors: MutationErrors
+  // ) => {
+  //   if (errors && errors.length !== 0) {
+  //     console.error(`commit failed: ${errors}`) // eslint-disable-line
+  //   } else {
+  //     window.location.href = `/`
+  //   }
+  // }
 
   const handleDone = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-
-    UpdateBracketMutation.commit(
-      {
-        bracketId: bracket.id,
-        name,
-        gameDecisions: gameDecisions.toString(),
-      },
-      handleUpdateCompleted
-    )
+    //
+    // UpdateBracketMutation.commit(
+    //   {
+    //     bracketId: bracket.id,
+    //     name,
+    //     gameDecisions: gameDecisions.toString(),
+    //   },
+    //   handleUpdateCompleted
+    // )
+    window.location.href = `/`
   }
 
   return (
@@ -86,7 +80,7 @@ const Component = ({ bracket }: { bracket: EditBracket_bracket$data }) => {
         message="This will delete this bracket. Are you sure you want to proceed?"
         onConfirm={() => {
           setShowDeletionDialog(false)
-          DeleteBracketMutation.commit(bracket.id, handleDeletionCompleted)
+          // DeleteBracketMutation.commit(bracket.id, handleDeletionCompleted)
         }}
         onCancel={() => setShowDeletionDialog(false)}
       />
@@ -98,6 +92,8 @@ const Component = ({ bracket }: { bracket: EditBracket_bracket$data }) => {
           gameDecisions,
           gameMask: COMPLETED_MASK,
         }}
+        tournament={tournament}
+        teams={teams}
         onSlotClick={handleSlotClick}
       />
       <form className="edit-bracket-form" onSubmit={handleDone}>
@@ -122,19 +118,3 @@ const Component = ({ bracket }: { bracket: EditBracket_bracket$data }) => {
     </div>
   )
 }
-
-export const EditBracket = createFragmentContainer(Component, {
-  bracket: graphql`
-    fragment EditBracket_bracket on Bracket {
-      id
-      name
-      gameDecisions
-      policy {
-        destroy
-      }
-      user {
-        name
-      }
-    }
-  `,
-})

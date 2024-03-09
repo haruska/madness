@@ -1,16 +1,16 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 
 import TournamentTree from 'objects/TournamentTree'
 import { BasicBracket } from 'components/BasicBracket'
-import { Team, Tournament } from 'AppContext'
+import { Team, Tournament } from 'TournamentTypes'
 
 export const Championship = ({
   bracket,
   highlightEmpty,
   tournament,
   tournamentTree,
-  teams
+  teams,
 }: {
   bracket?: BasicBracket
   highlightEmpty: boolean

@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import { Region } from './Region'
 import { Game } from './Game'
-import { Team, Tournament } from 'AppContext'
+import { Team, Tournament } from 'TournamentTypes'
 import { BasicBracket } from 'components/BasicBracket'
 import TournamentTree from '../../objects/TournamentTree'
 

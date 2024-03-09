@@ -4,20 +4,19 @@ import { ErrorFlash } from 'components/forms/ErrorFlash'
 import { Label } from 'components/forms/Label'
 import { Tournament } from 'components/Tournament'
 
-import { CreateBracketMutation } from 'mutations/CreateBracketMutation'
 import { BasicBracket, COMPLETED_MASK } from 'components/BasicBracket'
-import { CreateBracketMutation$data } from 'RelayArtifacts/CreateBracketMutation.graphql'
-import { Team, Tournament as ITournament } from '../AppContext'
+import { Team, Tournament as ITournament } from 'TournamentTypes'
 
-export type MutationErrors = CreateBracketMutation$data['createBracket']['errors']
-
-export const NewBracket = ({tournament, teams}:{
+export const NewBracket = ({
+  tournament,
+  teams,
+}: {
   tournament: ITournament
   teams: readonly Team[]
 }) => {
   const [name, setName] = useState('')
   const [gameDecisionsMask, setGameDecisionsMask] = useState<[bigint, bigint]>([0n, 0n])
-  const [errors, setErrors] = useState<MutationErrors>(null)
+  // const [errors, setErrors] = useState<MutationErrors>(null)
   const [showDiscardDialog, setShowDiscardDialog] = useState(false)
 
   const [gameDecisions, gameMask] = gameDecisionsMask
@@ -49,22 +48,22 @@ export const NewBracket = ({tournament, teams}:{
     setName(event.target.value)
   }
 
-  const handleCreateCompleted = (response: CreateBracketMutation$data, errors: MutationErrors) => {
-    const allErrors = errors || response.createBracket.errors
-
-    if (allErrors && allErrors.length !== 0) {
-      setErrors(allErrors)
-    } else {
-      window.location.href = '/'
-    }
-  }
-
-  const commitMutation = () => {
-    CreateBracketMutation.commit(
-      { name, gameDecisions: gameDecisions.toString() },
-      handleCreateCompleted
-    )
-  }
+  // const handleCreateCompleted = (response: CreateBracketMutation$data, errors: MutationErrors) => {
+  //   const allErrors = errors || response.createBracket.errors
+  //
+  //   if (allErrors && allErrors.length !== 0) {
+  //     setErrors(allErrors)
+  //   } else {
+  //     window.location.href = '/'
+  //   }
+  // }
+  //
+  // const commitMutation = () => {
+  //   CreateBracketMutation.commit(
+  //     { name, gameDecisions: gameDecisions.toString() },
+  //     handleCreateCompleted
+  //   )
+  // }
 
   const isFilledIn = () => gameMask === COMPLETED_MASK
 
@@ -76,10 +75,10 @@ export const NewBracket = ({tournament, teams}:{
     event.preventDefault()
 
     if (isFilledIn()) {
-      commitMutation()
+      // commitMutation()
     } else {
       highlightMissingPicks()
-      setErrors([{ path: ['base'], message: 'is not complete' }])
+      // setErrors([{ path: ['base'], message: 'is not complete' }])
     }
   }
 
@@ -106,10 +105,16 @@ export const NewBracket = ({tournament, teams}:{
         onCancel={handleCancelDiscard}
       />
       <h2>New Bracket Entry</h2>
-      {errors ? <ErrorFlash errors={errors} objectType={'Bracket'} /> : null}
-      <Tournament tournament={tournament} teams={teams} bracket={bracket} onSlotClick={handleSlotClick} highlightEmpty={!!errors} />
+      {/*{errors ? <ErrorFlash errors={errors} objectType={'Bracket'} /> : null}*/}
+      <Tournament
+        tournament={tournament}
+        teams={teams}
+        bracket={bracket}
+        onSlotClick={handleSlotClick}
+        highlightEmpty={false /*!!errors*/}
+      />
       <form className="new-bracket-form" onSubmit={handleDone}>
-        <Label attr="name" text="Bracket Name" errors={errors} />
+        {/*<Label attr="name" text="Bracket Name" errors={errors} />*/}
         <input
           id="name"
           type="text"

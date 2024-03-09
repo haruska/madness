@@ -1,6 +1,5 @@
 import React from 'react'
 import { InputError } from './InputError'
-import { MutationErrors } from 'components/NewBracket'
 
 export const Label = ({
   attr,
@@ -9,7 +8,7 @@ export const Label = ({
 }: {
   attr: string
   text: string
-  errors: MutationErrors
+  errors?: string[]
 }) => {
   return (
     <label htmlFor={attr}>

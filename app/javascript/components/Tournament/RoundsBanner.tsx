@@ -1,7 +1,7 @@
 import React from 'react'
-import { Tournament } from '../../AppContext'
+import { Tournament } from 'TournamentTypes'
 
-export const RoundsBanner = ({tournament}: {tournament: Tournament}) => {
+export const RoundsBanner = ({ tournament }: { tournament: Tournament }) => {
   const dateRangeString = (start: string, end: string) => {
     const startDate = new Date(start)
     const endDate = new Date(end)

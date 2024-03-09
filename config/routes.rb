@@ -30,7 +30,4 @@ Rails.application.routes.draw do
   get '/rules', to: 'pages#rules'
 
   root 'brackets#my_brackets'
-
-  # send all other routes to react
-  get '*pages', to: 'home#index'
 end

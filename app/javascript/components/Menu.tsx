@@ -1,12 +1,6 @@
 import React, { useState } from 'react'
 
-export const Menu = ({
-  admin,
-  started
-}: {
-  admin: boolean
-  started: boolean
-}) => {
+export const Menu = ({ admin, started }: { admin: boolean; started: boolean }) => {
   const [isVisible, setIsVisible] = useState(false)
 
   const handleToggleMenuClick = () => {
@@ -33,13 +27,29 @@ export const Menu = ({
     }
 
     if (started) {
-      links.push(<a href="/brackets" onClick={handleToggleMenuClick}>Brackets</a>)
+      links.push(
+        <a href="/brackets" onClick={handleToggleMenuClick}>
+          Brackets
+        </a>
+      )
     } else {
-      links.push(<a href="/my_brackets" onClick={handleToggleMenuClick}>My Brackets</a>)
+      links.push(
+        <a href="/my_brackets" onClick={handleToggleMenuClick}>
+          My Brackets
+        </a>
+      )
     }
 
-    links.push(<a href="/tournament" onClick={handleToggleMenuClick}>Game Results</a>)
-    links.push(<a href="/rules" onClick={handleToggleMenuClick}>Rules and Scoring</a>)
+    links.push(
+      <a href="/tournament" onClick={handleToggleMenuClick}>
+        Game Results
+      </a>
+    )
+    links.push(
+      <a href="/rules" onClick={handleToggleMenuClick}>
+        Rules and Scoring
+      </a>
+    )
     links.push(<a onClick={handleLogout}>Sign Out</a>)
 
     return links

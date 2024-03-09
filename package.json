@@ -4,44 +4,24 @@
     "@sentry/react": "^7.40.0",
     "@sentry/tracing": "^7.40.0",
     "classnames": "^2.3.2",
-    "farce": "^0.4.5",
-    "found": "^1.2.1",
-    "found-relay": "^1.0.2",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-relay": "^16.2.0",
-    "relay-runtime": "^16.2.0"
+    "react-dom": "^18.2.0"
   },
   "scripts": {
     "build": "node esbuild.config.js",
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules",
     "check-types": "tsc --project tsconfig.json --noEmit --preserveWatchOutput",
-    "relay": "relay-compiler",
     "lint": "prettier 'app/javascript/**/*.*' 'app/assets/stylesheets/**/*.scss'",
     "lint:fix": "prettier --write 'app/javascript/**/*.*' 'app/assets/stylesheets/**/*.scss'"
   },
   "devDependencies": {
     "@types/react": "^17.0.53",
     "@types/react-dom": "^18.2.19",
-    "@types/react-relay": "^16.0.6",
-    "@types/relay-runtime": "^14.1.23",
     "esbuild": "^0.16.17",
-    "graphql": "^16.6.0",
     "prettier": "^2.8.4",
-    "relay-compiler": "^16.2.0",
     "sass": "^1.58.3",
     "typescript": "^4.9.5"
-  },
-  "relay": {
-    "src": "./app/javascript",
-    "language": "typescript",
-    "schema": "./schema.graphql",
-    "excludes": [
-      "**/node_modules/**",
-      "**/__mocks__/**",
-      "**/__generated__/**"
-    ]
   },
   "prettier": {
     "trailingComma": "es5",

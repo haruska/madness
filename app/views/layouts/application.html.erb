@@ -17,7 +17,9 @@
   <meta name="theme-color" content="#ffffff">
 
   <%= stylesheet_link_tag "application" %>
-  <%= content_for :html_head %>
+  <%= stylesheet_link_tag "fa-icons" %>
+  <%= javascript_include_tag "application" %>
+  <meta name="sentry-dsn" content="<%= ENV['SENTRY_DSN'] %>" />
 </head>
 
 <body id="application-layout" class="<%= controller_name %>-controller <%= action_name %>-action">

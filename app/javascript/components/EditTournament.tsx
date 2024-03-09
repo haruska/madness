@@ -1,14 +1,13 @@
 import React, { FormEvent, useState } from 'react'
-import { Team, Tournament as ITournament } from 'AppContext'
+import { Team, Tournament as ITournament } from 'TournamentTypes'
 import { ErrorFlash } from 'components/forms/ErrorFlash'
 import { Tournament } from 'components/Tournament'
-
-import { MutationErrors } from 'components/NewBracket'
-import { UpdateTournamentMutation } from 'mutations/UpdateTournamentMutation'
-import { UpdateTournamentMutation$data } from 'RelayArtifacts/UpdateTournamentMutation.graphql'
 import { Dialog } from 'components/Dialog'
 
-export const EditTournament = ({tournament, teams}:{
+export const EditTournament = ({
+  tournament,
+  teams,
+}: {
   tournament: ITournament
   teams: readonly Team[]
 }) => {
@@ -38,27 +37,28 @@ export const EditTournament = ({tournament, teams}:{
     setGameDecisionsMask([decisions, mask])
   }
 
-  const handleUpdateCompleted = (
-    response: UpdateTournamentMutation$data,
-    errors: MutationErrors
-  ) => {
-    const allErrors = errors || response.updateTournament.errors
-    if (allErrors?.length !== 0) {
-      setErrors(allErrors)
-    } else {
-      window.location.href = '/'
-    }
-  }
+  // const handleUpdateCompleted = (
+  //   response: UpdateTournamentMutation$data,
+  //   errors: MutationErrors
+  // ) => {
+  //   const allErrors = errors || response.updateTournament.errors
+  //   if (allErrors?.length !== 0) {
+  //     setErrors(allErrors)
+  //   } else {
+  //     window.location.href = '/'
+  //   }
+  // }
 
   const handleDone = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    UpdateTournamentMutation.commit(
-      {
-        gameMask: gameMask.toString(),
-        gameDecisions: gameDecisions.toString(),
-      },
-      handleUpdateCompleted
-    )
+    //   event.preventDefault()
+    //   UpdateTournamentMutation.commit(
+    //     {
+    //       gameMask: gameMask.toString(),
+    //       gameDecisions: gameDecisions.toString(),
+    //     },
+    //     handleUpdateCompleted
+    //   )
+    window.location.href = '/'
   }
 
   // cancel
