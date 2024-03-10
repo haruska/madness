@@ -5,10 +5,9 @@ require 'rails_helper'
 RSpec.describe TournamentsController, type: :request do
   let(:user) { create(:user) }
   let(:admin) { create(:user, admin: true) }
-  let(:tournament) { Tournament.field_64 }
 
   before do
-    allow(Tournament).to receive(:field_64).and_return(tournament)
+    tournament_started
   end
 
   describe 'GET #show' do
