@@ -1,0 +1,33 @@
+<div class="user-bracket-list-container">
+  <div class="small-screen">
+    <div class="user-small-bracket">
+      <%= render partial: 'user_small_bracket', collection: @brackets, as: :bracket %>
+    </div>
+  </div>
+
+  <div class="large-screen">
+    <table class="table-minimal">
+      <% unless @brackets.empty? %>
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Final Four</th>
+          <th>Final Four</th>
+          <th>Second</th>
+          <th>Winner</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+      <% end %>
+      <tbody>
+      <%= render partial: 'user_large_bracket', collection: @brackets, as: :bracket %>
+      </tbody>
+    </table>
+  </div>
+  <div class="actions">
+    <%= link_to new_bracket_path, class: "button" do %>
+      <%= @brackets.empty? ? "New Bracket Entry" : "Another Bracket Entry" %>
+    <% end %>
+  </div>
+</div>
+

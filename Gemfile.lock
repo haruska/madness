@@ -81,7 +81,6 @@ GEM
       sassc-rails (~> 2.1)
       selectize-rails (~> 0.6)
     ast (2.4.2)
-    base64 (0.2.0)
     bcrypt (3.1.20)
     bindex (0.8.1)
     bitters (2.0.4)
@@ -141,10 +140,6 @@ GEM
     foreman (0.87.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    graphiql-rails (1.10.0)
-      railties
-    graphql (2.2.11)
-      base64
     hiredis (0.6.3)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
@@ -375,8 +370,6 @@ DEPENDENCIES
   factory_bot_rails
   faker
   foreman
-  graphiql-rails
-  graphql
   hiredis
   jsbundling-rails
   letter_opener

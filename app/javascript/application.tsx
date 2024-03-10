@@ -1,20 +1,37 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { RelayRouter } from 'RelayRouter'
-import * as Sentry from '@sentry/react'
-import { BrowserTracing } from '@sentry/tracing'
+import ReactDOM from 'react-dom/client'
+import { Tournament } from './components/Tournament'
+import { Menu } from './components/Menu'
+import { NewBracket } from './components/NewBracket'
+import { EditTournament } from './components/EditTournament'
+import { EditBracket } from './components/EditBracket'
 
-const SENTRY_DSN = document.getElementsByName('sentry-dsn')[0]?.attributes['content']?.value
-
-if (SENTRY_DSN) {
-  Sentry.init({
-    dsn: SENTRY_DSN,
-    integrations: [new BrowserTracing()],
-
-    // We recommend adjusting this value in production, or using tracesSampler
-    // for finer control
-    tracesSampleRate: 1.0,
+type Components = Record<string, React.ElementType>
+function mount(components: Components): void {
+  document.addEventListener('DOMContentLoaded', () => {
+    const mountPoints = document.querySelectorAll('[data-react-component]')
+    mountPoints.forEach((mountPoint) => {
+      const { dataset } = mountPoint as HTMLElement
+      const componentName = dataset.reactComponent
+      if (componentName) {
+        const Component = components[componentName]
+        if (Component) {
+          const props = JSON.parse(dataset.props as string)
+          const root = ReactDOM.createRoot(mountPoint)
+          // @ts-ignore
+          root.render(<Component {...props} />)
+        } else {
+          console.warn('WARNING: No component found for: ', dataset.reactComponent, components)
+        }
+      }
+    })
   })
 }
 
-ReactDOM.render(<RelayRouter />, document.getElementById('root'))
+mount({
+  Tournament,
+  Menu,
+  NewBracket,
+  EditBracket,
+  EditTournament,
+})

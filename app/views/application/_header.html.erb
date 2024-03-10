@@ -1,0 +1,6 @@
+<header class="header-component">
+  <div class="title-wrapper">
+    <div class="title"><%= @title || "Pool Madness" %></div>
+  </div>
+  <%= react("Menu", props: { admin: current_user&.admin?, started: tournament.started? }) %>
+</header>

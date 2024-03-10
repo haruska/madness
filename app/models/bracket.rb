@@ -7,10 +7,21 @@ class Bracket < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
+  after_save do
+    tournament = Tournament.field_64
+    # rubocop:disable Rails/SkipsModelValidations
+    tournament.touch
+    # rubocop:enable Rails/SkipsModelValidations
+  end
+
   def sorted_four
     @sorted_four ||= Rails.cache.fetch("#{cache_key_with_version}/sorted_four") do
       Array(decision_team_slots[1..7]).uniq.reverse
     end
+  end
+
+  def sorted_four_teams
+    sorted_four.map { |slot| Tournament.field_64.team_by_slot(slot) }
   end
 
   def points
@@ -59,6 +70,10 @@ class Bracket < ApplicationRecord
 
   def eliminated
     best_possible_finish > 5
+  end
+
+  def eliminated?
+    eliminated
   end
 
   private

@@ -1,6 +1,10 @@
 .small-bracket {
+  a {
+    text-decoration: none;
+  }
   .bracket-row {
     margin: calc($gutter / 2) 0;
+    display: flex;
   }
 
   .current-user-bracket {
@@ -18,13 +22,14 @@
 
   .bracket-position {
     display: inline-block;
-    margin: 0 calc($gutter / 2);
+    margin-right: calc($gutter / 2);
+    width: 2.4em;
     vertical-align: top;
   }
 
   .bracket-details {
     display: inline-block;
-    width: calc(100% - 65px);
+    //width: calc(100% - 65px);
   }
 
   .bracket-name {
@@ -32,7 +37,7 @@
   }
 
   .points {
-    display: block;
+    display: flex;
     font-size: 0.9em;
   }
 
@@ -51,7 +56,18 @@
   }
 
   .final-four-teams {
-    display: block;
+    display: inline-block;
+    font-size: 0.85em;
+    margin-right: 0px;
+
+    &:empty {
+      display: none;
+    }
+
+    .eliminated {
+      text-decoration: line-through;
+      color: $middark-gray;
+    }
   }
 
   .best-possible {

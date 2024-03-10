@@ -14,7 +14,7 @@ $dark-gray: #333;
 $middark-gray: #666;
 $medium-gray: #999;
 $light-gray: #ddd;
-$whitesmoke:  #F5F5F5;
+$whitesmoke: #F5F5F5;
 
 // Font Colors
 $font-color--base: $gray;
@@ -33,7 +33,7 @@ $bracket-width: 950px;
 
 :root {
   // Typography
-  --font-family: system-ui, sans-serif;
+  --font-family: 'Noto Sans', 'San Francisco', 'Roboto', 'Segoe', sans-serif;
   --font-family--heading: var(--font-family);
 
   --font-weight--thin: 100;

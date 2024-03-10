@@ -1,5 +1,5 @@
 import React from 'react'
-import { MutationErrors } from 'containers/NewBracket'
+import { BracketErrors } from '../NewBracket'
 
 const styles = {
   inputError: {
@@ -7,11 +7,11 @@ const styles = {
   },
 }
 
-export const InputError = ({ attr, errors }: { attr: string; errors: MutationErrors }) => {
+export const InputError = ({ attr, errors }: { attr: string; errors?: BracketErrors }) => {
   if (errors) {
-    let attrError = errors.find((e) => e.path[0] === attr)
+    let attrError = errors[attr]
     if (attrError) {
-      return <span style={styles.inputError}>&nbsp;{attrError.message}</span>
+      return <span style={styles.inputError}>&nbsp;{attrError.join('; ')}</span>
     }
   }
 

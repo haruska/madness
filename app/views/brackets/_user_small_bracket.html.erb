@@ -1,0 +1,18 @@
+<a class="bracket-link" href="/brackets/<%= bracket.id %>">
+  <div class="bracket-row">
+    <div class="name-wrapper">
+      <div class="bracket-name"><%= bracket.name %></div>
+      <div class="status">
+        <% if bracket.paid? %>
+          <span class="badge-success">OK</span>
+        <% else %>
+          <span class="badge-alert">Unpaid</span>
+        <% end %>
+      </div>
+    </div>
+    <div class="final-four-teams">
+      <%= bracket.sorted_four_teams.map(&:name).join(', ') %>
+    </div>
+  </div>
+</a>
+

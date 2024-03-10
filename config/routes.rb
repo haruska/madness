@@ -14,16 +14,16 @@ Rails.application.routes.draw do
     root to: 'users#index'
   end
 
-  mount GraphiQL::Rails::Engine, at: '/graphiql' if Rails.env.development?
-
   authenticate :user, ->(u) { u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  post '/graphql', to: 'graphql#execute'
+  resources :brackets
+  get '/my_brackets', to: 'brackets#my_brackets'
 
-  root 'home#index'
+  resource :tournament
 
-  # send all other routes to react
-  get '*pages', to: 'home#index'
+  get '/rules', to: 'pages#rules'
+
+  root 'brackets#my_brackets'
 end

@@ -1,0 +1,6 @@
+<div class="tournament-component">
+  <%=
+    bracket ||= nil
+    react("Tournament", props: tournament_react_props(bracket) )
+  %>
+</div>

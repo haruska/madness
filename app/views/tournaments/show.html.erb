@@ -1,0 +1,13 @@
+<div class="games-container">
+  <div class="games-heading">
+    <h2>Game Results</h2>
+    <div>
+      <% if policy(tournament).update? %>
+        <div class="tournament-actions">
+          <a href="/tournament/edit" class="button">Edit Tournament</a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <%= render partial: 'application/tournament' %>
+</div>

@@ -1,0 +1,7 @@
+<td>
+  <% if team.still_playing? %>
+    <%= team.name %>
+  <% else %>
+    <span class="eliminated"><%= team.name %></span>
+  <% end %>
+</td>

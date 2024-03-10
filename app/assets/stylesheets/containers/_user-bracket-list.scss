@@ -81,10 +81,13 @@ $success-color: #e6efc2 !default;
       display: block;
       color: $font-color--base;
       border-top: 1px solid $medium-gray;
+      text-decoration: none;
+
       &:last-child {
         border-bottom: 1px solid $medium-gray;
         margin-bottom: $gutter;
       }
+
       padding: calc($gutter / 2) 0;
     }
 
@@ -94,35 +97,15 @@ $success-color: #e6efc2 !default;
       vertical-align: top;
     }
 
-    .bracket-details {
-      display: inline-block;
-      width: calc(100% - 65px);
-    }
-
     .final-four-teams {
       display: block;
-    }
-
-    .tie-breaker {
-      font-size: 0.9em;
-      &:before {
-        content: 'Tie Breaker: ';
-      }
-
-      &:empty {
-        display: none;
-      }
+      font-size: 0.85em;
     }
 
     .name-wrapper {
       width: 100%;
-      .status {
-        float: right;
-      }
-
-      div {
-        display: inline-block;
-      }
+      display: flex;
+      justify-content: space-between;
     }
   }
 }

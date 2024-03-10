@@ -1,0 +1,13 @@
+<div class="bracket-container">
+  <div class="bracket-heading">
+    <h2><%= "#{@bracket.name} (#{@bracket.user.name})" %></h2>
+    <div>
+      <% if policy(@bracket).update? %>
+        <div class="bracket-actions">
+          <%= link_to "Edit Bracket", "/brackets/#{@bracket.id}/edit", class: "button edit" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <%= render partial: 'application/tournament', locals: {bracket: @bracket} %>
+</div>

@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 
 import TournamentTree from 'objects/TournamentTree'
-import { AppContext, Team } from 'AppContext'
-import { BasicBracket } from 'containers/Bracket'
-import GameNode from '../../objects/GameNode'
+import { Team } from 'objects/TournamentTypes'
+import { BasicBracket } from 'components/BasicBracket'
+import GameNode from 'objects/GameNode'
 
 const GameSlot = ({
   gameSlot,
@@ -44,6 +44,8 @@ const GameSlot = ({
 }
 
 export const Game = ({
+  tournamentTree,
+  teams,
   bracket,
   index,
   slot,
@@ -52,6 +54,8 @@ export const Game = ({
   highlightEmpty,
   onSlotClick,
 }: {
+  tournamentTree: TournamentTree
+  teams: readonly Team[]
   bracket?: BasicBracket
   index: number
   slot: number
@@ -60,8 +64,6 @@ export const Game = ({
   highlightEmpty?: boolean
   onSlotClick?: (gameSlot: number, decision: number) => void
 }) => {
-  const { tournamentTree, teams } = useContext(AppContext)
-
   const genBracketTree = () => {
     if (bracket) {
       const { gameDecisions, gameMask } = bracket

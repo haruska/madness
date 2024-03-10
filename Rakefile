@@ -18,10 +18,5 @@ if Rails.env.development? || Rails.env.test?
     task.requires << 'rubocop-rails'
   end
 
-  # Graphql
-  require 'graphql/rake_task'
-  GraphQL::RakeTask.new(schema_name: 'MadnessSchema', directory: './')
-  task schema: ['graphql:schema:idl']
-
-  task(:default).clear.enhance(%w[rubocop schema spec])
+  task(:default).clear.enhance(%w[rubocop spec])
 end

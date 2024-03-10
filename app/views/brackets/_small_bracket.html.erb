@@ -1,0 +1,32 @@
+<div class="small-bracket">
+  <%= link_to bracket, class: 'bracket-link' do %>
+    <div class="bracket-row <%= ' current-user-bracket' if bracket.user == current_user %>">
+      <div class="bracket-position"><%= 'T' if tied %><%= place %>.</div>
+      <div class="bracket-details">
+        <div class="bracket-name"><%= bracket.name.truncate(25) %></div>
+        <div class="points">
+          <div class="total-points"><%= bracket.points %></div>
+          <div class="possible-points"><%= bracket.possible_points %></div>
+        </div>
+        <% if @show_eliminated %>
+          <div class="best-possible">
+            <% if bracket.eliminated? %>
+              eliminated
+            <% else %>
+              possible <%= bracket.best_possible_finish.ordinalize %> place finish
+            <% end %>
+          </div>
+        <% end %>
+        <div class="final-four-teams">
+          <% bracket.sorted_four_teams.each_with_index do |team, i| %>
+            <% if team.still_playing? %>
+              <%= team.name %><%= ',' if i != 3 %>
+            <% else %>
+              <span class="eliminated"><%= team.name %></span><%= ',' if i != 3 %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
