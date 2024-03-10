@@ -8,9 +8,10 @@ class Bracket < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   after_save do
-    # rubocop:disable Rails/SkipsModelValidations
     tournament = Tournament.field_64
+    # rubocop:disable Rails/SkipsModelValidations
     tournament.touch
+    # rubocop:enable Rails/SkipsModelValidations
   end
 
   def sorted_four

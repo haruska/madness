@@ -24,9 +24,9 @@ export const ErrorFlash = ({
 
   const formattedMessage = () => {
     if (errors) {
-      const baseError = errors.find((error) => error.path[0] === 'base')
+      const baseError = errors['base']
       if (baseError) {
-        return `${objectType} ${baseError.message}`
+        return `${objectType} ${baseError.join('; ')}`
       }
     }
     return message

@@ -7,12 +7,11 @@ import { Tournament } from 'components/Tournament'
 import { BasicBracket, COMPLETED_MASK } from 'components/BasicBracket'
 import { Team, Tournament as ITournament } from 'objects/TournamentTypes'
 
-export type BracketError = {
-  path?: string[]
-  message: string
+export interface HashMap<T> {
+  [key: string]: T
 }
 
-export type BracketErrors = BracketError[]
+export type BracketErrors = HashMap<string[]>
 
 export const NewBracket = ({
   tournament,
@@ -23,7 +22,7 @@ export const NewBracket = ({
 }) => {
   const [name, setName] = useState('')
   const [gameDecisionsMask, setGameDecisionsMask] = useState<[bigint, bigint]>([0n, 0n])
-  const [errors, setErrors] = useState<BracketErrors>(null)
+  const [errors, setErrors] = useState<BracketErrors>({})
   const [showDiscardDialog, setShowDiscardDialog] = useState(false)
 
   const [gameDecisions, gameMask] = gameDecisionsMask
@@ -64,7 +63,7 @@ export const NewBracket = ({
     if (!isFilledIn()) {
       event.preventDefault()
       highlightMissingPicks()
-      setErrors([{ path: ['base'], message: 'is not complete' }])
+      setErrors({ base: ['is not complete'] })
     }
   }
 
@@ -94,7 +93,9 @@ export const NewBracket = ({
         onConfirm={handleConfirmDiscard}
         onCancel={handleCancelDiscard}
       />
-      {errors ? <ErrorFlash errors={errors} objectType={'Bracket'} /> : null}
+      {errors && Object.keys(errors).length !== 0 ? (
+        <ErrorFlash errors={errors} objectType={'Bracket'} />
+      ) : null}
       <Tournament
         tournament={tournament}
         teams={teams}
@@ -105,7 +106,7 @@ export const NewBracket = ({
       <form className="new-bracket-form" action="/brackets" method="POST" onSubmit={handleDone}>
         <input name="authenticity_token" type="hidden" value={authenticityToken} />
         <input name="bracket[game_decisions]" type="hidden" value={gameDecisions.toString()} />
-        <Label attr="bracket[name]" text="Bracket Name" errors={errors} />
+        <Label attr="name" text="Bracket Name" errors={errors} />
         <input
           id="name"
           type="text"

@@ -10,13 +10,16 @@ import { types } from 'sass'
 import Error = types.Error
 import { Simulate } from 'react-dom/test-utils'
 import error = Simulate.error
+import { BracketErrors } from './NewBracket'
 
 export const EditBracket = ({
   bracket,
+  errors,
   tournament,
   teams,
 }: {
   bracket: Bracket
+  errors?: BracketErrors
   tournament: ITournament
   teams: readonly Team[]
 }) => {
@@ -62,7 +65,7 @@ export const EditBracket = ({
     .getAttribute('content')
 
   return (
-    <div className="edit-bracket-container">
+    <>
       <Dialog
         isOpen={showDeletionDialog}
         message="This will delete this bracket. Are you sure you want to proceed?"
@@ -72,7 +75,9 @@ export const EditBracket = ({
         }}
         onCancel={() => setShowDeletionDialog(false)}
       />
-      <h2>Editing Bracket</h2>
+      {errors && Object.keys(errors).length !== 0 ? (
+        <ErrorFlash errors={errors} objectType={'Bracket'} />
+      ) : null}
       <Tournament
         bracket={{
           ...bracket,
@@ -88,7 +93,7 @@ export const EditBracket = ({
         <input type="hidden" name="_method" value="PUT" />
         <input name="authenticity_token" type="hidden" value={authenticityToken} />
         <input name="bracket[game_decisions]" type="hidden" value={gameDecisions.toString()} />
-        <Label attr="bracket[name]" text="Bracket Name" />
+        <Label attr="name" text="Bracket Name" errors={errors} />
         <input
           id="name"
           type="text"
@@ -105,6 +110,6 @@ export const EditBracket = ({
           </div>
         ) : null}
       </form>
-    </div>
+    </>
   )
 }

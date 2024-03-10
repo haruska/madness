@@ -44,6 +44,8 @@ module ApplicationHelper
           destroy: policy.destroy?
         }
       }
+
+      props[:errors] = bracket.errors if bracket.errors
     end
 
     props
