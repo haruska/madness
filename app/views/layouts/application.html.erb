@@ -1,40 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Madness</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#e87d22">
-  <meta name="apple-mobile-web-app-title" content="Pool Madness">
-  <meta name="application-name" content="Pool Madness">
-  <meta name="msapplication-TileColor" content="#e87d22">
-  <meta name="theme-color" content="#ffffff">
-
-  <meta name="sentry-dsn" content="<%= ENV['SENTRY_DSN'] %>" />
-
-  <%= stylesheet_link_tag "application" %>
-  <%= stylesheet_link_tag "fa-icons" %>
-  <%= javascript_include_tag "application" %>
-</head>
-
-<body id="application-layout" class="<%= controller_name %>-controller <%= action_name %>-action">
-<div class="app-container">
-  <div class="app-content">
-    <div class="main-layout-component">
-      <%= render "application/header" %>
-      <section class="container" id="content">
-        <div class="wrapper">
-          <%= content_for?(:content) ? yield(:content) : yield %>
-        </div>
-      </section>
+<% content_for(:content) do %>
+  <div class="app-container">
+    <div class="app-content">
+      <div class="main-layout-component">
+        <%= render "application/header" %>
+        <section class="container" id="content">
+          <div class="wrapper">
+            <%= yield %>
+          </div>
+        </section>
+      </div>
     </div>
   </div>
-</div>
-</body>
-</html>
+<% end %>
+
+<%= render template: "layouts/base" %>
