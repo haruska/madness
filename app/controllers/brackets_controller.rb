@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class BracketsController < ApplicationController
-  layout 'static'
-
   def index
     unless Tournament.field_64.started?
       redirect_to '/my_brackets'

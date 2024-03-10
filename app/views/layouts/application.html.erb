@@ -16,13 +16,25 @@
   <meta name="msapplication-TileColor" content="#e87d22">
   <meta name="theme-color" content="#ffffff">
 
+  <meta name="sentry-dsn" content="<%= ENV['SENTRY_DSN'] %>" />
+
   <%= stylesheet_link_tag "application" %>
   <%= stylesheet_link_tag "fa-icons" %>
   <%= javascript_include_tag "application" %>
-  <meta name="sentry-dsn" content="<%= ENV['SENTRY_DSN'] %>" />
 </head>
 
 <body id="application-layout" class="<%= controller_name %>-controller <%= action_name %>-action">
-  <%= content_for?(:content) ? yield(:content) : yield %>
+<div class="app-container">
+  <div class="app-content">
+    <div class="main-layout-component">
+      <%= render "application/header" %>
+      <section class="container" id="content">
+        <div class="wrapper">
+          <%= content_for?(:content) ? yield(:content) : yield %>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
 </body>
 </html>

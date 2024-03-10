@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class TournamentsController < ApplicationController
-  layout 'static'
-
   def show
     tournament = Tournament.field_64
     authorize tournament
