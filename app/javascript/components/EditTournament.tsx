@@ -75,7 +75,7 @@ export const EditTournament = ({
       <form className="edit-tournament-form" action="/tournament" method="POST">
         <input name="_method" type="hidden" value="put" />
         <input name="authenticity_token" type="hidden" value={authenticityToken} />
-        <input name="torunament[game_decisions]" type="hidden" value={gameDecisions.toString()} />
+        <input name="tournament[game_decisions]" type="hidden" value={gameDecisions.toString()} />
         <input name="tournament[game_mask]" type="hidden" value={gameMask.toString()} />
         <input className="button left-button" type="submit" name="commit" value="Done" />
         <div className="button danger" onClick={handleDiscard}>
