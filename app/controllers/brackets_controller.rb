@@ -10,7 +10,7 @@ class BracketsController < ApplicationController
     end
 
     @brackets = policy_scope(Bracket).includes(:user).to_a.sort_by { |b| [b.points * -1, b.possible_points * -1] }
-    @title = "Brackets (#{Bracket.count} total"
+    @title = "Brackets (#{Bracket.count} total)"
     @show_eliminated = Bracket.exists?(['best_possible_finish > ?', 1])
   end
 
@@ -42,7 +42,7 @@ class BracketsController < ApplicationController
     if @bracket.save
       redirect_to @bracket, notice: 'Bracket was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -58,7 +58,7 @@ class BracketsController < ApplicationController
   def destroy
     bracket = authorize Bracket.find(params[:id])
     if bracket.destroy
-      render nothing: true, status: :ok
+      head :ok
     else
       render json: { error: 'Failed to delete bracket' }, status: :unprocessable_entity
     end
