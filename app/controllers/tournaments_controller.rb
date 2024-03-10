@@ -2,7 +2,16 @@
 
 class TournamentsController < ApplicationController
   layout 'static'
-  def show; end
+
+  def show
+    tournament = Tournament.field_64
+    authorize tournament
+  end
+
+  def edit
+    tournament = Tournament.field_64
+    authorize tournament
+  end
 
   def update
     tournament = Tournament.field_64
