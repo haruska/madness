@@ -1,6 +1,8 @@
 <div class="user-bracket-list-container">
   <div class="small-screen">
-    <%= render partial: 'user_small_bracket', collection: @brackets, as: :bracket  %>
+    <div class="user-small-bracket">
+      <%= render partial: 'user_small_bracket', collection: @brackets, as: :bracket %>
+    </div>
   </div>
 
   <div class="large-screen">
@@ -18,7 +20,7 @@
         </thead>
       <% end %>
       <tbody>
-        <%= render partial: 'user_large_bracket', collection: @brackets, as: :bracket  %>
+      <%= render partial: 'user_large_bracket', collection: @brackets, as: :bracket %>
       </tbody>
     </table>
   </div>
