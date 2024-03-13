@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Team < ApplicationRecord
+class Team
+  include ActiveAttr::Model
+
   EAST = 'East'
   WEST = 'West'
   MIDWEST = 'Midwest'
@@ -9,7 +11,19 @@ class Team < ApplicationRecord
   REGIONS = [SOUTH, EAST, MIDWEST, WEST].freeze
   SEED_ORDER = [1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15].freeze
 
+  attribute :starting_slot
+  attribute :name
+  attribute :score_team_id
+
   validates :name, length: { maximum: 15 }
+
+  def self.all
+    TEAMS
+  end
+
+  def self.by_starting_slot(starting_slot)
+    Team.all[starting_slot - 64]
+  end
 
   def self.seed_for_slot(starting_slot)
     SEED_ORDER[starting_slot % 16]
@@ -32,7 +46,7 @@ class Team < ApplicationRecord
   end
 
   def still_playing?
-    @still_playing ||= Rails.cache.fetch("#{Tournament.field_64.cache_key_with_version}/#{starting_slot}/still_playing") do
+    Rails.cache.fetch("#{Tournament.field_64.cache_key_with_version}/#{starting_slot}/still_playing") do
       dts = Tournament.field_64.decision_team_slots
       slot = starting_slot / 2
       until dts[slot].nil?

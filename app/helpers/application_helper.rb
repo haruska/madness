@@ -5,10 +5,6 @@ module ApplicationHelper
     @tournament ||= Tournament.field_64
   end
 
-  def teams
-    @teams ||= tournament.teams
-  end
-
   def tournament_react_props(bracket = nil)
     props = {
       tournament: {
@@ -24,7 +20,7 @@ module ApplicationHelper
           }
         end
       },
-      teams: teams.map do |team|
+      teams: Team.all.map do |team|
         {
           startingSlot: team.starting_slot,
           seed: team.seed,

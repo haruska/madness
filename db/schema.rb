@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_04_191548) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_13_224444) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,16 +26,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_191548) do
     t.index ["name"], name: "index_brackets_on_name", unique: true
     t.index ["paid"], name: "index_brackets_on_paid"
     t.index ["user_id"], name: "index_brackets_on_user_id"
-  end
-
-  create_table "teams", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "score_team_id"
-    t.integer "starting_slot", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["score_team_id"], name: "index_teams_on_score_team_id"
-    t.index ["starting_slot"], name: "index_teams_on_starting_slot", unique: true
   end
 
   create_table "tournaments", force: :cascade do |t|

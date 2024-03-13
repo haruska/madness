@@ -10,7 +10,7 @@ class Tournament < ApplicationRecord
   end
 
   def teams
-    @teams ||= Team.order(:starting_slot)
+    TEAMS
   end
 
   def team_by_slot(slot)
