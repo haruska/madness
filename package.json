@@ -1,5 +1,9 @@
 {
   "name": "app",
+  "engines": {
+    "node": "20.11.1",
+    "yarn": "1.22.21"
+  },
   "dependencies": {
     "@sentry/react": "^7.40.0",
     "@sentry/tracing": "^7.40.0",
