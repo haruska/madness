@@ -157,7 +157,7 @@ RSpec.describe Game, type: :model do
       subject { tournament_tree.round_for(1).sample }
 
       it 'is the team with the left_position starting slot' do
-        expect(subject.team_one).to eq(tournament.teams.find_by(starting_slot: subject.left_position))
+        expect(subject.team_one).to eq(Team.by_starting_slot(subject.left_position))
       end
     end
 
@@ -175,7 +175,7 @@ RSpec.describe Game, type: :model do
       subject { tournament_tree.round_for(1).sample }
 
       it 'is the team with the right_position starting slot' do
-        expect(subject.team_two).to eq(tournament.teams.find_by(starting_slot: subject.right_position))
+        expect(subject.team_two).to eq(Team.by_starting_slot(subject.right_position))
       end
     end
 
@@ -228,11 +228,11 @@ RSpec.describe Game, type: :model do
     subject { tournament_tree.round_for(1).sample }
 
     it 'is the team with the current starting slot' do
-      expect(subject.team).to eq(tournament.teams.find_by(starting_slot: subject.value))
+      expect(subject.team).to eq(Team.by_starting_slot(subject.value))
     end
 
     it 'is aliased to winner' do
-      expect(subject.winner).to eq(tournament.teams.find_by(starting_slot: subject.value))
+      expect(subject.winner).to eq(Team.by_starting_slot(subject.value))
     end
   end
 
