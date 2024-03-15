@@ -3,12 +3,14 @@
 ## Setup
 
 1. Install from script and login:
+
 ```bash
 curl https://cli-assets.heroku.com/install.sh | sh
 heroku login
 ```
 
 2. Add staging and production git remotes:
+
 ```bash
 heroku git:remote -r staging -a <staging-app>
 heroku git:remote -r production -a <production-app>
@@ -43,10 +45,18 @@ heroku logs -t -r staging
 heroku console -r staging
 ```
 
-### Copy production DB to staging environment
+### Setup daily backups
+
+After creating the new db, also need to setup the scheduler
 
 ```bash
-heroku pg:copy madness::DATABASE_URL DATABASE_URL -a madness-staging --confirm madness-staging
+heroku pg:backups:schedule DATABASE_URL --at '04:00 America/Chicago' --app madness
+```
+
+### Copy production DB snapshot to staging environment
+
+```bash
+heroku pg:backups:url -r production | xargs heroku pg:backups:restore -r staging --confirm madness-staging
 ```
 
 ### Copy staging DB to development
@@ -57,4 +67,12 @@ heroku pg:backups:download -a madness-staging
 rails db:drop:all
 rails db:create:all
 pg_restore --verbose --clean --no-acl --no-owner -d madness_development latest.dump
+```
+
+### Restore previous year backup
+
+After re-enabling Postgres, the backups are on the dashboard. Find the latest backup. For example 'b2955'.
+
+```bash
+heroku pg:backups:restore b2955 DATABASE_URL -a madness-staging
 ```
