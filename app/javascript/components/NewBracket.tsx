@@ -55,14 +55,13 @@ export const NewBracket = ({
   }
   const isFilledIn = () => gameMask === COMPLETED_MASK
 
-  const highlightMissingPicks = () => {
-    //seems this is automatic?
+  const hasErrors = () => {
+    return errors && Object.keys(errors).length !== 0
   }
 
   const handleDone = (event) => {
     if (!isFilledIn()) {
       event.preventDefault()
-      highlightMissingPicks()
       setErrors({ base: ['is not complete'] })
     }
   }
@@ -93,15 +92,13 @@ export const NewBracket = ({
         onConfirm={handleConfirmDiscard}
         onCancel={handleCancelDiscard}
       />
-      {errors && Object.keys(errors).length !== 0 ? (
-        <ErrorFlash errors={errors} objectType={'Bracket'} />
-      ) : null}
+      {hasErrors() ? <ErrorFlash errors={errors} objectType={'Bracket'} /> : null}
       <Tournament
         tournament={tournament}
         teams={teams}
         bracket={bracket}
         onSlotClick={handleSlotClick}
-        highlightEmpty={!!errors}
+        highlightEmpty={hasErrors()}
       />
       <form className="new-bracket-form" action="/brackets" method="POST" onSubmit={handleDone}>
         <input name="authenticity_token" type="hidden" value={authenticityToken} />
