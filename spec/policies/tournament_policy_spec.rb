@@ -6,21 +6,13 @@ RSpec.describe TournamentPolicy, type: :policy do
   let(:admin) { User.find_by(admin: true) }
   let(:user) { create(:user) }
   let(:resource_type) { Tournament }
-  let(:resources) { resource_type.all }
+  let(:resource) { resource_type.new }
 
   subject { described_class }
 
-  permissions '.scope' do
-    let(:scope) { subject::Scope.new(user, resource_type) }
-
-    it 'is all resources' do
-      expect(scope.resolve).to match_array(resources)
-    end
-  end
-
   permissions :show? do
     it 'grants access to all users' do
-      expect(subject).to permit(user, resources.sample)
+      expect(subject).to permit(user, resource)
     end
   end
 

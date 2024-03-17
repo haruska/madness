@@ -11,18 +11,9 @@ class Round
 
   validates :tournament, :number, presence: true
 
-  def self.find(graph_id)
-    tournament_id, round_number = graph_id.split('~')
-    new(tournament: Tournament.find(tournament_id), number: round_number.to_i)
-  end
-
   def self.round_num_for_slot(slot)
     depth = Math.log2(slot).floor + 1
     (1..6).to_a.reverse[depth - 1]
-  end
-
-  def id
-    "#{tournament.id}~#{number}"
   end
 
   def name
@@ -44,10 +35,6 @@ class Round
 
   def regions
     Team::REGIONS if ['Final Four', 'Champion'].exclude?(name)
-  end
-
-  def graph_type
-    'Types::RoundType'.constantize
   end
 
   private

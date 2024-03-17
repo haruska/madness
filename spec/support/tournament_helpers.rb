@@ -5,13 +5,12 @@ module TournamentHelpers
     tournament = Tournament.field_64
     tournament.game_decisions = 0
     tournament.game_mask = 0
-    tournament.save!
     tournament
   end
 
   def tournament_started
     tournament = tournament_unstarted
-    tournament.update!(tip_off: 1.week.ago.utc.change(usec: 0))
+    tournament.tip_off = 1.week.ago.utc.change(usec: 0)
     tournament
   end
 
@@ -22,8 +21,7 @@ module TournamentHelpers
         tournament.update_game(game.slot, [0, 1].sample)
       end
     end
-    tournament.save!
-    tournament.reload
+    tournament
   end
 
   def tournament_in_final_four
@@ -35,7 +33,6 @@ module TournamentHelpers
         tournament.update_game(game.slot, [0, 1].sample)
       end
     end
-    tournament.save!
     tournament
   end
 
@@ -46,7 +43,6 @@ module TournamentHelpers
     tournament.num_games.times do |i|
       tournament.update_game(i + 1, [0, 1].sample)
     end
-    tournament.save!
     tournament
   end
 end

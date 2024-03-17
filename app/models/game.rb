@@ -7,19 +7,6 @@ class Game < BinaryDecisionTree::Node
 
   attr_accessor :bracket
 
-  def self.find(graph_id)
-    type, tournament_id, slot = graph_id.split('~')
-    type.constantize.find(tournament_id).tree.at(slot.to_i)
-  end
-
-  def id
-    if bracket
-      "Bracket~#{bracket.id}~#{slot}"
-    else
-      "Tournament~#{tournament.id}~#{slot}"
-    end
-  end
-
   def round_number
     rounds = (1..tournament_tree.depth).to_a.reverse
     rounds[current_depth - 1]
@@ -84,24 +71,6 @@ class Game < BinaryDecisionTree::Node
     ([first_team, second_team] - [winner]).first
   end
 
-  def points(possible_game = nil)
-    working_game = possible_game || tournament_game
-
-    if value.present? && working_game.value == value
-      BracketPoint::POINTS_PER_ROUND[round_number] + team_seed
-    else
-      0
-    end
-  end
-
-  def possible_points
-    if tournament_game.value.blank? && team.try(:still_playing?)
-      BracketPoint::POINTS_PER_ROUND[round_number] + team_seed
-    else
-      points
-    end
-  end
-
   def ==(other)
     other.class == self.class && other.state == state
   end
@@ -124,10 +93,7 @@ class Game < BinaryDecisionTree::Node
 
   def team_by_slot(in_slot)
     slot_number = in_slot.try(:value) || in_slot
-
-    teams_hash = tournament.teams.index_by(&:starting_slot)
-
-    teams_hash[slot_number]
+    Team.by_starting_slot(slot_number)
   end
 
   def tournament

@@ -14,7 +14,7 @@ class TournamentsController < ApplicationController
   def update
     tournament = Tournament.field_64
     authorize tournament
-    tournament.update!(tournament_params)
+    # tournament.update!(tournament_params)
     redirect_to tournament_path
   end
 
