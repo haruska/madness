@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
-    resources :tournaments
     resources :brackets
 
     root to: 'users#index'
