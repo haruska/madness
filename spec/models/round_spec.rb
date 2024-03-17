@@ -12,18 +12,6 @@ RSpec.describe Round do
     it { is_expected.to validate_presence_of(:number) }
   end
 
-  describe 'graphql ids' do
-    it 'incorporates the tournament id and round number' do
-      expect(subject.id).to eq("#{subject.tournament.id}~#{subject.number}")
-    end
-
-    it 'can be used to reconstruct the round' do
-      round = Round.find(subject.id)
-      expect(round.tournament).to eq(subject.tournament)
-      expect(round.number).to eq(subject.number)
-    end
-  end
-
   describe 'regions' do
     context 'earlier rounds' do
       let(:rounds) { tournament.rounds[0...-2] }

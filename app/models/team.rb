@@ -46,7 +46,7 @@ class Team
   end
 
   def still_playing?
-    Rails.cache.fetch("#{Tournament.field_64.cache_key_with_version}/#{starting_slot}/still_playing") do
+    Rails.cache.fetch("#{Tournament.field_64.cache_key}/#{starting_slot}/still_playing") do
       dts = Tournament.field_64.decision_team_slots
       slot = starting_slot / 2
       until dts[slot].nil?

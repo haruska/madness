@@ -25,7 +25,8 @@ RSpec.describe 'Brackets', type: :request do
     context 'when the tournament has started' do
       before do
         create_list(:bracket, 3, user:)
-        tournament_started
+        t = tournament_started
+        allow(Tournament).to receive(:field_64) { t }
       end
 
       it 'shows brackets with HTTP status 200' do
@@ -38,7 +39,8 @@ RSpec.describe 'Brackets', type: :request do
   describe 'GET /my_brackets' do
     context 'when the tournament has started' do
       before do
-        tournament_started
+        t = tournament_started
+        allow(Tournament).to receive(:field_64) { t }
       end
 
       it 'redirects to /brackets' do

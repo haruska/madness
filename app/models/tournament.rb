@@ -1,12 +1,19 @@
 # frozen_string_literal: true
 
-class Tournament < ApplicationRecord
-  after_update do |tournament|
-    UpdateBestFinishesJob.perform_later if tournament.num_games_remaining < 16
-  end
+class Tournament
+  include ActiveAttr::Model
+
+  attribute :tip_off, default: -> { Rails.env.test? ? 2.weeks.from_now : Time.new(2024, 3, 21, 16, 15).utc }
+  attribute :num_rounds, type: Integer, default: 6
+  attribute :game_decisions, type: Integer, default: 0
+  attribute :game_mask, type: Integer, default: 0
+
+  # after_update do |tournament|
+  #   UpdateBestFinishesJob.perform_later if tournament.num_games_remaining < 16
+  # end
 
   def self.field_64
-    Tournament.find_by(num_rounds: 6)
+    Tournament.new
   end
 
   def teams
@@ -18,7 +25,7 @@ class Tournament < ApplicationRecord
   end
 
   def started?
-    DateTime.current > tip_off
+    Time.current > tip_off
   end
 
   def finished?
@@ -89,11 +96,6 @@ class Tournament < ApplicationRecord
     self.game_mask = marshalled_tree.mask
   end
 
-  def update_game!(position, choice)
-    update_game(position, choice)
-    save!
-  end
-
   def games
     working_tree = tree
     (1..num_games).map { |slot| working_tree.at(slot) }
@@ -133,7 +135,7 @@ class Tournament < ApplicationRecord
   end
 
   def decision_team_slots
-    @decision_team_slots ||= Rails.cache.fetch("#{cache_key_with_version}/decision_team_slots") do
+    @decision_team_slots ||= Rails.cache.fetch("#{cache_key}/decision_team_slots") do
       decisions = game_decisions
       result = Array.new(64)
 
@@ -184,6 +186,10 @@ class Tournament < ApplicationRecord
     self.tip_off = 3.weeks.ago
     num_games.times { |i| update_game(i + 1, [0, 1].sample) }
     save
+  end
+
+  def cache_key
+    ActiveSupport::Digest.hexdigest(to_json)
   end
 
   private

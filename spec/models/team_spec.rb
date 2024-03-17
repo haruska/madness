@@ -35,7 +35,7 @@ RSpec.describe Team, type: :model do
       subject { game.first_team }
 
       before do
-        tournament.update_game!(game.slot, 0)
+        tournament.update_game(game.slot, 0)
       end
 
       it 'is true' do
@@ -44,7 +44,7 @@ RSpec.describe Team, type: :model do
       end
 
       context 'and won the next game' do
-        before { tournament.update_game!(game.parent.slot, 0) }
+        before { tournament.update_game(game.parent.slot, 0) }
 
         it 'is true' do
           expect(subject).to be_still_playing
@@ -54,7 +54,7 @@ RSpec.describe Team, type: :model do
 
       context 'lost the next game' do
         before do
-          tournament.update_game!(game.parent.slot, 1)
+          tournament.update_game(game.parent.slot, 1)
         end
 
         xit 'is false' do
@@ -78,7 +78,8 @@ RSpec.describe Team, type: :model do
       subject { game.first_team }
 
       before do
-        tournament.update_game!(game.slot, 1)
+        tournament.update_game(game.slot, 1)
+        allow(Tournament).to receive(:field_64) { tournament }
       end
 
       it 'is false' do

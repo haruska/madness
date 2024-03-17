@@ -7,13 +7,6 @@ class Bracket < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  after_save do
-    tournament = Tournament.field_64
-    # rubocop:disable Rails/SkipsModelValidations
-    tournament.touch
-    # rubocop:enable Rails/SkipsModelValidations
-  end
-
   def sorted_four
     @sorted_four ||= Rails.cache.fetch("#{cache_key_with_version}/sorted_four") do
       Array(decision_team_slots[1..7]).uniq.reverse
@@ -79,7 +72,7 @@ class Bracket < ApplicationRecord
   private
 
   def bt_cache_key(suffix)
-    "#{Tournament.field_64.cache_key_with_version}/#{cache_key_with_version}/#{suffix}"
+    "#{Tournament.field_64.cache_key}/#{cache_key_with_version}/#{suffix}"
   end
 
   def decision_team_slots
