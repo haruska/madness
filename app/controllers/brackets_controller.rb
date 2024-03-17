@@ -38,7 +38,7 @@ class BracketsController < ApplicationController
     authorize Bracket
     @bracket = current_user.brackets.build(bracket_params)
     if @bracket.save
-      redirect_to @bracket, notice: 'Bracket was successfully created.'
+      redirect_to root_path, notice: 'Bracket was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
