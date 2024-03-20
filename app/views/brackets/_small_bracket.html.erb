@@ -1,6 +1,6 @@
 <div class="small-bracket">
   <%= link_to bracket, class: 'bracket-link' do %>
-    <div class="bracket-row <%= ' current-user-bracket' if bracket.user == current_user %>">
+    <div class="bracket-row user-<%= bracket.user_id %>">
       <div class="bracket-position"><%= 'T' if tied %><%= place %>.</div>
       <div class="bracket-details">
         <div class="bracket-name"><%= bracket.name.truncate(25) %></div>

@@ -21,6 +21,7 @@
   <%= stylesheet_link_tag "application" %>
   <%= stylesheet_link_tag "fa-icons" %>
   <%= javascript_include_tag "application" %>
+  <%= yield(:head_content) if content_for?(:head_content) %>
 </head>
 
 <body id="application-layout" class="<%= controller_name %>-controller <%= action_name %>-action">
