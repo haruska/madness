@@ -19,7 +19,7 @@ class EspnScores
 
     raise "Didn't find 32 games" unless first_round.size == 32
 
-    teams = Team.all.to_a
+    teams = TEAMS.clone
 
     first_round.each do |score|
       score_team_one, score_team_two = score[:teams].map { |t| [t[:seed], t[:abbrev]] }
@@ -33,19 +33,19 @@ class EspnScores
         possible_team_one = teams.find { |t| t.starting_slot == possible_team_two.starting_slot - 1 }
       end
 
-      possible_team_one&.update(score_team_id: score_team_one[1])
-      possible_team_two&.update(score_team_id: score_team_two[1])
+      possible_team_one.score_team_id = score_team_one[1] if possible_team_one&.score_team_id&.nil?
+      possible_team_two.score_team_id = score_team_two[1] if possible_team_two&.score_team_id&.nil?
     end
 
     # Left over abbrev
     out = []
     first_round.each do |score|
       score[:teams].each do |team|
-        out << [team[:seed], team[:abbrev]] if Team.find_by(score_team_id: team[:abbrev]).nil?
+        out << [team[:seed], team[:abbrev]] if teams.find { |t| t.score_team_id == team[:abbrev] }.nil?
       end
     end
 
-    out
+    { teams:, unassociated: out }
   end
 
   def all_scores
@@ -85,8 +85,8 @@ class EspnScores
     scores(STATUS_FINAL).each do |score|
       score_teams = score[:teams]
 
-      team_a = Team.find_by(score_team_id: score_teams[0][:abbrev])
-      team_b = Team.find_by(score_team_id: score_teams[1][:abbrev])
+      team_a = TEAMS.find { |t| t.score_team_id == score_teams[0][:abbrev] }
+      team_b = TEAMS.find { |t| t.score_team_id == score_teams[1][:abbrev] }
 
       next if team_a.nil? || team_b.nil?
 
@@ -96,14 +96,15 @@ class EspnScores
       if (tip_off == date || tip_off + 1.day == date) && (team_a.starting_slot - team_b.starting_slot).abs == 1
         decision = if team_a.starting_slot < team_b.starting_slot
                      winner == team_a ? 0 : 1
-                   else # team_b in top slot
+                   else
+                     # team_b in top slot
                      winner == team_b ? 0 : 1
                    end
 
         update_slot = team_a.starting_slot / 2
         tournament.update_game!(update_slot, decision) if tournament.decision_team_slots[update_slot].blank?
 
-      # else look for two Tournament.decision_team_slots next to each other and update their parent
+        # else look for two Tournament.decision_team_slots next to each other and update their parent
       else
         top_index = 62
         bottom_index = 63
