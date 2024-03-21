@@ -13,3 +13,9 @@ puts User.all.map { |u| "\"#{u.name}\" <#{u.email}>" }.join("\n"); nil
 ```ruby
 puts User.where(admin: false).map { |u| "\"#{u.name}\" <#{u.email}>" }.join("\n"); nil
 ```
+
+### Never logged in
+
+```ruby
+puts User.where(sign_in_count: 0).map { |u| "\"#{u.name}\" <#{u.email}>" }.join("\n"); nil
+```
