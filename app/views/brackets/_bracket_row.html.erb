@@ -1,8 +1,6 @@
 <tr class="bracket-row user-<%= bracket.user_id %>">
   <td class="position-column"><%= 'T' if tied %><%= place %>.</td>
-  <td class="name-column">
-    <%= link_to bracket.name.truncate(25), bracket %>
-  </td>
+  <td class="name-column"><%= @show_eliminated && bracket.eliminated? ? '* ' : '' %><%= link_to bracket.name.truncate(25), bracket %></td>
   <td><%= bracket.points %></td>
   <td><%= bracket.possible_points %></td>
   <% if @show_eliminated %>

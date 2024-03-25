@@ -3,7 +3,7 @@
     <div class="bracket-row user-<%= bracket.user_id %>">
       <div class="bracket-position"><%= 'T' if tied %><%= place %>.</div>
       <div class="bracket-details">
-        <div class="bracket-name"><%= bracket.name.truncate(25) %></div>
+        <div class="bracket-name"><%= @show_eliminated && bracket.eliminated? ? '* ' : '' %><%= bracket.name.truncate(25) %></div>
         <div class="points">
           <div class="total-points"><%= bracket.points %></div>
           <div class="possible-points"><%= bracket.possible_points %></div>
