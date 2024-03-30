@@ -3,7 +3,7 @@
 class Tournament
   include ActiveAttr::Model
 
-  attribute :tip_off, default: -> { Time.iso8601(ENV.fetch('TIP_OFF', '2024-03-21T21:15:00Z')) }
+  attribute :tip_off, default: -> { Rails.env.test? ? 2.weeks.from_now : Time.iso8601(ENV.fetch('TIP_OFF', '2024-03-21T21:15:00Z')) }
   attribute :num_rounds, type: Integer, default: 6
   attribute :game_decisions, type: Integer, default: 0
   attribute :game_mask, type: Integer, default: 0

@@ -5,6 +5,12 @@ module ApplicationHelper
     @tournament ||= Tournament.field_64
   end
 
+  def cache_key_for_bracket_list
+    decisions = TournamentResult.decisions
+    max_updated_at = Bracket.maximum(:updated_at).try(:utc).try(:iso8601)
+    "brackets-list/all-#{decisions.last}-#{max_updated_at}"
+  end
+
   def tournament_react_props(bracket = nil)
     props = {
       tournament: {
