@@ -19,7 +19,7 @@
         <% end %>
         <div class="final-four-teams">
           <% bracket.sorted_four_teams.each_with_index do |team, i| %>
-            <% if team.still_playing? %>
+            <% if team.still_playing? || tournament.finished? %>
               <%= team.name %><%= ',' if i != 3 %>
             <% else %>
               <span class="eliminated"><%= team.name %></span><%= ',' if i != 3 %>
