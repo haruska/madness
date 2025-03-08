@@ -82,7 +82,7 @@ class Bracket < ApplicationRecord
 
       (1..63).to_a.reverse.each do |i|
         current_position = 1 << i
-        decision = (decisions & current_position).zero? ? 0 : 1
+        decision = decisions.nobits?(current_position) ? 0 : 1
         position = (i * 2) + decision
 
         result[i] = i >= 32 ? position : result[position]

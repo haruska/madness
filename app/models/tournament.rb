@@ -150,9 +150,9 @@ class Tournament
 
       (1..63).to_a.reverse.each do |i|
         current_position = 1 << i
-        next unless (current_position & game_mask) != 0
+        next unless current_position.anybits?(game_mask)
 
-        decision = (decisions & current_position).zero? ? 0 : 1
+        decision = decisions.nobits?(current_position) ? 0 : 1
         position = (i * 2) + decision
 
         result[i] = i >= 32 ? position : result[position]
