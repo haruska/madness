@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    shm_size: 256mb
+    healthcheck:
+      test: [ 'CMD', 'pg_isready', '-U', "${POSTGRES_USER}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - ${POSTGRES_DATA_DIR}:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+
+  redis:
+    restart: always
+    image: redis:7-alpine
+    healthcheck:
+      test: [ 'CMD', 'redis-cli', 'ping' ]
+    volumes:
+      - ${REDIS_DATA_DIR}:/data
+    ports:
+      - "6379:6379"

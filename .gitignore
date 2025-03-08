@@ -4,6 +4,10 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# Ignore postgres and redis data
+/data/postgres
+/data/redis
+
 # Ignore bundler config.
 /.bundle
 
