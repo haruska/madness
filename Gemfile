@@ -3,7 +3,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.7'
+ruby '3.4.2'
+
+# CSV was pulled into a gem in ruby 3.4
+gem 'csv'
 
 # Use main development branch of Rails
 gem 'rails', '~> 7.2.0'

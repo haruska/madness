@@ -116,6 +116,7 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.4.3)
       railties (>= 6.0.0)
+    csv (3.3.2)
     cuprite (0.15.1)
       capybara (~> 3.0)
       ferrum (~> 0.15.0)
@@ -347,12 +348,12 @@ GEM
       concurrent-ruby (~> 1.0, >= 1.0.2)
     shoulda-matchers (6.4.0)
       activesupport (>= 5.2.0)
-    sidekiq (7.3.9)
-      base64
-      connection_pool (>= 2.3.0)
-      logger
-      rack (>= 2.2.4)
-      redis-client (>= 0.22.2)
+    sidekiq (8.0.1)
+      connection_pool (>= 2.5.0)
+      json (>= 2.9.0)
+      logger (>= 1.6.2)
+      rack (>= 3.1.0)
+      redis-client (>= 0.23.2)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -398,6 +399,7 @@ DEPENDENCIES
   bourbon
   capybara
   cssbundling-rails
+  csv
   cuprite
   debug
   devise
@@ -425,7 +427,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.2.7p253
+   ruby 3.4.2p28
 
 BUNDLED WITH
    2.3.26
