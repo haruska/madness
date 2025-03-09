@@ -1,8 +1,11 @@
 {
   "name": "app",
-  "engines": {
-    "node": "20.11.1",
-    "yarn": "1.22.22"
+  "scripts": {
+    "build": "bun bun.config.js",
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "check-types": "tsc --project tsconfig.json --noEmit --preserveWatchOutput",
+    "lint": "prettier 'app/javascript/**/*.*' 'app/assets/stylesheets/**/*.scss'",
+    "lint:fix": "prettier --write 'app/javascript/**/*.*' 'app/assets/stylesheets/**/*.scss'"
   },
   "dependencies": {
     "@sentry/react": "^7.40.0",
@@ -12,17 +15,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "scripts": {
-    "build": "node esbuild.config.js",
-    "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules",
-    "check-types": "tsc --project tsconfig.json --noEmit --preserveWatchOutput",
-    "lint": "prettier 'app/javascript/**/*.*' 'app/assets/stylesheets/**/*.scss'",
-    "lint:fix": "prettier --write 'app/javascript/**/*.*' 'app/assets/stylesheets/**/*.scss'"
-  },
   "devDependencies": {
-    "@types/react": "^17.0.53",
+    "@types/bun": "latest",
+    "@types/react": "^17.0.83",
     "@types/react-dom": "^18.2.19",
-    "esbuild": "^0.16.17",
     "prettier": "^2.8.4",
     "sass": "^1.58.3",
     "typescript": "^4.9.5"
@@ -33,5 +29,6 @@
     "semi": false,
     "singleQuote": true,
     "printWidth": 100
-  }
+  },
+  "private": true
 }
