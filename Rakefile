@@ -15,7 +15,7 @@ if Rails.env.local?
   # Rubocop
   require 'rubocop/rake_task'
   RuboCop::RakeTask.new do |task|
-    task.requires << 'rubocop-rails'
+    task.plugins << 'rubocop-rails'
   end
 
   task(:default).clear.enhance(%w[rubocop spec])
