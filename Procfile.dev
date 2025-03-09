@@ -1,5 +1,5 @@
 web: bin/rails server -b 0.0.0.0 -p 3000
 worker: bin/sidekiq
-js: bun run build --watch
-css: yarn build:css --watch
-types: yarn check-types --watch
+js: bun bun.config.js --watch
+css: bun run --bun sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --no-source-map --watch
+types: bun run --bun tsc --project tsconfig.json --noEmit --preserveWatchOutput --watch
