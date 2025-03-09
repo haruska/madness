@@ -9,7 +9,7 @@ ruby '3.4.2'
 gem 'csv'
 
 # Use main development branch of Rails
-gem 'rails', '~> 7.2.0'
+gem 'rails', '~> 8.0.0'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'

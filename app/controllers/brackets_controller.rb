@@ -67,6 +67,6 @@ class BracketsController < ApplicationController
   protected
 
   def bracket_params
-    params.require(:bracket).permit(:name, :game_decisions)
+    params.expect(bracket: %i[name game_decisions])
   end
 end

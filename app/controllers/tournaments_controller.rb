@@ -21,6 +21,6 @@ class TournamentsController < ApplicationController
   protected
 
   def tournament_params
-    params.require(:tournament).permit(:game_decisions, :game_mask)
+    params.expect(tournament: %i[game_decisions game_mask])
   end
 end
