@@ -11,6 +11,6 @@ module BitstringUtils
   end
 
   def self.to_string(bits, count)
-    Array.new(count) { |i| (bits & (1 << i)).zero? ? '0' : '1' }.join
+    Array.new(count) { |i| bits.nobits?((1 << i)) ? '0' : '1' }.join
   end
 end

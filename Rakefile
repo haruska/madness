@@ -10,12 +10,12 @@ require_relative 'config/application'
 
 Rails.application.load_tasks
 
-if Rails.env.development? || Rails.env.test?
+if Rails.env.local?
 
   # Rubocop
   require 'rubocop/rake_task'
   RuboCop::RakeTask.new do |task|
-    task.requires << 'rubocop-rails'
+    task.plugins << 'rubocop-rails'
   end
 
   task(:default).clear.enhance(%w[rubocop spec])

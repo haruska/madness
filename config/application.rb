@@ -23,7 +23,15 @@ Bundler.require(*Rails.groups)
 module Madness
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults 8.0
+
+    # defaults to false in 7.1+. Needed for app/lib
+    config.add_autoload_paths_to_load_path = true
+
+    # Please, add to the `ignore` list any other `lib` subdirectories that do
+    # not contain `.rb` files, or that should not be reloaded or eager loaded.
+    # Common ones are `templates`, `generators`, or `middleware`, for example.
+    config.autoload_lib(ignore: %w[assets tasks])
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -33,11 +41,10 @@ module Madness
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    config.action_mailer.default_url_options = { host: 'localhost:3000' }
+    config.active_job.queue_adapter = :sidekiq
+
     # Don't generate system test files.
     config.generators.system_tests = nil
-
-    config.action_mailer.default_url_options = { host: 'localhost:3000' }
-
-    config.active_job.queue_adapter = :sidekiq
   end
 end

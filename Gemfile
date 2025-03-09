@@ -3,10 +3,13 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.3'
+ruby '3.4.2'
+
+# CSV was pulled into a gem in ruby 3.4
+gem 'csv'
 
 # Use main development branch of Rails
-gem 'rails', '~> 7.0.0'
+gem 'rails', '~> 8.0.0'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'

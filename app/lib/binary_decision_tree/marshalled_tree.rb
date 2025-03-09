@@ -36,9 +36,9 @@ module BinaryDecisionTree
 
         current_position = 1 << i
 
-        if (mask & current_position) != 0
+        if mask.anybits?(current_position)
           node = tree.at(i)
-          node.decision = (decisions & current_position).zero? ? 0 : 1
+          node.decision = decisions.nobits?(current_position) ? 0 : 1
         end
       end
 
