@@ -1,49 +1,27 @@
-<div class="rules-and-scoring-container">
-  <div class="rules-settings">
-    <h3 class="sub-heading">Pool Settings</h3>
-    <table>
-      <tbody>
-      <tr>
-        <td>Entry Amount</td>
-        <td>$10</td>
-      </tr>
-      <tr>
-        <td>Entry Deadline</td>
-        <td><%= tournament.tip_off.localtime.strftime("%A, %B %-d at %l:%M%P %Z") %></td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="prizes">
-    <h3 class="sub-heading">Prizes</h3>
-    <table>
-      <tbody>
-        <% @prizes.each_with_index do |x, i| %>
-          <%= render partial: 'prize', locals: {prize: x, prize_counter: i} %>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <div class="scoring">
-    <h3 class="sub-heading">Scoring</h3>
-    <table>
-      <thead>
-      <tr>
-        <th>Round</th>
-        <th>Points per Game</th>
-      </tr>
-      </thead>
-      <tbody>
-        <%= render partial: 'score', collection: tournament.rounds, as: :round %>
-      </tbody>
-    </table>
-    <div>
-      For all correct picks you get that round's points <em>plus</em> the seed number of the
-      team. So, if you pick the 10th-seed team to win in the Sweet 16 round, that would be 13 points if
-      correct.
-    </div>
+<h5>Pool Settings</h5>
+<table>
+  <tbody>
+  <tr>
+    <td>Entry Deadline</td>
+    <td><%= tournament.tip_off.localtime.strftime("%A, %B %-d at %l:%M%P %Z") %></td>
+  </tr>
+  </tbody>
+</table>
 
-    <h3 class="sub-heading">In case of a tie</h3>
-    <div>If multiple brackets are tied they split the winnings.</div>
-  </div>
-</div>
+<h5>Scoring</h5>
+<table>
+  <thead>
+  <tr>
+    <th>Round</th>
+    <th>Points per Game</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= render partial: 'score', collection: tournament.rounds, as: :round %>
+  </tbody>
+</table>
+<p>
+  For all correct picks you get that round's points <em>plus</em> the seed number of the
+  team. So, if you pick the 10th-seed team to win in the Sweet 16 round, that would be 13 points if
+  correct.
+</p>

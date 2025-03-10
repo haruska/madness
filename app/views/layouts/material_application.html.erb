@@ -1,0 +1,12 @@
+<% content_for(:head_content) do %>
+  <link href="https://cdn.jsdelivr.net/npm/beercss@3.9.7/dist/cdn/beer.min.css" rel="stylesheet">
+<% end %>
+
+<% content_for(:content) do %>
+  <%= render template: "layouts/material_menu" %>
+  <main class="responsive">
+    <%= yield %>
+  </main>
+<% end %>
+
+<%= render template: "layouts/base" %>
