@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react'
+import React, { useState } from 'react'
 import { Dialog } from 'components/Dialog'
 import { ErrorFlash } from 'components/forms/ErrorFlash'
 import { Label } from 'components/forms/Label'
@@ -6,18 +6,14 @@ import { Tournament } from 'components/Tournament'
 
 import { COMPLETED_MASK } from 'components/BasicBracket'
 import { Team, Bracket, Tournament as ITournament } from '../objects/TournamentTypes'
-import { types } from 'sass'
-import Error = types.Error
-import { Simulate } from 'react-dom/test-utils'
-import error = Simulate.error
 import { BracketErrors } from './NewBracket'
 
 export const EditBracket = ({
-  bracket,
-  errors,
-  tournament,
-  teams,
-}: {
+                              bracket,
+                              errors,
+                              tournament,
+                              teams,
+                            }: {
   bracket: Bracket
   errors?: BracketErrors
   tournament: ITournament
