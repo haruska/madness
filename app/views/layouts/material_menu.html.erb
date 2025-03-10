@@ -5,35 +5,74 @@
       <h6>Madness</h6>
     </nav>
   </header>
+  <% if current_user.admin? %>
+    <a href="/admin">
+      <i>admin_panel_settings</i>
+      <div>Admin Dashboard</div>
+    </a>
+  <% end %>
   <a href="/">
     <i>home</i>
-    <div>Home</div>
+    <div>Brackets</div>
   </a>
-  <a href="/rules.html">
+  <a href="/tournament">
+    <i>scoreboard</i>
+    <div>Game Results</div>
+  </a>
+  <a href="/rules">
     <i>description</i>
     <div>Rules &amp; Scoring</div>
   </a>
+  <%= link_to destroy_user_session_path do %>
+    <i>logout</i>
+    <div>Sign Out</div>
+  <% end %>
 </nav>
 
 <nav class="left m">
   <header>
     <i>sports_basketball</i>
   </header>
+  <% if current_user.admin? %>
+    <a href="/admin">
+      <i>admin_panel_settings</i>
+      <div>Admin Dashboard</div>
+    </a>
+  <% end %>
   <a href="/">
     <i>home</i>
-    <div>Home</div>
+    <div>Brackets</div>
   </a>
-  <a href="/rules.html">
+  <a href="/tournament">
+    <i>scoreboard</i>
+    <div>Game Results</div>
+  </a>
+  <a href="/rules">
     <i>description</i>
     <div>Rules &amp; Scoring</div>
   </a>
+  <%= link_to destroy_user_session_path do %>
+    <i>logout</i>
+    <div>Sign Out</div>
+  <% end %>
 </nav>
 
 <nav class="bottom s">
+  <% if current_user.admin? %>
+    <a href="/admin">
+      <i>admin_panel_settings</i>
+    </a>
+  <% end %>
   <a href="/">
     <i>home</i>
   </a>
-  <a href="/rules.html">
+  <a href="/tournament">
+    <i>scoreboard</i>
+  </a>
+  <a href="/rules">
     <i>description</i>
   </a>
+  <%= link_to destroy_user_session_path do %>
+    <i>logout</i>
+  <% end %>
 </nav>

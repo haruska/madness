@@ -1,6 +1,6 @@
 web: bin/rails server -b 0.0.0.0 -p 3000
 worker: bin/sidekiq
 js: bun run build --watch
-css: bun run build:css --watch
+css: bun --watch run build:css --watch
 types: bun run check-types --watch
 
