@@ -1,3 +1,7 @@
+@use "sass:list";
+@use "sass:map";
+@use "../validators/contains";
+
 @charset "UTF-8";
 
 /// Builds the `src` list for an `@font-face` declaration.
@@ -18,7 +22,7 @@
 ///
 /// @access private
 
-@function _font-source-declaration(
+@function font-source-declaration(
   $font-family,
   $file-path,
   $asset-pipeline,
@@ -32,15 +36,15 @@
   );
 
   @each $format in $file-formats {
-    @if _contains(map-keys($formats-map), $format) {
-      $value: map-get($formats-map, $format);
-      $file-path: nth($value, 1);
-      $font-format: nth($value, 2);
+    @if contains.contains(map.keys($formats-map), $format) {
+      $value: map.get($formats-map, $format);
+      $file-path: list.nth($value, 1);
+      $font-format: list.nth($value, 2);
 
       @if $asset-pipeline == true {
-        $src: append($src, font-url($file-path) $font-format, comma);
+        $src: list.append($src, font-url($file-path) $font-format, comma);
       } @else {
-        $src: append($src, url($file-path) $font-format, comma);
+        $src: list.append($src, url($file-path) $font-format, comma);
       }
     } @else {
       @error "`#{$file-formats}` contains an unsupported font file format. " +

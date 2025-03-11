@@ -1,3 +1,5 @@
+@use "../base/variables";
+
 .tournament-component {
   .tournament-body {
     margin-top: 15px;
@@ -6,7 +8,7 @@
   }
 
   .tournament-heading {
-    width: $bracket-width;
+    width: variables.$bracket-width;
   }
 
   .tie-breaker {
@@ -18,32 +20,32 @@
   .rounds-banner {
     font-size: 11px;
     color: #333333;
-    border: 1px $whitesmoke;
+    border: 1px variables.$whitesmoke;
     border-collapse: collapse;
 
     .header {
       background-color: #b3d4ef;
       padding: 8px;
       width: 69.4px;
-      border: 1px solid $whitesmoke;
+      border: 1px solid variables.$whitesmoke;
     }
 
     .date-range {
       padding: 8px;
-      border: 1px solid $whitesmoke;
-      background-color: $whitesmoke;
+      border: 1px solid variables.$whitesmoke;
+      background-color: variables.$whitesmoke;
       text-align: center;
     }
   }
 
   .eliminated {
     text-decoration: line-through;
-    color: $middark-gray;
+    color: variables.$middark-gray;
   }
 
   .correct-pick {
     font-weight: 500;
-    background-color: $light-blue;
+    background-color: variables.$light-blue;
   }
 
   .empty-pick {
@@ -382,7 +384,7 @@
 
     //display: inline-block;
     width: $bracket-width;
-    margin: $gutter auto;
+    margin: variables.$gutter auto;
 
     .tournament-heading,
     .tournament-body {

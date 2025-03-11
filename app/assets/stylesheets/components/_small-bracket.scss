@@ -1,28 +1,30 @@
+@use "../base/variables";
+
 .small-bracket {
   a {
     text-decoration: none;
   }
   .bracket-row {
-    margin: calc($gutter / 2) 0;
+    margin: calc(variables.$gutter / 2) 0;
     display: flex;
   }
 
   .current-user-bracket {
-    background-color: $light-blue;
+    background-color: variables.$light-blue;
   }
 
   .bracket-link {
     display: block;
-    color: $font-color--base;
-    border-top: 1px solid $medium-gray;
+    color: variables.$font-color--base;
+    border-top: 1px solid variables.$medium-gray;
     &:last-child {
-      border-bottom: 1px solid $medium-gray;
+      border-bottom: 1px solid variables.$medium-gray;
     }
   }
 
   .bracket-position {
     display: inline-block;
-    margin-right: calc($gutter / 2);
+    margin-right: calc(variables.$gutter / 2);
     width: 2.4em;
     vertical-align: top;
   }
@@ -66,7 +68,7 @@
 
     .eliminated {
       text-decoration: line-through;
-      color: $middark-gray;
+      color: variables.$middark-gray;
     }
   }
 

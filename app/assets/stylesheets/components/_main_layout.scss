@@ -1,3 +1,8 @@
+@use "sass:color";
+@use "../base/variables";
+@use "../bourbon/library/position";
+@use "../bourbon/library/size";
+
 .main-layout-component {
   .container {
     max-width: 960px;
@@ -64,15 +69,15 @@
       $action-color: #477dca !default;
       $dark-gray: #333 !default;
       $sliding-panel-border-color: $dark-gray;
-      $sliding-panel-background: lighten($sliding-panel-border-color, 5%);
-      $sliding-panel-color: $light-gray;
+      $sliding-panel-background: color.adjust($sliding-panel-border-color, $lightness: 5%);
+      $sliding-panel-color: variables.$light-gray;
       $sliding-panel-border: 1px solid $sliding-panel-border-color;
       $sliding-panel-background-hover: $action-color;
       $sliding-panel-color-hover: #fff;
-      $sliding-panel-background-focus: lighten($sliding-panel-background, 5%);
+      $sliding-panel-background-focus: color.adjust($sliding-panel-background, $lightness: 5%);
 
-      @include position(fixed, 0px auto 0px 0px);
-      @include size(220px, 100%);
+      @include position.position(fixed, 0px auto 0px 0px);
+      @include size.size(220px, 100%);
       transform: translateX(-220px);
       transition: all 0.25s linear;
       background: $sliding-panel-background;
@@ -111,7 +116,7 @@
     }
 
     .sliding-panel-fade-screen {
-      @include position(fixed, 0px 0px 0px 0px);
+      @include position.position(fixed, 0px 0px 0px 0px);
       background: black;
       opacity: 0;
       visibility: hidden;

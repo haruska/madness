@@ -1,5 +1,7 @@
+@use "../base/variables";
+
 .rules-and-scoring-container {
-  padding: $gutter 0;
+  padding: variables.$gutter 0;
 
   .sub-heading {
     font-size: 1.5em;
@@ -7,6 +9,6 @@
   }
 
   .tie-breaker-list {
-    padding: $half-gutter;
+    padding: variables.$half-gutter;
   }
 }

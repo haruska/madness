@@ -1,6 +1,8 @@
+@use "../base/variables";
+
 .games-container {
-  padding-top: $gutter * 2;
-  width: $bracket-width;
+  padding-top: variables.$gutter * 2;
+  width: variables.$bracket-width;
   margin: 0 auto;
 
   .games-heading {

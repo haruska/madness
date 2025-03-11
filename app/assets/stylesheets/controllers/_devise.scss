@@ -1,11 +1,14 @@
+@use "sass:color";
+@use "../base/variables";
+
 .sessions-controller,
 .passwords-controller {
   p.notice {
     text-align: left;
     color: blue;
     border: blue 1px solid;
-    padding: calc($gutter / 4);
-    background-color: lighten(blue, 45);
+    padding: calc(variables.$gutter / 4);
+    background-color: color.adjust(blue, $lightness: 45%);
   }
 
   p.alert,
@@ -13,8 +16,8 @@
     text-align: left;
     color: darkred;
     border: darkred 1px solid;
-    padding: calc($gutter / 4);
-    background-color: lighten(darkred, 65);
+    padding: calc(variables.$gutter / 4);
+    background-color: color.adjust(darkred, $lightness: 65%);
   }
 
   #error_explanation {
@@ -22,7 +25,7 @@
       display: none;
     }
 
-    margin-bottom: $gutter;
+    margin-bottom: variables.$gutter;
   }
 
   .login-container {
@@ -63,7 +66,7 @@
       width: 95%;
       padding: 25px;
 
-      @include medium-screen {
+      @include variables.medium-screen {
         width: 50%;
         max-width: 750px;
       }
@@ -74,7 +77,7 @@
         font-size: 30px;
         margin-bottom: 30px;
 
-        @include medium-screen {
+        @include variables.medium-screen {
           font-size: 48px;
         }
       }
@@ -93,11 +96,11 @@
         //adjustments to devise default views
 
         h2 {
-          margin-bottom: $gutter;
+          margin-bottom: variables.$gutter;
         }
 
         form {
-          margin-bottom: $gutter;
+          margin-bottom: variables.$gutter;
         }
 
         //devise adds <br> tags to the default HTML

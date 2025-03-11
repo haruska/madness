@@ -1,6 +1,8 @@
+@use "variables";
+
 :root {
   --form-box-shadow: inset 0 --border-width 0.1875rem rgba(#000, 0.06);
-  --form-box-shadow-focus: var(--form-box-shadow), 0 0 0.3125rem #{$action-color};
+  --form-box-shadow-focus: var(--form-box-shadow), 0 0 0.3125rem #{variables.$action-color};
 }
 
 fieldset {
@@ -70,7 +72,7 @@ textarea {
   }
 
   &::placeholder {
-    color: $font-color--base;
+    color: variables.$font-color--base;
     opacity: 0.25;
   }
 }

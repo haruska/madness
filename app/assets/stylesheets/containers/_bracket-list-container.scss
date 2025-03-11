@@ -1,12 +1,14 @@
+@use "../base/variables";
+
 .bracket-list-container {
-  padding-top: $gutter;
+  padding-top: variables.$gutter;
   min-width: 220px;
 
   .refresh-wrapper {
     width: 100%;
     text-align: center;
 
-    @include medium-screen {
+    @include variables.medium-screen {
       text-align: right;
     }
   }
@@ -27,7 +29,7 @@
   .small-screen {
     display: block;
 
-    @include large-screen {
+    @include variables.large-screen {
       display: none;
     }
   }
@@ -35,7 +37,7 @@
   .large-screen {
     display: none;
 
-    @include large-screen {
+    @include variables.large-screen {
       display: block;
     }
   }

@@ -1,3 +1,5 @@
+@use "../base/variables";
+
 .final-four-team-small-component {
   display: inline-block;
   font-size: 0.9em;
@@ -21,6 +23,6 @@
 
   .eliminated {
     text-decoration: line-through;
-    color: $middark-gray;
+    color: variables.$middark-gray;
   }
 }

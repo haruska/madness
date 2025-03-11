@@ -1,12 +1,14 @@
+@use "../base/variables";
+
 .edit-bracket-container {
-  padding-top: $gutter * 2;
-  width: $bracket-width;
+  padding-top: variables.$gutter * 2;
+  width: variables.$bracket-width;
   margin: 0 auto;
 
   .edit-bracket-form {
     margin: 0 auto;
     width: 300px;
-    padding-bottom: $gutter;
+    padding-bottom: variables.$gutter;
   }
 
   .button {
@@ -24,7 +26,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color: $light-blue;
+      background-color: variables.$light-blue;
     }
 
     z-index: 100;

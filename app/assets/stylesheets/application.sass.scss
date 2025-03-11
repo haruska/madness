@@ -1,24 +1,24 @@
 // Entry point for your Sass build
-@import 'normalize';
-@import 'bourbon';
-@import 'base/base';
-@import 'layout';
+@use 'normalize';
+@use 'bourbon';
+@use 'base/base';
+@use 'layout';
 
-@import 'controllers/devise';
+@use 'controllers/devise';
 
-@import 'components/flash-messages';
-@import 'components/tournament';
-@import 'components/main_layout';
-@import 'components/final-four-team-small';
-@import 'components/dialog';
-@import 'components/small-bracket';
-@import 'components/bracket-row';
+@use 'components/flash-messages';
+@use 'components/tournament';
+@use 'components/main_layout';
+@use 'components/final-four-team-small';
+@use 'components/dialog';
+@use 'components/small-bracket';
+@use 'components/bracket-row';
 
-@import 'containers/games';
-@import 'containers/user-bracket-list';
-@import 'containers/bracket';
-@import 'containers/edit-bracket';
-@import 'containers/new-bracket';
-@import 'containers/bracket-list-container';
-@import 'containers/rules-and-scoring';
-@import 'containers/edit-tournament';
+@use 'containers/games';
+@use 'containers/user-bracket-list';
+@use 'containers/bracket';
+@use 'containers/edit-bracket';
+@use 'containers/new-bracket';
+@use 'containers/bracket-list-container';
+@use 'containers/rules-and-scoring';
+@use 'containers/edit-tournament';

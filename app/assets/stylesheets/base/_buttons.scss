@@ -1,13 +1,15 @@
+@use "variables";
+
 button,
 .button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
   appearance: none;
-  background-color: $action-color;
+  background-color: variables.$action-color;
   border: 0;
   border-radius: var(--border-radius);
-  color: $action-color--contrast;
+  color: variables.$action-color--contrast;
   cursor: pointer;
   display: inline-block;
   font-family: var(--font-family-base);
@@ -24,8 +26,8 @@ button,
   white-space: nowrap;
 
   &:hover {
-    background-color: $action-color--alt;
-    color: $action-color--contrast;
+    background-color: variables.$action-color--alt;
+    color: variables.$action-color--contrast;
   }
 
   &:focus {
@@ -39,6 +41,6 @@ button,
   }
 
   &.danger {
-    background-color: $red;
+    background-color: variables.$red;
   }
 }

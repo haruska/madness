@@ -1,6 +1,8 @@
+@use "../base/variables";
+
 .bracket-container {
-  padding-top: $gutter * 2;
-  width: $bracket-width;
+  padding-top: variables.$gutter * 2;
+  width: variables.$bracket-width;
   margin: 0 auto;
 
   .bracket-heading {

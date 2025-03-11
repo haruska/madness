@@ -1,13 +1,15 @@
+@use "../base/variables";
+
 .bracket-row {
-  margin: $half-gutter 0;
+  margin: variables.$half-gutter 0;
 
   .current-user-bracket {
-    background-color: $light-blue;
+    background-color: variables.$light-blue;
   }
 
   .eliminated {
     text-decoration: line-through;
-    color: $middark-gray;
+    color: variables.$middark-gray;
   }
 
   .position-column {

@@ -1,3 +1,5 @@
+@use "../base/variables";
+
 .dialog-component {
   display: flex;
   justify-content: center;
@@ -18,7 +20,7 @@
   .dialog {
     background: white;
     min-height: 100px;
-    padding: $base-spacing;
+    padding: variables.$base-spacing;
 
     &-title {
       max-width: 280px;
@@ -32,6 +34,6 @@
   }
 
   .dialog-confirm {
-    background: $red;
+    background: variables.$red;
   }
 }
